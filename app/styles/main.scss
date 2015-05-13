@@ -11,12 +11,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 /* VARIABLES */
 $background-color: #34495e;
 $text-color: lighten(#34495e, 50%);
-
+$accent-color: lighten(#1abc9c, 10%);
 /* GENERAL */
 html,
 body {
   font-family: Source Sans Pro;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 400;
   width: 100%;
   height: 100%;
@@ -57,12 +57,11 @@ h2 {
 }
 h3 {
   margin: 0;
-  padding-bottom: 24px;
   color: #fff;
 }
 p {
   font-size: 1.25rem;
-  line-height: 2rem;
+  line-height: 2.25rem;
   max-width: 920px;
   margin: 0;
   padding-bottom: 24px;
@@ -71,15 +70,16 @@ p {
 a,
 a:visited,
 a:hover,
+a:focus,
  {
-  color: #2ecc71;
+  color: $accent-color;
   text-decoration: none;
 }
 .underline {
-  color: #2ecc71;
+  color: $accent-color;
   display: inline-block;
   overflow: hidden;
-  margin-bottom: -9px;
+  margin-bottom: -12px;
   position: relative;
 }
 .underline:before {
@@ -91,17 +91,18 @@ a:hover,
   display: block;
   width: 100%;
   height: 2px;
-  background-color: #2ecc71;
+  background-color: $accent-color;
 }
 .underline:hover:before {
   left: 0;
 }
-strong{
+strong {
   color: #fff;
   font-weight: 600;
 }
 .tile {
   position: relative;
+  overflow: hidden;
   margin: 15px 0;
   .img {
     background-size: cover;
@@ -131,7 +132,7 @@ header {
   }
   .img {
     height: 500px;
-    background-color: #2c3e50;
+    background-color: lighten($background-color, 6%);
   }
 }
 /*ABOUT*/
@@ -173,9 +174,46 @@ header {
     letter-spacing: 2px;
     text-transform: uppercase;
   }
+  h3 {
+    padding-bottom: 10px;
+  }
+  .strike {
+    @extend .underline;
+    color: $text-color;
+  }
+  .strike:before {
+    content: "";
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+    left: 0;
+    bottom: 17px;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: $text-color;
+  }
+  .strike:hover:before {
+    left: -100%;
+  }
 }
 /* WHAT I'VE DONE */
 .work {
+  .item:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(52,73,94,0.6);
+    transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+  }
+  .item:hover:before {
+    background-color: rgba(52,73,94,0);
+  }
   .img {
     @extend .img;
     height: 270px;
@@ -187,22 +225,10 @@ header {
   .website {
     background-image: url("../images/website.png");
   }
-  .more {
-    display: flex;
-    width: 100%;
-    padding-top: 24px;
-  }
 }
-/* WHAT I LIKE */
-.what_i_like {
-  background-color: #2c3e50;
-  h2,
-  p {
-    color: #fff;
-  }
-}
+/* CONTACT */
 .contact {
-  .googleplus.underline {
+  .underline.googleplus {
     color: #dd4b39;
   }
   .googleplus.underline:before {
@@ -213,6 +239,9 @@ header {
   }
   .twitter.underline:before {
     background-color: #55acee;
+  }
+  .mail {
+    font-size: 2rem;
   }
 }
 footer {
