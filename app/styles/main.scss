@@ -32,16 +32,16 @@ body {
   text-rendering: auto;
 }
 ::selection {
-  background: #2ecc71 !important;
+  background: $accent-color !important;
   color: #fff;
 }
 ::-webkit-selection {
-  background: #2ecc71 !important;
+  background: $accent-color !important;
   color: #fff;
 }
 ::-moz-selection {
   color: #fff;
-  background: #2ecc71 !important;
+  background: $accent-color !important;
 }
 .section {
   margin: 0 auto;
@@ -66,6 +66,10 @@ p {
   margin: 0;
   padding-bottom: 24px;
   color: $text-color;
+}
+ul {
+  list-style: none;
+  padding: 0;
 }
 a,
 a:visited,
@@ -97,8 +101,14 @@ a:focus,
   left: 0;
 }
 strong {
-  color: #fff;
+  color: #F2E8C4;
   font-weight: 600;
+}
+.transition{
+  transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
 }
 .tile {
   position: relative;
@@ -110,22 +120,9 @@ strong {
     background-position: top;
   }
 }
-/* NAV */
-.logo {
-  color: #212121;
-  font-weight: 600;
-  font-size: 1.5rem;
-  line-height: 1.5rem;
-  margin: 35px 0;
-}
-.nav {
-  margin-top: -7px;
-}
-ul li a {
-  border-radius: 0 !important;
-}
 /* HEADER */
-header {
+header.section {
+  padding-top: 240px;
   width: 100%;
   .container {
 
@@ -147,7 +144,6 @@ header {
   .img {
     @extend .img;
     height: 380px;
-
   }
 }
 .grid {
@@ -156,10 +152,10 @@ header {
 .web-dev,
 .web-design {
   icon-code {
-	width: 100px;
-  height: 100px;
-  color: #fff;
-}
+    width: 100px;
+    height: 100px;
+    color: #fff;
+  }
   background-color: lighten($background-color, 6%);
   h3 {
     position: absolute;
@@ -167,13 +163,8 @@ header {
     left: 32px;
     padding: 0;
   }
-
 }
 .tech-and-skills {
-  ul {
-    list-style: none;
-    padding: 0;
-  }
   li {
     padding: 5px 0;
     font-size: 1.25rem;
@@ -193,7 +184,7 @@ header {
     position: absolute;
     transition: all 0.3s ease-in-out;
     left: 0;
-    bottom: 17px;
+    bottom: 18px;
     display: block;
     width: 100%;
     height: 2px;
@@ -213,10 +204,7 @@ header {
     left: 0;
     right: 0;
     background-color: rgba(52,73,94,0.6);
-    transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
+    @extend .transition;
   }
   .item:hover:before {
     background-color: rgba(52,73,94,0);
@@ -234,7 +222,8 @@ header {
   }
 }
 /* CONTACT */
-.contact {
+.contact.section {
+  padding-bottom: 240px;
   .underline.googleplus {
     color: #dd4b39;
   }
@@ -247,8 +236,85 @@ header {
   .twitter.underline:before {
     background-color: #55acee;
   }
+  .underline.senscritique {
+    color: #2ecc71;
+  }
+  .senscritique.underline::before {
+    background-color: #2ecc71;
+  }
   .mail {
     font-size: 2rem;
+  }
+  ul {
+    text-align: right;
+  }
+}
+form {
+  margin: 0 -30px;
+
+  .form-control {
+    font-size: 1rem;
+    padding: 24px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: lighten($background-color, 6%);
+    color: #fff;
+    @extend .transition;
+  }
+  .form-control::-webkit-input-placeholder {
+    color: white;
+  }
+  .form-control::-moz-placeholder {
+    color: white;
+  }
+  .form-control:-ms-input-placeholder {
+    color: white;
+  }
+  .form-control:focus {
+    border: none;
+    box-shadow: none;
+    background-color: #fafafa;
+    color: #000;
+  }
+  .form-control:focus::-webkit-input-placeholder {
+    color: #212121;
+  }
+  .form-control:focus:-moz-placeholder {
+    color: #212121;
+  }
+  .form-control:focus::-moz-placeholder {
+    color: #212121;
+  }
+  .form-control:focus:-ms-input-placeholder {
+    color: #212121;
+  }
+
+  .btn.form-control{
+      height: 48px;
+      padding: 7px;
+      vertical-align: middle;
+      background-color: darken($background-color, 6%);
+      text-transform: uppercase;
+    }
+
+    .btn.form-control:active{
+      background-color: $accent-color;
+      color: #000;
+      box-shadow: none;
+      outline: none;
+    }
+    .btn.form-control:hover{
+      background-color: $accent-color;
+      color: #000;
+      box-shadow: none;
+    }
+
+
+
+  textarea {
+    resize: none;
   }
 }
 footer {

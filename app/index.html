@@ -7,6 +7,9 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
   <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="theme-color" content="#34495e">
+  <meta name="author" content="Maxime Le Conte des Floris" href="google.com/+MaximeLeContedesFloris">
+  <meta name="description" content="I'm Maxime Le Conte des Floris, a technology enthusiast, Android aficionado and cinephile who loves pixel-perfect interfaces.">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <!-- build:css(.) styles/vendor.css -->
   <!-- bower:css -->
@@ -27,18 +30,6 @@
   <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-
-
-  <div class="header">
-    <ul class="nav nav-pills pull-right">
-      <li><a href="#">Who I am</a></li>
-      <li><a href="#">What I do</a></li>
-      <li><a href="#">What I like</a></li>
-      <li><a href="#">Get in touch</a></li>
-    </ul>
-    <h3 class="logo">Maxime Le Conte des Floris</h3>
-  </div>
 
   <main>
 
@@ -61,7 +52,7 @@
 
         <p>I'm a 21-year-old
           <strong>front-end developer</strong> based in <a class="underline" href="https://www.google.fr/maps/place/Le+Barp/" target="_blank">Le Barp, France</a>. Curious by nature, I'm passionnate about basically anything technology related : from space science,
-          to web technologies, to consumer electronics, to motion picture.</p>
+          to web technologies, to consumer electronics.</p>
         <p>Last year, I received my
           <strong>University Technology Degree in Electrical Engineering and Industrial Computing</strong> and finished a 17-months intership at ERDF as a project manager. Now, I'm working on some projects and looking for interships in computing companies.
         </p>
@@ -131,7 +122,7 @@
         <h2>What I've done</h2>
 
         <p>
-          I'm currently designing a online portfolio for a client and here's some of my <a class="underline" href="https://www.behance.net/maxlecontedesfloris" target="_blank">recent works</a>.
+          I'm currently designing an online portfolio for a client and here's some of my <a class="underline" href="https://www.behance.net/maxlecontedesfloris" target="_blank">recent works</a>.
         </p>
 
         <div class="grid">
@@ -172,14 +163,37 @@
     <div class="contact section">
       <div class="container">
         <h2>Say hello</h2>
+
         <p>
-          Whether you want my help with a project, have questions or simply want to discuss, feel free to drop me a line. You can also hit me up on <a class="googleplus underline" href="https://plus.google.com/u/0/+MaximeLeContedesFloris/posts" target="_blank">Google+</a>          or <a class="twitter underline" href="https://twitter.com/MLCDF">Twitter</a>. Don't be shy, I'd love to hear from you !
+          Whether you want my help with a project, have questions or simply want to discuss, feel free to <a class="underline" href="mailto:contact@maximelecontedesfloris.com" target="_blank">drop me a line</a>. Don't be shy, I'd love to hear from you
+          !
         </p>
-        <a class="mail underline" href="mailto:contact@maximelecontedesfloris.com" target="_blank">contact@maximelecontedesfloris.com</a>
+
+        <form class="col-md-10" role="form"  method="POST" action="../contact.php" >
+          <div class="form-group col-md-6">
+            <input class="form-control"  type="text" name="name" placeholder="Name" required>
+          </div>
+          <div class="form-group col-md-6">
+            <input class="form-control"  type="email" name="email" placeholder="Email" required>
+          </div>
+          <div class="form-group col-md-12">
+            <textarea class="form-control" rows="5" name="message" placeholder="Message" required></textarea>
+          </div>
+          <div class="form-group col-md-4">
+            <button class="btn-lg btn form-control" type="submit" name="submit">Send</button>
+          </div>
+        </form>
+
+        <div class="col-md-6">
+          <ul>
+            <li><a class="googleplus underline" href="https://plus.google.com/u/0/+MaximeLeContedesFloris/posts" target="_blank">Google+</a></li>
+            <li><a class="twitter underline" href="https://twitter.com/MLCDF" target="_blank">Twitter</a> </li>
+            <li><a class="senscritique underline" href="http://www.senscritique.com/LaMenace" target="_blank">SensCritique</a></li>
+          </ul>
+        </div>
+
       </div>
     </div>
-
-
 
   </main>
 
