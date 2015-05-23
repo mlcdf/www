@@ -11,7 +11,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 /* VARIABLES */
 $background-color: #34495e;
 $text-color: lighten(#34495e, 50%);
-$accent-color: lighten(#1abc9c, 10%);
+$accent-color: #4BD6C0;
+$light-background-color: lighten($background-color, 6%);
+$dark-background-color: darken($background-color, 6%);
+
 /* GENERAL */
 html,
 body {
@@ -89,26 +92,26 @@ a:focus,
 .underline:before {
   content: "";
   position: absolute;
-  transition: all 0.3s ease-in-out;
   left: -100%;
   bottom: 0;
   display: block;
   width: 100%;
   height: 2px;
   background-color: $accent-color;
+  @extend .transition;
 }
 .underline:hover:before {
   left: 0;
 }
 strong {
-  color: #F2E8C4;
+  color: #faebd7;
   font-weight: 600;
 }
-.transition{
-  transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
+.transition {
+  transition: all 0.3s cubic-bezier(.55,0,.1,1);
+  -o-transition: all 0.3s cubic-bezier(.55,0,.1,1);
+  -moz-transition: all 0.3s cubic-bezier(.55,0,.1,1);
+  -webkit-transition: all 0.3s cubic-bezier(.55,0,.1,1);
 }
 .tile {
   position: relative;
@@ -123,13 +126,13 @@ strong {
 /* HEADER */
 header.section {
   padding-top: 240px;
-  width: 100%;
   .container {
 
   }
   .img {
     height: 500px;
-    background-color: lighten($background-color, 6%);
+    background: url("../images/DSC04121.jpg") no-repeat fixed center;
+    background-size: cover;
   }
 }
 /*ABOUT*/
@@ -141,22 +144,20 @@ header.section {
 /* WHAT I DO */
 .what_i_do {
   background-color: #34495e;
-  .img {
-    @extend .img;
-    height: 380px;
-  }
 }
 .grid {
   margin: 0 -15px;
 }
 .web-dev,
 .web-design {
-  icon-code {
-    width: 100px;
-    height: 100px;
-    color: #fff;
+  .svg{
+    display: block;
+    fill: #fff;
+    height: 180px;
+    width: 180px;
+    margin: 90px auto 90+50px auto;
   }
-  background-color: lighten($background-color, 6%);
+  background-color: $light-background-color;
   h3 {
     position: absolute;
     bottom: 32px;
@@ -182,7 +183,7 @@ header.section {
   .strike:before {
     content: "";
     position: absolute;
-    transition: all 0.3s ease-in-out;
+    @extend .transition;
     left: 0;
     bottom: 18px;
     display: block;
@@ -222,7 +223,7 @@ header.section {
   }
 }
 /* CONTACT */
-.contact.section {
+.contact {
   padding-bottom: 240px;
   .underline.googleplus {
     color: #dd4b39;
@@ -250,8 +251,6 @@ header.section {
   }
 }
 form {
-  margin: 0 -30px;
-
   .form-control {
     font-size: 1rem;
     padding: 24px;
@@ -259,70 +258,80 @@ form {
     border: none;
     border-radius: 0;
     box-shadow: none;
-    background-color: lighten($background-color, 6%);
+    background-color: $light-background-color;
     color: #fff;
     @extend .transition;
   }
   .form-control::-webkit-input-placeholder {
-    color: white;
+    color: #fff;
   }
   .form-control::-moz-placeholder {
-    color: white;
+    color: #fff;
   }
   .form-control:-ms-input-placeholder {
-    color: white;
+    color: #fff;
   }
   .form-control:focus {
     border: none;
     box-shadow: none;
-    background-color: #fafafa;
-    color: #000;
+    background-color: #fff;
+    color: $dark-background-color;
   }
   .form-control:focus::-webkit-input-placeholder {
-    color: #212121;
+    color: $dark-background-color;
   }
   .form-control:focus:-moz-placeholder {
-    color: #212121;
+    color: $dark-background-color;
   }
   .form-control:focus::-moz-placeholder {
-    color: #212121;
+    color: $dark-background-color;
   }
   .form-control:focus:-ms-input-placeholder {
-    color: #212121;
+    color: $dark-background-color;
   }
-
-  .btn.form-control{
-      height: 48px;
-      padding: 7px;
-      vertical-align: middle;
-      background-color: darken($background-color, 6%);
-      text-transform: uppercase;
-    }
-
-    .btn.form-control:active{
-      background-color: $accent-color;
-      color: #000;
-      box-shadow: none;
-      outline: none;
-    }
-    .btn.form-control:hover{
-      background-color: $accent-color;
-      color: #000;
-      box-shadow: none;
-    }
-
-
-
+  .btn.form-control {
+    height: 48px;
+    padding: 7px;
+    vertical-align: middle;
+    background-color: $dark-background-color;
+    text-transform: uppercase;
+  }
+  .btn.form-control:active {
+    background-color: darken($accent-color, 6%);
+    color: #000;
+    box-shadow: none;
+    outline: none;
+  }
+  .btn.form-control:hover {
+    background-color: darken($accent-color, 6%);
+    color: #000;
+    box-shadow: none;
+  }
   textarea {
     resize: none;
   }
 }
-footer {
-  padding: 20px 0;
-}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 1200px) {
   .container {
     max-width: 1170px;
+  }
+
+}
+
+
+@media screen and (max-width: 767px){
+  form .form-control {
+    margin-top: 0 !important;
+}
+  .section{
+    padding: 60px 0;
+  }
+  header.section {
+    padding-top: 60px;
+  }
+  .contact{
+    padding-bottom: 60px;
   }
 }
