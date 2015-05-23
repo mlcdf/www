@@ -9,11 +9,11 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   padding: 0.2em 0;
 }
 /* VARIABLES */
-$background-color: #34495e;
-$text-color: lighten(#34495e, 50%);
+$main-color: #34495e;
+$text-color: lighten($main-color, 55%);
 $accent-color: #4BD6C0;
-$light-background-color: lighten($background-color, 6%);
-$dark-background-color: darken($background-color, 6%);
+$light-main-color: lighten($main-color, 6%);
+$dark-main-color: darken($main-color, 6%);
 
 /* GENERAL */
 html,
@@ -28,7 +28,7 @@ body {
   padding: 0;
   vertical-align: middle;
   color: $text-color;
-  background-color: $background-color;
+  background-color: $main-color;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   font-smoothing: antialiased;
@@ -131,16 +131,24 @@ header.section {
   }
   .img {
     height: 500px;
-    background: url("../images/BA558846B1.jpg") no-repeat fixed center;
+    background: url("../images/Star-Wars-Behind-the-Scenes.jpg") no-repeat center;
     background-size: cover;
+    position: relative;
+
+    .caption{
+      position: absolute;
+      bottom:0;
+      right: 0;
+      padding: 12px 16px;
+      margin: 48px;
+      background-color: $dark-main-color;
+
+    }
   }
+
 }
 /*ABOUT*/
-.about {
-  p {
-    padding-bottom: 24px;
-  }
-}
+
 /* WHAT I DO */
 .what_i_do {
   background-color: #34495e;
@@ -157,7 +165,7 @@ header.section {
     width: 180px;
     margin: 90px auto 90+50px auto;
   }
-  background-color: $light-background-color;
+  background-color: $light-main-color;
   h3 {
     position: absolute;
     bottom: 32px;
@@ -258,7 +266,7 @@ form {
     border: none;
     border-radius: 0;
     box-shadow: none;
-    background-color: $light-background-color;
+    background-color: $light-main-color;
     color: #fff;
     @extend .transition;
   }
@@ -275,25 +283,25 @@ form {
     border: none;
     box-shadow: none;
     background-color: #fff;
-    color: $dark-background-color;
+    color: $dark-main-color;
   }
   .form-control:focus::-webkit-input-placeholder {
-    color: $dark-background-color;
+    color: $dark-main-color;
   }
   .form-control:focus:-moz-placeholder {
-    color: $dark-background-color;
+    color: $dark-main-color;
   }
   .form-control:focus::-moz-placeholder {
-    color: $dark-background-color;
+    color: $dark-main-color;
   }
   .form-control:focus:-ms-input-placeholder {
-    color: $dark-background-color;
+    color: $dark-main-color;
   }
   .btn.form-control {
     height: 48px;
     padding: 7px;
     vertical-align: middle;
-    background-color: $dark-background-color;
+    background-color: $dark-main-color;
     text-transform: uppercase;
   }
   .btn.form-control:active {
