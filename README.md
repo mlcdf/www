@@ -4,4 +4,4 @@ TODO
 
 - [ ] Improve IE compatibility
 - [ ] Improve form submission
-- [ ] Add Social snippets
+- [ ] Add social snippets
