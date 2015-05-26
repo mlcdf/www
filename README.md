@@ -2,5 +2,6 @@
 
 TODO
 
-- [ ] IE compatibility
+- [ ] Improve IE compatibility
 - [ ] Improve form submission
+- [ ] Add Social snippets
