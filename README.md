@@ -1,6 +1,4 @@
-# yo-project
-
-TODO
+# TODO
 
 - [ ] Improve IE compatibility
 - [ ] Improve form submission
