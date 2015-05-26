@@ -2,5 +2,5 @@
 
 TODO
 
-- [ ]IE compatibility
-- [ ]Improve form submission
+- [ ] IE compatibility
+- [ ] Improve form submission
