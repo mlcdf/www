@@ -11,10 +11,9 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 /* VARIABLES */
 $main-color: #34495e;
 $text-color: lighten($main-color, 55%);
-$accent-color: #4BD6C0;
+$accent-color: #4bd6c0;
 $light-main-color: lighten($main-color, 6%);
 $dark-main-color: darken($main-color, 6%);
-
 /* GENERAL */
 html,
 body {
@@ -57,10 +56,12 @@ h2 {
   margin: 0;
   padding-bottom: 24px;
   color: #fff;
+  font-family: Source Code Pro;
 }
 h3 {
   margin: 0;
   color: #fff;
+  font-family: Source Code Pro;
 }
 p {
   font-size: 1.25rem;
@@ -85,6 +86,8 @@ a:focus,
 .underline {
   color: $accent-color;
   display: inline-block;
+  *zoom: 1;
+  *display: inline;
   overflow: hidden;
   margin-bottom: -12px;
   position: relative;
@@ -108,10 +111,10 @@ strong {
   font-weight: 600;
 }
 .transition {
-  transition: all 0.3s cubic-bezier(.55,0,.1,1);
-  -o-transition: all 0.3s cubic-bezier(.55,0,.1,1);
-  -moz-transition: all 0.3s cubic-bezier(.55,0,.1,1);
-  -webkit-transition: all 0.3s cubic-bezier(.55,0,.1,1);
+  transition: all 0.4s cubic-bezier(.55,0,.1,1);
+  -o-transition: all 0.4s cubic-bezier(.55,0,.1,1);
+  -moz-transition: all 0.4s cubic-bezier(.55,0,.1,1);
+  -webkit-transition: all 0.4s cubic-bezier(.55,0,.1,1);
 }
 .tile {
   position: relative;
@@ -130,26 +133,37 @@ header.section {
 
   }
   .img {
-    height: 500px;
-    background: url("../images/Star-Wars-Behind-the-Scenes.jpg") no-repeat center;
+    height: 600px;
+    background: url("../images/DSC00393.jpg") no-repeat center;
     background-size: cover;
     position: relative;
 
-    .caption{
+    .caption {
       position: absolute;
-      bottom:0;
+      bottom: 0;
       right: 0;
       padding: 12px 16px;
       margin: 48px;
+      width: 300px;
       background-color: $text-color;
       color: $main-color;
-
     }
   }
-
+  .img:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(52,73,94,0.6);
+    @extend .transition;
+  }
+  .item:hover:before {
+    background-color: rgba(52,73,94,0);
+  }
 }
 /*ABOUT*/
-
 /* WHAT I DO */
 .what_i_do {
   background-color: #34495e;
@@ -159,12 +173,12 @@ header.section {
 }
 .web-dev,
 .web-design {
-  .svg{
+  .svg {
     display: block;
     fill: #fff;
     height: 180px;
     width: 180px;
-    margin: 90px auto 90+50px auto;
+    margin: 90px auto 90+50px;
   }
   background-color: $light-main-color;
   h3 {
@@ -262,9 +276,12 @@ header.section {
 form {
   .form-control {
     font-size: 1rem;
-    padding: 24px;
+    padding: 16px;
+    min-height: 56px;
     margin-top: 15px;
     border: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
     border-radius: 0;
     box-shadow: none;
     background-color: $light-main-color;
@@ -289,14 +306,14 @@ form {
   .form-control:focus::-webkit-input-placeholder {
     color: $dark-main-color;
   }
-  .form-control:focus:-moz-placeholder {
-    color: $dark-main-color;
-  }
   .form-control:focus::-moz-placeholder {
     color: $dark-main-color;
   }
   .form-control:focus:-ms-input-placeholder {
     color: $dark-main-color;
+  }
+  textarea {
+    resize: none;
   }
   .btn.form-control {
     height: 48px;
@@ -316,31 +333,30 @@ form {
     color: #000;
     box-shadow: none;
   }
-  textarea {
-    resize: none;
+  p#confirmation {
+    height: 48px;
+    padding: 7px;
+    margin-top: 15px;
+    color: $light-main-color;
   }
 }
-
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 1200px) {
   .container {
     max-width: 1170px;
   }
-
 }
-
-
-@media screen and (max-width: 767px){
+@media screen and (max-width: 767px) {
   form .form-control {
     margin-top: 0 !important;
-}
-  .section{
+  }
+  .section {
     padding: 60px 0;
   }
   header.section {
     padding-top: 60px;
   }
-  .contact{
+  .contact {
     padding-bottom: 60px;
   }
 }
