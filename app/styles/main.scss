@@ -88,33 +88,33 @@ a:focus,
   display: inline-block;
   *zoom: 1;
   *display: inline;
-  overflow: hidden;
+
   margin-bottom: -12px;
   position: relative;
 }
 .underline:before {
+  overflow: hidden;
   content: "";
   position: absolute;
-  left: -100%;
+  left: 0;
   bottom: 0;
   display: block;
-  width: 100%;
+  width: 0;
   height: 2px;
   background-color: $accent-color;
   @extend .transition;
 }
 .underline:hover:before {
-  left: 0;
+  width: 100%;
 }
 strong {
   color: #faebd7;
   font-weight: 600;
 }
 .transition {
-  transition: all 0.4s cubic-bezier(.55,0,.1,1);
-  -o-transition: all 0.4s cubic-bezier(.55,0,.1,1);
-  -moz-transition: all 0.4s cubic-bezier(.55,0,.1,1);
-  -webkit-transition: all 0.4s cubic-bezier(.55,0,.1,1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);;
+  -moz-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);;
+  -webkit-transition: all 0.4 cubic-bezier(0.175, 0.885, 0.32, 1.275);;
 }
 .tile {
   position: relative;
@@ -215,7 +215,7 @@ header.section {
     background-color: $text-color;
   }
   .strike:hover:before {
-    left: -100%;
+    width: 0;
   }
 }
 /* WHAT I'VE DONE */

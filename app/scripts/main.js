@@ -20,4 +20,15 @@ $(document).ready(function() {
     });
   });
 
+  window.onload = function() {
+  var elevator = new Elevator({
+    element: document.querySelector('.elevator-button'),
+    mainAudio: '../src/elevator.mp3',
+    endAudio: '../src/ding.mp3'
+  });
+}
+
+// You can run the elevator, by calling.
+
+
 });
