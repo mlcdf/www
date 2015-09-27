@@ -1,8 +1,12 @@
 {
-  "name": "yo-project",
+  "name": "webapp",
   "private": true,
   "dependencies": {
-    "bootstrap-sass-official": "~3.2.0",
-    "modernizr": "~2.8.2"
+    "jquery": "~2.1.1",
+    "modernizr": "~2.8.1"
+  },
+  "devDependencies": {
+    "chai": "~3.2.0",
+    "mocha": "~2.2.5"
   }
 }
