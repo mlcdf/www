@@ -1,24 +1,22 @@
 // bower:scss
 // endbower
-
 /* GLOBAL */
-$primary-color: #448AFF;
-$accent-color: #448AFF;
+$primary-color: #448aff;
+$accent-color: #448aff;
 $primary-text-color: rgba(0, 0, 0, .7);
 $secondary-text-color: rgba(0, 0, 0, .54);
-
 html,
 body {
-  background            : #fafafa;
-  font-family           : Roboto Mono, Helvetica, Arial, sans-serif;
-  color                 : $primary-text-color;
-  font-size             : 16px;
+  background: #fafafa;
+  font-family: Roboto Mono, Helvetica, Arial, sans-serif;
+  color: $primary-text-color;
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing   : antialiased;
-  font-smoothing        : antialiased;
-  text-rendering        : auto;
-  margin                : 0;
-  padding               : 0;
+  -moz-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: auto;
+  margin: 0;
+  padding: 0;
 }
 html {
   position: relative;
@@ -30,93 +28,94 @@ html {
   background-color: $accent-color;
 }
 .overline {
-  position          : relative;
-  z-index           : 200;
-  color             : $primary-text-color;
-  background-color  : $accent-color;
-
-  //padding           : 2px 0;
+  position: relative;
+  z-index: 200;
+  color: $primary-text-color;
+  background-color: $accent-color;
   -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition   : all 0.3s ease-in-out;
-  transition        : all 0.3s ease-in-out;
-  -webkit-box-shadow: -6px 0 0 0 $accent-color, 6px 0 0 0 $accent-color;
-  -moz-box-shadow   : -6px 0 0 0 $accent-color, 6px 0 0 0 $accent-color;
-  box-shadow        : -6px 0 0 0 $accent-color, 6px 0 0 0 $accent-color;
-  padding           : 2px 0;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-box-shadow: -.4rem 0 0 0 $accent-color,.4rem 0 0 0 $accent-color;
+  -moz-box-shadow: -.4rem 0 0 0 $accent-color, 0.4rem 0 0 0 $accent-color;
+  box-shadow: -.4rem 0 0 0 $accent-color, 0.4rem 0 0 0 $accent-color;
+  padding: 2px 0;
 }
 header {
   position: fixed;
-  height  : 80px;
-  width   : 100%;
-  margin  : 0;
+  height: 80px;
+  width: 100%;
+  margin: 0;
 }
 nav {
-  position      : fixed;
-  right         : 0;
-  top           : 0;
-  line-height   : 24px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  line-height: 24px;
   text-transform: uppercase;
-  padding       : 32px 50px;
-  margin        : 0;
-  font-size     : 0.875rem;
-  font-weight   : 500;
-  color         : $secondary-text-color;
+  padding: 32px 50px;
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $secondary-text-color;
+  span{
+    padding-left: 24px;
+  }
 }
 main {
-  width : 100%;
+  width: 100%;
   margin: 0;
   .page {
     max-width: 666px;
-    margin   : 0 0 auto;
-    padding  : 80px;
-    overflow : hidden;
-    z-index  : 2000;
+    margin: 0 0 auto;
+    padding: 80px;
+    overflow: hidden;
+    z-index: 2000;
   }
   .image {
     position: absolute;
-    top     : 0;
-    bottom  : 0;
-    left    : 50%;
-    right   : 0;
-    margin  : 0;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: 0;
+    margin: 0;
     background-color: $primary-color;
     &> svg {
       position: fixed;
-      top     : 35%;
-      right   : 20%;
-      height  : 30%;
-      width   : 30vw;
+      top: 35%;
+      right: 20%;
+      height: 30%;
+      width: 30vw;
     }
   }
 }
 h1 {
-  margin     : 0;
-  padding    : 168px 0;
+  margin: 0;
+  padding: 168px 0;
   font-family: Caveat;
   font-weight: 400;
-  font-size  : 4.5rem;
+  font-size: 4.5rem;
   line-height: 4rem;
-  color      : $primary-color;
-  text-align : center;
+  color: $primary-color;
+  text-align: center;
 }
 h2 {
   font-family: Roboto Mono;
-  font-size  : 1.5rem;
+  font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 400;
-  margin     : 40px 0 24px;
-  padding    : 0;
+  margin: 40px 0 24px;
+  padding: 0;
 }
 a {
   text-decoration: none;
-  font-weight    : 500;
-  color          : $accent-color;
+  font-weight: 500;
+  color: $accent-color;
 }
 p {
-  box-sizing    : border-box;
-  font-size     : 1.0625rem;
-  line-height   : 2rem;
-  margin        : 0;
+  box-sizing: border-box;
+  font-size: 1.0625rem;
+  line-height: 2rem;
+  margin: 0;
   padding-bottom: 24px;
 }
 .bold {
@@ -124,10 +123,10 @@ p {
 }
 ul {
   padding: 0 0 24px 48px;
-  margin        : 0;
+  margin: 0;
   li {
-    font-size      : 1.0675rem;
-    line-height    : 2rem;
+    font-size: 1.0675rem;
+    line-height: 2rem;
     list-style-type: decimal-leading-zero;
   }
 }
@@ -136,15 +135,15 @@ footer {
   ul {
     padding: 0;
     li {
-      height : 24px;
+      height: 24px;
       padding: 0 20px 0 0;
       display: inline-block;
     }
     li svg {
-      fill              : #757575;
+      fill: #757575;
       -webkit-transition: all 0.3s ease-in-out;
-      -moz-transition   : all 0.3s ease-in-out;
-      transition        : all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
       &:hover {
         fill: #212121;
       }
@@ -152,11 +151,11 @@ footer {
   }
 }
 .secondary_link {
-  font-size  : 0.75rem;
+  font-size: 0.75rem;
   font-weight: 500;
-  color      : $secondary-text-color;
-  transition : all 0.3s ease-in-out;
-  cursor     : pointer;
+  color: $secondary-text-color;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
   &:hover {
     color: $primary-text-color;
   }
@@ -168,21 +167,22 @@ footer {
   }
 }
 .blinking-cursor {
-  background-color                 : $primary-text-color;
-  -webkit-animation-name           : blink;
-  -webkit-animation-duration       : 1s;
+  background-color: $primary-text-color;
+  -webkit-animation-name: blink;
+  -webkit-animation-duration: 1s;
   -webkit-animation-timing-function: ease-in-out;
   -webkit-animation-iteration-count: infinite;
-  -moz-animation-name              : blink;
-  -moz-animation-duration          : 1s;
-  -moz-animation-timing-function   : ease-in-out;
-  -moz-animation-iteration-count   : infinite;
-  animation-name                   : blink;
-  animation-duration               : 1s;
-  animation-timing-function        : ease-in-out;
-  animation-iteration-count        : infinite;
+  -moz-animation-name: blink;
+  -moz-animation-duration: 1s;
+  -moz-animation-timing-function: ease-in-out;
+  -moz-animation-iteration-count: infinite;
+  animation-name: blink;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
-@keyframes "blink" {from,
+@keyframes "blink" {
+  from,
   to {
     background-color: transparent;
   }
@@ -190,7 +190,8 @@ footer {
     background-color: $primary-text-color;
   }
 }
-@-moz-keyframes blink {from,
+@-moz-keyframes blink {
+  from,
   to {
     background-color: transparent;
   }
@@ -198,7 +199,8 @@ footer {
     background-color: $primary-text-color;
   }
 }
-@-webkit-keyframes "blink" {from,
+@-webkit-keyframes "blink" {
+  from,
   to {
     background-color: transparent;
   }
@@ -206,7 +208,8 @@ footer {
     background-color: $primary-text-color;
   }
 }
-@-ms-keyframes "blink" {from,
+@-ms-keyframes "blink" {
+  from,
   to {
     color: transparent;
   }
@@ -218,24 +221,28 @@ footer {
   padding: 60px 0 240px;
 }
 .browserupgrade {
-  margin    : 0.2em 0;
+  margin: 0.2em 0;
   background: #ccc;
-  color     : #000;
-  padding   : 0.2em 0;
+  color: #000;
+  padding: 0.2em 0;
 }
-@media screen and (max-width: 1920px) {main {
+@media screen and (max-width: 1920px) {
+  main {
     max-width: 1440px;
   }
 }
-@media screen and (max-width: 1680px) {main {
+@media screen and (max-width: 1680px) {
+  main {
     max-width: 1280px;
   }
 }
-@media screen and (max-width: 1440px) {main {
+@media screen and (max-width: 1440px) {
+  main {
     max-width: 900px;
   }
 }
-@media screen and (max-width: 700px) {html,
+@media screen and (max-width: 700px) {
+  html,
   body {
     font-size: 0.875rem;
   }
