@@ -1,10 +1,12 @@
 // bower:scss
 // endbower
-//GLOBAL//
+
+/* GLOBAL */
 $primary-color: #448AFF;
 $accent-color: #448AFF;
 $primary-text-color: rgba(0, 0, 0, .7);
 $secondary-text-color: rgba(0, 0, 0, .54);
+
 html,
 body {
   background            : #fafafa;
@@ -17,7 +19,6 @@ body {
   text-rendering        : auto;
   margin                : 0;
   padding               : 0;
-
 }
 html {
   position: relative;
@@ -118,7 +119,7 @@ p {
   margin        : 0;
   padding-bottom: 24px;
 }
-strong {
+.bold {
   font-weight: 500;
 }
 ul {
