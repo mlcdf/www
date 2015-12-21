@@ -1,0 +1,19 @@
+# humanstxt.org/
+
+# TEAM
+
+    Maxime Le Conte des Floris -- Design & web development -- @mlcdf
+
+# TECHNOLOGY COLOPHON
+
+    HTML5 & SASS
+    Yeoman, Gulp & Browser-sync.
+    Atom
+
+# ICONS
+
+    https://materialdesignicons.com/
+
+# FONTS
+
+    Roboto Mono -- https://www.google.com/fonts/specimen/Roboto+Mono
