@@ -1,10 +1,6 @@
-$(document).ready(function() {
-  // window.onscroll=function(){
-  //     if (document.body.scrollTop > 0) {
-  //       document.getElementById('navbar').className = 'wrapper scroll';
-  //     }
-  //     else {
-  //         document.getElementById('navbar').className = "wrapper";
-  //     }
-  // };
-});
+window.onload = function(){
+    document.getElementById("one").setAttribute("class","row load-animation-1");
+    document.getElementById("two").setAttribute("class","row load-animation-2");
+    document.getElementById("three").setAttribute("class","row load-animation-3");
+    document.getElementById("four").setAttribute("class","row load-animation-4");
+};
