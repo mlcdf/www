@@ -6,13 +6,13 @@
 
 # TECHNOLOGY COLOPHON
 
-    HTML5 & SASS
+    HTML5, SASS & JS
     Yeoman, Gulp & Browser-sync.
     Atom
 
 # ICONS
 
-    https://materialdesignicons.com/
+    Material Design -- https://github.com/Templarian/MaterialDesign
 
 # FONTS
 
