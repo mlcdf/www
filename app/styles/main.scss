@@ -1,53 +1,40 @@
 // bower:scss
 // endbower
-@import 'material-paper';
-
-//GLOBAL//
-$accent-color: #FF0;
-$background-color: #1b1e26;
-$primary-color: $red-a200;
-$rgb: 256;
-$dark-text-color: rgba($rgb, $rgb, $rgb, .87);
-$primary-text-color: rgba($rgb, $rgb, $rgb, .7);
-$secondary-text-color: rgba($rgb, $rgb, $rgb, .30);
-$divider-color: rgba($rgb, $rgb, $rgb, .12);
+@import 'grid';
+$text-color-title: rgba(0, 0, 0, .87);
+$text-color: rgba(0, 0, 0, .7);
+$text-color-secondary: rgba(0, 0, 0, .54);
+$primary-color: #FF5252;
 
 html,
 body {
   margin: 0;
   padding: 0;
-  color: $primary-text-color;
-  background: $background-color;
+  color: $text-color;
+  background-color: #fafafa;
   font-family: Roboto Mono, Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
-  line-height: 1.8125rem;
+  line-height: 1.8rem;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   font-smoothing: antialiased;
   text-rendering: auto;
 }
 
-/*
-.wrapper {
-  max-width: 1440px;
-  margin   : 0 auto;
-  position : relative;
-}
-*/
 /* STYLES & EFFECTS */
  ::selection {
-  background-color: $accent-color;
+  background-color: $primary-color;
 }
 
  ::-moz-selection {
-  background-color: $accent-color;
+  background-color: $primary-color;
 }
 
 .strike {
   position: relative;
   padding: 2px 0;
-  color: $primary-text-color;
+  color: $text-color;
 
   &:after {
     position: absolute;
@@ -57,7 +44,6 @@ body {
     height: 6px;
     content: '';
     transition: all .2s ease-in-out;
-    background-color: $dark-text-color;
   }
 
   &:hover:after {
@@ -65,22 +51,16 @@ body {
   }
 }
 
-main > div,
-header,
-footer {
-  padding: 0 40px;
-}
-
 /*------------------------------------*\
     Layout
 \*------------------------------------*/
 .container {
-  max-width: 1440px;
+  max-width: 960px;
   width: 100%;
   position: relative;
   margin: 0 auto;
-  padding-top: 112px;
-  padding-bottom: 112px;
+  padding-top: 72px;
+  padding-bottom: 72px;
 }
 
 .row {
@@ -95,10 +75,9 @@ footer {
 footer {
   .container {
     height: 100%;
-    padding: 64px 0;
+    padding: 56px 0;
   }
 }
-
 
 /*------------------------------------*\
     Navabr
@@ -109,8 +88,6 @@ footer {
   z-index: -1;
   width: 100%;
   transition: all .2s ease-in-out;
-  color: $primary-text-color;
-  background-color: lighten($background-color, 5%);
   font-size: .875rem;
   font-weight: 400;
 
@@ -135,55 +112,40 @@ footer {
     Header
 \*------------------------------------*/
 header {
-    background-color: darken($background-color, 2%);
-    .container{
-        padding: 300px 0;
-    }
+  .container {
+    padding: 200px 0 0;
+  }
 }
 
 /*------------------------------------*\
-    Main
+    General style
 \*------------------------------------*/
-main {
-  background-color: $background-color;
-}
-
 h1 {
   font-family: Roboto Mono;
-  color: #fff;
-  font-size: 2rem;
-  line-height: 2rem;
+  font-size: 2.5rem;
+  line-height: 3.5rem;
   padding-bottom: 24px;
-  color: springgreen;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-weight: 500;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: -2px;
+  margin: auto;
+  width: 90%;
+  color: $text-color-title;
+
+  a {
+    color: $primary-color;
+  }
 }
 
-h3 {
+h2 {
   margin: 0 0 32px;
-  color: #fff;
   font-size: 1.5rem;
   font-weight: 400;
-  line-height: 3rem;
-  color: springgreen;
+  line-height: 1.5rem;
 }
 
 a {
   text-decoration: none;
-  color: $primary-text-color;
-}
-
-.avatar {
-  display: flex;
-  margin: 120px;
-}
-
-img {
-  width: 200px;
-  height: 200px;
-  margin: 0 150px;
-  border-radius: 50%;
 }
 
 p {
@@ -197,44 +159,40 @@ ul {
   list-style-type: none;
 }
 
-@mixin bezel($top, $bottom) {
-  position: absolute;
-  top: $top;
-  bottom: $bottom;
-  width: 100%;
-  height: 6vw;
-  fill: $background-color;
-}
-
-.bezel-top {
-  @include bezel(calc(-6vw + 1px), inherit);
-}
-
-.bezel-bottom {
-  @include bezel(inherit, calc(-6vw + 1px));
-  transform: scale(-1);
-}
-
-/* WORK */
+/*------------------------------------*\
+    Work
+\*------------------------------------*/
 .work {
+
+
   .row:first-child {
     margin: 0 -2px;
   }
 }
 
+/*------------------------------------*\
+    Tile
+\*------------------------------------*/
 .tile {
   position: relative;
-  height: calc(1440px/3 - 64px);
+  min-height: calc(960px/3 - 64px);
   margin: 4px;
   padding: 32px;
   transition: all .28s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 2px;
-  background-color: lighten($background-color, 2%);
+  background-color: $primary-color;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 
   &:hover {
     z-index: 100;
-    background-color: #2f343f;
-    box-shadow: 0 10px 25px 0 rgba(0,0,0,0.2);
+    background-color: lighten($primary-color, 5);
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
+  }
+
+  h2,
+  p,
+  .tag {
+    color: #fff;
   }
 
   .tag {
@@ -260,28 +218,46 @@ ul {
   }
 }
 
-.work {
-  .container {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
+/*------------------------------------*\
+    Animation
+\*------------------------------------*/
+.load {
+  transform: translateY(70px);
+  opacity: 0;
 }
 
-/* Profile */
-.profile,
-.contact {
-  .container {
-    padding-bottom: 0;
-  }
+@mixin load-animation($delay) {
+  opacity: 1;
+  transition: opacity .25s ease-in-out;
+  transition: transform .85s cubic-bezier(0.07,0.8,0.16,1),opacity .85s cubic-bezier(0.2,0.6,0.35,1);
+  transform: translateY(00px) scale(1);
+  transition-delay: ($delay+ms);
+}
 
+@for $i from 1 through 4 {
+    .load-animation-#{$i} {
+      @include load-animation(#{($i*100)+250});
+    }
+}
+
+/*------------------------------------*\
+    Profile
+\*------------------------------------*/
+.profile {
   p {
     font-size: 1.25rem;
     line-height: 2rem;
-    color: #fff;
-    max-width: 860px;
+    text-align: center;
+    margin: auto;
+    width: 90%;
+    color: $text-color;
+    font-weight: 500;
   }
 }
 
+/*------------------------------------*\
+    Status
+\*------------------------------------*/
 .status {
   padding-top: 40px;
   padding-left: 12px;
@@ -294,16 +270,7 @@ ul {
     margin: 2px 4px 1px 0;
     border-radius: 5px;
     line-height: 25px !important;
-    background-color: $red-500;
-  }
-}
-
-/* CONTACT */
-.contact {
-  padding-bottom: 224px;
-
-  a {
-    color: springgreen;
+    background-color: $primary-color;
   }
 }
 
@@ -311,13 +278,18 @@ ul {
     Footer
 \*------------------------------------*/
 footer {
-  color: #757575;
-  background-color: darken($background-color, 2%);
+  background-color: #fff;
   font-size: .875rem;
+  margin-top: 112px;
+  font-weight: 500;
 
   a {
-    color: $secondary-text-color;
+    color: $text-color-secondary;
   }
+}
+
+.col-xs-6 {
+  height: 32px;
 }
 
 .social {
@@ -331,11 +303,11 @@ footer {
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
-    fill: $secondary-text-color;
+    fill: $text-color-secondary;
     padding-left: 16px;
 
     &:hover {
-      fill: #fff;
+      fill: #212121;
     }
   }
 }
@@ -344,7 +316,6 @@ footer {
     Media queries
 \*------------------------------------*/
 @media (max-width: 600px) {
-
   .logo {
     color: #fff;
   }
