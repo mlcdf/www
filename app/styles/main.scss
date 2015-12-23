@@ -1,6 +1,6 @@
 // bower:scss
 // endbower
-@import 'grid';
+
 $text-color-title: rgba(0, 0, 0, .87);
 $text-color: rgba(0, 0, 0, .7);
 $text-color-secondary: rgba(0, 0, 0, .54);
@@ -31,26 +31,6 @@ body {
   background-color: $primary-color;
 }
 
-.strike {
-  position: relative;
-  padding: 2px 0;
-  color: $text-color;
-
-  &:after {
-    position: absolute;
-    top: 10px;
-    left: -2%;
-    width: 104%;
-    height: 6px;
-    content: '';
-    transition: all .2s ease-in-out;
-  }
-
-  &:hover:after {
-    width: 0;
-  }
-}
-
 /*------------------------------------*\
     Layout
 \*------------------------------------*/
@@ -59,28 +39,19 @@ body {
   width: 100%;
   position: relative;
   margin: 0 auto;
-  padding-top: 72px;
-  padding-bottom: 72px;
 }
 
-.row {
-  margin: 0;
+header {
+  padding: 200px 0 0;
 }
 
-[class^=col] {
-  padding: 0;
+section {
+  padding: 72px 0;
 }
 
-.navbar,
-footer {
-  .container {
-    height: 100%;
-    padding: 56px 0;
-  }
-}
 
 /*------------------------------------*\
-    Navabr
+    Navbar
 \*------------------------------------*/
 .navbar {
   position: fixed;
@@ -105,15 +76,6 @@ footer {
     &:first-letter {
       font-size: 1.4rem;
     }
-  }
-}
-
-/*------------------------------------*\
-    Header
-\*------------------------------------*/
-header {
-  .container {
-    padding: 200px 0 0;
   }
 }
 
@@ -160,16 +122,23 @@ ul {
 }
 
 /*------------------------------------*\
-    Work
+    Grid
 \*------------------------------------*/
-.work {
-
-
-  .row:first-child {
-    margin: 0 -2px;
-  }
+.row {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0 4px;
 }
 
+.column-half {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  flex-basis: 100%;
+  max-width: 100%;
+}
 /*------------------------------------*\
     Tile
 \*------------------------------------*/
@@ -180,14 +149,8 @@ ul {
   padding: 32px;
   transition: all .28s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 2px;
-  background-color: $primary-color;
+  background-color: #333;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-
-  &:hover {
-    z-index: 100;
-    background-color: lighten($primary-color, 5);
-    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
-  }
 
   h2,
   p,
@@ -218,10 +181,23 @@ ul {
   }
 }
 
+a{
+    .tile{
+        background-color: $primary-color;
+
+        &:hover {
+          z-index: 100;
+          background-color: lighten($primary-color, 5);
+          box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
+        }
+    }
+}
+
+
 /*------------------------------------*\
     Animation
 \*------------------------------------*/
-.load {
+.animation {
   transform: translateY(70px);
   opacity: 0;
 }
@@ -235,9 +211,9 @@ ul {
 }
 
 @for $i from 1 through 4 {
-    .load-animation-#{$i} {
-      @include load-animation(#{($i*100)+250});
-    }
+  .load-animation-#{$i} {
+    @include load-animation(#{($i*100)+250});
+  }
 }
 
 /*------------------------------------*\
@@ -282,17 +258,15 @@ footer {
   font-size: .875rem;
   margin-top: 112px;
   font-weight: 500;
+  padding: 56px 0;
 
   a {
     color: $text-color-secondary;
   }
 }
 
-.col-xs-6 {
-  height: 32px;
-}
-
 .social {
+  height: 32px;
   text-align: right;
 
   svg {
@@ -315,17 +289,13 @@ footer {
 /*------------------------------------*\
     Media queries
 \*------------------------------------*/
-@media (max-width: 600px) {
-  .logo {
-    color: #fff;
-  }
-
-  .social {
-    svg {
-      fill: #fff;
-    }
+@media only screen and (min-width: 760px) {
+  .column-half {
+    flex-basis: 50%;
+    max-width: 50%;
   }
 }
+
 
 .browserupgrade {
   margin: .2em 0;
