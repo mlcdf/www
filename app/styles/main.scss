@@ -1,10 +1,10 @@
 // bower:scss
 // endbower
-
 $text-color-title: rgba(0, 0, 0, .87);
 $text-color: rgba(0, 0, 0, .7);
 $text-color-secondary: rgba(0, 0, 0, .54);
-$primary-color: #FF5252;
+$primary-color: #FFF9C4;
+$accent-color: #64FFDA;
 
 html,
 body {
@@ -24,13 +24,15 @@ body {
 
 /* STYLES & EFFECTS */
  ::selection {
-  background-color: $primary-color;
+  background-color: $accent-color;
 }
 
  ::-moz-selection {
-  background-color: $primary-color;
+  background-color: $accent-color;
 }
-
+a{
+    color: #00BFA5;
+}
 /*------------------------------------*\
     Layout
 \*------------------------------------*/
@@ -42,13 +44,19 @@ body {
 }
 
 header {
-  padding: 200px 0 0;
+  padding: 150px 0 0;
+  p{
+      font-size: .875rem;
+      font-weight: 500;
+      max-width: 600px;
+      text-align: center;
+      margin: auto;
+  }
 }
 
 section {
   padding: 72px 0;
 }
-
 
 /*------------------------------------*\
     Navbar
@@ -84,14 +92,14 @@ section {
 \*------------------------------------*/
 h1 {
   font-family: Roboto Mono;
-  font-size: 2.5rem;
-  line-height: 3.5rem;
-  padding-bottom: 24px;
-  font-weight: 400;
+  font-size: 2rem;
+  line-height: 3.2rem;
+  padding-bottom: 32px;
+  font-weight: 500;
   text-align: center;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   margin: auto;
-  width: 90%;
+  width: 80%;
   color: $text-color-title;
 
   a {
@@ -100,10 +108,11 @@ h1 {
 }
 
 h2 {
-  margin: 0 0 32px;
+  margin: 0;
   font-size: 1.5rem;
   font-weight: 400;
   line-height: 1.5rem;
+  color: $text-color;
 }
 
 a {
@@ -113,7 +122,6 @@ a {
 p {
   margin: 0;
   padding-bottom: 24px;
-  font-size: 1rem;
 }
 
 ul {
@@ -121,6 +129,12 @@ ul {
   list-style-type: none;
 }
 
+#name {
+  background-color: $accent-color;
+  padding: 3px 0;
+  box-shadow: 8px 0 0 $accent-color,
+                -8px 0 0 $accent-color;
+}
 /*------------------------------------*\
     Grid
 \*------------------------------------*/
@@ -144,55 +158,75 @@ ul {
 \*------------------------------------*/
 .tile {
   position: relative;
-  min-height: calc(960px/3 - 64px);
   margin: 4px;
-  padding: 32px;
-  transition: all .28s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 2px;
-  background-color: #333;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  padding-bottom: 32px;
 
-  h2,
-  p,
-  .tag {
-    color: #fff;
+  .img {
+    margin-bottom: 24px;
+    position: relative;
+    min-height: calc(540px/2);
+    border-radius: 3px;
+    background-color: $primary-color;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    transition: all .28s cubic-bezier(0.4, 0, 0.2, 1);
+
+    img {
+      padding: 60px;
+    }
   }
 
-  .tag {
-    position: absolute;
-    bottom: 32px;
-    left: 32px;
-    height: 24px;
-    font-weight: 400;
-    font-size: .875rem;
+  &:hover {
+    z-index: 1000;
   }
 
-  .icon {
-    position: absolute;
-    right: 32px;
-    bottom: 32px;
-    height: 24px;
-  }
-
-  svg {
-    width: 24px;
-    height: 24px;
-    fill: #fff;
+  p {
+    font-family: Roboto;
+    font-weight: 300 !important;
+    font-size: 1.0625rem;
+    padding: 16px 0;
+    color: $text-color-secondary;
   }
 }
 
 a{
-    .tile{
-        background-color: $primary-color;
-
-        &:hover {
-          z-index: 100;
-          background-color: lighten($primary-color, 5);
-          box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
-        }
+  .img {
+    &:hover {
+      box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
     }
+  }
 }
 
+#one .img {
+  background-color: #3F51B5;
+  background-image: url('../images/rocket.svg');
+}
+
+#two .img {
+  background-color: #fff;
+  background-image: url('../images/layers.svg');
+}
+
+#three .img {
+  background-color: #333;
+  background-image: url('../images/videogame_asset.svg');
+}
+
+#four .img {
+  background-color: #607D8B;
+  background-image: url('../images/code.svg');
+}
+
+#five .img {
+  background-color: #673AB7;
+  background-image: url('../images/chat.svg');
+}
+
+#six .img {
+  background-color: #212121;
+  background-image: url('../images/gamepad.svg');
+}
 
 /*------------------------------------*\
     Animation
@@ -210,43 +244,9 @@ a{
   transition-delay: ($delay+ms);
 }
 
-@for $i from 1 through 4 {
+@for $i from 1 through 6 {
   .load-animation-#{$i} {
-    @include load-animation(#{($i*100)+250});
-  }
-}
-
-/*------------------------------------*\
-    Profile
-\*------------------------------------*/
-.profile {
-  p {
-    font-size: 1.25rem;
-    line-height: 2rem;
-    text-align: center;
-    margin: auto;
-    width: 90%;
-    color: $text-color;
-    font-weight: 500;
-  }
-}
-
-/*------------------------------------*\
-    Status
-\*------------------------------------*/
-.status {
-  padding-top: 40px;
-  padding-left: 12px;
-
-  .status-dot {
-    display: inline-block;
-    content: "";
-    height: 10px;
-    width: 10px;
-    margin: 2px 4px 1px 0;
-    border-radius: 5px;
-    line-height: 25px !important;
-    background-color: $primary-color;
+    @include load-animation(#{($i*50)+250});
   }
 }
 
@@ -286,6 +286,14 @@ footer {
   }
 }
 
+.heart {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  padding-bottom: 4px;
+  fill: $accent-color;
+}
+
 /*------------------------------------*\
     Media queries
 \*------------------------------------*/
@@ -294,8 +302,11 @@ footer {
     flex-basis: 50%;
     max-width: 50%;
   }
-}
 
+  .tile {
+    margin: 16px;
+  }
+}
 
 .browserupgrade {
   margin: .2em 0;
