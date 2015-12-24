@@ -13,7 +13,7 @@ body {
   color: $text-color;
   background-color: #fafafa;
   font-family: Roboto Mono, Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 1.8rem;
   -webkit-font-smoothing: antialiased;
@@ -30,8 +30,9 @@ body {
  ::-moz-selection {
   background-color: $accent-color;
 }
-a{
-    color: #00BFA5;
+
+a {
+  color: darken($accent-color, 30%);
 }
 /*------------------------------------*\
     Layout
@@ -44,13 +45,14 @@ a{
 }
 
 header {
-  padding: 150px 0 0;
-  p{
-      font-size: .875rem;
-      font-weight: 500;
-      max-width: 600px;
-      text-align: center;
-      margin: auto;
+  padding: 56px 0 0;
+
+  p {
+    font-size: .875rem;
+    font-weight: 500;
+    max-width: 600px;
+    text-align: center;
+    margin: auto;
   }
 }
 
@@ -132,8 +134,7 @@ ul {
 #name {
   background-color: $accent-color;
   padding: 3px 0;
-  box-shadow: 8px 0 0 $accent-color,
-                -8px 0 0 $accent-color;
+  box-shadow: 8px 0 0 $accent-color, -8px 0 0 $accent-color;
 }
 /*------------------------------------*\
     Grid
@@ -145,6 +146,7 @@ ul {
   flex-direction: row;
   flex-wrap: wrap;
   padding: 0 4px;
+
 }
 
 .column-half {
@@ -190,7 +192,7 @@ ul {
   }
 }
 
-a{
+a {
   .img {
     &:hover {
       box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
@@ -200,32 +202,32 @@ a{
 
 #one .img {
   background-color: #3F51B5;
-  background-image: url('../images/rocket.svg');
+  background-image: url(../images/rocket.svg);
 }
 
 #two .img {
   background-color: #fff;
-  background-image: url('../images/layers.svg');
+  background-image: url(../images/layers.svg);
 }
 
 #three .img {
   background-color: #333;
-  background-image: url('../images/videogame_asset.svg');
+  background-image: url(../images/videogame_asset.svg);
 }
 
 #four .img {
   background-color: #607D8B;
-  background-image: url('../images/code.svg');
+  background-image: url(../images/code.svg);
 }
 
 #five .img {
   background-color: #673AB7;
-  background-image: url('../images/chat.svg');
+  background-image: url(../images/chat.svg);
 }
 
 #six .img {
   background-color: #212121;
-  background-image: url('../images/gamepad.svg');
+  background-image: url(../images/gamepad.svg);
 }
 
 /*------------------------------------*\
@@ -256,18 +258,22 @@ a{
 footer {
   background-color: #fff;
   font-size: .875rem;
-  margin-top: 112px;
+  margin-top: 0;
   font-weight: 500;
-  padding: 56px 0;
-
+  text-align: center;
+  padding: 40px 0;
   a {
     color: $text-color-secondary;
+  }
+
+  .column-half{
+      padding: 16px 0;
   }
 }
 
 .social {
   height: 32px;
-  text-align: right;
+  text-align: center;
 
   svg {
     position: relative;
@@ -278,8 +284,7 @@ footer {
     -moz-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
     fill: $text-color-secondary;
-    padding-left: 16px;
-
+    padding: 0 8px 0;
     &:hover {
       fill: #212121;
     }
@@ -298,6 +303,18 @@ footer {
     Media queries
 \*------------------------------------*/
 @media only screen and (min-width: 760px) {
+  html,
+  body {
+    font-size: 16px;
+  }
+
+  header {
+    padding: 150px 0 0;
+  }
+  .work .container{
+      max-width: 960+32px;
+  }
+
   .column-half {
     flex-basis: 50%;
     max-width: 50%;
@@ -305,6 +322,18 @@ footer {
 
   .tile {
     margin: 16px;
+  }
+
+  footer {
+    margin-top: 112px;
+    text-align: left;
+    .social{
+        text-align: right;
+
+        svg{
+            padding: 0 0 0 16px;
+        }
+    }
   }
 }
 
