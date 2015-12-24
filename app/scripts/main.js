@@ -7,5 +7,4 @@ window.onload = function(){
     document.getElementById('four').setAttribute('class', 'column-half  load-animation-4');
     document.getElementById('five').setAttribute('class', 'column-half  load-animation-5');
     document.getElementById('six').setAttribute('class', 'column-half  load-animation-6');
-    document.getElementById('seven').setAttribute('class', 'row  load-animation-7');
 };
