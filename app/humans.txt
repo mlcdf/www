@@ -12,7 +12,7 @@
 
 # ICONS
 
-    Material Design -- https://github.com/Templarian/MaterialDesign
+    Material Design -- https://design.google.com/icons/
 
 # FONTS
 
