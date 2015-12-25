@@ -38,22 +38,10 @@ a {
     Layout
 \*------------------------------------*/
 .container {
-  max-width: 960px;
+  max-width: 500px;
   width: 100%;
   position: relative;
   margin: 0 auto;
-}
-
-header {
-  padding: 56px 0 0;
-
-  p {
-    font-size: .875rem;
-    font-weight: 500;
-    max-width: 600px;
-    text-align: center;
-    margin: auto;
-  }
 }
 
 section {
@@ -136,6 +124,21 @@ ul {
   padding: 3px 0;
   box-shadow: 8px 0 0 $accent-color, -8px 0 0 $accent-color;
 }
+
+/*------------------------------------*\
+    Header
+\*------------------------------------*/
+header {
+  padding: 56px 0 0;
+
+  p {
+    font-size: .875rem;
+    font-weight: 500;
+    max-width: 660px;
+    text-align: center;
+    margin: auto;
+  }
+}
 /*------------------------------------*\
     Grid
 \*------------------------------------*/
@@ -166,7 +169,7 @@ ul {
   .img {
     margin-bottom: 24px;
     position: relative;
-    min-height: calc(540px/2);
+    min-height: calc(960px/3 - 64px);
     border-radius: 3px;
     background-color: $primary-color;
     background-repeat: no-repeat;
@@ -303,11 +306,14 @@ footer {
     Media queries
 \*------------------------------------*/
 @media only screen and (min-width: 760px) {
+
   html,
   body {
     font-size: 16px;
   }
-
+  .container{
+      max-width: 960px;
+  }
   header {
     padding: 150px 0 0;
   }
