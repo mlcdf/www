@@ -22,7 +22,6 @@ body {
   text-rendering: auto;
 }
 
-/* STYLES & EFFECTS */
  ::selection {
   background-color: $accent-color;
 }
@@ -34,6 +33,7 @@ body {
 a {
   color: darken($accent-color, 30%);
 }
+
 /*------------------------------------*\
     Layout
 \*------------------------------------*/
@@ -46,35 +46,6 @@ a {
 
 section {
   padding: 72px 0;
-}
-
-/*------------------------------------*\
-    Navbar
-\*------------------------------------*/
-.navbar {
-  position: fixed;
-  top: 0;
-  z-index: -1;
-  width: 100%;
-  transition: all .2s ease-in-out;
-  font-size: .875rem;
-  font-weight: 400;
-
-  .container {
-    padding: 16px;
-  }
-
-  .logo {
-    font-size: 1.1rem;
-    line-height: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 500;
-
-    &:first-letter {
-      font-size: 1.4rem;
-    }
-  }
 }
 
 /*------------------------------------*\
@@ -119,12 +90,6 @@ ul {
   list-style-type: none;
 }
 
-#name {
-  background-color: $accent-color;
-  padding: 3px 0;
-  box-shadow: 8px 0 0 $accent-color, -8px 0 0 $accent-color;
-}
-
 /*------------------------------------*\
     Header
 \*------------------------------------*/
@@ -138,6 +103,12 @@ header {
     text-align: center;
     margin: auto;
   }
+
+  #name {
+    background-color: $accent-color;
+    padding: 3px 0;
+    box-shadow: 8px 0 0 $accent-color, -8px 0 0 $accent-color;
+  }
 }
 /*------------------------------------*\
     Grid
@@ -149,7 +120,6 @@ header {
   flex-direction: row;
   flex-wrap: wrap;
   padding: 0 4px;
-
 }
 
 .column-half {
@@ -164,7 +134,7 @@ header {
 .tile {
   position: relative;
   margin: 4px;
-  padding-bottom: 8px;
+  padding-bottom: 16px;
 
   .img {
     margin-bottom: 24px;
@@ -265,12 +235,13 @@ footer {
   font-weight: 500;
   text-align: center;
   padding: 40px 0;
+
   a {
     color: $text-color-secondary;
   }
 
-  .column-half{
-      padding: 16px 0;
+  .column-half {
+    padding: 16px 0;
   }
 }
 
@@ -287,7 +258,8 @@ footer {
     -moz-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
     fill: $text-color-secondary;
-    padding: 0 8px 0;
+    padding: 0 8px;
+
     &:hover {
       fill: #212121;
     }
@@ -306,19 +278,21 @@ footer {
     Media queries
 \*------------------------------------*/
 @media only screen and (min-width: 760px) {
-
   html,
   body {
     font-size: 16px;
   }
-  .container{
-      max-width: 960px;
+
+  .container {
+    max-width: 960px;
   }
+
   header {
     padding: 150px 0 0;
   }
-  .work .container{
-      max-width: 960+32px;
+
+  .work .container {
+    max-width: 960+32px;
   }
 
   .column-half {
@@ -333,12 +307,13 @@ footer {
   footer {
     margin-top: 112px;
     text-align: left;
-    .social{
-        text-align: right;
 
-        svg{
-            padding: 0 0 0 16px;
-        }
+    .social {
+      text-align: right;
+
+      svg {
+        padding: 0 0 0 16px;
+      }
     }
   }
 }
