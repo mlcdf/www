@@ -145,6 +145,12 @@ gulp.task('deploy', () => {
     .pipe($.ghPages());
 });
 
+gulp.task('CNAME', function () {
+  return gulp
+    .src('app/CNAME')
+    .pipe(gulp.dest('dist'))
+});
+
 // inject bower components
 gulp.task('wiredep', () => {
   gulp.src('app/styles/*.scss')
@@ -160,7 +166,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras', 'CNAME'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
