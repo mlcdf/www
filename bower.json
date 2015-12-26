@@ -2,7 +2,7 @@
   "name": "Maxime Le Conte des Floris' portfolio",
   "private": true,
   "dependencies": {
-    "modernizr": "~2.8.1"
+    "material-paper": "~0.7.0"
   },
   "devDependencies": {
     "chai": "~3.2.0",
