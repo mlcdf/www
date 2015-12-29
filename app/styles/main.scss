@@ -1,7 +1,6 @@
 // bower:scss
 @import "bower_components/material-paper/sass/material-paper.scss";
 // endbower
-
 $text-color-title: rgba(0, 0, 0, .87);
 $text-color: rgba(0, 0, 0, .7);
 $text-color-secondary: rgba(0, 0, 0, .54);
@@ -14,7 +13,7 @@ body {
   color: $text-color;
   background-color: $grey-50;
   font-family: Roboto Mono, Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 1.8rem;
   font-smoothing: antialiased;
@@ -32,7 +31,6 @@ body {
 a {
   color: darken($accent-color, 30%);
 }
-
 /*------------------------------------*\
     Layout
 \*------------------------------------*/
@@ -46,12 +44,10 @@ a {
 section {
   padding: 36px 0;
 }
-
 /*------------------------------------*\
     General style
 \*------------------------------------*/
 h1 {
-  font-family: Roboto Mono;
   font-size: 2rem;
   line-height: 3.2rem;
   padding-bottom: 32px;
@@ -64,27 +60,25 @@ h1 {
 }
 
 h2 {
-  margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.5rem;
   color: $text-color;
+}
+
+h2,
+p {
+  margin: 0 0 12px;
 }
 
 a {
   text-decoration: none;
 }
 
-p {
-  margin: 0;
-  padding-bottom: 24px;
-}
-
 ul {
   margin: 0;
   list-style-type: none;
 }
-
 /*------------------------------------*\
     Header
 \*------------------------------------*/
@@ -152,8 +146,7 @@ header {
 
   p {
     font-family: Roboto;
-    font-size: 1.0625rem;
-    padding: 16px 0;
+    font-size: .9375rem;
     color: $text-color-secondary;
   }
 }
@@ -195,7 +188,6 @@ a {
   background-color: $grey-900;
   background-image: url(../images/gamepad.svg);
 }
-
 /*------------------------------------*\
     Animation
 \*------------------------------------*/
@@ -266,7 +258,6 @@ footer {
   padding-bottom: 4px;
   fill: $accent-color;
 }
-
 /*------------------------------------*\
     Media queries
 \*------------------------------------*/
@@ -283,9 +274,11 @@ footer {
   header {
     padding: 150px 0 0;
   }
-  section{
+
+  section {
     padding: 72px 0;
   }
+
   .work .container {
     max-width: 960+32px;
   }
@@ -298,8 +291,8 @@ footer {
   .tile {
     margin: 16px;
 
-    .img{
-        min-height: calc(960px/3 - 64px);
+    .img {
+      min-height: calc(960px/3 - 64px);
     }
   }
 
