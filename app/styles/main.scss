@@ -4,7 +4,7 @@
 $text-color-title: rgba(0, 0, 0, .87);
 $text-color: $grey-800;
 $text-color-secondary: $grey-500;
-$accent-color: $teal-a200;
+$accent-color: $pink-a200;
 
 html,
 body {
@@ -31,7 +31,6 @@ body {
 a {
   color: inherit;
 }
-
 /*------------------------------------*\
     Layout
 \*------------------------------------*/
@@ -56,7 +55,6 @@ a {
   flex-basis: 100%;
   max-width: 100%;
 }
-
 /*------------------------------------*\
     General style
 \*------------------------------------*/
@@ -67,19 +65,51 @@ p {
 
 a {
   text-decoration: none;
+  color: $accent-color;
 }
+/*------------------------------------*\
+    Nav
+\*------------------------------------*/
+nav {
+  justify-content: space-between;
+  padding: 20px;
+  line-height: 36px;
 
+  .avatar {
+    background: url(../images/max.jpg);
+    background-size: cover;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+  }
+
+  & > * + * {
+    background-color: $grey-200;
+    color: $accent-color;
+    padding: 0 16px;
+    margin: 2px 0;
+    border-radius: 2px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all .28s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      box-shadow: $shadow-elevation-2dp;
+    }
+  }
+}
 /*------------------------------------*\
     Header
 \*------------------------------------*/
 header {
-  padding: 96px 20px 0;
+  padding: 48px 20px;
 
   h1 {
     font-size: 2rem;
     line-height: 2rem;
     font-weight: 500;
-    margin: 20px 0;
+    margin: 0 0 20px;
     color: #212121;
     text-align: center;
   }
@@ -87,35 +117,33 @@ header {
   p {
     text-align: center;
     color: $grey-500;
-    width: 90%;
+    width: 95%;
     margin: auto;
     max-width: 500px;
   }
 
   .social.row {
-      padding: 40px;
-      justify-content: center;
-    }
+    padding: 24px 0;
+    justify-content: center;
+  }
 
-    svg {
-      position: relative;
-      height: 24px;
-      width: 24px;
-      top: 5px;
-      -webkit-transition: all .3s ease-in-out;
-      -moz-transition: all .3s ease-in-out;
-      transition: all .3s ease-in-out;
-      fill: $grey-500;
-      margin: 0 12px;
+  svg {
+    position: relative;
+    height: 24px;
+    width: 24px;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    fill: $grey-500;
+    margin: 0 12px;
 
-      &:hover {
-        fill: $grey-700;
-      }
+    &:hover {
+      fill: $grey-700;
     }
+  }
 }
-
 /*------------------------------------*\
-    Tile
+    Work
 \*------------------------------------*/
 .tile {
   margin: 20px;
@@ -136,7 +164,7 @@ header {
     border-radius: 3px;
     background-repeat: no-repeat;
     background-position: center;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: $shadow-elevation-3dp;
     transition: all .28s cubic-bezier(0.4, 0, 0.2, 1);
 
     img {
@@ -166,7 +194,7 @@ header {
 a {
   .img {
     &:hover {
-      box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
+      box-shadow: $shadow-elevation-8dp;
     }
   }
 }
@@ -190,7 +218,6 @@ a {
   background-color: $blue-grey-500;
   background-image: url(../images/code.svg);
 }
-
 /*------------------------------------*\
     Animation
 \*------------------------------------*/
@@ -212,7 +239,6 @@ a {
     @include load-animation(#{($i*50)+250});
   }
 }
-
 /*------------------------------------*\
     Footer
 \*------------------------------------*/
@@ -221,19 +247,10 @@ footer {
   margin-top: 0;
   color: $text-color-secondary;
 
-  a {
-    color: $text-color-secondary;
-  }
-
   .row {
     border-top: solid 1px $grey-200;
-    padding: 16px 0;
+    padding: 24px 0;
     margin: 0 20px;
-
-    span {
-      display: inline-block;
-      margin: 12px 0;
-    }
   }
 }
 /*------------------------------------*\
@@ -277,14 +294,6 @@ footer {
   footer {
     margin-top: 112px;
     text-align: left;
-
-    .social {
-      text-align: right;
-
-      svg {
-        padding: 0 0 0 16px;
-      }
-    }
   }
 }
 
