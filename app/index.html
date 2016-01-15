@@ -18,6 +18,7 @@
   <!-- endbuild -->
 
   <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
 
@@ -31,116 +32,13 @@
 
   <header>
     <div class="container">
-      <h1>A set of projects made by
-        <br>
-        <span id="name">Maxime Le Conte des Floris.</span>
+      <h1>Hi, I'm Max.
       </h1>
       <p>
-        A 22-year-old web developer and open source enthusiast currently studying Computer Science at Bordeaux University Institute of Technology.
+        My name is Maxime Le Conte des Floris and I'm a 22-year-old web developer currently studying Computer Science in Bordeaux.
       </p>
     </div>
-  </header>
-
-  <main>
-    <section class="work">
-      <div class="container">
-        <div class="row">
-
-          <div class="column-half animation" id="one">
-            <div class="tile">
-              <a href="https://github.com/Hikingyo/generator-ariane" target="_blank">
-                <div class="img">
-                </div>
-              </a>
-              <h2>Ariane</h2>
-              <p>
-                A highly customisable Yeoman generator to scaffold out front-end projects. Working on it with my friend <a href="https://twitter.com/Hikingyo" target="_blank">@Hikingyo</a>.
-              </p>
-            </div>
-          </div>
-
-          <div class="column-half animation" id="two">
-            <div class="tile">
-              <a href="https://github.com/mlcdf/material-paper" target="_blank">
-                <div class="img">
-                </div>
-              </a>
-              <h2>Material Paper</h2>
-              <p>
-                A SCSS/PostCSS stylesheet to bring Material Design colors and shadows to your project.
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="row">
-
-          <div class="column-half animation" id="three">
-            <div class="tile">
-              <a href="https://bitbucket.org/Hikingyo/gameoftron/" target="_blank">
-                <div class="img">
-                </div>
-              </a>
-              <h2>Game of Tron</h2>
-              <p>
-                A Tron video game develop using Processing as part of a school project.
-              </p>
-            </div>
-          </div>
-
-          <div class="column-half animation" id="four">
-            <div class="tile">
-              <a href="https://github.com/mlcdf/website" target="_blank">
-                <div class="img">
-                </div>
-              </a>
-              <h2>Portfolios</h2>
-              <p>
-                I've worked on many versions of this portfolio, playing with a lot of technologies but most of them never saw the light of day.
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="row">
-
-          <div class="column-half animation" id="five">
-            <div class="tile">
-              <div class="img">
-              </div>
-              <h2>ASilum &ndash; coming soon</h2>
-              <p>
-                A web chat built with Express.js &ndash; another collaboration with <a href="https://twitter.com/Hikingyo" target="_blank">@Hikingyo</a>.
-              </p>
-            </div>
-          </div>
-
-          <div class="column-half animation" id="six">
-            <div class="tile">
-              <div class="img">
-              </div>
-              <h2>Space Invaders &ndash; coming soon</h2>
-              <p>
-                Another school project with the Processing library. This time, it's a rather kitsch Space Invaders.
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-    
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="column-half">
-          <a href="humans.txt" target="_blank">Made with <svg class="heart" viewBox="0 0 24 24">
-              <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
-          </svg> by @mlcdf</a>
-        </div>
-        <div class="social column-half">
+        <div class="social row">
           <a href="mailto:contact@mlcdf.com">
             <svg viewBox="0 0 24 24">
               <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" />
@@ -158,11 +56,89 @@
               />
             </svg>
           </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="work">
+      <div class="container">
+        <div class="row">
+
+          <div class="column-half animation" id="one">
+            <div class="tile">
+              <a href="https://github.com/Hikingyo/generator-ariane" target="_blank">
+                <div class="img-container">
+                  <div class="img">
+                  </div>
+                </div>
+              </a>
+              <h2>Ariane &mdash; Scaffolding tool</h2>
+              <p>
+                A highly customisable Yeoman generator to kick-start a front-end project &mdash; a collaboration w/ my buddy <a href="https://twitter.com/Hikingyo" target="_blank">@Hikingyo</a>.
+              </p>
+            </div>
+          </div>
+
+          <div class="column-half animation" id="two">
+            <div class="tile">
+              <a href="https://github.com/mlcdf/material-paper" target="_blank">
+                <div class="img-container">
+                  <div class="img">
+                  </div>
+                </div>
+              </a>
+              <h2>Material Paper</h2>
+              <p>
+                A SCSS/PostCSS stylesheet to bring Material Design colors and shadows to your project.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="column-half animation" id="three">
+            <div class="tile">
+                <div class="img-container">
+                  <div class="img">
+                  </div>
+                </div>
+              <h2>Dev-icons &ndash; coming soon</h2>
+              <p>
+                A Polymer icon set for SVG icons of programming languages and development tools.
+              </p>
+            </div>
+          </div>
+
+          <div class="column-half animation" id="four">
+            <div class="tile">
+              <a href="https://github.com/mlcdf/website" target="_blank">
+                <div class="img-container">
+                  <div class="img">
+                  </div>
+                </div>
+              </a>
+              <h2>Portfolios</h2>
+              <p>
+                I've worked on many versions of this portfolio, playing w/ a lot of technologies but most of them never saw the light of day.
+              </p>
+            </div>
+          </div>
+
+        </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="column-half">
+            <span>&copy; 2016 Maxime Le Conte des Floris</span>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
-
+    </footer>
+  </main>
   <!-- Google Analytics -->
   <script>
     (function(b, o, i, l, e, r) {
