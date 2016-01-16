@@ -20,17 +20,6 @@ body {
   text-rendering: auto;
 }
 
- ::selection {
-  background-color: $accent-color;
-}
-
- ::-moz-selection {
-  background-color: $accent-color;
-}
-
-a {
-  color: inherit;
-}
 /*------------------------------------*\
     Layout
 \*------------------------------------*/
@@ -55,6 +44,7 @@ a {
   flex-basis: 100%;
   max-width: 100%;
 }
+
 /*------------------------------------*\
     General style
 \*------------------------------------*/
@@ -67,6 +57,7 @@ a {
   text-decoration: none;
   color: $accent-color;
 }
+
 /*------------------------------------*\
     Nav
 \*------------------------------------*/
@@ -142,6 +133,7 @@ header {
     }
   }
 }
+
 /*------------------------------------*\
     Work
 \*------------------------------------*/
@@ -180,10 +172,6 @@ header {
     margin: 24px 0 0;
   }
 
-  &:hover {
-    z-index: 1000;
-  }
-
   p {
     font-family: Roboto;
     font-size: .9375rem;
@@ -211,7 +199,7 @@ a {
 
 #three .img {
   background-color: #333;
-  background-image: url(../images/videogame_asset.svg);
+  background-image: url(../images/polymer.svg);
 }
 
 #four .img {
@@ -239,6 +227,7 @@ a {
     @include load-animation(#{($i*50)+250});
   }
 }
+
 /*------------------------------------*\
     Footer
 \*------------------------------------*/
@@ -253,6 +242,7 @@ footer {
     margin: 0 20px;
   }
 }
+
 /*------------------------------------*\
     Media queries
 \*------------------------------------*/
@@ -292,8 +282,7 @@ footer {
   }
 
   footer {
-    margin-top: 112px;
-    text-align: left;
+    margin-top: 56px;
   }
 }
 
