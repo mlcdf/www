@@ -2,35 +2,24 @@
 @import "bower_components/material-paper/sass/material-paper.scss";
 // endbower
 $text-color-title: rgba(0, 0, 0, .87);
-$text-color: rgba(0, 0, 0, .7);
-$text-color-secondary: rgba(0, 0, 0, .54);
-$accent-color: $teal-a200;
+$text-color: $grey-800;
+$text-color-secondary: $grey-500;
+$accent-color: $pink-a200;
 
 html,
 body {
   margin: 0;
   padding: 0;
   color: $text-color;
-  background-color: $grey-50;
-  font-family: Roboto Mono, Helvetica, Arial, sans-serif;
+  background-color: #fafafa;
+  font-family: Roboto, Roboto Mono, Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
-  line-height: 1.8rem;
+  line-height: 1.5rem;
   font-smoothing: antialiased;
   text-rendering: auto;
 }
 
- ::selection {
-  background-color: $accent-color;
-}
-
- ::-moz-selection {
-  background-color: $accent-color;
-}
-
-a {
-  color: darken($accent-color, 30%);
-}
 /*------------------------------------*\
     Layout
 \*------------------------------------*/
@@ -41,74 +30,12 @@ a {
   margin: 0 auto;
 }
 
-section {
-  padding: 36px 0;
-}
-/*------------------------------------*\
-    General style
-\*------------------------------------*/
-h1 {
-  font-size: 2rem;
-  line-height: 3.2rem;
-  padding-bottom: 32px;
-  font-weight: 500;
-  text-align: center;
-  letter-spacing: -1px;
-  margin: auto;
-  width: 80%;
-  color: $text-color-title;
-}
-
-h2 {
-  font-size: 1.25rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  color: $text-color;
-}
-
-h2,
-p {
-  margin: 0 0 12px;
-}
-
-a {
-  text-decoration: none;
-}
-
-ul {
-  margin: 0;
-  list-style-type: none;
-}
-/*------------------------------------*\
-    Header
-\*------------------------------------*/
-header {
-  padding: 56px 0 0;
-
-  p {
-    font-size: .875rem;
-    font-weight: 500;
-    max-width: 660px;
-    text-align: center;
-    margin: auto;
-  }
-
-  #name {
-    background-color: $accent-color;
-    padding: 3px 0;
-    box-shadow: 8px 0 0 $accent-color, -8px 0 0 $accent-color;
-  }
-}
-/*------------------------------------*\
-    Grid
-\*------------------------------------*/
 .row {
   box-sizing: border-box;
   display: flex;
   flex: 0 1 auto;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 0 4px;
 }
 
 .column-half {
@@ -117,22 +44,119 @@ header {
   flex-basis: 100%;
   max-width: 100%;
 }
+
 /*------------------------------------*\
-    Tile
+    General style
+\*------------------------------------*/
+p {
+  margin: 8px 0 12px;
+  font-size: .9375rem;
+}
+
+a {
+  text-decoration: none;
+  color: $accent-color;
+}
+
+/*------------------------------------*\
+    Nav
+\*------------------------------------*/
+nav {
+  justify-content: space-between;
+  padding: 20px;
+  line-height: 36px;
+
+  .avatar {
+    background: url(../images/max.jpg);
+    background-size: cover;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+  }
+
+  & > * + * {
+    background-color: $grey-200;
+    color: $accent-color;
+    padding: 0 16px;
+    margin: 2px 0;
+    border-radius: 2px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all .28s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      box-shadow: $shadow-elevation-2dp;
+    }
+  }
+}
+/*------------------------------------*\
+    Header
+\*------------------------------------*/
+header {
+  padding: 48px 20px;
+
+  h1 {
+    font-size: 2rem;
+    line-height: 2rem;
+    font-weight: 500;
+    margin: 0 0 20px;
+    color: #212121;
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+    color: $grey-500;
+    width: 95%;
+    margin: auto;
+    max-width: 500px;
+  }
+
+  .social.row {
+    padding: 24px 0;
+    justify-content: center;
+  }
+
+  svg {
+    position: relative;
+    height: 24px;
+    width: 24px;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    fill: $grey-500;
+    margin: 0 12px;
+
+    &:hover {
+      fill: $grey-700;
+    }
+  }
+}
+
+/*------------------------------------*\
+    Work
 \*------------------------------------*/
 .tile {
-  position: relative;
-  margin: 4px;
+  margin: 20px;
   padding-bottom: 16px;
 
-  .img {
-    margin-bottom: 24px;
+  .img-container {
     position: relative;
-    min-height: calc(960px/4 - 64px);
+    width: 100%;
+    padding-bottom: 61.804697157%; //Golden Ratio
+  }
+
+  .img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     border-radius: 3px;
     background-repeat: no-repeat;
     background-position: center;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: $shadow-elevation-3dp;
     transition: all .28s cubic-bezier(0.4, 0, 0.2, 1);
 
     img {
@@ -140,8 +164,12 @@ header {
     }
   }
 
-  &:hover {
-    z-index: 1000;
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    color: $text-color;
+    margin: 24px 0 0;
   }
 
   p {
@@ -154,7 +182,7 @@ header {
 a {
   .img {
     &:hover {
-      box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
+      box-shadow: $shadow-elevation-8dp;
     }
   }
 }
@@ -171,22 +199,12 @@ a {
 
 #three .img {
   background-color: #333;
-  background-image: url(../images/videogame_asset.svg);
+  background-image: url(../images/polymer.svg);
 }
 
 #four .img {
   background-color: $blue-grey-500;
   background-image: url(../images/code.svg);
-}
-
-#five .img {
-  background-color: $deep-purple-500;
-  background-image: url(../images/chat.svg);
-}
-
-#six .img {
-  background-color: $grey-900;
-  background-image: url(../images/gamepad.svg);
 }
 /*------------------------------------*\
     Animation
@@ -204,7 +222,7 @@ a {
   transition-delay: ($delay+ms);
 }
 
-@for $i from 1 through 6 {
+@for $i from 1 through 4 {
   .load-animation-#{$i} {
     @include load-animation(#{($i*50)+250});
   }
@@ -214,50 +232,17 @@ a {
     Footer
 \*------------------------------------*/
 footer {
-  background-color: #fff;
   font-size: .875rem;
   margin-top: 0;
-  font-weight: 500;
-  text-align: center;
-  padding: 40px 0;
+  color: $text-color-secondary;
 
-  a {
-    color: $text-color-secondary;
-  }
-
-  .column-half {
-    padding: 16px 0;
+  .row {
+    border-top: solid 1px $grey-200;
+    padding: 24px 0;
+    margin: 0 20px;
   }
 }
 
-.social {
-  height: 32px;
-  text-align: center;
-
-  svg {
-    position: relative;
-    height: 24px;
-    width: 24px;
-    top: 5px;
-    -webkit-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out;
-    fill: $text-color-secondary;
-    padding: 0 8px;
-
-    &:hover {
-      fill: $grey-900;
-    }
-  }
-}
-
-.heart {
-  width: 16px;
-  height: 16px;
-  vertical-align: middle;
-  padding-bottom: 4px;
-  fill: $accent-color;
-}
 /*------------------------------------*\
     Media queries
 \*------------------------------------*/
@@ -268,19 +253,23 @@ footer {
   }
 
   .container {
-    max-width: 960px;
+    max-width: 840px;
+  }
+
+  h1 {
+    width: 100%;
   }
 
   header {
-    padding: 150px 0 0;
+    padding: 112px 0 0;
   }
 
   section {
-    padding: 72px 0;
+    padding: 60px 0;
   }
 
   .work .container {
-    max-width: 960+32px;
+    max-width: 840+48px;
   }
 
   .column-half {
@@ -290,23 +279,10 @@ footer {
 
   .tile {
     margin: 16px;
-
-    .img {
-      min-height: calc(960px/3 - 64px);
-    }
   }
 
   footer {
-    margin-top: 112px;
-    text-align: left;
-
-    .social {
-      text-align: right;
-
-      svg {
-        padding: 0 0 0 16px;
-      }
-    }
+    margin-top: 56px;
   }
 }
 
