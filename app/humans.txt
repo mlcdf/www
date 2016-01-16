@@ -2,7 +2,7 @@
 
 # TEAM
 
-    Maxime Le Conte des Floris -- Design & web development -- @mlcdf
+    Maxime Le Conte des Floris -- Design & Development -- @mlcdf
 
 # TECHNOLOGY COLOPHON
 
@@ -16,4 +16,4 @@
 
 # FONTS
 
-    Roboto Mono -- https://www.google.com/fonts/specimen/Roboto+Mono
+    Roboto -- https://www.google.com/fonts/specimen/Roboto
