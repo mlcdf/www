@@ -2,27 +2,35 @@
 @import "bower_components/material-paper/sass/material-paper.scss";
 // endbower
 $text-color-title: rgba(0, 0, 0, .87);
-$text-color: $grey-800;
+$text-color: #424242;
 $text-color-secondary: $grey-500;
 $accent-color: $pink-a200;
+$gutter-large: 32px;
+$gutter: 24px;
 
 html,
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
   color: $text-color;
   background-color: #fafafa;
-  font-family: Roboto, Roboto Mono, Helvetica, Arial, sans-serif;
+  font-family: Roboto Mono, Helvetica, Arial, sans-serif;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.5rem;
   font-smoothing: antialiased;
   text-rendering: auto;
 }
-
 /*------------------------------------*\
     Layout
 \*------------------------------------*/
+main{
+    min-height: 100%;
+	height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+	height: 100%;
+	margin: 0 auto -144px; /* the bottom margin is the negative value of the footer's height */
+}
 .container {
   max-width: 500px;
   width: 100%;
@@ -44,7 +52,9 @@ body {
   flex-basis: 100%;
   max-width: 100%;
 }
-
+.push{
+    height: 144px;
+}
 /*------------------------------------*\
     General style
 \*------------------------------------*/
@@ -55,156 +65,110 @@ p {
 
 a {
   text-decoration: none;
-  color: $accent-color;
-}
-
-/*------------------------------------*\
-    Nav
-\*------------------------------------*/
-nav {
-  justify-content: space-between;
-  padding: 20px;
-  line-height: 36px;
-
-  .avatar {
-    background: url(../images/avatar.jpg);
-    background-size: cover;
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-  }
-
-  & > * + * {
-    background-color: $grey-200;
-    color: $accent-color;
-    padding: 0 16px;
-    margin: 2px 0;
-    border-radius: 2px;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all .28s cubic-bezier(0.4, 0, 0.2, 1);
-
-    &:hover {
-      box-shadow: $shadow-elevation-2dp;
-    }
-  }
 }
 /*------------------------------------*\
     Header
 \*------------------------------------*/
 header {
-  padding: 48px 20px;
+  padding: 48px 16px;
 
   h1 {
-    font-size: 2rem;
-    line-height: 2rem;
-    font-weight: 500;
-    margin: 0 0 20px;
-    color: #212121;
-    text-align: center;
-  }
-
-  p {
-    text-align: center;
-    color: $grey-500;
-    width: 95%;
-    margin: auto;
-    max-width: 500px;
-  }
-
-  .social.row {
-    padding: 24px 0;
-    justify-content: center;
-  }
-
-  svg {
-    position: relative;
-    height: 24px;
-    width: 24px;
-    -webkit-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out;
-    fill: $grey-500;
-    margin: 0 12px;
-
-    &:hover {
-      fill: $grey-700;
-    }
-  }
-}
-
-/*------------------------------------*\
-    Work
-\*------------------------------------*/
-.tile {
-  margin: 20px;
-  padding-bottom: 16px;
-
-  .img-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 61.804697157%; //Golden Ratio
-  }
-
-  .img {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-radius: 3px;
-    background-repeat: no-repeat;
-    background-position: center;
-    box-shadow: $shadow-elevation-3dp;
-    transition: all .28s cubic-bezier(0.4, 0, 0.2, 1);
-
-    img {
-      padding: 60px;
-    }
-  }
-
-  h2 {
-    font-size: 1.25rem;
+    font-size: 1.375rem;
+    line-height: 2.25rem;
     font-weight: 400;
-    line-height: 1.5rem;
-    color: $text-color;
-    margin: 24px 0 0;
+    margin: 0 auto 20px;
+    max-width: 760px;
+    color: $blue-a200;
   }
 
   p {
     font-family: Roboto;
-    font-size: .9375rem;
-    color: $text-color-secondary;
+    color: $grey-500;
+    width: 95%;
+    margin: auto;
+    max-width: 600px;
+  }
+}
+/*------------------------------------*\
+    Work
+\*------------------------------------*/
+.work{
+    .container{
+        max-width: 500px+16;
+    }
+}
+.tile {
+  position: relative;
+  background-color: $red-100;
+  margin: 8px 16px;
+  padding: $gutter;
+  border-radius: 3px;
+  min-height: 200px;
+  transition: all .28s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: not-allowed;
+
+  h2 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 2rem;
+    color: $text-color;
+    margin: 0;
+    opacity: .9;
+  }
+
+  strong {
+    color: $text-color;
+  }
+
+  p {
+    margin: $gutter*2/3 0 $gutter + 14px;
+    font-size: .875rem;
+    color: $text-color;
+  }
+
+  .tag,
+  .number {
+    position: absolute;
+    bottom: $gutter;
+    font-size: .875rem;
+    opacity: .6;
+    line-height: .875rem;
+    color: $text-color;
+  }
+
+  .tag {
+    left: $gutter;
+  }
+
+  .number {
+    right: $gutter;
   }
 }
 
 a {
-  .img {
+  .tile {
+    cursor: auto;
+
     &:hover {
-      box-shadow: $shadow-elevation-8dp;
+      //box-shadow: $shadow-elevation-3dp;
     }
   }
 }
 
-#one .img {
-  background-color: $indigo-500;
-  background-image: url(../images/rocket.svg);
+#one .tile {
+  background-color: $blue-100;
 }
 
-#two .img {
-  background-color: #fff;
-  background-image: url(../images/layers.svg);
+#two .tile {
+  background-color: $red-100;
 }
 
-#three .img {
-  background-color: #333;
-  background-image: url(../images/polymer.svg);
+#three .tile {
+  background-color: $blue-grey-100;
 }
 
-#four .img {
-  background-color: $blue-grey-500;
-  background-image: url(../images/code.svg);
+#four .tile {
+  background-color: $purple-100;
 }
 /*------------------------------------*\
     Animation
@@ -224,25 +188,51 @@ a {
 
 @for $i from 1 through 4 {
   .load-animation-#{$i} {
-    @include load-animation(#{($i*50)+250});
+    @include load-animation(#{($i*75)+250});
   }
 }
-
 /*------------------------------------*\
     Footer
 \*------------------------------------*/
 footer {
+  background-color: $grey-900;
+  font-weight: 400;
   font-size: .875rem;
-  margin-top: 0;
+  margin-top: 8px+$gutter*2;
   color: $text-color-secondary;
 
   .row {
-    border-top: solid 1px $grey-200;
+    //border-top: solid 1px $grey-200;
     padding: 24px 0;
-    margin: 0 20px;
+    margin: 0 16px;
+  }
+  .column-half {
+    padding: 8px 0;
+  }
+  .social {
+    margin: 24px 0 0;
+    display: flex;
+    flex-direction: row;
+  }
+
+  a {
+    margin: 0 24px 0 0;
+    height: 24px;
+    svg {
+      position: relative;
+      height: 24px;
+      width: 24px;
+      -webkit-transition: all .3s ease-in-out;
+      -moz-transition: all .3s ease-in-out;
+      transition: all .3s ease-in-out;
+      fill: $grey-500;
+
+      &:hover {
+        fill: #fff;
+      }
+    }
   }
 }
-
 /*------------------------------------*\
     Media queries
 \*------------------------------------*/
@@ -253,15 +243,21 @@ footer {
   }
 
   .container {
-    max-width: 840px;
+    max-width: 888px;
   }
-
-  h1 {
-    width: 100%;
+  .push{
+      height: 152px;
   }
 
   header {
     padding: 112px 0 0;
+
+    h1 {
+      width: 100%;
+      text-align: center;
+      font-size: 2rem;
+      line-height: 3rem;
+    }
   }
 
   section {
@@ -269,7 +265,7 @@ footer {
   }
 
   .work .container {
-    max-width: 840+48px;
+    max-width: 888+16px;
   }
 
   .column-half {
@@ -278,11 +274,36 @@ footer {
   }
 
   .tile {
-    margin: 16px;
+    margin: 8px;
+    padding: $gutter-large $gutter-large + $gutter-large/4;
+
+    .tag,
+    .number {
+      bottom: $gutter-large + $gutter-large/4;
+    }
+
+    .tag {
+      left: $gutter-large + $gutter-large/4;
+    }
+
+    .number {
+      right: $gutter-large + $gutter-large/4;
+    }
   }
 
   footer {
-    margin-top: 56px;
+
+    .row {
+      margin: 0;
+    }
+
+    .social {
+      justify-content: flex-end;
+      margin: 0;
+    }
+    a{
+        margin: 0 0 0 24px;
+    }
   }
 }
 
