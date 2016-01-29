@@ -25,12 +25,15 @@ body {
 /*------------------------------------*\
     Layout
 \*------------------------------------*/
-main{
-    min-height: 100%;
-	height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
-	height: 100%;
-	margin: 0 auto -144px; /* the bottom margin is the negative value of the footer's height */
+main {
+  min-height: 100%;
+  height: auto !important;
+  /* This line and the next line are not necessary unless you need IE6 support */
+  height: 100%;
+  margin: 0 auto -128px;
+  /* the bottom margin is the negative value of the footer's height */
 }
+
 .container {
   max-width: 500px;
   width: 100%;
@@ -52,8 +55,9 @@ main{
   flex-basis: 100%;
   max-width: 100%;
 }
-.push{
-    height: 144px;
+
+.push {
+  height: 128px;
 }
 /*------------------------------------*\
     General style
@@ -92,14 +96,14 @@ header {
 /*------------------------------------*\
     Work
 \*------------------------------------*/
-.work{
-    .container{
-        max-width: 500px+16;
-    }
+.work {
+  .container {
+    max-width: 500px+16;
+  }
 }
+
 .tile {
   position: relative;
-  background-color: $red-100;
   margin: 8px 16px;
   padding: $gutter;
   border-radius: 3px;
@@ -147,11 +151,7 @@ header {
 
 a {
   .tile {
-    cursor: auto;
-
-    &:hover {
-      //box-shadow: $shadow-elevation-3dp;
-    }
+    cursor: pointer;
   }
 }
 
@@ -202,13 +202,14 @@ footer {
   color: $text-color-secondary;
 
   .row {
-    //border-top: solid 1px $grey-200;
     padding: 24px 0;
     margin: 0 16px;
   }
+
   .column-half {
-    padding: 8px 0;
+    padding: 4px 0;
   }
+
   .social {
     margin: 24px 0 0;
     display: flex;
@@ -218,6 +219,7 @@ footer {
   a {
     margin: 0 24px 0 0;
     height: 24px;
+
     svg {
       position: relative;
       height: 24px;
@@ -245,8 +247,9 @@ footer {
   .container {
     max-width: 888px;
   }
-  .push{
-      height: 152px;
+
+  .push {
+    height: 152px;
   }
 
   header {
@@ -292,17 +295,18 @@ footer {
   }
 
   footer {
-
     .row {
       margin: 0;
+      padding: 24px 0;
     }
 
     .social {
       justify-content: flex-end;
       margin: 0;
     }
-    a{
-        margin: 0 0 0 24px;
+
+    a {
+      margin: 0 0 0 24px;
     }
   }
 }
