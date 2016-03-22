@@ -1,0 +1,24 @@
+{
+  "first_draft": {
+    "title": "Dev Tools: Yeoman, Gulp & BrowserSync",
+    "date": "January 1, 2016",
+    "published_on" : "2016-01-01"
+  },
+  "second_draft": {
+    "title": "CSS Modules",
+    "date": "November 28, 2015",
+    "published_on" : "2015-28-11"
+  },
+  "third_draft": {
+    "title": "Offline Browsing Secrets In Chrome",
+    "date": "Mars 1, 2016",
+    "published_on" : "2015-03-04"
+
+  },
+  "four_draft": {
+    "title": "Design Systems",
+    "date": "Mars 2, 2016",
+    "published_on" : "2015-02-03"
+
+  }
+}
