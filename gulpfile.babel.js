@@ -61,14 +61,18 @@ gulp.task('img', () => {
 });
 
 
-// Copy extra files to /dist
-// gulp.task('extras', () => {
-// 	return gulp.src([
-//     'assets/*.*',
-//   ], {
-//     dot: true
-//   }).pipe(gulp.dest('./dist'));
-// });
+ // Copy extra files to /dist
+ gulp.task('extras', () => {
+ 	return gulp.src([
+     'app/CNAME',
+     'app/favicon.ico',
+     'app/humans.txt',
+     'app/robots.txt',
+     'app/manifest.json'
+   ], {
+     dot: true
+   }).pipe(gulp.dest('./dist'));
+ });
 
 // Initialize a Browsersync server
 gulp.task('serve', () => {
@@ -105,7 +109,7 @@ gulp.task('deploy', () => {
 });
 
 
-gulp.task('build', ['metalsmith', 'script', 'style'], () => {
+gulp.task('build', ['metalsmith', 'script', 'style', 'extras'], () => {
 	return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
