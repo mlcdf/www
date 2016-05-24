@@ -1,144 +1,98 @@
-// generated on 2015-08-29 using generator-gulp-webapp 1.0.3
+
+'use strict';
+
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 import del from 'del';
-import {stream as wiredep} from 'wiredep';
 
-const $ = gulpLoadPlugins();
-const reload = browserSync.reload;
+import postcssImport from 'postcss-import';
+import postcssCssnext from 'postcss-cssnext';
+import postcssExtend from 'postcss-extend';
+import postcssReporter from 'postcss-reporter';
+import cssnano from 'cssnano';
 
-gulp.task('styles', () => {
-  return gulp.src('app/styles/*.scss')
+import metalsmith from './metalsmith.babel.js';
+
+// Handle the CSS process
+gulp.task('style', () => {
+  return gulp.src("app/assets/css/app.css")
     .pipe($.plumber())
-    .pipe($.sourcemaps.init())
-    .pipe($.sass.sync({
-      outputStyle: 'expanded',
-      precision: 10,
-      includePaths: ['.']
-    }).on('error', $.sass.logError))
-    .pipe($.autoprefixer({browsers: ['last 1 version']}))
-    .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('.tmp/styles'))
+		.pipe($.sourcemaps.init())
+    .pipe($.postcss([
+      postcssImport(),
+			postcssCssnext(),
+			postcssExtend(),
+			cssnano(),
+      postcssReporter(),
+    ]))
+		.pipe($.sourcemaps.write('.'))
+    .pipe(gulp.dest('./dist/css'))
     .pipe(reload({stream: true}));
 });
 
-function lint(files, options) {
-  return () => {
-    return gulp.src(files)
-      .pipe(reload({stream: true, once: true}))
-      .pipe($.eslint(options))
-      .pipe($.eslint.format())
-      .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
-  };
-}
-const testLintOptions = {
-  env: {
-    mocha: true
-  }
-};
-
-gulp.task('lint', lint('app/scripts/**/*.js'));
-gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
-
-gulp.task('html', ['styles'], () => {
-  const assets = $.useref.assets({searchPath: ['.tmp', 'app', '.']});
-
-  return gulp.src('app/*.html')
-    .pipe(assets)
-    .pipe($.if('*.js', $.uglify()))
-    .pipe($.if('*.css', $.minifyCss({compatibility: '*'})))
-    .pipe(assets.restore())
-    .pipe($.useref())
-    .pipe($.if('*.html', $.minifyHtml({conditionals: true, loose: true})))
-    .pipe(gulp.dest('dist'));
+// Handle the Metalsmith process
+gulp.task('metalsmith', () => {
+  metalsmith();
 });
 
-gulp.task('images', () => {
-  return gulp.src('app/images/**/*')
-    .pipe($.if($.if.isFile, $.cache($.imagemin({
-      progressive: true,
-      interlaced: true,
-      // don't remove IDs from SVGs, they are often used
-      // as hooks for embedding and styling
-      svgoPlugins: [{cleanupIDs: false}]
-    }))
-    .on('error', function (err) {
-      console.log(err);
-      this.end();
-    })))
-    .pipe(gulp.dest('dist/images'));
+// Transpile ES6 to ES5
+gulp.task('script', () => {
+  // return gulp.src('assets/js/app.js')
+  //   .pipe($.plumber())
+  //   .pipe($.sourcemaps.init())
+  //   .pipe($.babel())
+  //   .pipe($.sourcemaps.write('.'))
+  //   .pipe(gulp.dest('./dist/js'))
+  //   .pipe(reload({stream: true}));
 });
 
-gulp.task('fonts', () => {
-  return gulp.src(require('main-bower-files')({
-    filter: '**/*.{eot,svg,ttf,woff,woff2}'
-  }).concat('app/fonts/**/*'))
-    .pipe(gulp.dest('.tmp/fonts'))
-    .pipe(gulp.dest('dist/fonts'));
-});
-
-gulp.task('extras', () => {
-  return gulp.src([
-    'app/*.*',
-    '!app/*.html'
-  ], {
+// Images
+gulp.task('img', () => {
+	return gulp.src([
+		'app/assets/img/*.*',
+	], {
     dot: true
-  }).pipe(gulp.dest('dist'));
+	}).pipe(gulp.dest('tmp/img'));
 });
 
-gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['styles', 'fonts'], () => {
-  browserSync({
-    notify: false,
-    port: 9000,
+// Copy extra files to /dist
+// gulp.task('extras', () => {
+// 	return gulp.src([
+//     'assets/*.*',
+//   ], {
+//     dot: true
+//   }).pipe(gulp.dest('./dist'));
+// });
+
+// Initialize a Browsersync server
+gulp.task('serve', () => {
+  browserSync.init({
+		port: 3000,
+		open: 'external',
     server: {
-      baseDir: ['.tmp', 'app'],
-      routes: {
-        '/bower_components': 'bower_components',
-        '/node_modules': 'node_modules'
-      }
-    }
-  });
-
-  gulp.watch([
-    'app/*.html',
-    'app/scripts/**/*.js',
-    'app/images/**/*',
-    '.tmp/fonts/**/*'
-  ]).on('change', reload);
-
-  gulp.watch('app/styles/**/*.scss', ['styles']);
-  gulp.watch('app/fonts/**/*', ['fonts']);
-  gulp.watch('bower.json', ['wiredep', 'fonts']);
-});
-
-gulp.task('serve:dist', () => {
-  browserSync({
-    notify: false,
-    port: 9000,
-    server: {
-      baseDir: ['dist']
+      baseDir: ['./dist', 'tmp', 'app']
     }
   });
 });
 
-gulp.task('serve:test', () => {
-  browserSync({
-    notify: false,
-    port: 9000,
-    ui: false,
-    server: {
-      baseDir: 'test',
-      routes: {
-        '/bower_components': 'bower_components'
-      }
-    }
-  });
+// Watch files and trigger reload
+gulp.task('watch', () => {
 
-  gulp.watch('test/spec/**/*.js').on('change', reload);
-  gulp.watch('test/spec/**/*.js', ['lint:test']);
+	gulp.watch([
+		'app/contents/**/*',
+		'app/templates/**/*'
+	], ['metalsmith', 'style', 'script']);
+
+	gulp.watch('app/assets/img/**/*', ['img']);
+	gulp.watch('app/assets/css/**/*', ['style']);
+	gulp.watch('app/assets/js/**/*', ['script']);
+	gulp.watch("dist/*.html").on('change', reload);
+});
+
+gulp.task('clean', () => {
+	return del('./dist');
 });
 
 gulp.task('deploy', () => {
@@ -146,31 +100,10 @@ gulp.task('deploy', () => {
     .pipe($.ghPages());
 });
 
-gulp.task('CNAME', function () {
-  return gulp
-    .src('app/CNAME')
-    .pipe(gulp.dest('dist'))
+
+gulp.task('build', ['metalsmith', 'script', 'style'], () => {
+	return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
-// inject bower components
-gulp.task('wiredep', () => {
-  gulp.src('app/styles/*.scss')
-    .pipe(wiredep({
-      ignorePath: /^(\.\.\/)+/
-    }))
-    .pipe(gulp.dest('app/styles'));
+gulp.task('default', ['clean', 'serve', 'watch', 'metalsmith', 'script', 'style', 'img']);
 
-  gulp.src('app/*.html')
-    .pipe(wiredep({
-      ignorePath: /^(\.\.\/)*\.\./
-    }))
-    .pipe(gulp.dest('app'));
-});
-
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras', 'CNAME'], () => {
-  return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
-});
-
-gulp.task('default', ['clean'], () => {
-  gulp.start('build');
-});
