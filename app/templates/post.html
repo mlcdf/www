@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="max-width-md">
+	{% if date %}
+		<time class="block f--sans h3 light">{{ date }}</time>
+	{% endif %}
+
+		{{ contents | safe }}
+
+	<div class="flex justify-between my4 f--sans">
+		{% if previous %}
+			<a class="h3 hover-blue" href="/{{previous.path}}">
+				<span class="bold">Newer</span>
+				<span class="light block">{{previous.title}}</span>
+			</a>
+
+		{% else %}
+			<div></div>
+		{% endif %}
+
+		{% if next %}
+		<a class="h3 right-align hover-blue" href="/{{next.path}}">
+			<span class="bold">Older</span>
+			<span class="light block">{{next.title}}</span>
+		</a>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

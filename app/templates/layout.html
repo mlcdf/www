@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-compatible" content="IE=edge, chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="Maxime Le Conte des Floris">
+	<meta name="theme-color" content="#333">
+	<title>{% if title and title != "Home" %} {{ title }} &ndash; {% endif %} Maxime Le Conte des Floris</title>
+	<link rel="icon" href="/favicon.ico">
+	<link rel="manifest" href="/manifest.json">
+	<link rel="stylesheet" href="/css/app.css">
+</head>
+
+<body class="fit dark">
+
+	{% include "partials/header.html" %}
+
+	<main class="mx-auto max-width py2">
+		{% block body %} {{ contents | safe }} {% endblock %}
+	</main>
+
+	{% include "partials/footer.html" %}
+
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/xcode.min.css">
+</body>
+
+</html>
