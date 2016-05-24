@@ -14,6 +14,10 @@ import cssnano from 'cssnano';
 
 import metalsmith from './metalsmith.babel.js';
 
+const $ = gulpLoadPlugins();
+const reload = browserSync.reload;
+
+
 // Handle the CSS process
 gulp.task('style', () => {
   return gulp.src("app/assets/css/app.css")
