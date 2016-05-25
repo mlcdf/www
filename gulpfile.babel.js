@@ -31,6 +31,9 @@ gulp.task('style', () => {
       postcssReporter(),
     ]))
 		.pipe($.sourcemaps.write('.'))
+    .pipe($.uncss({
+            html: ['./dist/**/*.html']
+        }))
     .pipe(gulp.dest('./dist/css'))
     .pipe(reload({stream: true}));
 });
@@ -59,7 +62,6 @@ gulp.task('img', () => {
     dot: true
 	}).pipe(gulp.dest('tmp/img'));
 });
-
 
  // Copy extra files to /dist
  gulp.task('copy extras', () => {
@@ -108,7 +110,7 @@ gulp.task('deploy', () => {
     .pipe($.ghPages());
 });
 
-gulp.task('build', ['metalsmith', 'script', 'style', 'copy extras'], () => {
+gulp.task('build', ['clean', 'metalsmith', 'script', 'style', 'copy extras'], () => {
 	return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
