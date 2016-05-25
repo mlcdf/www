@@ -1,7 +1,7 @@
 {
   "name": "mlcdf",
   "version": "1.0.0",
-  "description": "Maxime Le Conte des Floris' Blog",
+  "description": "Maxime Le Conte des Floris's website",
   "main": "index.js",
   "scripts": {
     "gulp": "gulp",

@@ -24,7 +24,10 @@
 
 	{% include "partials/footer.html" %}
 
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/xcode.min.css">
+	{% if post %} 
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/xcode.min.css">
+	{% endif %}
+	
 </body>
 
 </html>

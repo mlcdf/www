@@ -6,14 +6,9 @@
 
 # TECHNOLOGY COLOPHON
 
-    HTML5, SASS & JS
-    Yeoman, Gulp & Browser-sync.
+    HTML5/Nunjucks
+    CSS/Basscss 
+    JS/ES6
+    Gulp, Metalsmith, PostCSS, Babel & Browsersync.
     Atom
 
-# ICONS
-
-    Material Design -- https://design.google.com/icons/
-
-# FONTS
-
-    Roboto -- https://www.google.com/fonts/specimen/Roboto

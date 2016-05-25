@@ -62,7 +62,7 @@ gulp.task('img', () => {
 
 
  // Copy extra files to /dist
- gulp.task('extras', () => {
+ gulp.task('copy extras', () => {
  	return gulp.src([
      'app/CNAME',
      'app/favicon.ico',
@@ -108,8 +108,7 @@ gulp.task('deploy', () => {
     .pipe($.ghPages());
 });
 
-
-gulp.task('build', ['metalsmith', 'script', 'style', 'extras'], () => {
+gulp.task('build', ['metalsmith', 'script', 'style', 'copy extras'], () => {
 	return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
