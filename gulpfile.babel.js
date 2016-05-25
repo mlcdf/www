@@ -22,18 +22,22 @@ const reload = browserSync.reload;
 gulp.task('style', () => {
   return gulp.src("app/assets/css/app.css")
     .pipe($.plumber())
-		.pipe($.sourcemaps.init())
     .pipe($.postcss([
       postcssImport(),
 			postcssCssnext(),
 			postcssExtend(),
-			cssnano(),
-      postcssReporter(),
+      cssnano(),
+      postcssReporter()
     ]))
-		.pipe($.sourcemaps.write('.'))
     .pipe($.uncss({
-            html: ['./dist/**/*.html']
-        }))
+      html: ['./dist/**/*.html'], ignore: ['svg', ':hover', ':visited', ':link', ':visited']
+     }))
+    .pipe($.cssnano({
+      discardComments: {
+        removeAll: true
+      }
+    }))
+    .pipe($.size({gzip: true, showFiles: true, title:'after uncss and minify'}))
     .pipe(gulp.dest('./dist/css'))
     .pipe(reload({stream: true}));
 });
@@ -55,12 +59,10 @@ gulp.task('script', () => {
 });
 
 // Images
-gulp.task('img', () => {
-	return gulp.src([
-		'app/assets/img/*.*',
-	], {
-    dot: true
-	}).pipe(gulp.dest('tmp/img'));
+gulp.task('images', () => {
+	return gulp.src('app/assets/img/**/*')
+    .pipe($.cache($.imagemin()))
+    .pipe(gulp.dest('dist/img'));
 });
 
  // Copy extra files to /dist
@@ -110,9 +112,9 @@ gulp.task('deploy', () => {
     .pipe($.ghPages());
 });
 
-gulp.task('build', ['clean', 'metalsmith', 'script', 'style', 'copy extras'], () => {
+gulp.task('build', ['metalsmith', 'script', 'style', 'copy extras', 'images'], () => {
 	return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
-gulp.task('default', ['clean', 'serve', 'watch', 'metalsmith', 'script', 'style', 'img']);
+gulp.task('default', ['clean', 'serve', 'watch', 'metalsmith', 'script', 'style', 'images']);
 

@@ -1,14 +1,25 @@
 # humanstxt.org/
 
-# TEAM
+# TEAM -----
 
-    Maxime Le Conte des Floris -- Design & Development -- @mlcdf
+	Maxime Le Conte des Floris (@mlcdf) - Design & Development 
 
-# TECHNOLOGY COLOPHON
+# TECHNOLOGY -----
 
-    HTML5/Nunjucks
-    CSS/Basscss 
-    JS/ES6
-    Gulp, Metalsmith, PostCSS, Babel & Browsersync.
-    Atom
+Frontend
+	- Nunjucks
+	- CSS
+		+ Basscss
+	- ES6
+	- MOBILE
+		+ manifest.json
+		+ <meta name="theme-color">
+		
+Tools
+	- NPM
+	- Gulp
+	- Metalsmith
+	- Postcss with cssnext
+	- Babel
+	- Browsersync
 
