@@ -11,7 +11,7 @@
 @import "basscss-flexbox";
 
 :root {
-  --primary: #00BFA5;
+  --primary: #2979FF;
   --link-color: var(--primary);
 
   --dark: #212121;
