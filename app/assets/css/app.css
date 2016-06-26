@@ -11,8 +11,9 @@
 @import "basscss-flexbox";
 
 :root {
-  --primary: #2979FF;
+  --primary: #9e9e9e;
   --link-color: var(--primary);
+  --background-color: #EDFCFF;
 
   --dark: #212121;
 	--dark-grey: #333;
@@ -23,23 +24,24 @@
 	--monospace-font-family : Segoe UI Mono, Roboto Mono, Consolas, monospace;
 
 	--h4: 1.125rem;
-	--h1: 2.5rem;
+  --h3: 1.375rem;
+	--h1: 3rem;
 
-	--line-height-4: 2rem;
+	--line-height-4: 2.25rem;
 
 	/*--border-color: var(--dark);*/
 }
 
-html {
+html,
+body {
   box-sizing: border-box;
 	font-smoothing: antialiased;
+  background-color: var(--background-color);
+  height: 100%;
 	font-size: 16px;
-	@media (max-width : 600px) {
+	@media (max-width: 600px) {
     font-size: 14px;
   }
-}
-body{
-	background-color: #fff;
 }
 
 *, *:before, *:after {
@@ -71,12 +73,40 @@ a:focus,{
 }
 
 .max-width{
-	max-width: 640px;
+	max-width: 700px;
+}
+
+.margin{
+  /*margin-right: .6rem;
+  margin-left: .6rem;*/
+
+  @media (min-width: 800px){
+    margin-left: 6rem;
+  }
+}
+
+.wrapper{
+  min-height: 100%;
+  margin-bottom: -168px; /* footer height */
+
+  @media (max-width : 800px) {
+    margin-bottom: -147px;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    height: 168px;
+
+    @media (max-width : 800px) {
+      height: 147px;
+    }
+  }
 }
 
 main{
 
-  @media (max-width : 600px) {
+  @media (max-width : 800px) {
     padding-right: 20px;
 		padding-left: 20px;
   }

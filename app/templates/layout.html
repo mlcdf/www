@@ -8,7 +8,7 @@
 	<meta name="description" content="Maxime Le Conte des Floris is a web developer and open source enthusiast located in Bordeaux.">
 	<meta name="author" content="Maxime Le Conte des Floris">
 	<meta name="theme-color" content="#333">
-	<title>{% if title and title != "Home" %} {{ title }} &ndash; {% endif %} mlcdf</title>
+	<title>{% if title and title != "Home" %} {{ title }} &ndash; {% endif %} Maxime Le Conte des Floris</title>
 	<link rel="icon" href="/favicon.ico">
 	<link rel="manifest" href="/manifest.json">
 	<link rel="stylesheet" href="/css/app.css">
@@ -16,18 +16,21 @@
 
 <body class="fit dark">
 
-	{% include "partials/header.html" %}
+	<div class="wrapper">
+		{% include "partials/header.html" %}
 
-	<main class="mx-auto max-width py2">
-		{% block body %} {{ contents | safe }} {% endblock %}
-	</main>
+		<main class="margin max-width py2">
+			{% block body %} {{ contents | safe }} {% endblock %}
+		</main>
+	</div>
+
 
 	{% include "partials/footer.html" %}
 
-	{% if post %} 
+	<!-- {% if post %}
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/xcode.min.css">
-	{% endif %}
-	
+	{% endif %} -->
+
 </body>
 
 </html>

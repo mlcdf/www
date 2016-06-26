@@ -97,7 +97,7 @@ gulp.task('watch', () => {
 		'app/templates/**/*'
 	], ['metalsmith', 'style', 'script']);
 
-	gulp.watch('app/assets/img/**/*', ['img']);
+	gulp.watch('app/assets/img/**/*', ['images']);
 	gulp.watch('app/assets/css/**/*', ['style']);
 	gulp.watch('app/assets/js/**/*', ['script']);
 	gulp.watch("dist/*.html").on('change', reload);
@@ -117,4 +117,3 @@ gulp.task('build', ['metalsmith', 'script', 'style', 'copy extras', 'images'], (
 });
 
 gulp.task('default', ['clean', 'serve', 'watch', 'metalsmith', 'script', 'style', 'images']);
-
