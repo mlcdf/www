@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-compatible" content="IE=edge, chrome=1">
@@ -8,29 +7,29 @@
 	<meta name="description" content="Maxime Le Conte des Floris is a web developer and open source enthusiast located in Bordeaux.">
 	<meta name="author" content="Maxime Le Conte des Floris">
 	<meta name="theme-color" content="#333">
-	<title>{% if title and title != "Home" %} {{ title }} &ndash; {% endif %} Maxime Le Conte des Floris</title>
+	<title>Maxime Le Conte des Floris</title>
 	<link rel="icon" href="/favicon.ico">
 	<link rel="manifest" href="/manifest.json">
 	<link rel="stylesheet" href="/css/app.css">
 </head>
+<body class="fit f--sans">
 
-<body class="fit dark">
+	<header class="flex justify-between h4 f--mono">
+		<span class="m2 mr1" href="/">/mlcdf</span>
+		<nav class="flex h4">
+			<a class="m2 mr1 red-hover anim" href="/about/">/about</a>
+		</nav>
+	</header>
 
-	<div class="wrapper">
-		{% include "partials/header.html" %}
+	<main class="max-width mx-auto mb4 py4">
+		<h1 class="ml2 mb3 h1 f--mono regular">/404.html</h1>
+		<section class="ml2 h3">
+      <p>
+        Move along, there is nothing here for you. <br/> Return to the <a class="red underline-hover" href="/">home page.</a>
+      </p>
 
-		<main class="margin max-width py2">
-			{% block body %} {{ contents | safe }} {% endblock %}
-		</main>
-	</div>
-
-
-	{% include "partials/footer.html" %}
-
-	<!-- {% if post %}
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/xcode.min.css">
-	{% endif %} -->
+		</section>
+	</main>
 
 </body>
-
 </html>

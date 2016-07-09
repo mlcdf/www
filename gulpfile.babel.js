@@ -8,74 +8,64 @@ import del from 'del';
 
 import postcssImport from 'postcss-import';
 import postcssCssnext from 'postcss-cssnext';
-import postcssExtend from 'postcss-extend';
 import postcssReporter from 'postcss-reporter';
-import cssnano from 'cssnano';
-
-import metalsmith from './metalsmith.babel.js';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
+// Handle HTML process
+gulp.task('html', ['styles', 'scripts'], () => {
+  return gulp.src('app/*.html')
+  .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
+  .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false})))
+  .pipe($.if('*.html', $.htmlMinifier({collapseWhitespace: true})))
+  .pipe(gulp.dest('dist'));
+});
 
 // Handle the CSS process
-gulp.task('style', () => {
-  return gulp.src("app/assets/css/app.css")
+gulp.task('styles', () => {
+  return gulp.src("app/css/app.css")
     .pipe($.plumber())
     .pipe($.postcss([
       postcssImport(),
 			postcssCssnext(),
-			postcssExtend(),
-      cssnano(),
       postcssReporter()
     ]))
     .pipe($.uncss({
-      html: ['./dist/**/*.html'], ignore: ['svg', ':hover', ':visited', ':link', ':visited']
+      html: ['app/**/*.html'], ignore: ['svg', ':hover', ':visited', ':link', ':visited']
      }))
-    .pipe($.cssnano({
-      discardComments: {
-        removeAll: true
-      }
-    }))
-    .pipe($.size({gzip: true, showFiles: true, title:'after uncss and minify'}))
-    .pipe(gulp.dest('./dist/css'))
+		.pipe($.csslint())
+    .pipe($.csslint.reporter())
+    .pipe(gulp.dest('.tmp/css'))
     .pipe(reload({stream: true}));
 });
 
-// Handle the Metalsmith process
-gulp.task('metalsmith', () => {
-  metalsmith();
-});
-
 // Transpile ES6 to ES5
-gulp.task('script', () => {
-  // return gulp.src('assets/js/app.js')
-  //   .pipe($.plumber())
-  //   .pipe($.sourcemaps.init())
-  //   .pipe($.babel())
-  //   .pipe($.sourcemaps.write('.'))
-  //   .pipe(gulp.dest('./dist/js'))
-  //   .pipe(reload({stream: true}));
+gulp.task('scripts', () => {
+  return gulp.src('assets/js/app.js')
+    .pipe($.plumber())
+    .pipe($.sourcemaps.init())
+    .pipe($.babel())
+    .pipe($.sourcemaps.write('.'))
+    .pipe(gulp.dest('.tmp/js'))
+    .pipe(reload({stream: true}));
 });
 
 // Images
 gulp.task('images', () => {
-	return gulp.src('app/assets/img/**/*')
+	return gulp.src('app/img/**/*')
     .pipe($.cache($.imagemin()))
     .pipe(gulp.dest('dist/img'));
 });
 
  // Copy extra files to /dist
- gulp.task('copy extras', () => {
- 	return gulp.src([
-     'app/CNAME',
-     'app/favicon.ico',
-     'app/humans.txt',
-     'app/robots.txt',
-     'app/manifest.json'
-   ], {
-     dot: true
-   }).pipe(gulp.dest('./dist'));
+ gulp.task('extras', () => {
+   return gulp.src([
+    'app/**/*.*',
+    '!app/*.html'
+  ], {
+    dot: true
+  }).pipe(gulp.dest('dist'));
  });
 
 // Initialize a Browsersync server
@@ -84,36 +74,26 @@ gulp.task('serve', () => {
 		port: 3000,
 		open: 'external',
     server: {
-      baseDir: ['./dist', 'tmp', 'app']
-    }
+      baseDir: ['.tmp', 'app']
+    },
+		notify: false
   });
 });
 
 // Watch files and trigger reload
 gulp.task('watch', () => {
-
-	gulp.watch([
-		'app/contents/**/*',
-		'app/templates/**/*'
-	], ['metalsmith', 'style', 'script']);
-
-	gulp.watch('app/assets/img/**/*', ['images']);
-	gulp.watch('app/assets/css/**/*', ['style']);
-	gulp.watch('app/assets/js/**/*', ['script']);
-	gulp.watch("dist/*.html").on('change', reload);
+	gulp.watch('app/img/**/*', ['images']);
+	gulp.watch('app/css/**/*.css', ['styles']);
+	gulp.watch('app/js/**/*.js', ['scripts']);
+	gulp.watch("app/**/*.html", ['styles']).on('change', reload);
 });
 
 gulp.task('clean', () => {
-	return del('./dist');
+	return del('dist');
 });
 
-gulp.task('deploy', () => {
-  return gulp.src('./dist/**/*')
-    .pipe($.ghPages());
-});
-
-gulp.task('build', ['metalsmith', 'script', 'style', 'copy extras', 'images'], () => {
+gulp.task('build', ['html', 'images', 'extras'], () => {
 	return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
-gulp.task('default', ['clean', 'serve', 'watch', 'metalsmith', 'script', 'style', 'images']);
+gulp.task('default', ['clean', 'scripts', 'styles', 'serve', 'watch', 'images']);
