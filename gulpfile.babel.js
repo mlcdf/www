@@ -1,21 +1,21 @@
 
 'use strict';
 
-import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
-import browserSync from 'browser-sync';
-import del from 'del';
+const gulp = require('gulp');
+const gulpLoadPlugins = require('gulp-load-plugins');
+const browserSync = require('browser-sync');
+const del = require('del');
 
-import postcssImport from 'postcss-import';
-import postcssCssnext from 'postcss-cssnext';
-import postcssReporter from 'postcss-reporter';
+const postcssImport = require('postcss-import');
+const postcssCssnext = require('postcss-cssnext');
+const postcssReporter = require('postcss-reporter');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
 // Handle HTML process
 gulp.task('html', ['styles', 'scripts'], () => {
-  return gulp.src('app/*.html')
+  return gulp.src('app/**/*.html')
   .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
   .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false})))
   .pipe($.if('*.html', $.htmlMinifier({collapseWhitespace: true})))
@@ -24,7 +24,7 @@ gulp.task('html', ['styles', 'scripts'], () => {
 
 // Handle the CSS process
 gulp.task('styles', () => {
-  return gulp.src("app/css/app.css")
+  return gulp.src("app/css/*.css")
     .pipe($.plumber())
     .pipe($.postcss([
       postcssImport(),
@@ -61,7 +61,7 @@ gulp.task('images', () => {
  // Copy extra files to /dist
  gulp.task('extras', () => {
    return gulp.src([
-    'app/**/*.*',
+    'app/*.*',
     '!app/*.html'
   ], {
     dot: true
