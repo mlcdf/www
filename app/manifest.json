@@ -4,7 +4,7 @@
   "start_url": "/index.html",
   "display": "standalone",
   "theme_color": "#333333",
-	"background_color": "#333333",
+  "background_color": "#333333",
   "icons": [
     {
       "src": "/img/favicons/ic_launcher_48.png",
@@ -31,5 +31,5 @@
       "sizes": "192x192",
       "type": "image/png"
     }
-  ] 
+  ]
 }
