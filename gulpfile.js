@@ -17,7 +17,13 @@ const reload = browserSync.reload;
 gulp.task('html', ['styles', 'scripts'], () => {
   return gulp.src('app/**/*.html')
   .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
-  .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false})))
+  .pipe($.if('*.css', $.cssnano({
+    safe: true,
+    autoprefixer: false,
+    discardComments: {
+      removeAll: true
+    }
+  })))
   .pipe($.if('*.html', $.htmlMinifier({collapseWhitespace: true})))
   .pipe(gulp.dest('dist'));
 });
@@ -28,13 +34,15 @@ gulp.task('styles', () => {
     .pipe($.plumber())
     .pipe($.postcss([
       postcssImport(),
-			postcssCssnext(),
+      postcssCssnext(),
       postcssReporter()
     ]))
     .pipe($.uncss({
-      html: ['app/**/*.html'], ignore: ['svg', ':hover', ':visited', ':link', ':visited']
+      html:
+      ['app/**/*.html'],
+      ignore: ['svg', ':hover', ':visited', ':link', ':visited']
      }))
-		.pipe($.csslint())
+    .pipe($.csslint())
     .pipe($.csslint.reporter())
     .pipe(gulp.dest('.tmp/css'))
     .pipe(reload({stream: true}));
@@ -53,7 +61,7 @@ gulp.task('scripts', () => {
 
 // Images
 gulp.task('images', () => {
-	return gulp.src('app/img/**/*')
+  return gulp.src('app/img/**/*')
     .pipe($.cache($.imagemin()))
     .pipe(gulp.dest('dist/img'));
 });
@@ -71,29 +79,29 @@ gulp.task('images', () => {
 // Initialize a Browsersync server
 gulp.task('serve', () => {
   browserSync.init({
-		port: 3000,
-		open: 'external',
+    port: 3000,
+    open: 'external',
     server: {
       baseDir: ['.tmp', 'app']
     },
-		notify: false
+    notify: false
   });
 });
 
 // Watch files and trigger reload
 gulp.task('watch', () => {
-	gulp.watch('app/img/**/*', ['images']);
-	gulp.watch('app/css/**/*.css', ['styles']);
-	gulp.watch('app/js/**/*.js', ['scripts']);
-	gulp.watch("app/**/*.html", ['styles']).on('change', reload);
+  gulp.watch('app/img/**/*', ['images']);
+  gulp.watch('app/css/**/*.css', ['styles']);
+  gulp.watch('app/js/**/*.js', ['scripts']);
+  gulp.watch("app/**/*.html", ['styles']).on('change', reload);
 });
 
 gulp.task('clean', () => {
-	return del('dist');
+  return del('dist');
 });
 
 gulp.task('build', ['html', 'images', 'extras'], () => {
-	return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
+  return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
 gulp.task('default', ['clean', 'scripts', 'styles', 'serve', 'watch', 'images']);
