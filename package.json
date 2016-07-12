@@ -2,11 +2,10 @@
   "name": "mlcdf",
   "version": "1.0.0",
   "description": "Maxime Le Conte des Floris's website",
-  "main": "index.js",
-  "scripts": {
-    "start": "gulp",
-    "dist": "gulp build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "main": "index.html",
+    "repository": {
+    "type": "git",
+    "url": "git://github.com/mlcdf/mlcdf.git"
   },
   "author": "Maxime Le Conte des Floris",
   "license": "MIT",
@@ -55,5 +54,10 @@
     "basscss-typography": "latest",
     "basscss-flexbox": "^1.0.1",
     "normalize.css": "^4.0.0"
+  },
+    "scripts": {
+    "start": "gulp",
+    "build": "gulp build",
+    "test": "gulp build && cd dist && http-server"
   }
 }
