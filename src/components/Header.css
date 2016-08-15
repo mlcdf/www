@@ -1,0 +1,16 @@
+.root {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.logo: {
+    color: #FF5252;
+    font-weight: bold;
+    font-size: 1.125rem;
+    font-family: 'monospace';
+}
+
+.hover:hover {
+    background-color: #FF5252;
+    color: #FFF;
+}
