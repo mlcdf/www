@@ -1,0 +1,22 @@
+.root{
+  margin-bottom: 3rem;
+  transition: .2s all ease-in;
+}
+
+.title{
+  font-family: Roboto Mono, Consolas, Cousine, Segoe UI Mono, monospace;
+  display: block;
+  font-weight: bold;
+  font-size: 1.25rem;
+  line-height: 2rem;
+}
+
+.content{
+  display: block;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  max-width: 26rem;
+  margin-top: .5rem;
+  margin-bottom: 0;
+  color: #616161;
+}

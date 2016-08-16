@@ -1,0 +1,17 @@
+.root{
+  margin-top: 2rem;
+  margin-bottom: 6rem;
+  max-width: 28rem;
+  font-size: 1.25rem;
+  line-height: 2rem;
+}
+
+.subheader{
+  padding-bottom: 1rem;
+  font-size: .875rem;
+  font-weight: bold;
+  color: grey;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+}

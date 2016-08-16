@@ -1,33 +1,38 @@
-var path = require('path');
-var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin'),
+    StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin'),
+    BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
+    data = require('./data.js'),
+    path = require('path');
 
 module.exports = {
-  devtool: 'eval',
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    './src/index'
-  ],
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
-  module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      include: path.join(__dirname, 'src')
-  },{
-    test: /\.css$/,
-    loaders: [
-        'style?sourceMap',
-        'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'
+    entry: './src/router',
+    output: {
+        path: './build',
+        filename: 'bundle.js',
+        libraryTarget: 'umd',
+        publicPath: '/'
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                loader: 'babel',
+                include: __dirname + '/src',
+            },
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract('css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'),
+                include: __dirname + '/src'
+            }
+        ],
+    },
+    plugins: [
+        new ExtractTextPlugin("styles.css"),
+        new StaticSiteGeneratorPlugin('main', data.routes, data),
+        new BrowserSyncPlugin({
+            host: 'localhost',
+            port: 3000,
+            proxy: 'http://localhost:8080/'
+        })
     ]
-}]
-  }
 };

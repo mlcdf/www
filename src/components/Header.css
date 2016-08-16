@@ -3,14 +3,14 @@
     margin-bottom: 4rem;
 }
 
-.logo: {
-    color: #FF5252;
-    font-weight: bold;
+.logo {
+    font-family: Roboto Mono, Consolas, Cousine, Segoe UI Mono, 'monospace';
     font-size: 1.125rem;
-    font-family: 'monospace';
+    font-weight: bold;
+    color: #FF5252;
 }
 
-.hover:hover {
+.logo:hover {
     background-color: #FF5252;
     color: #FFF;
 }

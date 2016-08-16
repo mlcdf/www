@@ -3,7 +3,8 @@ body {
     padding: 0;
     font-size: 16px;
     background-color: #FAFAFA;
-    color: #212121;
+    color: #111111;
+    font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, 'Roboto', sans-serif;
 }
 
 a {
@@ -19,4 +20,10 @@ a {
 ::-moz-selection {
     background-color: #111111;
     color: #FFF;
+}
+
+main{
+  font-size: 1.25rem;
+  margin-left: 16rem;
+  max-width: 100rem;
 }
