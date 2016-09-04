@@ -1,0 +1,20 @@
+# humanstxt.org/
+
+# TEAM -----
+
+  Maxime Le Conte des Floris (@mlcdf) - Design & Development
+
+# TECHNOLOGY -----
+
+Frontend
+  - HTML5
+  - CSS Modules
+  - MOBILE
+    + manifest.json
+    + <meta name="theme-color">
+
+Tools
+  - ReactStaticSiteGenerator
+  - Babel
+  - Webpack
+  - Browsersync

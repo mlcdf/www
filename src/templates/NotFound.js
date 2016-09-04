@@ -7,7 +7,7 @@ export default class NotFound extends Component {
   render() {
     return (
         <main>
-            <Header name="mlcdf"/>
+            <Header name="/mlcdf"/>
 
             <Section title="404">
                 Looks like you got yourself lost. Click here to return to '/'.

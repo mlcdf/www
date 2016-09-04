@@ -1,22 +1,33 @@
-.root{
-  margin-bottom: 3rem;
+.root {
+  margin-top: 2rem;
+  padding-bottom: 3rem;
   transition: .2s all ease-in;
 }
 
-.title{
-  font-family: Roboto Mono, Consolas, Cousine, Segoe UI Mono, monospace;
-  display: block;
+.title {
+  font-size: 2.5rem;
   font-weight: bold;
-  font-size: 1.25rem;
   line-height: 2rem;
 }
 
-.content{
+.content {
   display: block;
-  font-size: 1.25rem;
-  line-height: 1.5;
-  max-width: 26rem;
-  margin-top: .5rem;
+  margin-top: 1rem;
   margin-bottom: 0;
-  color: #616161;
+}
+
+@media (max-width: 460px) {
+  .root {
+    margin-top: 1rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .content {
+    margin-top: .5rem;
+  }
+
 }

@@ -1,0 +1,24 @@
+.root {
+  width: 32rem;
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+
+.title {
+  font-family: monospace;
+  padding-left: 6rem;
+  padding-bottom: 2rem;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  padding-left: 6rem;
+}
+
+.root nav > * {
+  margin: .75rem 0;
+}

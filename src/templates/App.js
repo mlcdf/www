@@ -8,10 +8,8 @@ export default class App extends Component {
       <html lang="en">
         <Head title='Maxime Le Conte des Floris'/>
         <body>
-        <main>
-            {this.props.children}
-      </main>
-    </body>
+          {this.props.children}
+        </body>
     </html>
     );
   }
