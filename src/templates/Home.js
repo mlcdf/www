@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import Section from '../components/Section';
 import Row from '../components/Row';
-import Nav from '../components/Nav';
 
 export default class Home extends Component {
   render() {
