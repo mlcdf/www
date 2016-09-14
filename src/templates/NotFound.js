@@ -10,7 +10,7 @@ export default class NotFound extends Component {
             <Header name="/mlcdf"/>
 
             <Section title="404">
-                Looks like you got yourself lost. Click here to return to '/'.
+                Looks like you've got yourself lost. <a href="/">Click here.</a>
             </Section>
       </main>
     );
