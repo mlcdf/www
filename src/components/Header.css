@@ -4,7 +4,14 @@
 }
 
 .logo {
-    font-family: Roboto Mono, Monaco, Consolas, Cousine, Segoe UI Mono, 'monospace';
+    font-family: Menlo, Monaco, /* MacOS */
+                'Segoe UI Mono, Inconsolata, Consolas, Lucida Console', /* Windows */
+                'Fira Mono', /* Firefox OS */
+                'Roboto Mono', 'Noto Mono', /* Google stuff */
+                'Droid Sans Mono', /* Old Google stuff */
+                'Ubuntu Mono', 'DejaVu Sans Mono', 'Liberation Mono', /* Linux */
+                'Courier New', /* MacOS and Windows */
+                monospace; /* Everything else */
     font-weight: bold;
     font-size: 5rem;
     line-height: 7rem;
