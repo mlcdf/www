@@ -12,7 +12,7 @@ export default class Head extends React.Component {
               <meta name="theme-color" content="#333"/>
               <title>{this.props.title}</title>
               <link rel="manifest" href="/manifest.json"/>
-              <link rel="stylesheet" href="/styles.css"/>
+              <link rel="stylesheet" type="text/css" href="/styles.css"/>
             </head>
         )
     }
