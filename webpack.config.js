@@ -1,9 +1,9 @@
-var ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin'),
-    BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
-    CopyWebpackPlugin = require('copy-webpack-plugin'),
-    data = require('./data.js'),
-    path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin'),
+      StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin'),
+      BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
+      CopyWebpackPlugin = require('copy-webpack-plugin'),
+      data = require('./data.js'),
+      path = require('path');
 
 module.exports = {
   context: path.join(__dirname, '.'),
@@ -23,7 +23,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'),
+                loader: ExtractTextPlugin.extract('css?modules&minimize&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'),
                 include: __dirname + '/src'
             }
         ],
