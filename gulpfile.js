@@ -2,7 +2,7 @@ const gulp = require('gulp')
 const gutil = require('gulp-util')
 const watch = require('gulp-watch')
 const autoprefixer = require('gulp-autoprefixer')
-const minifyCSS = require('gulp-minify-css')
+const cssnano = require('gulp-cssnano')
 const sass = require('gulp-sass')
 const imagemin = require('gulp-imagemin')
 const svgmin = require('gulp-svgmin')
@@ -14,6 +14,7 @@ const browserSync = require('browser-sync')
 const csslint = require('gulp-csslint')
 const plumber = require('gulp-plumber')
 const browserReload = browserSync.reload
+
 
 /**
  * Wait for jekyll-build, then launch the Server
@@ -45,7 +46,7 @@ gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
 
 gulp.task('minify-css', function(){
   gulp.src('./css/nkd.css') // set this to the file(s) you want to minify.
-    .pipe(minifyCSS())
+    .pipe(cssnano())
     .pipe(size({gzip: false, showFiles: true, title:'minified css'}))
     .pipe(size({gzip: true, showFiles: true, title:'minified css'}))
     .pipe(rename('nkd.min.css'))
@@ -101,7 +102,11 @@ gulp.task('sass', function(){
           .pipe(size({gzip: false, showFiles: true, title:'after vendor prefixes'}))
           .pipe(size({gzip: true, showFiles: true, title:'after vendor prefixes'}))
           .pipe(gulp.dest('css'))
-          .pipe(minifyCSS())
+          .pipe(cssnano({
+              discardComments: {
+                  removeAll: true
+              }
+          }))
           .pipe(size({gzip: false, showFiles: true, title:'minified css'}))
           .pipe(size({gzip: true, showFiles: true, title:'minified css'}))
           .pipe(rename('nkd.min.css'))
