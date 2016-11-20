@@ -25,8 +25,8 @@ body {
     /* stylelint-enable */
   font-size: 1rem;
   line-height: 2rem;
-  background-color: #2a2833;
-  color: #eff0eb;
+  background-color: $dark-purple;
+  color: $silver;
 }
 
 @media screen and (min-width: 560px) {
