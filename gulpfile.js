@@ -1,3 +1,5 @@
+const cp = require('child_process')
+const browserSync = require('browser-sync')
 const gulp = require('gulp')
 const watch = require('gulp-watch')
 const autoprefixer = require('gulp-autoprefixer')
@@ -5,12 +7,9 @@ const cssnano = require('gulp-cssnano')
 const sass = require('gulp-sass')
 const imagemin = require('gulp-imagemin')
 const svgmin = require('gulp-svgmin')
+const pngcrush = require('imagemin-pngcrush')
 const size = require('gulp-size')
 const rename = require('gulp-rename')
-const cp = require('child_process')
-const pngcrush = require('imagemin-pngcrush')
-const browserSync = require('browser-sync')
-const csslint = require('gulp-csslint')
 const plumber = require('gulp-plumber')
 
 /**
@@ -42,7 +41,11 @@ gulp.task('jekyll-rebuild', ['jekyll-build'], () => {
 
 gulp.task('minify-css', () => {
   gulp.src('./css/nkd.css') // set this to the file(s) you want to minify.
-    .pipe(cssnano())
+    .pipe(cssnano({
+      discardComments: {
+        removeAll: true
+      }
+    }))
     .pipe(size({gzip: false, showFiles: true, title: 'minified css'}))
     .pipe(size({gzip: true, showFiles: true, title: 'minified css'}))
     .pipe(rename('nkd.min.css'))
@@ -68,18 +71,6 @@ gulp.task('minify-images', () => {
     .pipe(size({gzip: false, showFiles: true, title: 'minified images'}))
     .pipe(size({gzip: true, showFiles: true, title: 'minified images'}))
     .pipe(gulp.dest('./img')) // change the dest if you don't want your images overwritten
-})
-
-// Use csslint without box-sizing or compatible vendor prefixes (these
-// don't seem to be kept up to date on what to yell about)
-gulp.task('csslint', () => {
-  gulp.src('./css/*.css')
-    .pipe(csslint({
-      'compatible-vendor-prefixes': false,
-      'box-sizing': false,
-      'important': false
-    }))
-    .pipe(csslint.reporter())
 })
 
 // Task that compiles scss files down to good old css
