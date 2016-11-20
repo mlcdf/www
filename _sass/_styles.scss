@@ -10,28 +10,25 @@
 html {
   font-size: 16px;
 }
-/* stylelint-disable value-list-comma-newline-after */
+
 body {
-  font-family:
-    monaco,
-    menlo, /* MacOS and iOS */
+  /* stylelint-disable value-list-comma-newline-after */
+  font-family: monaco, menlo, /* MacOS and iOS */
     'Consolas', /* Windows */
     'Fira Mono', /* Firefox OS */
-    roboto mono,
-    noto mono, /* Google stuff */
+    roboto mono, noto mono, /* Google stuff */
     'Droid Sans', /* Old Google stuff */
-    'DejaVu Sans Mono',
-    cousine,
-    ubuntu mono, /* Linux stuff */
+    'DejaVu Sans Mono', cousine, ubuntu mono, /* Linux stuff */
     'Courrier', /* Windows stuff */
     'Liberation Mono', /* Linux */
     monospace; /* Everything else */
+    /* stylelint-enable */
   font-size: 1rem;
   line-height: 2rem;
   background-color: #2a2833;
   color: #eff0eb;
 }
-/* stylelint-enable */
+
 @media screen and (min-width: 560px) {
   body {
     font-size: 1.25rem;
