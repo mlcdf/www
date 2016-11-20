@@ -59,7 +59,7 @@ gulp.task('minify-svg', () => {
       .pipe(gulp.dest('./img/svg'))
 })
 
-gulp.task('minify-images', () => {
+gulp.task('minify-img', () => {
   gulp.src('./img/*')
     .pipe(size({gzip: false, showFiles: true, title: 'original image size'}))
     .pipe(size({gzip: true, showFiles: true, title: 'original image size'}))

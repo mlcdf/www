@@ -5,7 +5,8 @@
   "description": "Personal website of Maxime Le Conte des Floris",
   "scripts": {
     "start": "gulp",
-    "lint": "eslint *.js && stylelint _sass/*.*"
+    "lint": "eslint *.js && stylelint _sass/*.*",
+    "prod": "jekyll build && gulp production"
   },
   "repository": {
     "type": "git",
