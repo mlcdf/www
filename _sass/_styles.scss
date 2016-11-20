@@ -10,14 +10,19 @@
 html {
   font-size: 16px;
 }
-
+/* stylelint-disable value-list-comma-newline-after */
 body {
-  font-family: monaco, menlo, /* MacOS and iOS */
+  font-family:
+    monaco,
+    menlo, /* MacOS and iOS */
     'Consolas', /* Windows */
     'Fira Mono', /* Firefox OS */
-    roboto mono, noto mono, /* Google stuff */
+    roboto mono,
+    noto mono, /* Google stuff */
     'Droid Sans', /* Old Google stuff */
-    'DejaVu Sans Mono', cousine, ubuntu mono, /* Linux stuff */
+    'DejaVu Sans Mono',
+    cousine,
+    ubuntu mono, /* Linux stuff */
     'Courrier', /* Windows stuff */
     'Liberation Mono', /* Linux */
     monospace; /* Everything else */
@@ -26,7 +31,7 @@ body {
   background-color: #2a2833;
   color: #eff0eb;
 }
-
+/* stylelint-enable */
 @media screen and (min-width: 560px) {
   body {
     font-size: 1.25rem;
@@ -55,7 +60,7 @@ a:hover {
 }
 
 .project {
-  padding: .75rem 0;
+  padding: 0.75rem 0;
 
   &__name {
     text-decoration: none;
@@ -65,11 +70,11 @@ a:hover {
 }
 
 .header {
-  margin: 4rem 0 .5rem;
+  margin: 4rem 0 0.5rem;
 
   &__title {
     text-align: center;
-    letter-spacing: .3rem;
+    letter-spacing: 0.3rem;
     margin: 0;
     color: $orange;
 
@@ -85,11 +90,11 @@ a:hover {
   justify-content: center;
   margin-bottom: 4rem;
   padding-bottom: 2rem;
-  border-bottom: solid 1px rgba(255, 255, 255, .2);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.2);
 
   &__item {
     display: block;
-    margin: .5rem;
+    margin: 0.5rem;
   }
 }
 
@@ -100,9 +105,8 @@ p {
 .page__title {
   font-size: 1.5rem;
   margin: 3rem 0 1.5rem;
-  padding-bottom: .5rem;
+  padding-bottom: 0.5rem;
 }
-
 
 .footer {
   display: flex;
@@ -111,12 +115,11 @@ p {
 
   &__item {
     display: block;
-    margin: .5rem;
+    margin: 0.5rem;
   }
 }
 
-
-// Utilities
+/* Utilities */
 
 .center {
   text-align: center;

@@ -33,15 +33,17 @@
 @mixin breakpoint($viewport-width) {
   @if $viewport-width == not-small {
     @media screen
-       and (min-width:$MEDIUM-min-width) { @content; }
+      and (min-width: $MEDIUM-min-width) { @content; }
   }
+
   @else if $viewport-width == medium {
     @media screen
-       and (min-width:$MEDIUM-min-width)
-       and (max-width:$MEDIUM-max-width)   { @content; }
+      and (min-width: $MEDIUM-min-width)
+      and (max-width: $MEDIUM-max-width) { @content; }
   }
+
   @else if $viewport-width == large {
     @media screen
-       and (min-width:$LARGE-min-width) { @content; }
+      and (min-width: $LARGE-min-width) { @content; }
   }
 }
