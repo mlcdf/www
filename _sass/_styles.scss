@@ -21,10 +21,17 @@ body {
     'Courrier', /* Windows stuff */
     'Liberation Mono', /* Linux */
     monospace; /* Everything else */
-  font-size: 1.25rem;
-  line-height: 2.375rem;
+  font-size: 1rem;
+  line-height: 2rem;
   background-color: #2a2833;
   color: #eff0eb;
+}
+
+@media screen and (min-width: 560px) {
+  body {
+    font-size: 1.25rem;
+    line-height: 2.25rem;
+  }
 }
 
 a {
@@ -42,26 +49,9 @@ a:hover {
   padding: 1em;
 }
 
-.list-reset {
+.projectlist {
   list-style: none;
   padding-left: 0;
-}
-
-.caps {
-  text-transform: uppercase;
-  letter-spacing: .1rem;
-}
-
-.bold {
-  font-weight: bold;
-}
-
-.center {
-  text-align: center;
-}
-
-.grey {
-  color: #888;
 }
 
 .project {
@@ -71,10 +61,6 @@ a:hover {
     text-decoration: none;
     padding-bottom: 2px;
     color: $blue;
-  }
-
-  &__description {
-
   }
 }
 
@@ -127,4 +113,11 @@ p {
     display: block;
     margin: .5rem;
   }
+}
+
+
+// Utilities
+
+.center {
+  text-align: center;
 }
