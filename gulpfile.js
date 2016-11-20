@@ -99,6 +99,25 @@ gulp.task('sass', () => {
       }))
 })
 
+gulp.task('generate-service-worker', function (callback) {
+  const path = require('path')
+  const swPrecache = require('sw-precache')
+
+  swPrecache.write(path.join('service-worker.js'), {
+    staticFileGlobs: [
+      '/',
+      'index.html',
+      'css/nkd.css',
+      'about/',
+      'about/index.html',
+      'projects/',
+      'projects/index.html',
+      'scripts/app.js',
+      'manifest.json'],
+    stripPrefix: ''
+  }, callback)
+})
+
 gulp.task('production', () => {
   gulp.run('minify-css', 'minify-img', 'minify-svg')
 })
@@ -110,4 +129,4 @@ gulp.task('watch', () => {
   gulp.watch(['index.html', '_layouts/*.html', '_includes/*.html', 'projects/*.*', 'about/*.*', '_posts/*.*', '_sass/**/*.scss', 'js/**/*', 'images/*'], ['jekyll-rebuild'])
 })
 
-gulp.task('default', ['browser-sync', 'watch'])
+gulp.task('default', ['generate-service-worker', 'browser-sync', 'watch'])
