@@ -1,7 +1,7 @@
 const gulp = require('gulp')
 const gutil = require('gulp-util')
 const watch = require('gulp-watch')
-const prefix = require('gulp-autoprefixer')
+const autoprefixer = require('gulp-autoprefixer')
 const minifyCSS = require('gulp-minify-css')
 const sass = require('gulp-sass')
 const imagemin = require('gulp-imagemin')
@@ -94,7 +94,10 @@ gulp.task('sass', function(){
           .pipe(sass())
           .pipe(size({gzip: false, showFiles: true, title:'without vendor prefixes'}))
           .pipe(size({gzip: true, showFiles: true, title:'without vendor prefixes'}))
-          .pipe(prefix())
+          .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+          }))
           .pipe(size({gzip: false, showFiles: true, title:'after vendor prefixes'}))
           .pipe(size({gzip: true, showFiles: true, title:'after vendor prefixes'}))
           .pipe(gulp.dest('css'))
