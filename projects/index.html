@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+<h2 class="page__title">Projects</h2>
+
+{% for project in site.data.projects %}
+<div class="project mono">
+  <div class="project__description">
+    <a class="project__name" href="{{ project.url }}">{{ project.name }}</a>:
+    {{ project.description }}
+  </div>
+</div>
+{% endfor %}

@@ -1,4 +1,7 @@
 node_modules
 npm-debug.log
-build
-dist
+.ruby-version
+.ruby-gemset
+Gemfile.lock
+.sass-cache
+_site

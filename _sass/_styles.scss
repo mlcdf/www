@@ -1,0 +1,125 @@
+/* ==========================================================================
+   SITE STYLES
+   ========================================================================== */
+
+/**
+ * Add your site styles here. Break things out to additional partials if you'd like
+ * and add them in import.scss
+ */
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: monaco, menlo, /* MacOS and iOS */
+    'Consolas', /* Windows */
+    'Fira Mono', /* Firefox OS */
+    roboto mono, noto mono, /* Google stuff */
+    'Droid Sans', /* Old Google stuff */
+    'DejaVu Sans Mono', cousine, ubuntu mono, /* Linux stuff */
+    'Courrier', /* Windows stuff */
+    'Liberation Mono', /* Linux */
+    monospace; /* Everything else */
+  font-size: 1.25rem;
+  line-height: 2.375rem;
+  background-color: #2a2833;
+  color: #eff0eb;
+}
+
+a {
+  color: $blue;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.wrapper {
+  max-width: 720px;
+  margin: auto;
+  padding: 1em;
+}
+
+.list-reset {
+  list-style: none;
+  padding-left: 0;
+}
+
+.caps {
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.center {
+  text-align: center;
+}
+
+.grey {
+  color: #888;
+}
+
+.project {
+  padding: .75rem 0;
+
+  &__name {
+    text-decoration: none;
+    padding-bottom: 2px;
+    color: $blue;
+  }
+
+  &__description {
+
+  }
+}
+
+.header {
+  margin: 4rem 0 .5rem;
+
+  &__title {
+    text-align: center;
+    letter-spacing: .3rem;
+    margin: 0;
+    color: $orange;
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: solid 1px rgba(255, 255, 255, .2);
+
+  &__item {
+    display: block;
+    margin: .5rem;
+  }
+}
+
+p {
+  margin-bottom: 3rem;
+}
+
+.page__title {
+  font-size: 1.5rem;
+  margin: 3rem 0 1.5rem;
+  padding-bottom: .5rem;
+}
+
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 6rem;
+
+  &__item {
+    display: block;
+    margin: .5rem;
+  }
+}
