@@ -4,7 +4,8 @@
   "private": true,
   "description": "Personal website of Maxime Le Conte des Floris",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "lint": "eslint *.js && stylelint _sass/*.*"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
     "gulp-util": "~2.2.12",
     "gulp-watch": "^0.6.8",
     "imagemin-pngcrush": "^1.0.0",
-    "jshint-stylish": "~0.1.5"
+    "stylelint": "^7.6.0",
+    "stylelint-config-standard": "^15.0.0"
   }
 }
