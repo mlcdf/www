@@ -113,7 +113,9 @@ gulp.task('generate-service-worker', function (callback) {
       'projects/',
       'projects/index.html',
       'scripts/app.js',
-      'manifest.json'],
+      'manifest.json',
+      'favicon.ico',
+      'assets/images/favicons/*.*'],
     stripPrefix: ''
   }, callback)
 })
