@@ -86,6 +86,11 @@ a:hover {
     letter-spacing: .3rem;
     margin: 0;
     color: $orange;
+
+    & > a {
+      color: $orange;
+      text-decoration: none;
+    }
   }
 }
 
