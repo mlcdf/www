@@ -10,11 +10,16 @@ const pngcrush = require('imagemin-pngcrush')
 const size = require('gulp-size')
 const plumber = require('gulp-plumber')
 const htmlmin = require('gulp-htmlmin')
+const babel = require('gulp-babel')
+const uglify = require('gulp-uglify')
+const concat = require('gulp-concat')
+const gulpif = require('gulp-if')
+const useref = require('gulp-useref')
 
 /**
  * Wait for jekyll-build, then launch the Server
  */
-gulp.task('browser-sync', ['sass', 'jekyll-build'], () => {
+gulp.task('browser-sync', ['sass', 'es6', 'jekyll-build'], () => {
   browserSync.init({
     server: {
       baseDir: '_site'
@@ -59,12 +64,6 @@ gulp.task('minify-img', () => {
     .pipe(gulp.dest('./img')) // change the dest if you don't want your images overwritten
 })
 
-gulp.task('minify-html', () => {
-  return gulp.src('./_site/**/*.html')
-    .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(gulp.dest('./_site'))
-})
-
 // Task that compiles scss files down to good old css
 gulp.task('sass', () => {
   return gulp.src('./_sass/main.scss')
@@ -74,12 +73,17 @@ gulp.task('sass', () => {
       browsers: ['last 2 versions'],
       cascade: false
     }))
-    .pipe(cssnano({
-      discardComments: {
-        removeAll: true
-      }
-    }))
     .pipe(gulp.dest('./css'))
+    .pipe(browserSync.reload({stream: true}))
+})
+
+gulp.task('es6', () => {
+  return gulp.src('./_scripts/**/*.js')
+    .pipe(plumber())
+    .pipe(babel())
+    .pipe(concat('main.js'))
+    .pipe(gulp.dest('./scripts'))
+    .pipe(browserSync.reload({stream: true}))
 })
 
 gulp.task('generate-service-worker', function (callback) {
@@ -106,18 +110,26 @@ gulp.task('generate-service-worker', function (callback) {
 gulp.task('production', [
   'jekyll-build',
   'sass',
+  'es6',
   'generate-service-worker',
   'minify-img',
   'minify-svg'], () => {
-    gulp.run('minify-html') // Hack to that minify-html doesn't start before the end of jekyll-build
+    return gulp.src('_site/**/*.html')
+    .pipe(useref({searchPath: ['/_site', '.']}))
+    .pipe(gulpif('**/*.js', uglify()))
+    .pipe(gulpif('**/*.css', cssnano({safe: true, autoprefixer: false, discardComments: { removeAll: true }})))
+    .pipe(gulpif('*.html', htmlmin({collapseWhitespace: true})))
+    .pipe(gulp.dest('./_site'))
   }
 )
 
 gulp.task('watch', () => {
+  // Watch .js files
+  gulp.watch('_scripts/**/*.js', ['es6'])
   // Watch .scss files
   gulp.watch('_sass/**/*.scss', ['sass'])
    // Watch .html files and posts
-  gulp.watch(['index.html', '_layouts/*.html', '_includes/*.html', 'projects/*.*', 'about/*.*', '_posts/*.*', '_sass/**/*.scss', 'js/**/*', 'images/*'], ['jekyll-rebuild'])
+  gulp.watch(['index.html', '_layouts/*.html', '_includes/*.html', 'projects/*.*', 'about/*.*', '_posts/*.*', '_sass/**/*.scss', '_scripts/**/*.js', 'images/*'], ['jekyll-rebuild'])
 })
 
 gulp.task('default', ['generate-service-worker', 'browser-sync', 'watch'])

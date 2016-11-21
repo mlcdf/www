@@ -6,4 +6,5 @@ Gemfile.lock
 .sass-cache
 _site
 css
+scripts
 service-worker.js
