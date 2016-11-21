@@ -13,7 +13,8 @@ html {
 
 body {
   /* stylelint-disable value-list-comma-newline-after */
-  font-family: monaco, menlo, /* MacOS and iOS */
+  font-family:
+    monaco, menlo, /* MacOS and iOS */
     'Consolas', /* Windows */
     'Fira Mono', /* Firefox OS */
     roboto mono, noto mono, /* Google stuff */
@@ -22,7 +23,7 @@ body {
     'Courrier', /* Windows stuff */
     'Liberation Mono', /* Linux */
     monospace; /* Everything else */
-    /* stylelint-enable */
+  /* stylelint-enable */
   font-size: 1rem;
   line-height: 2rem;
   background-color: $dark-purple;
@@ -46,7 +47,7 @@ a:hover {
 }
 
 .wrapper {
-  max-width: 720px;
+  max-width: 700px;
   margin: auto;
   padding: 1em;
 }
