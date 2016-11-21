@@ -1,0 +1,9 @@
+name: "mlcdf"
+description: "Maxime Le Conte des Floris is a web developer."
+author: "mlcdf"
+url: "https://mlcdf.com"
+future: true
+exclude: [README.md, Rakefile, node_modules, npm-debug.log, gulpfile.js, LICENSE, yarn.lock]
+#paginate: 5
+permalink: pretty
+# highlighter: pygments

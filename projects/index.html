@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+<h2 class="page__title">Projects</h2>
+<ul class="projectlist">
+  {% for project in site.data.projects %}
+  <li class="project">
+    <div class="project__description">
+      <a class="project__name" href="{{ project.url }}">{{ project.name }}</a>:
+      {{ project.description }}
+    </div>
+  </li>
+  {% endfor %}
+
+</ul>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include _head.html %}
+  <body>
+    <div class="wrapper">
+      {% include _header.html %}
+      {% include _nav.html %}
+      <main>
+        {{ content }}
+      </main>
+      {% include _footer.html %}
+      <script src="/scripts/app.js"></script>
+    </div>
+  </body>
+</html>
