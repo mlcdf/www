@@ -1,7 +1,6 @@
 const cp = require('child_process')
-const browserSync = require('browser-sync')
+const browserSync = require('browser-sync').create()
 const gulp = require('gulp')
-const watch = require('gulp-watch')
 const autoprefixer = require('gulp-autoprefixer')
 const cssnano = require('gulp-cssnano')
 const sass = require('gulp-sass')
@@ -9,14 +8,14 @@ const imagemin = require('gulp-imagemin')
 const svgmin = require('gulp-svgmin')
 const pngcrush = require('imagemin-pngcrush')
 const size = require('gulp-size')
-const rename = require('gulp-rename')
 const plumber = require('gulp-plumber')
+const htmlmin = require('gulp-htmlmin')
 
 /**
  * Wait for jekyll-build, then launch the Server
  */
 gulp.task('browser-sync', ['sass', 'jekyll-build'], () => {
-  browserSync({
+  browserSync.init({
     server: {
       baseDir: '_site'
     }
@@ -39,24 +38,11 @@ gulp.task('jekyll-rebuild', ['jekyll-build'], () => {
   browserSync.reload()
 })
 
-gulp.task('minify-css', () => {
-  gulp.src('./css/nkd.css') // set this to the file(s) you want to minify.
-    .pipe(cssnano({
-      discardComments: {
-        removeAll: true
-      }
-    }))
-    .pipe(size({gzip: false, showFiles: true, title: 'minified css'}))
-    .pipe(size({gzip: true, showFiles: true, title: 'minified css'}))
-    .pipe(rename('nkd.min.css'))
-    .pipe(gulp.dest('./css/'))
-})
-
 // Task to optimize and minify svg
 gulp.task('minify-svg', () => {
   gulp.src('./img/svg')
-      .pipe(svgmin())
-      .pipe(gulp.dest('./img/svg'))
+    .pipe(svgmin())
+    .pipe(gulp.dest('./img/svg'))
 })
 
 gulp.task('minify-img', () => {
@@ -73,30 +59,27 @@ gulp.task('minify-img', () => {
     .pipe(gulp.dest('./img')) // change the dest if you don't want your images overwritten
 })
 
+gulp.task('minify-html', () => {
+  return gulp.src('./_site/**/*.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('./_site'))
+})
+
 // Task that compiles scss files down to good old css
 gulp.task('sass', () => {
-  gulp.src('./_sass/nkd.scss')
-      .pipe(watch((files) => {
-        return files.pipe(plumber())
-          .pipe(sass())
-          .pipe(size({gzip: false, showFiles: true, title: 'without vendor prefixes'}))
-          .pipe(size({gzip: true, showFiles: true, title: 'without vendor prefixes'}))
-          .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: false
-          }))
-          .pipe(size({gzip: false, showFiles: true, title: 'after vendor prefixes'}))
-          .pipe(size({gzip: true, showFiles: true, title: 'after vendor prefixes'}))
-          .pipe(gulp.dest('css'))
-          .pipe(cssnano({
-            discardComments: {
-              removeAll: true
-            }
-          }))
-          .pipe(size({gzip: false, showFiles: true, title: 'minified css'}))
-          .pipe(size({gzip: true, showFiles: true, title: 'minified css'}))
-          .pipe(rename('nkd.min.css'))
-      }))
+  return gulp.src('./_sass/main.scss')
+    .pipe(plumber())
+    .pipe(sass())
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
+    .pipe(cssnano({
+      discardComments: {
+        removeAll: true
+      }
+    }))
+    .pipe(gulp.dest('./css'))
 })
 
 gulp.task('generate-service-worker', function (callback) {
@@ -107,7 +90,7 @@ gulp.task('generate-service-worker', function (callback) {
     staticFileGlobs: [
       '/',
       'index.html',
-      'css/nkd.css',
+      'css/main.css',
       'about/',
       'about/index.html',
       'projects/',
@@ -120,9 +103,15 @@ gulp.task('generate-service-worker', function (callback) {
   }, callback)
 })
 
-gulp.task('production', () => {
-  gulp.run('minify-css', 'minify-img', 'minify-svg')
-})
+gulp.task('production', [
+  'jekyll-build',
+  'sass',
+  'generate-service-worker',
+  'minify-img',
+  'minify-svg'], () => {
+    gulp.run('minify-html') // Hack to that minify-html doesn't start before the end of jekyll-build
+  }
+)
 
 gulp.task('watch', () => {
   // Watch .scss files
