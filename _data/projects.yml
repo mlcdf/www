@@ -1,5 +1,5 @@
 - name: cook
-  description: small command line tool written in Node.js which allows you to download & install popular softwares on Ubuntu.
+  description: Small command line tool written in Node.js which allows you to download & install popular softwares on Ubuntu.
   url: https://github.com/mlcdf/cook
 
 - name: ikarauraga
@@ -15,7 +15,7 @@
   url: https://github.com/mlcdf/opaline
 
 - name: fiole
-  description: very basic RSS reader built with Flask. W.I.P.
+  description: Very basic RSS reader built with Flask. W.I.P.
   url: https://github.com/mlcdf/fiole
 
 - name: generator-pym
@@ -27,9 +27,9 @@
   url: https://github.com/mlcdf/material-utilities
 
 - name: atom-system-font-snippets
-  description: Atom Snippets for beautiful system fonts.
+  description: System font snippets for Atom.
   url: https://github.com/mlcdf/atom-system-font-snippets
 
 - name: pycharm-panda-syntax
-  description: Somewhat port of atom-panda-syntax for PyCharm.
+  description: Somewhat port of the Panda Syntax theme for PyCharm.
   url: https://github.com/mlcdf/pycharm-panda-syntax
