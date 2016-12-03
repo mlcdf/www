@@ -1,35 +1,35 @@
-- name: Cook
+- name: cook
   description: small command line tool written in Node.js which allows you to download & install popular softwares on Ubuntu.
   url: https://github.com/mlcdf/cook
 
-- name: Ikarauraga
+- name: ikarauraga
   description: 2D space shooter made with Unity for Ludum Dare 35.
   url: https://github.com/mlcdf/ikarauraga
 
-- name: Dotfiles
+- name: dotfiles
   description: My config files.
   url: https://github.com/mlcdf/dotfiles
 
-- name: Opaline
+- name: opaline
   description: Node.js CLI that gives you quick access to popular color palettes.
   url: https://github.com/mlcdf/opaline
 
-- name: Fiole
+- name: fiole
   description: very basic RSS reader built with Flask. W.I.P.
   url: https://github.com/mlcdf/fiole
 
-- name: Generator Pym
+- name: generator-pym
   description: Scaffold out a Python module using Yeoman.
   url: https://github.com/mlcdf/generator-pym
 
-- name: Material Utilities
+- name: material-utilities
   description: Set of CSS classes & custom properties for Material shadows and opacities.
   url: https://github.com/mlcdf/material-utilities
 
-- name: Atom System Font Snippets
+- name: atom-system-font-snippets
   description: Atom Snippets for beautiful system fonts.
   url: https://github.com/mlcdf/atom-system-font-snippets
 
-- name: PyCharm Panda Syntax
+- name: pycharm-panda-syntax
   description: Somewhat port of atom-panda-syntax for PyCharm.
   url: https://github.com/mlcdf/pycharm-panda-syntax
