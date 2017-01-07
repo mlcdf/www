@@ -1,6 +1,6 @@
-name: "mlcdf"
+name: "Maxime Le Conte des Floris"
 description: "Maxime Le Conte des Floris is a web developer."
-author: "mlcdf"
+author: "Maxime Le Conte des Floris"
 url: "https://mlcdf.com"
 future: true
 exclude: [README.md, Rakefile, node_modules, npm-debug.log, gulpfile.js, LICENSE, yarn.lock]

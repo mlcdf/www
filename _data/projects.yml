@@ -1,35 +1,34 @@
 - name: cook
-  description: Small command line tool written in Node.js which allows you to download & install popular softwares on Ubuntu.
+  description: CLI written in Node.js which allows you to easily install softwares on Ubuntu.
   url: https://github.com/mlcdf/cook
+  img: 1f4e6
+  img_alt: package emoji
+  color: 83dcff
 
 - name: ikarauraga
-  description: 2D space shooter made with Unity for Ludum Dare 35.
+  description: 2D space shooter made with Unity for Ludum Dare 35 with Clément Stéphano.
   url: https://github.com/mlcdf/ikarauraga
+  img: 1f3ae
+  img_alt: video game controller emoji
+  color: f51843
 
 - name: dotfiles
-  description: My config files.
+  description: 'My config files: zsh, oh-my-zsh, z, git, node.js, python, atom, hyper, ...'
   url: https://github.com/mlcdf/dotfiles
-
-- name: opaline
-  description: Node.js CLI that gives you quick access to popular color palettes.
-  url: https://github.com/mlcdf/opaline
-
-- name: fiole
-  description: Very basic RSS reader built with Flask. W.I.P.
-  url: https://github.com/mlcdf/fiole
+  img: 1f527
+  img_alt: wrench emoji
+  color: ffeb3b
 
 - name: generator-pym
-  description: Scaffold out a Python module using Yeoman.
+  description: Scaffold out a Python module. Includes CI, license, Makefile, pylint, ...
   url: https://github.com/mlcdf/generator-pym
+  img: 1f40d
+  img_alt: snake emoji
+  color: e9e9e9
 
 - name: material-utilities
   description: Set of CSS classes & custom properties for Material shadows and opacities.
   url: https://github.com/mlcdf/material-utilities
-
-- name: atom-system-font-snippets
-  description: System font snippets for Atom.
-  url: https://github.com/mlcdf/atom-system-font-snippets
-
-- name: pycharm-panda-syntax
-  description: Somewhat port of the Panda Syntax theme for PyCharm.
-  url: https://github.com/mlcdf/pycharm-panda-syntax
+  img: '2728'
+  img_alt: sparkle emoji
+  color: '000000'

@@ -91,7 +91,7 @@ gulp.task('generate-service-worker', function (callback) {
   const swPrecache = require('sw-precache')
 
   swPrecache.write(path.join('service-worker.js'), {
-    staticFileGlobs: [
+    'staticFileGlobs': [
       '/',
       'index.html',
       'css/main.css',
@@ -102,8 +102,12 @@ gulp.task('generate-service-worker', function (callback) {
       'scripts/app.js',
       'manifest.json',
       'favicon.ico',
-      'assets/images/favicons/*.*'],
-    stripPrefix: ''
+      'assets/images/**/*.*'],
+    stripPrefix: '',
+    'runtimeCaching': [{
+      'handler': 'networkFirst',
+      'urlPattern': /^https:\/\/mlcdf\.com/
+    }]
   }, callback)
 })
 
