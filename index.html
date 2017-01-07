@@ -1,7 +1,29 @@
 ---
+title: project
 layout: default
 ---
+<p>
+  A bunch of recent/ongoing projects.
+</p>
 
-<p class="center">
-  Hi, I'm Max. Welcome to my website!
+<ul class="projectlist">
+  {% for project in site.data.projects %}
+  <li class="project">
+    <div>
+      <a class="project__image" href="{{ project.url }}">
+        <img src="../assets/images/{{ project.img }}.svg" alt="{{ project.img_alt }}" style="background-color: #{{ project.color }}">
+      </a>
+    </div>
+    <div class="project__description">
+      <a class="project__name" href="{{ project.url }}">{{ project.name }}</a>
+      <div>
+        {{ project.description }}
+      </div>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+
+<p>
+  See more at <a href="https://github.com/mlcdf">github.com/mlcdf</a>.
 </p>
