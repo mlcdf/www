@@ -1,6 +1,6 @@
 - name: cook
-  description: CLI written in Node.js which allows you to easily install softwares on Ubuntu.
-  url: https://github.com/mlcdf/cook
+  description: Easily install popular softwares that are missing from APT.
+  url: https://github.com/cook-pkg/cook
   img: 1f4e6
   img_alt: package emoji
   color: 83dcff
