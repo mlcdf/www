@@ -1,8 +1,9 @@
 {% extends "layout.njk" %}
 
 {% block body %}
-<h1>{{ message }}</h1>
-<h2>{{error.status}}</h2>
-<pre>{{error.stack}}</pre>
+<div style="text-align: center; vertical-align: middle;">
+  <span>{{ error.status }} &mdash; This page could not be found.</span>
+</div>
+
 {% endblock %}
 
