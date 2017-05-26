@@ -1,9 +1,0 @@
-name: "Maxime Le Conte des Floris"
-description: "Maxime Le Conte des Floris is a web developer and free software & open source/data enthusiast. He's passionate about performance and UX on the web."
-author: "Maxime Le Conte des Floris"
-url: "https://mlcdf.com"
-future: true
-exclude: [README.md, Rakefile, node_modules, npm-debug.log, gulpfile.js, LICENSE, package.json, yarn.lock]
-#paginate: 5
-permalink: pretty
-# highlighter: pygments
