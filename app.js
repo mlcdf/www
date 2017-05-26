@@ -6,11 +6,13 @@ const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const sassMiddleware = require('node-sass-middleware')
+const helmet = require('helmet')
 
 const index = require('./routes/index')
 
 const app = express()
 
+app.use(helmet())
 app.use(compression())
 
 // view engine setup
