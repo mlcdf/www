@@ -24,7 +24,6 @@ module.exports = function (urlPrefix, rootPath) {
 
   return function(req, res, next) {
     res.locals.asset = function(file, prodFile) {
-      console.log('middlewares::assets')
       return checksumify(prodFile && env === 'production' ? prodFile : file)
     }
     next()
