@@ -4,18 +4,18 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title> {{ title }} </title>
-  {{!--
-  <meta name="author" content="{{ site.author }}">
-  <meta name="description" content="{{ site.description }}">--}}
+  <title>{{ title }}</title>
+  
+  <meta name="author" content="{{ author }}">
+  <meta name="description" content="{{ description }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- build:css /css/main.css -->
-  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="stylesheet" href="{{ asset('styles/style.css') }}">
   <!-- endbuild -->
-  <link rel="manifest" href="/manifest.json">
+  <link rel="manifest" href="{{ asset('/manifest.json') }}">
   <meta name="theme-color" content="#000">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
+  <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/images/favicons/apple-touch-icon.png') }}">
   <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#80eeff">
 </head>
 
@@ -26,25 +26,25 @@
     </header>
     <nav class="nav">
 
-      {{#if isHome}}
+      {% if isHome %}
         <span class="nav__item nav__item--current">Projects</span>
         <a class="nav__item" href="/about">About</a>
-      {{else}}
+      {% else %}
         <a class="nav__item" href="/">Projects</a>
         <span class="nav__item nav__item--current">About</span>
-      {{/if}}
+      {% endif %}
 
       <a class="nav__item" href="mailto:hello@mlcdf.com">Contact</a>
     </nav>
     <main>
-      {{{ body }}}
+      {% block body %} {{ contents | safe }} {% endblock %}
     </main>
     <footer class="footer">
       <a href="mailto:hello@mlcdf.com">hello@mlcdf.com</a> &mdash; (
       <a href="https://keybase.io/mlcdf/pgp_keys.asc?fingerprint=2aab8b415f5370f22b771cb024077cbfef94dd95">pgp key</a>)
     </footer>
     <!-- build:js /scripts/main.js -->
-    <script src="/scripts/app.js" type="text/javascript"></script>
+    <script src="{{ asset('/scripts/app.js') }}" type="text/javascript"></script>
     <!-- endbuild -->
   </div>
 </body>
