@@ -1,4 +1,5 @@
 const express = require('express')
+const compression = require('compression')
 const path = require('path')
 const favicon = require('serve-favicon')
 const logger = require('morgan')
@@ -9,6 +10,8 @@ const sassMiddleware = require('node-sass-middleware')
 const index = require('./routes/index')
 
 const app = express()
+
+app.use(compression())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
