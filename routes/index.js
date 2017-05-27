@@ -4,13 +4,12 @@ const config = require('../config/app.config')
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  console.log('/')
   res.render('index', {
     title: config.name,
     description: config.description,
     projects: require('../models/projects.json'),
     author: config.name,
-    isHome: true,
+    isHome: true
   })
 })
 

@@ -1,4 +1,4 @@
-module.exports = function (req, res, next) {  
+module.exports = function (req, res, next) {
     var engine = res.app.get('engine');
     var config = req.app.get('config');
 

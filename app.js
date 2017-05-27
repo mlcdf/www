@@ -26,7 +26,7 @@ const env = nunjucks.configure(path.join(__dirname, 'views'), {
 
 // Sets Nunjucks as the Express template engine
 app.set('engine', env)
-app.set('view engine', 'njk')
+app.set('view engine', 'njk') // TODO: rename njk to nunjucks (don't forget to also rename the template files)
 // templace caching
 app.enable('view cache')
 
@@ -36,14 +36,6 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
-// app.use(
-//   sassMiddleware({
-//     src: path.join(__dirname, 'public'),
-//     dest: path.join(__dirname, 'public'),
-//     indentedSyntax: false, // true = .sass and false = .scss
-//     sourceMap: true
-//   })
-// )
 
 app.use(
   serveStatic(path.join(__dirname, 'public'), {
@@ -55,7 +47,7 @@ function setCustomCacheControl(res, path) {
   const fileMime = serveStatic.mime.lookup(path)
   if (
     fileMime === 'text/css'||
-    fileMime === 'application/javascript'||
+    fileMime === 'application/javascript'|| // TODO: Prevent sw.js from being cached
     fileMime === 'image/svg+xml'
   ) {
     // Custom Cache-Control for CSS & JS files
