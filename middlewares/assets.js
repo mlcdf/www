@@ -18,7 +18,7 @@ module.exports = function (urlPrefix, rootPath) {
     }
 
     var data = fs.readFileSync(path.join(__dirname, filePath))
-    cache[file] = fileUrl + '?' + cs(data).substr(0, 10)
+    cache[file] = fileUrl + '?' + cs(data)
     return cache[file]
   }
 

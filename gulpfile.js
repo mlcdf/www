@@ -70,6 +70,12 @@ gulp.task('generate-service-worker', function(callback) {
   swPrecache.write(
     path.join('public/sw.js'),
     {
+      staticFileGlobs: [
+        'public/styles/**.css',
+        'public/images/**.*',
+        'public/scripts/**.js',
+        'public/manifest.json'
+      ],
       stripPrefix: 'public',
       runtimeCaching: [
         {
@@ -105,9 +111,9 @@ gulp.task(
 
 gulp.task('watch', () => {
   // Watch .js files
-  gulp.watch('public/**/*.js', ['es6'])
+  gulp.watch('public/**/*.js', ['es6', 'generate-service-worker'])
   // Watch .scss files
-  gulp.watch('public/**/*.scss', ['sass'])
+  gulp.watch('public/**/*.scss', ['sass', 'generate-service-worker'])
 })
 
 gulp.task('browser-sync', function() {
@@ -119,4 +125,10 @@ gulp.task('browser-sync', function() {
   })
 })
 
-gulp.task('default', ['generate-service-worker', 'browser-sync', 'watch'])
+gulp.task('default', [
+  'generate-service-worker',
+  'es6',
+  'sass',
+  'browser-sync',
+  'watch'
+])

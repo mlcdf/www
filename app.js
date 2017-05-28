@@ -43,11 +43,21 @@ app.use(
   })
 )
 
-function setCustomCacheControl(res, path) {
-  const fileMime = serveStatic.mime.lookup(path)
+function setCustomCacheControl(res, filePath) {
+  const fileMime = serveStatic.mime.lookup(filePath)
+
+  if (filePath === path.join(__dirname, 'public/sw.js')) {
+    // https://toot.cafe/@nolan/614271
+    res.setHeader('Cache-Control', 'public, max-age=0') 
+  }
+
+  if (fileMime === 'text/html') {
+    res.setHeader('Cache-Control', 'no-cache') 
+  }
+
   if (
-    fileMime === 'text/css'||
-    fileMime === 'application/javascript'|| // TODO: Prevent sw.js from being cached
+    fileMime === 'text/css' ||
+    fileMime === 'application/javascript' ||
     fileMime === 'image/svg+xml'
   ) {
     // Custom Cache-Control for CSS & JS files
