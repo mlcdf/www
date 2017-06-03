@@ -1,5 +1,4 @@
-const express = require('express')
-const router = express.Router()
+const router = require('express').Router()
 const config = require('../config/app.config')
 
 /* GET home page. */
@@ -19,6 +18,14 @@ router.get('/about', (req, res, next) => {
     description: config.description,
     author: config.name,
     isHome: false
+  })
+})
+
+router.get('/offline', (req, res, next) => {
+  res.render('offline', {
+    title: config.name + ' |  About',
+    description: config.description,
+    author: config.name
   })
 })
 

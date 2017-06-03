@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const cs = require('checksum')
 
-module.exports = function (urlPrefix, rootPath) {
+module.exports = function(urlPrefix, rootPath) {
   const cache = []
   const env = process.env.NODE_ENV
 

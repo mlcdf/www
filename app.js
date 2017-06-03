@@ -1,15 +1,16 @@
-const express = require('express')
-const compression = require('compression')
 const path = require('path')
-const favicon = require('serve-favicon')
-const serveStatic = require('serve-static')
-const logger = require('morgan')
-const cookieParser = require('cookie-parser')
+
 const bodyParser = require('body-parser')
-const sassMiddleware = require('node-sass-middleware')
+const compression = require('compression')
+const cookieParser = require('cookie-parser')
+const express = require('express')
 const helmet = require('helmet')
-const assets = require('./middlewares/assets')
+const logger = require('morgan')
 const nunjucks = require('nunjucks')
+const serveFavicon = require('serve-favicon')
+const serveStatic = require('serve-static')
+
+const assets = require('./middlewares/assets')
 
 const index = require('./routes/index')
 
@@ -17,6 +18,7 @@ const app = express()
 
 app.use(helmet())
 app.use(compression())
+
 
 const env = nunjucks.configure(path.join(__dirname, 'views'), {
   autoescape: true,
@@ -30,13 +32,12 @@ app.set('view engine', 'njk') // TODO: rename njk to nunjucks (don't forget to a
 // templace caching
 app.enable('view cache')
 
-// uncomment after placing your favicon in /public
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
-app.use(logger('dev'))
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(cookieParser())
+app.use(logger('dev')) // what does this do ?
+app.use(bodyParser.json()) // what does this do ?
+app.use(bodyParser.urlencoded({ extended: false })) // what does this do ?
+app.use(cookieParser()) // what does this do ?
 
+app.use(serveFavicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(
   serveStatic(path.join(__dirname, 'public'), {
     setHeaders: setCustomCacheControl
@@ -48,11 +49,11 @@ function setCustomCacheControl(res, filePath) {
 
   if (filePath === path.join(__dirname, 'public/sw.js')) {
     // https://toot.cafe/@nolan/614271
-    res.setHeader('Cache-Control', 'public, max-age=0') 
+    res.setHeader('Cache-Control', 'public, max-age=0')
   }
 
   if (fileMime === 'text/html') {
-    res.setHeader('Cache-Control', 'no-cache') 
+    res.setHeader('Cache-Control', 'no-cache')
   }
 
   if (
@@ -65,8 +66,10 @@ function setCustomCacheControl(res, filePath) {
   }
 }
 
+// Custom Middlewares
 app.use(assets('/', '/public'))
 
+// Custom routes
 app.use('/', index)
 
 // catch 404 and forward to error handler

@@ -1,9 +1,7 @@
-module.exports = function (req, res, next) {
-    var engine = res.app.get('engine');
-    var config = req.app.get('config');
+const appConfig = require('../config/app.config')
 
-    engine.addGlobal('config', config);
-    engine.addGlobal('request', req);
-
-    next();
-};
+module.exports = function(req, res, next) {
+  const engine = req.app.get('engine')
+  engine.addGlobal('app', appConfig)
+  next()
+}

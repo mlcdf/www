@@ -1,19 +1,20 @@
-const cp = require('child_process')
-const browserSync = require('browser-sync')
-const gulp = require('gulp')
-const autoprefixer = require('gulp-autoprefixer')
-const cssnano = require('gulp-cssnano')
-const sass = require('gulp-sass')
-const imagemin = require('gulp-imagemin')
-const svgmin = require('gulp-svgmin')
-const pngcrush = require('imagemin-pngcrush')
-const size = require('gulp-size')
-const plumber = require('gulp-plumber')
-const babel = require('gulp-babel')
-const uglify = require('gulp-uglify')
-const concat = require('gulp-concat')
-const gulpif = require('gulp-if')
 const path = require('path')
+
+const autoprefixer = require('gulp-autoprefixer')
+const babel = require('gulp-babel')
+const browserSync = require('browser-sync')
+const concat = require('gulp-concat')
+const cssnano = require('gulp-cssnano')
+const gulp = require('gulp')
+const gulpif = require('gulp-if')
+const imagemin = require('gulp-imagemin')
+const plumber = require('gulp-plumber')
+const pngcrush = require('imagemin-pngcrush')
+const sass = require('gulp-sass')
+const size = require('gulp-size')
+const svgmin = require('gulp-svgmin')
+const swPrecache = require('sw-precache')
+const uglify = require('gulp-uglify')
 
 // Task to optimize and minify svg
 gulp.task('minify-svg', () => {
@@ -63,13 +64,13 @@ gulp.task('es6', () => {
     .pipe(browserSync.reload({ stream: true }))
 })
 
-gulp.task('generate-service-worker', function(callback) {
-  const path = require('path')
-  const swPrecache = require('sw-precache')
-  console.log('sw')
+gulp.task('generate-service-worker', callback => {
   swPrecache.write(
     path.join('public/sw.js'),
     {
+      dynamicUrlToDependencies: {
+        '/offline': ['views/layout.njk', 'views/offline.njk']
+      },
       staticFileGlobs: [
         'public/styles/**.css',
         'public/images/**.*',
@@ -82,32 +83,12 @@ gulp.task('generate-service-worker', function(callback) {
           handler: 'cacheFirst',
           urlPattern: /^https:\/\/localhost/
         }
-      ]
+      ],
+      navigateFallback: '/offline'
     },
     callback
   )
 })
-
-gulp.task(
-  'production',
-  ['sass', 'es6', 'generate-service-worker', 'minify-img', 'minify-svg'],
-  () => {
-    return gulp
-      .src('public/**/*.{js, css}')
-      .pipe(gulpif('**/bundle.js', uglify()))
-      .pipe(
-        gulpif(
-          '**/style.css',
-          cssnano({
-            safe: true,
-            autoprefixer: false,
-            discardComments: { removeAll: true }
-          })
-        )
-      )
-      .pipe(gulp.dest('./public'))
-  }
-)
 
 gulp.task('watch', () => {
   // Watch .js files
@@ -132,3 +113,24 @@ gulp.task('default', [
   'browser-sync',
   'watch'
 ])
+
+gulp.task(
+  'production',
+  ['sass', 'es6', 'generate-service-worker', 'minify-img', 'minify-svg'],
+  () => {
+    return gulp
+      .src('public/**/*.{js, css}')
+      .pipe(gulpif('**/bundle.js', uglify()))
+      .pipe(
+        gulpif(
+          '**/style.css',
+          cssnano({
+            safe: true,
+            autoprefixer: false,
+            discardComments: { removeAll: true }
+          })
+        )
+      )
+      .pipe(gulp.dest('./public'))
+  }
+)
