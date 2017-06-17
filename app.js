@@ -19,7 +19,6 @@ const app = express()
 app.use(helmet())
 app.use(compression())
 
-
 const env = nunjucks.configure(path.join(__dirname, 'views'), {
   autoescape: true,
   cache: false,
@@ -28,21 +27,16 @@ const env = nunjucks.configure(path.join(__dirname, 'views'), {
 
 // Sets Nunjucks as the Express template engine
 app.set('engine', env)
-app.set('view engine', 'njk') // TODO: rename njk to nunjucks (don't forget to also rename the template files)
-// templace caching
-app.enable('view cache')
+app.set('view engine', 'njk')
 
-app.use(logger('dev')) // what does this do ?
-app.use(bodyParser.json()) // what does this do ?
-app.use(bodyParser.urlencoded({ extended: false })) // what does this do ?
-app.use(cookieParser()) // what does this do ?
+app.enable('view cache') // Templace caching
+
+app.use(logger('dev'))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(cookieParser())
 
 app.use(serveFavicon(path.join(__dirname, 'public', 'favicon.ico')))
-app.use(
-  serveStatic(path.join(__dirname, 'public'), {
-    setHeaders: setCustomCacheControl
-  })
-)
 
 function setCustomCacheControl(res, filePath) {
   const fileMime = serveStatic.mime.lookup(filePath)
@@ -66,26 +60,32 @@ function setCustomCacheControl(res, filePath) {
   }
 }
 
+app.use(
+  serveStatic(path.join(__dirname, 'public'), {
+    setHeaders: setCustomCacheControl
+  })
+)
+
 // Custom Middlewares
 app.use(assets('/', '/public'))
 
 // Custom routes
 app.use('/', index)
 
-// catch 404 and forward to error handler
+// Catch 404 and forward to error handler
 app.use((req, res, next) => {
   const err = new Error('Not Found')
   err.status = 404
   next(err)
 })
 
-// error handler
-app.use((err, req, res, next) => {
-  // set locals, only providing error in development
+// Error handler
+app.use((err, req, res) => {
+  // Set locals, only providing error in development
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
 
-  // render the error page
+  // Render the error page
   res.status(err.status || 500)
   res.render('error')
 })

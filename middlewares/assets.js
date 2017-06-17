@@ -17,13 +17,13 @@ module.exports = function(urlPrefix, rootPath) {
       return fileUrl
     }
 
-    var data = fs.readFileSync(path.join(__dirname, filePath))
+    const data = fs.readFileSync(path.join(__dirname, filePath))
     cache[file] = fileUrl + '?' + cs(data)
     return cache[file]
   }
 
-  return function(req, res, next) {
-    res.locals.asset = function(file, prodFile) {
+  return function (req, res, next) {
+    res.locals.asset = function (file, prodFile) {
       return checksumify(prodFile && env === 'production' ? prodFile : file)
     }
     next()

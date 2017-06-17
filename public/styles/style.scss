@@ -10,21 +10,25 @@ html {
 }
 
 body {
-  /* stylelint-disable value-list-comma-newline-after */
-  font-family:
-          -apple-system, BlinkMacSystemFont, /* MacOS and iOS */
-          'avenir next', avenir, /* MacOS and iOS */
-          'Segoe UI', /* Windows */
-          'lucida grande', /* Older MacOS */
-          'Fira Sans', /* Firefox OS */
-          roboto, noto, /* Google stuff */
-          'Droid Sans', /* Old Google stuff */
-          cantarell, oxygen, ubuntu, /* Linux stuff */
-          'franklin gothic medium', 'century gothic', /* Windows stuff */
-          'Liberation Sans', /* Linux */
-          'helvetica neue', helvetica, /* Older MacOS */
-          sans-serif; /* Everything else */
-  /* stylelint-enable */
+  font-family: -apple-system,
+    BlinkMacSystemFont,
+    'avenir next',
+    avenir,
+    'Segoe UI',
+    'lucida grande',
+    'Fira Sans',
+    roboto,
+    noto,
+    'Droid Sans',
+    cantarell,
+    oxygen,
+    ubuntu,
+    'franklin gothic medium',
+    'century gothic',
+    'Liberation Sans',
+    'helvetica neue',
+    helvetica,
+    sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
   background-color: #fff;
@@ -38,7 +42,7 @@ body {
   }
 }
 
-a  {
+a {
   color: $black;
   text-decoration: none;
 }
@@ -62,18 +66,19 @@ a:hover {
     text-align: center;
     margin: 0;
     font-size: 28px;
-    /* stylelint-disable value-list-comma-newline-after */
-    font-family:
-            monaco, menlo, /* MacOS and iOS */
-            'Consolas', /* Windows */
-            'Fira Mono', /* Firefox OS */
-            roboto mono, noto mono, /* Google stuff */
-            'Droid Sans', /* Old Google stuff */
-            'DejaVu Sans Mono', cousine, ubuntu mono, /* Linux stuff */
-            'Courrier', /* Windows stuff */
-            'Liberation Mono', /* Linux */
-            monospace; /* Everything else */
-    /* stylelint-enable */
+    font-family: monaco,
+      menlo,
+      'Consolas',
+      'Fira Mono',
+      roboto mono,
+      noto mono,
+      'Droid Sans',
+      'DejaVu Sans Mono',
+      cousine,
+      ubuntu mono,
+      'Courrier',
+      'Liberation Mono',
+      monospace;
     padding: 12px 16px;
     border: solid 1px $light-grey;
     border-radius: 4px;
