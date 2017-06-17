@@ -1,11 +1,17 @@
 {
-    "env": {
-      "browser": true,
-      "node": true
-    },
-    "extends": "xo/esnext",
-    "rules": {
-       "indent": ["error", 2],
-       "semi": ["error", "never"]
-    }
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "extends": "xo/esnext",
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ],
+    "semi": [
+      "error",
+      "never"
+    ]
+  }
 }
