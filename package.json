@@ -1,8 +1,5 @@
 {
-  "name": "mlcdf",
-  "version": "1.0.0",
   "private": true,
-  "description": "Personal website of Maxime Le Conte des Floris",
   "scripts": {
     "start": "NODE_ENV=production node ./bin/www",
     "dev": "gulp serve",
@@ -10,34 +7,19 @@
     "build": "gulp build",
     "clean": "rm -rf public/styles/style.css public/scripts/bundle.js public/sw.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mlcdf/mlcdf.git"
-  },
-  "author": "Maxime Le Conte des Floris",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mlcdf/mlcdf/issues"
-  },
   "dependencies": {
     "body-parser": "~1.17.1",
     "checksum": "^0.1.1",
     "compression": "^1.6.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
-    "eslint-plugin-import": "^2.3.0",
-    "eslint-plugin-node": "^4.2.2",
     "express": "~4.15.2",
     "helmet": "^3.6.1",
     "morgan": "~1.8.1",
-    "node-sass": "^4.5.3",
-    "node-sass-middleware": "0.11.0",
-    "normalize-scss": "^7.0.0",
-    "normalize.css": "^7.0.0",
     "nunjucks": "^3.0.1",
     "serve-favicon": "~2.4.2",
-    "serve-static": "^1.12.3",
-    "spdy": "^3.4.7"
+    "serve-static": "^1.12.3"
   },
   "devDependencies": {
     "babel-preset-latest": "^6.16.0",
@@ -63,6 +45,7 @@
     "gulp-useref": "^3.1.2",
     "gulp": "^3.9.1",
     "imagemin-pngcrush": "^5.1.0",
+    "normalize-scss": "^7.0.0",
     "sw-precache": "^5.1.1"
   }
 }
