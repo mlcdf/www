@@ -3,10 +3,9 @@
       "browser": true,
       "node": true
     },
-    "extends": "standard",
-    "installedESLint": true,
-    "plugins": [
-      "standard",
-      "promise"
-    ]
+    "extends": "xo/esnext",
+    "rules": {
+       "indent": ["error", 2],
+       "semi": ["error", "never"]
+    }
 }
