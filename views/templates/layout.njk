@@ -24,14 +24,14 @@
     <nav class="nav">
 
       {% if isHome %}
-        <span class="nav__item nav__item--current">Projects</span>
-        <a class="nav__item" href="/about">About</a>
+        <span class="nav__item nav__item--current">projects</span>
+        <a class="nav__item" href="/about">about</a>
       {% else %}
-        <a class="nav__item" href="/">Projects</a>
-        <span class="nav__item nav__item--current">About</span>
+        <a class="nav__item" href="/">projects</a>
+        <span class="nav__item nav__item--current">about</span>
       {% endif %}
 
-      <a class="nav__item" href="mailto:hello@mlcdf.com">Contact</a>
+      <a class="nav__item" href="mailto:hello@mlcdf.com">contact</a>
     </nav>
     <main>
       {% block body %} {{ contents | safe }} {% endblock %}

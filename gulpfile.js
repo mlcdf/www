@@ -70,7 +70,7 @@ gulp.task('generate-service-worker', callback => {
     path.join('public/sw.js'),
     {
       dynamicUrlToDependencies: {
-        '/offline': ['views/layout.njk', 'views/offline.njk']
+        '/offline': ['views/templates/layout.njk', 'views/offline.njk']
       },
       staticFileGlobs: [
         'public/styles/**.css',

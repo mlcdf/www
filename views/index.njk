@@ -1,4 +1,4 @@
-{% extends "layout.njk" %}
+{% extends "templates/layout.njk" %}
 
 {% block body %}
 <p>
@@ -10,7 +10,7 @@
   <li class="project">
     <div>
       <a class="project__image" href="{{ project.url }}">
-        <img src="{{ asset('/images/' + project.img) }}" alt="{{ project.img_alt }}" style="background-color: #{{ project.color }}">
+        <img src="{{ asset('/images/' + project.img) }}" alt="{{ project.alt }}" style="background-color: #{{ project.color }}">
       </a>
     </div>
     <div class="project__description">
