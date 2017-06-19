@@ -1,6 +1,9 @@
 
 /* eslint-env browser */
+/* eslint-disable */
 'use strict';
+
+console.info('Hi there. If you\'re looking or the source of this website, go to https://github.com/mlcdf/mlcdf ;)')
 
 if ('serviceWorker' in navigator) {
   // Your service-worker.js *must* be located at the top-level directory relative to your site.
