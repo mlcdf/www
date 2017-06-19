@@ -1,33 +1,30 @@
 const router = require('express').Router() // eslint-disable-line new-cap
-const config = require('../config/app.config')
 
-const projects = require('../models/projects.json')
+const website = require('../data/website')
 
-/* GET home page. */
+/* GET API */
+router.get('/api', (req, res) => {
+  res.json(website)
+})
+
+/* GET home page */
 router.get('/', (req, res) => {
-  res.render('index', {
-    title: config.name,
-    description: config.description,
-    projects,
-    author: config.name,
+  res.render('about', {
+    title: website.author.name,
+    description: website.description,
+    author: website.author,
     isHome: true
   })
 })
 
-router.get('/about', (req, res) => {
-  res.render('about', {
-    title: `${config.name} |  About`,
-    description: config.description,
-    author: config.name,
+/* GET any HTML pages */
+router.get('/:page', (req, res) => {
+  res.render(req.params.page, {
+    title: `${website.author.name} |  ${req.params.page}`,
+    description: website.description,
+    projects: website.included.projects,
+    author: website.author.name,
     isHome: false
-  })
-})
-
-router.get('/offline', (req, res) => {
-  res.render('offline', {
-    title: `${config.name} |  About`,
-    description: config.description,
-    author: config.name
   })
 })
 

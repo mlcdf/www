@@ -12,21 +12,20 @@ const serveStatic = require('serve-static')
 
 const assets = require('./middlewares/assets')
 
-const index = require('./routes/index')
+const router = require('./routes/index')
 
 const app = express()
 
 app.use(helmet())
 app.use(compression())
 
-const env = nunjucks.configure(path.join(__dirname, 'views'), {
-  autoescape: true,
-  cache: false,
-  express: app
-})
-
 // Sets Nunjucks as the Express template engine
-app.set('engine', env)
+app.set('engine', nunjucks.configure(path.join(__dirname, 'views'), {
+  autoescape: true,
+  cache: true,
+  express: app
+}))
+
 app.set('view engine', 'njk')
 
 app.enable('view cache') // Templace caching
@@ -66,11 +65,11 @@ app.use(
   })
 )
 
-// Custom Middlewares
+// Custom middlewares
 app.use(assets('/', '/public'))
 
 // Custom routes
-app.use('/', index)
+app.use('/', router)
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
