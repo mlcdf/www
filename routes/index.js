@@ -9,9 +9,10 @@ router.get('/api', (req, res) => {
 
 /* GET home page */
 router.get('/', (req, res) => {
-  res.render('about', {
+  res.render('index', {
     title: website.author.name,
     description: website.description,
+    projects: website.included.projects,
     author: website.author,
     isHome: true
   })
@@ -22,7 +23,6 @@ router.get('/:page', (req, res) => {
   res.render(req.params.page, {
     title: `${website.author.name} |  ${req.params.page}`,
     description: website.description,
-    projects: website.included.projects,
     author: website.author.name,
     isHome: false
   })
