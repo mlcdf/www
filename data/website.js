@@ -9,7 +9,7 @@ module.exports = {
     mastodon: 'https://toot.cafe/@mlcdf',
     pinboard: 'https://pinboard.com/u:mlcdf',
     twitter: 'https://twitter.com/mlcdf',
-    unsplash: 'https://unslash/mlcdf'
+    unsplash: 'https://unsplash.com/mlcdf'
   },
   description:
     'Maxime Le Conte des Floris is a web developer and free software & open source/data enthusiast. He\'s passionate about performance and UX on the web.',
