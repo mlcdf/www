@@ -1,47 +1,52 @@
 {
-  "name": "mlcdf",
-  "version": "1.0.0",
   "private": true,
-  "description": "Personal website of Maxime Le Conte des Floris",
   "scripts": {
-    "start": "gulp",
-    "lint": "npm run clean && eslint *.js _scripts/*.* && stylelint _sass/*.*",
-    "prod": "jekyll build && gulp production",
-    "clean": "rm -rf css/ scripts/ _site/ service-worker.js"
+    "start": "npm run build && NODE_ENV=production node ./bin/www",
+    "dev": "gulp serve",
+    "lint": "eslint '**/*.js' --ignore-path .gitignore",
+    "build": "gulp build",
+    "clean": "rm -rf public/styles/style.css public/scripts/bundle.js public/sw.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mlcdf/mlcdf.git"
-  },
-  "author": "Maxime Le Conte des Floris",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mlcdf/mlcdf/issues"
-  },
-  "devDependencies": {
-    "babel-preset-latest": "^6.16.0",
-    "browser-sync": "^2.18.2",
-    "eslint": "^3.10.2",
-    "eslint-config-standard": "^6.2.1",
-    "eslint-plugin-promise": "^3.4.0",
-    "eslint-plugin-standard": "^2.0.1",
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "checksum": "^0.1.1",
+    "compression": "^1.6.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "helmet": "^3.6.1",
+    "morgan": "~1.8.1",
+    "nunjucks": "^3.0.1",
+    "serve-favicon": "~2.4.2",
+    "serve-static": "^1.12.3",
     "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.1",
+    "gulp-autoprefixer": "^4.0.0",
     "gulp-babel": "^6.1.2",
+    "gulp-cli": "^1.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-cssnano": "^2.1.2",
     "gulp-htmlmin": "^3.0.0",
     "gulp-if": "^2.0.2",
-    "gulp-imagemin": "~0.1.4",
+    "gulp-imagemin": "~3.3.0",
+    "gulp-nodemon": "^2.2.1",
     "gulp-plumber": "^1.1.0",
-    "gulp-sass": "^2.3.2",
-    "gulp-size": "^0.4.0",
-    "gulp-svgmin": "~0.4.1",
-    "gulp-uglify": "^2.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-size": "^2.1.0",
+    "gulp-svgmin": "~1.2.4",
+    "gulp-uglify": "^3.0.0",
     "gulp-useref": "^3.1.2",
-    "imagemin-pngcrush": "^1.0.0",
-    "stylelint": "^7.6.0",
-    "stylelint-config-standard": "^15.0.0",
-    "sw-precache": "^4.2.2"
+    "imagemin-pngcrush": "^5.1.0",
+    "normalize-scss": "^7.0.0",
+    "sw-precache": "^5.1.1",
+    "browser-sync": "^2.18.12",
+    "babel-preset-latest": "^6.16.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-xo": "^0.18.2",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-node": "^5.0.0",
+    "eslint-plugin-promise": "^3.4.0"
   }
 }

@@ -1,3 +1,6 @@
+@import "../../node_modules/normalize-scss/sass/normalize";
+@include normalize();
+
 $light-grey: #e9e9e9;
 $silver: #777;
 $black: #111;
@@ -7,36 +10,42 @@ html {
 }
 
 body {
-  /* stylelint-disable value-list-comma-newline-after */
-  font-family:
-    -apple-system, BlinkMacSystemFont, /* MacOS and iOS */
-    'avenir next', avenir, /* MacOS and iOS */
-    'Segoe UI', /* Windows */
-    'lucida grande', /* Older MacOS */
-    'Fira Sans', /* Firefox OS */
-    roboto, noto, /* Google stuff */
-    'Droid Sans', /* Old Google stuff */
-    cantarell, oxygen, ubuntu, /* Linux stuff */
-    'franklin gothic medium', 'century gothic', /* Windows stuff */
-    'Liberation Sans', /* Linux */
-    'helvetica neue', helvetica, /* Older MacOS */
-    sans-serif; /* Everything else */
-  /* stylelint-enable */
+  font-family: -apple-system,
+    BlinkMacSystemFont,
+    'avenir next',
+    avenir,
+    'Segoe UI',
+    'lucida grande',
+    'Fira Sans',
+    roboto,
+    noto,
+    'Droid Sans',
+    cantarell,
+    oxygen,
+    helvetica,
+    ubuntu,
+    'franklin gothic medium',
+    'century gothic',
+    'Liberation Sans',
+    'helvetica neue',
+    helvetica,
+    sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
   background-color: #fff;
-  color: $silver;
+  color: #111;
+  // background-color: #fef3aa;
 }
 
 @media screen and (min-width: 560px) {
   body {
     font-size: 18px;
-    line-height: 26px;
+    line-height: 30px;
   }
 }
 
 a {
-  color: $black;
+  color: #2979FF;
   text-decoration: none;
 }
 
@@ -51,7 +60,7 @@ a:hover {
 }
 
 .header {
-  margin: 2rem 0 0.5rem;
+  margin: 2rem 0 1rem;
   display: flex;
   justify-content: center;
 
@@ -59,19 +68,20 @@ a:hover {
     text-align: center;
     margin: 0;
     font-size: 28px;
-    /* stylelint-disable value-list-comma-newline-after */
-    font-family:
-      monaco, menlo, /* MacOS and iOS */
-      'Consolas', /* Windows */
-      'Fira Mono', /* Firefox OS */
-      roboto mono, noto mono, /* Google stuff */
-      'Droid Sans', /* Old Google stuff */
-      'DejaVu Sans Mono', cousine, ubuntu mono, /* Linux stuff */
-      'Courrier', /* Windows stuff */
-      'Liberation Mono', /* Linux */
-      monospace; /* Everything else */
-    /* stylelint-enable */
-    padding: 12px 16px;
+    font-family: monaco,
+      menlo,
+      'Consolas',
+      'Fira Mono',
+      roboto mono,
+      noto mono,
+      'Droid Sans',
+      'DejaVu Sans Mono',
+      cousine,
+      ubuntu mono,
+      'Courrier',
+      'Liberation Mono',
+      monospace;
+    padding: 12px 18px;
     border: solid 1px $light-grey;
     border-radius: 4px;
     color: $black;
@@ -87,8 +97,8 @@ a:hover {
 
   &__item {
     display: block;
-    margin: 0.6rem 0.8rem;
-    color: $silver;
+    margin: 0.6rem 1rem;
+    color: #2979FF;
 
     &--current {
       color: $black;
@@ -103,12 +113,17 @@ a:hover {
 
 .project {
   padding-bottom: 2rem;
+  margin-bottom: 2rem;
   display: flex;
+  border-bottom: solid 1px $light-grey;
 
   &__name {
     font-size: 24px;
     font-weight: 500;
     line-height: 2rem;
+    // color: $silver;
+    font-family: helvetica;
+    font-weight: bold;
   }
 
   &__image {
@@ -131,8 +146,15 @@ a:hover {
   }
 
   &__description > div {
-    margin-top: 8px;
+    font-family: Helvetica;
+    margin-top: 16px;
     width: 100%;
+    color: #111;
+
+    & > a {
+      margin-right: 16px;
+      color: #2979FF;
+    }
   }
 }
 
@@ -150,7 +172,11 @@ a:hover {
 }
 
 p {
-  margin-bottom: 3rem;
+  margin: 0;
+}
+
+p:not(:last-child) {
+  margin-bottom: 1.5rem;
 }
 
 .footer {
