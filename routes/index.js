@@ -12,7 +12,6 @@ router.get('/', (req, res) => {
   res.render('index', {
     title: website.author.name,
     description: website.description,
-    projects: website.included.projects,
     author: website.author,
     isHome: true
   })
