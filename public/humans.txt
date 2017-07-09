@@ -1,12 +1,11 @@
-# humanstxt.org/
+# TEAM
 
-# TEAM -----
+Name: Maxime Le Conte des Floris
+Twitter: @mlcdf
+Location: Bordeaux, France
 
-  Maxime Le Conte des Floris (@mlcdf) - Design & Development
+# TECHNOLOGY
 
-# TECHNOLOGY -----
-
-  HTML5, CSS3
-  Sass, Gulp, Jekyll, Browsersync
-  Autoprefixer, cssnano
-  Eslint, Stylelint
+Standards: HTML5, CSS3, ECMAScript 5
+Library: Normalize-scss
+Tools: ExpressJS, Sass, Babel, Gulp, Autoprefixer, cssnano
