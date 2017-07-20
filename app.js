@@ -22,13 +22,12 @@ app.use(compression())
 // Sets Nunjucks as the Express template engine
 app.set('engine', nunjucks.configure(path.join(__dirname, 'views'), {
   autoescape: true,
-  cache: true,
-  express: app
+  cache: app.get('env') === 'production',
+  express: app,
+  watch: true
 }))
 
 app.set('view engine', 'njk')
-
-app.enable('view cache') // Templace caching
 
 app.use(logger('dev'))
 app.use(bodyParser.json())
