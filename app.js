@@ -22,13 +22,12 @@ app.use(compression())
 // Sets Nunjucks as the Express template engine
 app.set('engine', nunjucks.configure(path.join(__dirname, 'views'), {
   autoescape: true,
-  cache: true,
-  express: app
+  cache: app.get('env') === 'production',
+  express: app,
+  watch: true
 }))
 
 app.set('view engine', 'njk')
-
-app.enable('view cache') // Templace caching
 
 app.use(logger('dev'))
 app.use(bodyParser.json())
@@ -37,12 +36,13 @@ app.use(cookieParser())
 
 app.use(serveFavicon(path.join(__dirname, 'public', 'favicon.ico')))
 
-function setCustomCacheControl(res, filePath) {
+function setCustomHeaders(res, filePath) {
   const fileMime = serveStatic.mime.lookup(filePath)
 
   if (filePath === path.join(__dirname, 'public/sw.js')) {
     // https://toot.cafe/@nolan/614271
-    res.setHeader('Cache-Control', 'public, max-age=0')
+    res.setHeader('Content-Type', 'application/javascript')
+    res.setHeader('Cache-Control', 'no-cache')
   }
 
   if (fileMime === 'text/html') {
@@ -61,7 +61,7 @@ function setCustomCacheControl(res, filePath) {
 
 app.use(
   serveStatic(path.join(__dirname, 'public'), {
-    setHeaders: setCustomCacheControl
+    setHeaders: setCustomHeaders
   })
 )
 
