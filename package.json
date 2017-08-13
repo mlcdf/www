@@ -3,6 +3,7 @@
   "scripts": {
     "start": "npm run build && NODE_ENV=production node ./bin/www",
     "dev": "gulp serve",
+    "format": "prettier **/**.js --write --single-quote",
     "lint": "eslint '**/*.js' --ignore-path .gitignore",
     "build": "gulp build",
     "clean": "rm -rf public/styles/style.css public/scripts/bundle.js public/sw.js"
@@ -44,6 +45,7 @@
     "sw-precache": "^5.1.1"
   },
   "devDependencies": {
-    "eslint": "^3.19.0"
+    "eslint": "^3.19.0",
+    "prettier": "^1.5.3"
   }
 }
