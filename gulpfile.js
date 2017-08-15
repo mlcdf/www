@@ -1,150 +1,154 @@
-const path = require('path')
+const cp = require('child_process');
+const browserSync = require('browser-sync').create();
+const gulp = require('gulp');
+const autoprefixer = require('gulp-autoprefixer');
+const cssnano = require('gulp-cssnano');
+const sass = require('gulp-sass');
+const imagemin = require('gulp-imagemin');
+const svgmin = require('gulp-svgmin');
+const pngcrush = require('imagemin-pngcrush');
+const size = require('gulp-size');
+const rename = require('gulp-rename');
+const plumber = require('gulp-plumber');
 
-const autoprefixer = require('gulp-autoprefixer')
-const babel = require('gulp-babel')
-const browserSync = require('browser-sync')
-const concat = require('gulp-concat')
-const cssnano = require('gulp-cssnano')
-const gulp = require('gulp')
-const gulpif = require('gulp-if')
-const imagemin = require('gulp-imagemin')
-const nodemon = require('gulp-nodemon')
-const plumber = require('gulp-plumber')
-const pngcrush = require('imagemin-pngcrush')
-const sass = require('gulp-sass')
-const size = require('gulp-size')
-const svgmin = require('gulp-svgmin')
-const swPrecache = require('sw-precache')
-const uglify = require('gulp-uglify')
+/**
+ * Build the Hugo Site
+ */
+gulp.task('hugo', done => {
+  return cp.spawn('hugo').on('close', done);
+});
+
+/**
+ * Rebuild Hugo & do page reload
+ */
+gulp.task('hugo-watch', ['hugo'], () => {
+  browserSync.reload();
+});
+
+gulp.task('minify-css', () => {
+  gulp
+    .src('./css/nkd.css') // set this to the file(s) you want to minify.
+    .pipe(
+      cssnano({
+        discardComments: {
+          removeAll: true
+        }
+      })
+    )
+    .pipe(size({ gzip: false, showFiles: true, title: 'minified css' }))
+    .pipe(size({ gzip: true, showFiles: true, title: 'minified css' }))
+    .pipe(rename('nkd.min.css'))
+    .pipe(gulp.dest('./css/'));
+});
 
 // Task to optimize and minify svg
 gulp.task('minify-svg', () => {
-  gulp.src('./img/svg').pipe(svgmin()).pipe(gulp.dest('./img/svg'))
-})
+  gulp.src('./img/svg').pipe(svgmin()).pipe(gulp.dest('./img/svg'));
+});
 
 gulp.task('minify-img', () => {
   gulp
-    .src('./public/images/*')
-    .pipe(size({gzip: false, showFiles: true, title: 'original image size'}))
-    .pipe(size({gzip: true, showFiles: true, title: 'original image size'}))
+    .src('./img/*')
+    .pipe(size({ gzip: false, showFiles: true, title: 'original image size' }))
+    .pipe(size({ gzip: true, showFiles: true, title: 'original image size' }))
     .pipe(
       imagemin({
         progressive: true,
-        svgoPlugins: [{removeViewBox: false}],
+        svgoPlugins: [{ removeViewBox: false }],
         use: [pngcrush()]
       })
     )
-    .pipe(size({gzip: false, showFiles: true, title: 'minified images'}))
-    .pipe(size({gzip: true, showFiles: true, title: 'minified images'}))
-    .pipe(gulp.dest('./public/images/')) // Change the dest if you don't want your images overwritten
-})
+    .pipe(size({ gzip: false, showFiles: true, title: 'minified images' }))
+    .pipe(size({ gzip: true, showFiles: true, title: 'minified images' }))
+    .pipe(gulp.dest('./img')); // change the dest if you don't want your images overwritten
+});
 
 // Task that compiles scss files down to good old css
 gulp.task('sass', () => {
-  return gulp
-    .src('./public/styles/*.scss')
+  gulp
+    .src('./assets/styles/style.scss')
     .pipe(plumber())
     .pipe(sass())
     .pipe(
+      size({
+        gzip: false,
+        showFiles: true,
+        title: 'without vendor prefixes'
+      })
+    )
+    .pipe(
+      size({
+        gzip: true,
+        showFiles: true,
+        title: 'without vendor prefixes'
+      })
+    )
+    .pipe(
       autoprefixer({
-        browsers: ['> 5%'],
+        browsers: ['last 2 versions'],
         cascade: false
       })
     )
-    .pipe(gulp.dest('./public/styles/'))
-    .pipe(browserSync.reload({stream: true}))
-})
-
-gulp.task('es6', () => {
-  return gulp
-    .src('./public/scripts/app.js')
-    .pipe(plumber())
-    .pipe(babel())
-    .pipe(concat('bundle.js'))
-    .pipe(gulp.dest('./public/scripts/'))
-    .pipe(browserSync.reload({stream: true}))
-})
+    .pipe(
+      size({ gzip: false, showFiles: true, title: 'after vendor prefixes' })
+    )
+    .pipe(size({ gzip: true, showFiles: true, title: 'after vendor prefixes' }))
+    .pipe(gulp.dest('./public/assets/styles'))
+    .pipe(
+      cssnano({
+        discardComments: {
+          removeAll: true
+        }
+      })
+    )
+    .pipe(size({ gzip: false, showFiles: true, title: 'minified css' }))
+    .pipe(size({ gzip: true, showFiles: true, title: 'minified css' }))
+    .pipe(rename('style.min.css'));
+  browserSync.reload();
+});
 
 gulp.task('generate-service-worker', callback => {
+  const path = require('path');
+  const swPrecache = require('sw-precache');
+
   swPrecache.write(
-    path.join('public/sw.js'),
+    path.join('service-worker.js'),
     {
-      dynamicUrlToDependencies: {
-        '/offline': ['views/templates/layout.njk', 'views/offline.njk']
-      },
       staticFileGlobs: [
-        'public/styles/**.css',
-        'public/images/**.*',
-        'public/scripts/**.js',
-        'public/manifest.json'
+        '/',
+        'index.html',
+        'css/nkd.css',
+        'about/',
+        'about/index.html',
+        'projects/',
+        'projects/index.html',
+        'scripts/app.js',
+        'manifest.json',
+        'favicon.ico',
+        'assets/images/favicons/*.*'
       ],
-      stripPrefix: 'public',
-      runtimeCaching: [
-        {
-          handler: 'cacheFirst',
-          urlPattern: /^https:\/\/localhost/
-        }
-      ]
+      stripPrefix: ''
     },
     callback
-  )
-})
+  );
+});
+
+gulp.task('production', () => {
+  gulp.run('minify-css', 'minify-img', 'minify-svg');
+});
 
 gulp.task('watch', () => {
-  // Watch .js files
-  gulp.watch('public/**/*.js', ['es6', 'generate-service-worker'])
-  // Watch .scss files
-  gulp.watch('public/**/*.scss', ['sass', 'generate-service-worker'])
-})
-
-gulp.task('browser-sync', ['nodemon'], () => {
-  browserSync.init(null, {
-    proxy: 'http://localhost:3000',
-    files: ['public/**/*.*'],
-    browser: 'firefox',
-    port: 7000
-  })
-})
-
-gulp.task('nodemon', cb => {
-  let started = false
-
-  return nodemon({
-    script: './bin/www'
-  }).on('start', () => {
-    // To avoid nodemon being started multiple times
-    if (!started) {
-      cb()
-      started = true
+  browserSync.init({
+    server: {
+      baseDir: 'public'
     }
-  })
-})
+  });
+  // Watch .scss files
+  gulp.watch('./assets/styles/*.scss', ['sass']);
+  // Watch .html files and posts
+  gulp.watch(['./content/**/*.md', './content/*.md'], ['hugo-watch']);
+});
 
-gulp.task('serve', [
-  'generate-service-worker',
-  'es6',
-  'sass',
-  'browser-sync',
-  'watch'
-])
+gulp.task('build', ['generate-service-worker', 'sass', 'hugo']);
 
-gulp.task(
-  'build',
-  ['sass', 'es6', 'generate-service-worker', 'minify-img', 'minify-svg'],
-  () => {
-    return gulp
-      .src('public/**/*.{js, css}')
-      .pipe(gulpif('**/bundle.js', uglify()))
-      .pipe(
-        gulpif(
-          '**/style.css',
-          cssnano({
-            safe: true,
-            autoprefixer: false,
-            discardComments: {removeAll: true}
-          })
-        )
-      )
-      .pipe(gulp.dest('./public'))
-  }
-)
+gulp.task('serve', ['generate-service-worker', 'sass', 'watch', 'hugo']);

@@ -1,6 +1,6 @@
-{% extends "templates/layout.njk" %}
-
-{% block body %}
+---
+title: Projects
+---
 
 <ul class="projectlist">
   <li class="project">
@@ -9,9 +9,9 @@
       <div>
         <p>Hide and seek (a cube) and quiz game in augmented reality.</p>
 
-        <p>It was made as part of a 4 days-long project at school with 4 others students, and the goal was to build something for the Hololens.</p>
+        <p>It was made as part of a 4 days-long project at school with 4 others students, where the goal was to build something for the Hololens.</p>
 
-        <a href="https://github.com/FindItAR/FindIt">source</a>
+        <a href="https://github.com/FindItAR/FindIt">play</a>
       </div>
     </div>
   </li>
@@ -19,9 +19,10 @@
     <div class="project__description">
       <div class="project__name">Debi</div>
       <div>
-        <p>Command-line interface for installing Debian packages via GitHub releases. It makes installing programs like Atom as easy as typing `debi atom atom` in your console.</p>
+        <p>Command-line interface for installing Debian packages provided via GitHub releases. It makes installing programs like Atom as easy as typing `debi atom atom` in your console.</p>
 
         <a href="https://github.com/mlcdf/debi">source</a>
+        <a href="https://github.com/mlcdf/debi">project</a>
       </div>
     </div>
   </li>
@@ -33,7 +34,7 @@
 
         <p>Made as part of a project for the jQuey courses at school, it's a small front-end making AJAX calls to a tiny Node.js API delivering the bits of the story &ndash; which are stored in a big json object on the server.</p>
 
-        <a href="https://github.com/mlcdf/worn-in-the-shell">source</a>
+        <a href="https://github.com/mlcdf/worn-in-the-shell">play</a>
       </div>
     </div>
   </li>
@@ -43,7 +44,7 @@
       <div>
         <p>330 bytes gzipped CSS library for Material design shadows and opacities. If you live on the edge or you're more of a SCSS guy/lady, the matching CSS custom properties and SCSS variables are also availables.</p>
 
-        <a href="https://github.com/mlcdf/material-utilities">source</a>
+        <a href="https://github.com/mlcdf/material-utilities">play</a>
       </div>
     </div>
   </li>
@@ -58,7 +59,7 @@
         <p>Nevertheless, we're pretty happy with the result given that we managed to make a complete game (with a soundtrack and all) while being total noob regarding game development.
         </p>
 
-        <a href="https://github.com/mlcdf/ikarauraga">source</a>
+        <a href="https://github.com/mlcdf/ikarauraga">play</a>
       </div>
     </div>
   </li>
@@ -68,7 +69,7 @@
       <div>
         <p>Because I use system fonts everywhere.</p>
 
-        <a href="https://github.com/mlcdf/atom-system-font-snippets">source</a>
+        <a href="https://github.com/mlcdf/atom-system-font-snippets">play</a>
       </div>
     </div>
   </li>
@@ -78,7 +79,7 @@
       <div>
         <p>Node.js library to access colors for popular palettes (iOS, flat, ...) with a few helpers. There is also a command-line interface.</p>
 
-        <a href="https://github.com/mlcdf/opaline">source</a>
+        <a href="https://github.com/mlcdf/opaline">play</a>
       </div>
     </div>
   </li>
@@ -87,4 +88,3 @@
 <p>
   You can find the rest of my projects on <a href="https://github.com/mlcdf">GitHub</a>.
 </p>
-{% endblock %}

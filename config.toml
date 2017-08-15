@@ -1,0 +1,7 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "My New Hugo Site"
+
+[params]
+  description = "Tesla's Awesome Hugo Site"
+  author = "Maxime Le Conte des Floris"

@@ -1,40 +1,28 @@
-@import "../../node_modules/normalize-scss/sass/normalize";
-@include normalize();
+// @import "../../node_modules/normalize-scss/sass/normalize";
+// @include normalize();
 
 $light-grey: #e9e9e9;
 $silver: #777;
-$black: #111;
+$black: #222222;
+$blue: #3d5afe;
 
-html {
-  font-size: 16px;
-}
+$mono: 'Fira Mono', 'Fira Code', 'Roboto Mono', noto mono, monaco, menlo,
+  'Droid Sans Mono', 'DejaVu Sans Mono', 'Consolas', cousine, 'Ubuntu Mono',
+  'Courrier', 'Liberation Mono', monospace;
+$sans: Ubuntu, -apple-system, BlinkMacSystemFont, 'avenir next', avenir,
+  'Segoe UI', 'lucida grande', Gill Sans, 'Fira Sans', Roboto, Noto Sans,
+  'Droid Sans', Cantarell, Oxygen, Ubuntu, 'Franklin Gothic Medium',
+  'Century Gothic', 'Liberation Sans', 'Helvetica neue', 'Helvetica', sans-serif;
+$serif: 'New York', Garamond, 'Bitstream Charter', Cambria, Cochin, Georgia,
+  'MS Serif', Times, 'Times New Roman', serif;
 
+html,
 body {
-  font-family: -apple-system,
-    BlinkMacSystemFont,
-    'avenir next',
-    avenir,
-    'Segoe UI',
-    'lucida grande',
-    'Fira Sans',
-    roboto,
-    noto,
-    'Droid Sans',
-    cantarell,
-    oxygen,
-    helvetica,
-    ubuntu,
-    'franklin gothic medium',
-    'century gothic',
-    'Liberation Sans',
-    'helvetica neue',
-    helvetica,
-    sans-serif;
+  font-family: $sans;
   font-size: 1rem;
   line-height: 1.5rem;
   background-color: #fff;
-  color: #111;
-  // background-color: #fef3aa;
+  color: $black;
 }
 
 @media screen and (min-width: 560px) {
@@ -45,7 +33,7 @@ body {
 }
 
 a {
-  color: #2979FF;
+  color: $blue;
   text-decoration: none;
 }
 
@@ -68,23 +56,11 @@ a:hover {
     text-align: center;
     margin: 0;
     font-size: 28px;
-    font-family: monaco,
-      menlo,
-      'Consolas',
-      'Fira Mono',
-      roboto mono,
-      noto mono,
-      'Droid Sans',
-      'DejaVu Sans Mono',
-      cousine,
-      ubuntu mono,
-      'Courrier',
-      'Liberation Mono',
-      monospace;
-    padding: 12px 18px;
-    border: solid 1px $light-grey;
+    font-family: $mono;
+    padding: 14px 18px 12px;
+    background-color: #24292e;
     border-radius: 4px;
-    color: $black;
+    color: white;
   }
 }
 
@@ -98,12 +74,17 @@ a:hover {
   &__item {
     display: block;
     margin: 0.6rem 1rem;
-    color: #2979FF;
+    color: $blue;
 
     &--current {
       color: $black;
     }
   }
+}
+
+p {
+  font-family: $serif;
+  font-size: 1.25rem;
 }
 
 .projectlist {
@@ -118,7 +99,8 @@ a:hover {
   border-bottom: solid 1px $light-grey;
 
   &__name {
-    font-size: 24px;
+    font-family: $sans;
+    font-size: 1.5rem;
     font-weight: 500;
     line-height: 2rem;
     font-weight: bold;
@@ -150,7 +132,7 @@ a:hover {
 
     & > a {
       margin-right: 16px;
-      color: #2979FF;
+      color: $blue;
     }
   }
 }

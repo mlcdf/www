@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>{{ .Site.Params.author }} - {{ .Title }}</title>
+  <meta name="author" content="{{ .Site.Author }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="theme-color" content="#222222">
+  <link rel="stylesheet" href="/assets/styles/style.css">
+  <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#222222">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <h1 class="header__title">@mlcdf</h1>
+    </header>
+    <nav class="nav">
+      <span class="nav__item nav__item--current">projects</span>
+      <a class="nav__item" href="/about">about</a>
+
+      <a class="nav__item" href="mailto:hello@mlcdf.com">email</a>
+    </nav>
+    <main>
+      {{ .Content }}
+    </main>
+    <footer class="footer">
+      <a href="mailto:hello@mlcdf.com">hello@mlcdf.com</a> &mdash; (<a href="https://keybase.io/mlcdf/pgp_keys.asc?fingerprint=2aab8b415f5370f22b771cb024077cbfef94dd95">pgp key</a>)
+    </footer>
+
+  </div>
+</body>
+
+</html>

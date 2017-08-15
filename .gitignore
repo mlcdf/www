@@ -62,6 +62,4 @@ typings/
 .idea/
 
 # Files generated during development or build
-public/styles/style.css
-public/scripts/bundle.js
-public/sw.js
+public/
