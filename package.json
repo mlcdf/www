@@ -6,7 +6,9 @@
     "format": "prettier **/**.js --write --single-quote",
     "lint": "eslint '**/*.js' --ignore-path .gitignore",
     "build": "gulp build && CGO_ENABLED=0 GOOS=linux go build -a -tags netgo -ldflags '-w' .",
-    "clean": "rm -r public/"
+    "clean": "rm -r public/",
+    "docker:build": "docker build -t mlcdf .",
+    "docker:run": "docker run -d -p 5000:5000 mlcdf"
   },
   "license": "MIT",
   "dependencies": {
@@ -22,7 +24,6 @@
     "gulp-htmlmin": "^3.0.0",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "~3.3.0",
-    "gulp-nodemon": "^2.2.1",
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^3.1.0",
     "gulp-size": "^2.1.0",
