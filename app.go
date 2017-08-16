@@ -17,13 +17,13 @@ type wrapper struct {
 
 func (h *wrapper) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path[1:]
-	log.Println("Requesting " + r.URL.Path)
+	log.Println("Requesting " + path)
 
 	var cacheControl string
 
-	if strings.HasSuffix(path, ".css") || (strings.HasSuffix(path, ".js") && path != "./public/sw.js") {
+	if strings.HasSuffix(path, ".css") || (strings.HasSuffix(path, ".js") && path != "sw.js") {
 		cacheControl = "public, max-age=31536000" // 1 year
-	} else if path == "./public/sw.js" {
+	} else if path == "sw.js" {
 		cacheControl = "no-cache"
 	} else if strings.HasSuffix(path, ".svg") || strings.HasSuffix(path, ".png") || strings.HasSuffix(path, ".jpg") {
 		cacheControl = "public, max-age=3600" // 1 hour
