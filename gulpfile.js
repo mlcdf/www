@@ -11,7 +11,6 @@ const imagemin = require('gulp-imagemin');
 const svgmin = require('gulp-svgmin');
 const pngcrush = require('imagemin-pngcrush');
 const size = require('gulp-size');
-const rename = require('gulp-rename');
 const plumber = require('gulp-plumber');
 const swPrecache = require('sw-precache');
 
@@ -31,7 +30,7 @@ gulp.task('hugo-watch', ['hugo'], () => {
 
 gulp.task('minify-css', () => {
   gulp
-    .src('./css/nkd.css') // set this to the file(s) you want to minify.
+    .src('./public/assets/styles/style.css') // set this to the file(s) you want to minify.
     .pipe(
       cssnano({
         discardComments: {
@@ -41,18 +40,20 @@ gulp.task('minify-css', () => {
     )
     .pipe(size({ gzip: false, showFiles: true, title: 'minified css' }))
     .pipe(size({ gzip: true, showFiles: true, title: 'minified css' }))
-    .pipe(rename('nkd.min.css'))
-    .pipe(gulp.dest('./css/'));
+    .pipe(gulp.dest('./public/assets/styles/'));
 });
 
 // Task to optimize and minify svg
 gulp.task('minify-svg', () => {
-  gulp.src('./img/svg').pipe(svgmin()).pipe(gulp.dest('./img/svg'));
+  gulp
+    .src('./assets/images/')
+    .pipe(svgmin())
+    .pipe(gulp.dest('./public/assets/images/'));
 });
 
-gulp.task('minify-img', () => {
+gulp.task('minify-png', () => {
   gulp
-    .src('./img/*')
+    .src('./assets/images/**/*.png')
     .pipe(size({ gzip: false, showFiles: true, title: 'original image size' }))
     .pipe(size({ gzip: true, showFiles: true, title: 'original image size' }))
     .pipe(
@@ -64,7 +65,7 @@ gulp.task('minify-img', () => {
     )
     .pipe(size({ gzip: false, showFiles: true, title: 'minified images' }))
     .pipe(size({ gzip: true, showFiles: true, title: 'minified images' }))
-    .pipe(gulp.dest('./img')); // change the dest if you don't want your images overwritten
+    .pipe(gulp.dest('./public/assets/images/')); // change the dest if you don't want your images overwritten
 });
 
 gulp.task('image', () => {
@@ -137,7 +138,14 @@ gulp.task('watch', () => {
   );
 });
 
-gulp.task('build', ['generate-service-worker', 'sass', 'es6', 'image', 'hugo']);
+gulp.task('build', [
+  'sass',
+  'generate-service-worker',
+  'es6',
+  'minify-png',
+  'minify-svg',
+  'hugo'
+]);
 
 gulp.task('serve', [
   'generate-service-worker',

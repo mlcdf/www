@@ -106,25 +106,6 @@ p {
     font-weight: bold;
   }
 
-  &__image {
-    height: 44px;
-    width: 44px;
-    margin-right: 24px;
-  }
-
-  &__image img {
-    height: 44px;
-    width: 44px;
-    padding: 36px;
-    margin-right: 24px;
-    border-radius: 4px;
-    transition: box-shadow 0.3s ease-in;
-  }
-
-  &__image img:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
-  }
-
   &__description > div {
     margin-top: 16px;
     width: 100%;
