@@ -1,86 +1,41 @@
 package main
 
 import (
-	"io/ioutil"
+	"log"
 	"net/http"
 
 	"strings"
 )
 
-type staticHandler struct {
-	root           string
-	allowedMethods []string
+func wrap(h http.Handler) http.Handler {
+	return &wrapper{handler: h}
 }
 
-func static(root string, allowedMethods []string) http.Handler {
-	return &staticHandler{root, allowedMethods}
+type wrapper struct {
+	handler http.Handler
 }
 
-func (handler *staticHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func (h *wrapper) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path[1:]
+	log.Println("Requesting " + r.URL.Path)
 
-	isAllowed := false
-	for _, allowedMethod := range handler.allowedMethods {
-		if allowedMethod != r.Method {
-			isAllowed = true
-			break
-		}
-	}
+	var cacheControl string
 
-	if isAllowed == false {
-		w.WriteHeader(405)
-		w.Write([]byte("404 My dear - " + http.StatusText(404)))
-		return
-	}
-
-	data, err := ioutil.ReadFile(handler.root + string(path))
-
-	isIndexHTML := false
-
-	if err != nil {
-		data, err = ioutil.ReadFile(handler.root + string(path) + "/index.html")
-		isIndexHTML = true
-	}
-
-	if err == nil {
-		var contentType string
-		var cacheControl string
-
-		if strings.HasSuffix(path, ".css") {
-			contentType = "text/css; charset=utf-8"
-			cacheControl = "public, max-age=31536000"
-		} else if strings.HasSuffix(path, ".html") || isIndexHTML {
-			contentType = "text/html; charset=utf-8"
-			cacheControl = "no-cache"
-		} else if strings.HasSuffix(path, ".js") {
-			contentType = "application/javascript; charset=utf-8"
-			if path == handler.root+"/sw.js" {
-				cacheControl = "no-cache"
-			} else {
-				cacheControl = "public, max-age=31536000"
-			}
-		} else if strings.HasSuffix(path, ".png") {
-			contentType = "image/png"
-		} else if strings.HasSuffix(path, ".svg") {
-			contentType = "image/svg+xml"
-		} else {
-			contentType = "text/plain; charset=utf-8"
-		}
-
-		if path == handler.root+"/sw.js" {
-			cacheControl = "no-cache"
-		}
-
-		w.Header().Add("Cache-Control", cacheControl)
-		w.Header().Add("Content-Type", contentType)
-		w.Write(data)
+	if strings.HasSuffix(path, ".css") || (strings.HasSuffix(path, ".js") && path != "./public/sw.js") {
+		cacheControl = "public, max-age=31536000" // 1 year
+	} else if path == "./public/sw.js" {
+		cacheControl = "no-cache"
+	} else if strings.HasSuffix(path, ".svg") || strings.HasSuffix(path, ".png") || strings.HasSuffix(path, ".jpg") {
+		cacheControl = "public, max-age=3600" // 1 hour
 	} else {
-		w.WriteHeader(404)
-		w.Write([]byte("404 My dear - " + http.StatusText(404)))
+		cacheControl = "public, max-age=600" // 10 minutes
 	}
+
+	w.Header().Add("Cache-Control", cacheControl)
+	h.handler.ServeHTTP(w, r) // Serve the file
 }
 
 func main() {
-	http.Handle("/", static("./public/", []string{"GET", "HEAD"}))
+	http.Handle("/", wrap(http.FileServer(http.Dir("./public"))))
 	http.ListenAndServe(":5000", nil)
 }
