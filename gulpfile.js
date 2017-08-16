@@ -67,6 +67,10 @@ gulp.task('minify-img', () => {
     .pipe(gulp.dest('./img')); // change the dest if you don't want your images overwritten
 });
 
+gulp.task('image', () => {
+  gulp.src('./assets/images/**').pipe(gulp.dest('./public/assets/images/')); // change the dest if you don't want your images overwritten
+});
+
 // Task that compiles scss files down to good old css
 gulp.task('sass', () => {
   gulp
@@ -133,6 +137,13 @@ gulp.task('watch', () => {
   );
 });
 
-gulp.task('build', ['generate-service-worker', 'sass', 'es6', 'hugo']);
+gulp.task('build', ['generate-service-worker', 'sass', 'es6', 'image', 'hugo']);
 
-gulp.task('serve', ['generate-service-worker', 'sass', 'watch', 'es6', 'hugo']);
+gulp.task('serve', [
+  'generate-service-worker',
+  'sass',
+  'watch',
+  'image',
+  'es6',
+  'hugo'
+]);
