@@ -1,7 +1,10 @@
 const cp = require('child_process');
+const path = require('path');
+
 const browserSync = require('browser-sync').create();
 const gulp = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
+const babel = require('gulp-babel');
 const cssnano = require('gulp-cssnano');
 const sass = require('gulp-sass');
 const imagemin = require('gulp-imagemin');
@@ -10,6 +13,7 @@ const pngcrush = require('imagemin-pngcrush');
 const size = require('gulp-size');
 const rename = require('gulp-rename');
 const plumber = require('gulp-plumber');
+const swPrecache = require('sw-precache');
 
 /**
  * Build the Hugo Site
@@ -70,64 +74,41 @@ gulp.task('sass', () => {
     .pipe(plumber())
     .pipe(sass())
     .pipe(
-      size({
-        gzip: false,
-        showFiles: true,
-        title: 'without vendor prefixes'
-      })
-    )
-    .pipe(
-      size({
-        gzip: true,
-        showFiles: true,
-        title: 'without vendor prefixes'
-      })
-    )
-    .pipe(
       autoprefixer({
-        browsers: ['last 2 versions'],
+        browsers: ['> 5%'],
         cascade: false
       })
     )
-    .pipe(
-      size({ gzip: false, showFiles: true, title: 'after vendor prefixes' })
-    )
-    .pipe(size({ gzip: true, showFiles: true, title: 'after vendor prefixes' }))
-    .pipe(gulp.dest('./public/assets/styles'))
-    .pipe(
-      cssnano({
-        discardComments: {
-          removeAll: true
-        }
-      })
-    )
-    .pipe(size({ gzip: false, showFiles: true, title: 'minified css' }))
-    .pipe(size({ gzip: true, showFiles: true, title: 'minified css' }))
-    .pipe(rename('style.min.css'));
-  browserSync.reload();
+    .pipe(gulp.dest('./public/assets/styles/'))
+    .pipe(browserSync.reload({ stream: true }));
+});
+
+gulp.task('es6', () => {
+  gulp
+    .src('./assets/scripts/app.js')
+    .pipe(plumber())
+    .pipe(babel())
+    .pipe(gulp.dest('./public/assets/scripts/'))
+    .pipe(browserSync.reload({ stream: true }));
 });
 
 gulp.task('generate-service-worker', callback => {
-  const path = require('path');
-  const swPrecache = require('sw-precache');
-
   swPrecache.write(
-    path.join('service-worker.js'),
+    path.join('public/sw.js'),
     {
       staticFileGlobs: [
-        '/',
-        'index.html',
-        'css/nkd.css',
-        'about/',
-        'about/index.html',
-        'projects/',
-        'projects/index.html',
-        'scripts/app.js',
-        'manifest.json',
-        'favicon.ico',
-        'assets/images/favicons/*.*'
+        'public/assets/styles/**.css',
+        'public/assets/images/**.*',
+        'public/assets/scripts/**.js',
+        'public/manifest.json'
       ],
-      stripPrefix: ''
+      stripPrefix: 'public',
+      runtimeCaching: [
+        {
+          handler: 'cacheFirst',
+          urlPattern: /^https:\/\/localhost/
+        }
+      ]
     },
     callback
   );
@@ -152,6 +133,6 @@ gulp.task('watch', () => {
   );
 });
 
-gulp.task('build', ['generate-service-worker', 'sass', 'hugo']);
+gulp.task('build', ['generate-service-worker', 'sass', 'es6', 'hugo']);
 
-gulp.task('serve', ['generate-service-worker', 'sass', 'watch', 'hugo']);
+gulp.task('serve', ['generate-service-worker', 'sass', 'watch', 'es6', 'hugo']);
