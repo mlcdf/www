@@ -47,13 +47,13 @@ func (handler *staticHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) 
 		var cacheControl string
 
 		if strings.HasSuffix(path, ".css") {
-			contentType = "text/css"
+			contentType = "text/css; charset=utf-8"
 			cacheControl = "public, max-age=31536000"
 		} else if strings.HasSuffix(path, ".html") || isIndexHTML {
-			contentType = "text/html"
+			contentType = "text/html; charset=utf-8"
 			cacheControl = "no-cache"
 		} else if strings.HasSuffix(path, ".js") {
-			contentType = "application/javascript"
+			contentType = "application/javascript; charset=utf-8"
 			if path == handler.root+"/sw.js" {
 				cacheControl = "no-cache"
 			} else {
@@ -64,7 +64,7 @@ func (handler *staticHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) 
 		} else if strings.HasSuffix(path, ".svg") {
 			contentType = "image/svg+xml"
 		} else {
-			contentType = "text/plain"
+			contentType = "text/plain; charset=utf-8"
 		}
 
 		if path == handler.root+"/sw.js" {
