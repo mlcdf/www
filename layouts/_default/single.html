@@ -5,7 +5,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>{{ .Site.Params.author }} - {{ .Title }}</title>
-  <meta name="author" content="{{ .Site.Author }}">
+  <meta name="author" content="{{ .Site.Params.Author }}">
+  <meta name="author" content="{{ .Site.Params.Description }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#222222">
@@ -22,12 +23,9 @@
     </header>
     <nav class="nav">{{if eq .Title "Projects"}}
       <span class="nav__item nav__item--current">projects</span>
-      <a class="nav__item" href="/about">about</a> {{ end }}
-
-      {{ if eq .Title "About" }}
+      <a class="nav__item" href="/about">about</a> {{ end }} {{ if eq .Title "About" }}
       <a class="nav__item" href="/">projects</a>
-      <span class="nav__item nav__item--current">about</span>
-      {{ end }}
+      <span class="nav__item nav__item--current">about</span> {{ end }}
 
       <a class="nav__item" href="mailto:hello@mlcdf.com">email</a>
     </nav>

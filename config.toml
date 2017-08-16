@@ -3,5 +3,5 @@ languageCode = "en-us"
 title = "My New Hugo Site"
 
 [params]
-  description = "Tesla's Awesome Hugo Site"
+  description = "Maxime is a software developer living in Bordeaux, France with a passion for the open web"
   author = "Maxime Le Conte des Floris"
