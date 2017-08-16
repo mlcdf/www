@@ -18,9 +18,14 @@
     <header class="header">
       <h1 class="header__title">@mlcdf</h1>
     </header>
-    <nav class="nav">
+    <nav class="nav">{{if eq .Title "Projects"}}
       <span class="nav__item nav__item--current">projects</span>
-      <a class="nav__item" href="/about">about</a>
+      <a class="nav__item" href="/about">about</a> {{ end }}
+
+      {{ if eq .Title "About" }}
+      <a class="nav__item" href="/">projects</a>
+      <span class="nav__item nav__item--current">about</span>
+      {{ end }}
 
       <a class="nav__item" href="mailto:hello@mlcdf.com">email</a>
     </nav>
