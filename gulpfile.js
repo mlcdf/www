@@ -146,7 +146,10 @@ gulp.task('watch', () => {
   // Watch .scss files
   gulp.watch('./assets/styles/*.scss', ['sass']);
   // Watch .html files and posts
-  gulp.watch(['./content/**/*.md', './content/*.md'], ['hugo-watch']);
+  gulp.watch(
+    ['./content/**/*.md', './content/*.md', './layouts/**/*.html'],
+    ['hugo-watch']
+  );
 });
 
 gulp.task('build', ['generate-service-worker', 'sass', 'hugo']);
