@@ -125,10 +125,6 @@ gulp.task('generate-service-worker', callback => {
   );
 });
 
-gulp.task('production', () => {
-  gulp.run('minify-css', 'minify-img', 'minify-svg');
-});
-
 gulp.task('watch', () => {
   browserSync.init({
     server: {
