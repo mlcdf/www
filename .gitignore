@@ -64,3 +64,4 @@ typings/
 # Files generated during development or build
 public/
 mlcdf
+data/rev.json

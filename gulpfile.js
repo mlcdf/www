@@ -1,18 +1,21 @@
 const cp = require('child_process');
 const path = require('path');
 
-const browserSync = require('browser-sync').create();
-const gulp = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const babel = require('gulp-babel');
+const browserSync = require('browser-sync').create();
 const cssnano = require('gulp-cssnano');
-const sass = require('gulp-sass');
+const gulp = require('gulp');
+const gulpif = require('gulp-if');
 const imagemin = require('gulp-imagemin');
-const svgmin = require('gulp-svgmin');
-const pngcrush = require('imagemin-pngcrush');
-const size = require('gulp-size');
 const plumber = require('gulp-plumber');
+const pngcrush = require('imagemin-pngcrush');
+const rev = require('gulp-rev');
+const sass = require('gulp-sass');
+const size = require('gulp-size');
+const svgmin = require('gulp-svgmin');
 const swPrecache = require('sw-precache');
+const uglify = require('gulp-uglify');
 
 /**
  * Build the Hugo Site
@@ -28,19 +31,22 @@ gulp.task('hugo-watch', ['hugo'], () => {
   browserSync.reload();
 });
 
-gulp.task('minify-css', () => {
+gulp.task('minify-css-js', () => {
   gulp
-    .src('./public/assets/styles/style.css') // set this to the file(s) you want to minify.
+    .src(['./public/assets/styles/style.css', './public/assets/scripts/app.js']) // set this to the file(s) you want to minify.
+    .pipe(gulpif('*.js', uglify()))
+    .pipe(gulpif('*.css', cssnano({ discardComments: { removeAll: true } })))
+    .pipe(gulpif('*.js', rev()))
+    .pipe(gulpif('*.css', rev()))
+    .pipe(gulpif('*.js', gulp.dest('./public/assets/scripts/')))
+    .pipe(gulpif('*.css', gulp.dest('./public/assets/styles/')))
     .pipe(
-      cssnano({
-        discardComments: {
-          removeAll: true
-        }
+      rev.manifest({
+        path: 'rev.json',
+        merge: true // merge with the existing manifest if one exists
       })
     )
-    .pipe(size({ gzip: false, showFiles: true, title: 'minified css' }))
-    .pipe(size({ gzip: true, showFiles: true, title: 'minified css' }))
-    .pipe(gulp.dest('./public/assets/styles/'));
+    .pipe(gulp.dest('./data'));
 });
 
 // Task to optimize and minify svg
