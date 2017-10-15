@@ -1,4 +1,3 @@
-const cp = require('child_process');
 const path = require('path');
 
 const autoprefixer = require('gulp-autoprefixer');
@@ -17,36 +16,22 @@ const svgmin = require('gulp-svgmin');
 const swPrecache = require('sw-precache');
 const uglify = require('gulp-uglify');
 
-/**
- * Build the Hugo Site
- */
-gulp.task('hugo', done => {
-  return cp.spawn('hugo').on('close', done);
-});
-
-/**
- * Rebuild Hugo & do page reload
- */
-gulp.task('hugo-watch', ['hugo'], () => {
-  browserSync.reload();
-});
-
 gulp.task('minify-css-js', () => {
   gulp
-    .src(['./public/assets/styles/style.css', './public/assets/scripts/app.js']) // set this to the file(s) you want to minify.
+    .src(['./static/assets/styles/style.css', './static/assets/scripts/app.js']) // set this to the file(s) you want to minify.
     .pipe(gulpif('*.js', uglify()))
     .pipe(gulpif('*.css', cssnano({ discardComments: { removeAll: true } })))
     .pipe(gulpif('*.js', rev()))
     .pipe(gulpif('*.css', rev()))
-    .pipe(gulpif('*.js', gulp.dest('./public/assets/scripts/')))
-    .pipe(gulpif('*.css', gulp.dest('./public/assets/styles/')))
+    .pipe(gulpif('*.js', gulp.dest('./static/assets/scripts/')))
+    .pipe(gulpif('*.css', gulp.dest('./static/assets/styles/')))
     .pipe(
       rev.manifest({
         path: 'rev.json',
         merge: true // merge with the existing manifest if one exists
       })
     )
-    .pipe(gulp.dest('./data'));
+    .pipe(gulp.dest('./static/assets/'));
 });
 
 // Task to optimize and minify svg
@@ -54,7 +39,7 @@ gulp.task('minify-svg', () => {
   gulp
     .src('./assets/images/')
     .pipe(svgmin())
-    .pipe(gulp.dest('./public/assets/images/'));
+    .pipe(gulp.dest('./static/assets/images/'));
 });
 
 gulp.task('minify-png', () => {
@@ -71,11 +56,11 @@ gulp.task('minify-png', () => {
     )
     .pipe(size({ gzip: false, showFiles: true, title: 'minified images' }))
     .pipe(size({ gzip: true, showFiles: true, title: 'minified images' }))
-    .pipe(gulp.dest('./public/assets/images/')); // change the dest if you don't want your images overwritten
+    .pipe(gulp.dest('./static/assets/images/')); // change the dest if you don't want your images overwritten
 });
 
 gulp.task('image', () => {
-  gulp.src('./assets/images/**').pipe(gulp.dest('./public/assets/images/')); // change the dest if you don't want your images overwritten
+  gulp.src('./assets/images/**').pipe(gulp.dest('./static/assets/images/')); // change the dest if you don't want your images overwritten
 });
 
 // Task that compiles scss files down to good old css
@@ -90,7 +75,7 @@ gulp.task('sass', () => {
         cascade: false
       })
     )
-    .pipe(gulp.dest('./public/assets/styles/'))
+    .pipe(gulp.dest('./static/assets/styles/'))
     .pipe(browserSync.reload({ stream: true }));
 });
 
@@ -99,21 +84,20 @@ gulp.task('es6', () => {
     .src('./assets/scripts/app.js')
     .pipe(plumber())
     .pipe(babel())
-    .pipe(gulp.dest('./public/assets/scripts/'))
+    .pipe(gulp.dest('./static/assets/scripts/'))
     .pipe(browserSync.reload({ stream: true }));
 });
 
 gulp.task('generate-service-worker', callback => {
   swPrecache.write(
-    path.join('public/sw.js'),
+    path.join('static/sw.js'),
     {
       staticFileGlobs: [
-        'public/assets/styles/**.css',
-        'public/assets/images/**.*',
-        'public/assets/scripts/**.js',
-        'public/manifest.json'
+        'static/assets/styles/**.css',
+        'static/assets/images/**.*',
+        'static/assets/scripts/**.js',
+        'static/manifest.json'
       ],
-      stripPrefix: 'public',
       runtimeCaching: [
         {
           handler: 'cacheFirst',
@@ -128,32 +112,21 @@ gulp.task('generate-service-worker', callback => {
 gulp.task('watch', () => {
   browserSync.init({
     server: {
-      baseDir: 'public'
+      baseDir: './'
     }
   });
   // Watch .scss files
   gulp.watch('./assets/styles/*.scss', ['sass']);
   // Watch .html files and posts
-  gulp.watch(
-    ['./content/**/*.md', './content/*.md', './layouts/**/*.html'],
-    ['hugo-watch']
-  );
+  gulp.watch(['./content/**/*.md', './content/*.md', './layouts/**/*.html']);
 });
 
 gulp.task('build', [
   'sass',
-  'generate-service-worker',
   'es6',
   'minify-png',
   'minify-svg',
-  'hugo'
+  'minify-css-js'
 ]);
 
-gulp.task('serve', [
-  'generate-service-worker',
-  'sass',
-  'watch',
-  'image',
-  'es6',
-  'hugo'
-]);
+gulp.task('serve', ['sass', 'watch', 'image', 'es6']);
