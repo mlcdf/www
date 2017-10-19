@@ -64,6 +64,12 @@ func revving(path string) string {
 }
 
 func main() {
+	port := "3000"
+
+	if os.Getenv("PORT") != "" {
+		port = os.Getenv("PORT")
+	}
+
 	locales := LoadLocales()
 	log.Println(locales)
 
@@ -82,8 +88,6 @@ func main() {
 
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
 
-	router.StrictSlash(true)
-
 	router.HandleFunc("/favicon.ico", func(w http.ResponseWriter, req *http.Request) {
 		http.ServeFile(w, req, "./static/favicon.ico")
 	})
@@ -98,5 +102,5 @@ func main() {
 	})
 
 	http.Handle("/", &server{router})
-	http.ListenAndServe(":3000", nil)
+	http.ListenAndServe(":"+port, nil)
 }
