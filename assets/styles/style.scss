@@ -4,60 +4,65 @@
 $light-grey: #e9e9e9;
 $silver: #777;
 $black: #222222;
-$blue: #3d5afe;
+$blue: #f50057;
 
 $mono: 'Fira Mono', 'Fira Code', 'Roboto Mono', noto mono, monaco, menlo,
   'Droid Sans Mono', 'DejaVu Sans Mono', 'Consolas', cousine, 'Ubuntu Mono',
   'Courrier', 'Liberation Mono', monospace;
-$sans: Ubuntu, -apple-system, BlinkMacSystemFont, 'avenir next', avenir,
-  'Segoe UI', 'lucida grande', Gill Sans, 'Fira Sans', Roboto, Noto Sans,
-  'Droid Sans', Cantarell, Oxygen, Ubuntu, 'Franklin Gothic Medium',
-  'Century Gothic', 'Liberation Sans', 'Helvetica neue', 'Helvetica', sans-serif;
+$sans: 'Neue Haas Unica Web', Ubuntu, -apple-system, BlinkMacSystemFont,
+  'avenir next', avenir, 'Segoe UI', 'lucida grande', Gill Sans, 'Fira Sans',
+  Roboto, Noto Sans, 'Droid Sans', Cantarell, Oxygen, Ubuntu,
+  'Franklin Gothic Medium', 'Century Gothic', 'Liberation Sans',
+  'Helvetica neue', 'Helvetica', sans-serif;
 $serif: 'New York', Garamond, 'Bitstream Charter', Cambria, Cochin, Georgia,
   'MS Serif', Times, 'Times New Roman', serif;
 
 html,
 body {
-  font-family: $sans;
+  font-family: $serif;
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 1.6rem;
   background-color: #fff;
   color: $black;
 }
 
 @media screen and (min-width: 560px) {
   body {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 30px;
   }
 }
 
 a {
-  color: $blue;
+  color: inherit;
   text-decoration: none;
 }
 
-a:hover {
+a:hover,
+a:focus {
   text-decoration: underline;
 }
 
 .wrapper {
-  max-width: 600px;
+  max-width: 660px;
   margin: auto;
-  padding: 1em;
+  padding: 0.5em;
 }
 
 .header {
-  margin: 2rem 0 1rem;
+  margin: auto;
+  max-width: 660px;
   display: flex;
-  justify-content: center;
+  // flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 
   &__title {
     text-align: center;
     margin: 0;
-    font-size: 28px;
+    font-size: 22px;
     font-family: $mono;
-    padding: 14px 18px 12px;
+    padding: 10px 14px 6px;
     background-color: #24292e;
     border-radius: 4px;
     color: white;
@@ -67,14 +72,15 @@ a:hover {
 .nav {
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
+  align-items: center;
   border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+  font-family: $sans;
 
   &__item {
     display: block;
-    margin: 0.6rem 1rem;
-    color: $blue;
+    margin: 1rem 0.6rem;
+    font-size: 1.125rem;
+    color: $black;
 
     &--current {
       color: $black;
@@ -84,7 +90,14 @@ a:hover {
 
 p {
   font-family: $serif;
-  font-size: 1.25rem;
+  // font-size: 1.25rem;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 6rem 0 4rem;
+  text-align: center;
 }
 
 .projectlist {
@@ -93,21 +106,20 @@ p {
 }
 
 .project {
-  padding-bottom: 2rem;
-  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
   display: flex;
-  border-bottom: solid 1px $light-grey;
 
   &__name {
-    font-family: $sans;
-    font-size: 1.5rem;
+    // font-family: $sans;
+    font-size: 1.2rem;
     font-weight: 500;
-    line-height: 2rem;
     font-weight: bold;
+    margin-top: 0;
   }
 
   &__description > div {
-    margin-top: 16px;
+    margin-top: 0.5rem;
     width: 100%;
     color: #111;
 
@@ -118,11 +130,28 @@ p {
   }
 }
 
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0 1.5rem;
+
+  & > a {
+    display: inline-flex;
+    border: 1px solid #000;
+    // border: 2px solid black;
+    border-radius: 4px;
+    padding: 0.6rem 1.2rem;
+    margin: 1rem;
+  }
+}
+
 @media (max-width: 400px) {
   .project {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 3rem;
+    // display: flex;
+    // flex-direction: column;
+    // padding-bottom: 2rem;
+    // margin-bottom: 2rem;
 
     &__image {
       margin-bottom: 8px;
@@ -140,7 +169,34 @@ p:not(:last-child) {
 }
 
 .footer {
+  font-family: $sans;
   text-align: center;
   margin-top: 6rem;
   margin-bottom: 2rem;
+  font-size: 1.125rem;
+
+  & > div {
+    margin: 0.6rem 0;
+    & > a {
+      color: inherit;
+      margin: 0.4rem;
+    }
+  }
+}
+
+.grow {
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
+}
+
+.grow:hover,
+.grow:focus {
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+.grow:active {
+  transform: scale(0.9);
 }

@@ -17,20 +17,25 @@
 </head>
 
 <body>
-  <div class="wrapper">
-    <header class="header">
+  <header class="header">
+    <a href="/">
       <h1 class="header__title">@mlcdf</h1>
-    </header>
+    </a>
     <nav class="nav">
-      <a class="nav__item" href="/about">about</a>
-      <a class="nav__item" href="/">projects</a>
-      <a class="nav__item" href="mailto:hello@mlcdf.com">email</a>
+      <a class="nav__item" href="/code">Code</a>
+      <a class="nav__item" href="/photos">Photos</a>
     </nav>
+  </header>
+  <div class="wrapper">
     <main>
       {{ yield }}
     </main>
     <footer class="footer">
+      <div>
+        <a href="https://github.com/mlcdf" title="Maxime's GitHub">GitHub</a> <a href="https://unsplash.com/mlcdf" title="Maxime's Unsplash">Unsplash</a> <a href="https://twitter.com/mlcdf" title="Maxime's Twitter">Twitter</a>  <a href="https://toot.cafe/@mlcdf" title="Maxime's Mastodon">Mastodon</a> <a href="https://pinboard.in/u:mlcdf" title="Maxime's Pinboard">Pinboard</a>
+      </div>
       <a href="mailto:hello@mlcdf.com">hello@mlcdf.com</a> &mdash; (<a href="https://keybase.io/mlcdf/pgp_keys.asc?fingerprint=2aab8b415f5370f22b771cb024077cbfef94dd95">pgp key</a>)
+
     </footer>
   </div>
 </body>
