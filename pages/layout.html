@@ -12,30 +12,23 @@
   <meta name="theme-color" content="#222222">
   <link rel="stylesheet" href="/static/assets/styles/{{ "style.css" | revving }}">
   <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon.png">
-  <link rel="mask-icon" href="/assets/images/favicons/safari-pinned-tab.svg" color="#222222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#222222">
 </head>
 
 <body>
-  <header class="header">
-    <a href="/">
-      <h1 class="header__title">@mlcdf</h1>
-    </a>
-    <nav class="nav">
-      <a class="nav__item" href="/code">Code</a>
-      <a class="nav__item" href="/photos">Photos</a>
-    </nav>
-  </header>
   <div class="wrapper">
     <main>
       {{ yield }}
     </main>
-    <footer class="footer">
-      <div>
-        <a href="https://github.com/mlcdf" title="Maxime's GitHub">GitHub</a> <a href="https://unsplash.com/mlcdf" title="Maxime's Unsplash">Unsplash</a> <a href="https://twitter.com/mlcdf" title="Maxime's Twitter">Twitter</a>  <a href="https://toot.cafe/@mlcdf" title="Maxime's Mastodon">Mastodon</a> <a href="https://pinboard.in/u:mlcdf" title="Maxime's Pinboard">Pinboard</a>
-      </div>
-      <a href="mailto:hello@mlcdf.com">hello@mlcdf.com</a> &mdash; (<a href="https://keybase.io/mlcdf/pgp_keys.asc?fingerprint=2aab8b415f5370f22b771cb024077cbfef94dd95">pgp key</a>)
-
+    <footer>
+      <ul>
+        <li><a href="/">Home ›</a></li>
+        <li><a href="/side-projects">Side projects ›</a></li>
+        <!-- <li><a href="/photography">Photography ›</a></li>
+        <li><a href="/films">Films ›</a></li> -->
+        <li><a href="/links">Links ›</a></li>
+      </ul>
     </footer>
   </div>
 </body>
