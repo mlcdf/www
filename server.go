@@ -20,20 +20,23 @@ import (
 	"github.com/pelletier/go-toml"
 )
 
+var revs map[string]string
+var locales Locales
+
 // Labels represents all the labels
 type Labels struct {
 	Title       string
 	Description string
 }
 
-// Locales represents all the labels
+// Locales represents all the languages
 type Locales struct {
 	Fr Labels
 	En Labels
 }
 
-// LoadLocales load the locales from ./locales.toml
-func LoadLocales() Locales {
+// loadLocales load the locales from ./locales.toml
+func loadLocales(locales Locales) {
 	var file []byte
 	file, err := ioutil.ReadFile("./locales.toml")
 
@@ -41,9 +44,21 @@ func LoadLocales() Locales {
 		fmt.Println("Failed to load locales file.")
 	}
 
-	locales := Locales{}
-	toml.Unmarshal(file, &locales)
-	return locales
+	toml.Unmarshal(file, &Locales{})
+}
+
+func loadAssetsRevManifest(rev map[string]string) {
+	log.Println("hello")
+	file, err := ioutil.ReadFile("./static/assets/rev.json")
+
+	if err != nil {
+		log.Println("Failed to read rev file.")
+	}
+
+	err = json.Unmarshal(file, &rev)
+	if err != nil {
+		log.Println("Failed to unmarshal rev file.")
+	}
 }
 
 type server struct {
@@ -70,23 +85,10 @@ func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	s.Router.ServeHTTP(w, r) // Serve the file
 }
 
-// revving handles assets revving
+// revving is a function helper used by render
 func revving(path string) string {
 	if os.Getenv("ENV") == "prod" {
-		file, err := ioutil.ReadFile("./static/assets/rev.json")
-
-		if err != nil {
-			fmt.Println("Failed to read rev file.")
-		}
-
-		var m map[string]string
-		err = json.Unmarshal(file, &m)
-
-		if err != nil {
-			fmt.Println("Failed to unmarshal rev file.")
-		}
-		rev, found := m[path]
-
+		rev, found := revs[path]
 		if found == true {
 			return rev
 		}
@@ -106,7 +108,8 @@ func main() {
 		debug, _ = strconv.ParseBool(os.Getenv("DEBUG"))
 	}
 
-	locales := LoadLocales()
+	loadLocales(locales)
+	loadAssetsRevManifest(revs)
 
 	r := render.New(render.Options{
 		Directory:  "pages",
