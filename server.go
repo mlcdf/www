@@ -8,21 +8,52 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
+	"time"
 
 	"strings"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"github.com/unrolled/render"
+
+	"github.com/pelletier/go-toml"
 )
 
+// Labels represents all the labels
+type Labels struct {
+	Title       string
+	Description string
+}
+
+// Locales represents all the labels
+type Locales struct {
+	Fr Labels
+	En Labels
+}
+
+// LoadLocales load the locales from ./locales.toml
+func LoadLocales() Locales {
+	var file []byte
+	file, err := ioutil.ReadFile("./locales.toml")
+
+	if err != nil {
+		fmt.Println("Failed to load locales file.")
+	}
+
+	locales := Locales{}
+	toml.Unmarshal(file, &locales)
+	return locales
+}
+
 type server struct {
-	router *mux.Router
+	Router *mux.Router
 }
 
 // ServeHTTP add a proper cache-control header
 func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path[1:]
-	log.Println("Requesting /" + path)
+	// log.Println("Requesting /" + path)
 	var cacheControl string
 
 	if strings.HasSuffix(path, ".css") || (strings.HasSuffix(path, ".js") && path != "sw.js") {
@@ -36,7 +67,7 @@ func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Add("Cache-Control", cacheControl)
-	s.router.ServeHTTP(w, r) // Serve the file
+	s.Router.ServeHTTP(w, r) // Serve the file
 }
 
 // revving handles assets revving
@@ -65,13 +96,17 @@ func revving(path string) string {
 
 func main() {
 	port := "3000"
+	debug := true
 
 	if os.Getenv("PORT") != "" {
 		port = os.Getenv("PORT")
 	}
 
+	if os.Getenv("DEBUG") != "" {
+		debug, _ = strconv.ParseBool(os.Getenv("DEBUG"))
+	}
+
 	locales := LoadLocales()
-	log.Println(locales)
 
 	r := render.New(render.Options{
 		Directory:  "pages",
@@ -82,10 +117,12 @@ func main() {
 				"revving": revving,
 			},
 		},
+		IsDevelopment: debug,
 	})
 
 	router := mux.NewRouter()
 
+	// Handles static files
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
 
 	router.HandleFunc("/favicon.ico", func(w http.ResponseWriter, req *http.Request) {
@@ -100,7 +137,14 @@ func main() {
 		vars := mux.Vars(req)
 		r.HTML(w, http.StatusOK, vars["page"], locales.Fr)
 	})
-
 	http.Handle("/", &server{router})
-	http.ListenAndServe(":"+port, nil)
+
+	srv := &http.Server{
+		Handler: handlers.LoggingHandler(os.Stdout, handlers.CompressHandler(router)),
+		Addr:    "127.0.0.1:" + port,
+		// Good practice: enforce timeouts for servers
+		WriteTimeout: 15 * time.Second,
+		ReadTimeout:  15 * time.Second,
+	}
+	log.Fatal(srv.ListenAndServe())
 }
