@@ -13,12 +13,12 @@ if ('serviceWorker' in navigator) {
   // See https://github.com/slightlyoff/ServiceWorker/issues/468
   navigator.serviceWorker
     .register('/sw.js')
-    .then(reg => {
+    .then(function(reg) {
       // updatefound is fired if service-worker.js changes.
       reg.onupdatefound = function() {
         // The updatefound event implies that reg.installing is set see
         // https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html#service-worker-container-updatefound-event
-        const installingWorker = reg.installing;
+        var installingWorker = reg.installing;
 
         installingWorker.onstatechange = function() {
           switch (installingWorker.state) {
@@ -43,7 +43,7 @@ if ('serviceWorker' in navigator) {
         };
       };
     })
-    .catch(e => {
+    .catch(function(e) {
       console.error('Error during service worker registration:', e);
     });
 }

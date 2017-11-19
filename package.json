@@ -1,42 +1,29 @@
 {
   "private": true,
   "scripts": {
-    "start": "gulp build && go run app.go",
+    "start": "gulp build && go run server.go",
     "dev": "gulp serve",
-    "format": "prettier **/**.js --write --single-quote",
-    "lint": "eslint '**/*.js' --ignore-path .gitignore",
-    "build": "gulp build && CGO_ENABLED=0 GOOS=linux go build -a -tags netgo -ldflags '-w' .",
+    "build":
+      "gulp build && CGO_ENABLED=0 GOOS=linux go build -a -tags netgo -ldflags '-w' .",
     "clean": "rm -r public/",
     "docker:build": "docker build -t mlcdf .",
     "docker:run": "docker run -d -p 5000:5000 mlcdf"
   },
   "license": "MIT",
   "dependencies": {
-    "babel-core": "^6.25.0",
-    "babel-preset-latest": "^6.24.1",
     "browser-sync": "^2.18.13",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
-    "gulp-babel": "^7.0.0",
-    "gulp-cli": "^1.4.0",
-    "gulp-concat": "^2.6.1",
     "gulp-cssnano": "^2.1.2",
-    "gulp-htmlmin": "^3.0.0",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "~3.3.0",
     "gulp-plumber": "^1.1.0",
     "gulp-rev": "^8.0.0",
     "gulp-sass": "^3.1.0",
-    "gulp-size": "^2.1.0",
     "gulp-svgmin": "~1.2.4",
     "gulp-uglify": "^3.0.0",
-    "gulp-useref": "^3.1.2",
     "imagemin-pngcrush": "^5.1.0",
     "normalize-scss": "^7.0.0",
     "sw-precache": "^5.2.0"
-  },
-  "devDependencies": {
-    "eslint": "^4.4.1",
-    "prettier": "^1.5.3"
   }
 }
