@@ -1,0 +1,16 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+name = "pypi"
+verify_ssl = true
+
+
+[packages]
+
+flask = "*"
+markdown = "*"
+python-frontmatter = "*"
+
+
+[dev-packages]
+
