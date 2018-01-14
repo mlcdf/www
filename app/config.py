@@ -1,3 +1,5 @@
+"""Store the application configuration"""
+
 class Config(object):
     DEBUG = False
     TESTING = False
@@ -13,3 +15,11 @@ class DevelopmentConfig(Config):
 
 class TestingConfig(Config):
     TESTING = True
+
+config = {
+    'development': DevelopmentConfig,
+    'production': ProductionConfig,
+    'testing': TestingConfig,
+
+    'default': DevelopmentConfig
+}

@@ -6,31 +6,19 @@ from flask import Flask
 import markdown
 import frontmatter
 
-app = Flask(__name__, static_url_path='/static')
-app.config.from_object('app.config.DevelopmentConfig')
+from app.config import config
+from app.flask_page import FlaskPage
+
+page = FlaskPage()
+
+def create_app(env):
+    app = Flask(__name__, static_url_path='/static')
+    app.config.from_object(config[env])
+
+    page.init_app(app)
+
+    return app
 
 
-def read_pages():
-    files = glob.glob('app/pages/*.html')
-    files.extend(glob.glob('app/pages/*.md'))
-    content = {}
-    for filepath in files:
-        filename = os.path.basename(filepath)
-        content[os.path.splitext(filename)[0]] = parse_markdown(filepath)
-    app.logger.info("Pages registred: %s" % content.keys())
-    return content
-
-
-def parse_markdown(filepath: str):
-    markdown_parser = markdown.Markdown()
-    file_parts = frontmatter.load(filepath)
-
-    return {
-        'html': markdown_parser.convert(file_parts.content),
-        'metadata': file_parts.metadata
-    }
-
-
-markdown_content = read_pages()
-
+app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 from app import routes

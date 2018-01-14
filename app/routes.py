@@ -2,26 +2,15 @@
 from flask import Flask, render_template, abort
 from markdown import markdown
 
-from app import app, markdown_content
-
-
-def render_pages(page_name: str, template_name='default.j2', **kwargs) -> str:
-    if page_name not in markdown_content:
-        abort(404)
-    return render_template(
-        template_name,
-        contents=markdown_content[page_name]['html'],
-        metadata=markdown_content[page_name]['metadata'],
-        **kwargs,
-    )
+from app import app, page
 
 
 @app.route("/")
-@app.route("/<page>")
-def index(page=None):
-    if page is None:
-        return render_pages('index')
-    return render_pages(page)
+@app.route("/<page_id>")
+def index(page_id=None):
+    if page_id is None:
+        return page.render('index')
+    return page.render(page_id)
 
 
 @app.errorhandler(404)
