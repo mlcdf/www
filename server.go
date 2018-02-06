@@ -9,11 +9,9 @@ import (
 	"net/http"
 	"os"
 	"strconv"
-	"time"
 
 	"strings"
 
-	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"github.com/unrolled/render"
 
@@ -61,28 +59,25 @@ func loadAssetsRevManifest(rev map[string]string) {
 	}
 }
 
-type server struct {
-	Router *mux.Router
-}
+func cacheHandler(h http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		path := r.URL.Path[1:]
+		// log.Println("Requesting /" + path)
+		var cacheControl string
 
-// ServeHTTP add a proper cache-control header
-func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	path := r.URL.Path[1:]
-	// log.Println("Requesting /" + path)
-	var cacheControl string
+		if strings.HasSuffix(path, ".css") || (strings.HasSuffix(path, ".js") && path != "sw.js") {
+			cacheControl = "public, max-age=31536000" // 1 year
+		} else if path == "sw.js" {
+			cacheControl = "no-cache"
+		} else if strings.HasSuffix(path, ".svg") || strings.HasSuffix(path, ".png") || strings.HasSuffix(path, ".jpg") {
+			cacheControl = "public, max-age=3600" // 1 hour
+		} else {
+			cacheControl = "public, max-age=600" // 10 minutes
+		}
 
-	if strings.HasSuffix(path, ".css") || (strings.HasSuffix(path, ".js") && path != "sw.js") {
-		cacheControl = "public, max-age=31536000" // 1 year
-	} else if path == "sw.js" {
-		cacheControl = "no-cache"
-	} else if strings.HasSuffix(path, ".svg") || strings.HasSuffix(path, ".png") || strings.HasSuffix(path, ".jpg") {
-		cacheControl = "public, max-age=3600" // 1 hour
-	} else {
-		cacheControl = "public, max-age=600" // 10 minutes
-	}
-
-	w.Header().Add("Cache-Control", cacheControl)
-	s.Router.ServeHTTP(w, r) // Serve the file
+		w.Header().Add("Cache-Control", cacheControl)
+		h.ServeHTTP(w, r) // call original
+	})
 }
 
 // revving is a function helper used by render
@@ -128,6 +123,7 @@ func main() {
 	// Handles static files
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
 
+	// Since the favicon.ico file is expected by browsers to be found at /favicon.ico, this special handler is needed.
 	router.HandleFunc("/favicon.ico", func(w http.ResponseWriter, req *http.Request) {
 		http.ServeFile(w, req, "./static/favicon.ico")
 	})
@@ -140,14 +136,6 @@ func main() {
 		vars := mux.Vars(req)
 		r.HTML(w, http.StatusOK, vars["page"], locales.Fr)
 	})
-	http.Handle("/", &server{router})
 
-	srv := &http.Server{
-		Handler: handlers.LoggingHandler(os.Stdout, handlers.CompressHandler(router)),
-		Addr:    "127.0.0.1:" + port,
-		// Good practice: enforce timeouts for servers
-		WriteTimeout: 15 * time.Second,
-		ReadTimeout:  15 * time.Second,
-	}
-	log.Fatal(srv.ListenAndServe())
+	log.Fatal(http.ListenAndServe(":"+port, cacheHandler(router)))
 }
