@@ -1,12 +1,13 @@
+{{define "layout"}}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>{{ .Title }}</title>
-  <meta name="author" content="{{ .Title }}">
-  <meta name="description" content="{{ .Description }}">
+  <title>{{template "title"}}</title>
+  <meta name="author" content="Maxime Le Conte des Floris">
+  <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#222222">
@@ -19,7 +20,7 @@
 <body>
   <div class="wrapper">
     <main>
-      {{ yield }}
+      {{template "body"}}
     </main>
     <footer>
       <ul>
@@ -34,3 +35,4 @@
 </body>
 
 </html>
+{{end}}
