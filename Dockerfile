@@ -1,5 +1,6 @@
 FROM scratch
 COPY mlcdf /mlcdf
-COPY public /public
-EXPOSE 5000
+COPY templates /templates
+COPY static /static
+EXPOSE 3000
 ENTRYPOINT ["/mlcdf"]
