@@ -76,10 +76,10 @@ gulp.task('generate-service-worker', callback => {
 
 gulp.task('watch', () => {
   browserSync.init({
+    port: 5000,
     proxy: 'localhost:3000'
   });
   gulp.watch('./assets/styles/*.scss', ['sass']);
-  gulp.wa;
 });
 
 gulp.task('build', ['sass', 'scripts', 'minify']);

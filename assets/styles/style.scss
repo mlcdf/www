@@ -1,36 +1,15 @@
-// @import "../../node_modules/normalize-scss/sass/normalize";
-// @include normalize();
-
-$light-grey: #e9e9e9;
-$silver: #777;
-$black: #222222;
-$blue: #f50057;
-
 $mono: 'Fira Mono', 'Fira Code', 'Roboto Mono', noto mono, monaco, menlo,
   'Droid Sans Mono', 'DejaVu Sans Mono', 'Consolas', cousine, 'Ubuntu Mono',
   'Courrier', 'Liberation Mono', monospace;
-$sans: 'Neue Haas Unica Web', Ubuntu, -apple-system, BlinkMacSystemFont,
-  'avenir next', avenir, 'Segoe UI', 'lucida grande', Gill Sans, 'Fira Sans',
-  Roboto, Noto Sans, 'Droid Sans', Cantarell, Oxygen, Ubuntu,
-  'Franklin Gothic Medium', 'Century Gothic', 'Liberation Sans',
-  'Helvetica neue', 'Helvetica', sans-serif;
+$sans: -apple-system, 'Sans Francisco', Roboto, 'Segoe UI',
+  'Helvetica neue', 'Lucida Grande', 'Helvetica', sans-serif;
 $serif: 'New York', Garamond, 'Bitstream Charter', Cambria, Cochin, Georgia,
   'MS Serif', Times, 'Times New Roman', serif;
 
 html,
 body {
-  font-family: $sans;
-  font-size: 1rem;
-  line-height: 1.6rem;
-  background-color: #fff;
-  color: $black;
-}
-
-@media screen and (min-width: 560px) {
-  body {
-    font-size: 1.5rem;
-    line-height: 2.5rem;
-  }
+  font-size: 16px;
+  color: 000;
 }
 
 a {
@@ -38,132 +17,11 @@ a {
   text-decoration: none;
 }
 
-a:hover,
-a:focus {
-  text-decoration: underline;
-}
-
-h1 {
-  font-size: 2.25rem;
-  margin-top: 0;
-  margin-bottom: 5rem;
-
-  a:hover,
-  a:focus {
-    text-decoration: none;
-  }
-}
-
-.wrapper {
-  max-width: 660px;
-  margin-top: 8rem;
-  margin-left: 8rem;
-  margin-bottom: 8rem;
-  padding: 0.5em;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8rem;
-}
-
-.avatar {
-  border-radius: 50%;
-  background-color: black;
-  width: 2.25rem;
-  height: 2.25rem;
-  margin-right: 1.2rem;
-}
-
-.nav {
-  &__item {
-    margin-top: 1rem;
-    margin-left: 1.2rem;
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-    color: $black;
-
-    &--current {
-      color: $black;
-    }
-  }
-}
-
-.projectlist {
-  margin-top: 6rem;
-  list-style: none;
-  padding-left: 0;
-}
-
-.project {
-  padding-bottom: 1.5rem;
-  margin-bottom: 1.5rem;
-  display: flex;
-
-  &__name {
-    // font-family: $sans;
-    font-size: 1.2rem;
-    font-weight: 500;
-    font-weight: bold;
-    margin-top: 0;
-  }
-
-  &__description > div {
-    margin-top: 0.5rem;
-    width: 100%;
-    color: #111;
-
-    & > a {
-      margin-right: 16px;
-      color: $blue;
-    }
-  }
-}
-
-@media (max-width: 400px) {
-  .project {
-    // display: flex;
-    // flex-direction: column;
-    // padding-bottom: 2rem;
-    // margin-bottom: 2rem;
-
-    &__image {
-      margin-bottom: 8px;
-      margin-right: 0;
-    }
-  }
-}
-
-// p {
-//   margin: 0;
-// }
-
-// p:not(:last-child) {
-//   margin-bottom: 1.5rem;
-// }
-
-footer {
-  margin-top: 5rem;
-
-  ul {
-    list-style: none;
-    padding-left: 0;
-
-    li {
-      // display: inline-block;
-      margin-top: 12px;
-      margin-right: 16px;
-    }
-  }
-
-  & > a {
-    color: inherit;
-    margin-right: 1.2rem;
-  }
-}
-
 p {
   margin-top: 0;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.serif {
+  font-family: 'PT Serif', serif;
 }

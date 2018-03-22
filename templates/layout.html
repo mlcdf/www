@@ -1,6 +1,6 @@
 {{define "layout"}}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-color: #FAFAFA">
 
 <head>
   <meta charset="utf-8">
@@ -11,25 +11,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#222222">
+  <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.9.1/css/tachyons.min.css" />
   <link rel="stylesheet" href="/static/assets/styles/{{ "style.css" | revving }}">
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
   <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#222222">
 </head>
 
-<body>
-  <div class="wrapper">
-    <main>
+<body class="serif">
+  <div class="mr-auto ml-auto f5 f3-ns measure-wide">
+    <header role="banner">
+      <nav role="navigation" class="pa3 pb0 pb3-ns flex justify-end sans-serif">
+        <a class="black-70 link hover-hot-pink b dib ml3 f5" href="/">Blog</a>
+        <a class="black-70 link hover-hot-pink b dib ml3 f5" href="/about">À propos</a>
+      </nav>
+    </header>
+    <main class="pa3 lh-copy serif" role="main">
       {{template "body"}}
     </main>
-    <footer>
-      <ul>
-        <li><a href="/">Home ›</a></li>
-        <li><a href="/side-projects">Side projects ›</a></li>
-        <!-- <li><a href="/photography">Photography ›</a></li>
-        <li><a href="/films">Films ›</a></li> -->
-        <li><a href="/links">Links ›</a></li>
-      </ul>
+    <footer class="pb3 pt0 pt3-ns flex flex-column items-end">
+      <nav role="navigation" class="ph3 flex justify-end sans-serif">
+        <a class="black-70 link hover-hot-pink b dib ml3 f5" href="/">Blog</a>
+        <a class="black-70 link hover-hot-pink b dib ml3 f5" href="/about">À propos</a>
+      </nav>
+      <div class="f5 dib pt3 ph3 link black-70 sans-serif tr">
+        <a href="/about#à-propos-du-site">© 2018 Maxime Le Conte des Floris</a>
+      </div>
     </footer>
   </div>
 </body>
