@@ -41,7 +41,7 @@ func main() {
 	router.HandleFunc("/", pages)
 
 	server := &http.Server{
-		Addr:         "127.0.0.1:" + port,
+		Addr:         "0.0.0.0:" + port,
 		Handler:      logging(router, logger),
 		ErrorLog:     logger,
 		ReadTimeout:  10 * time.Second,
