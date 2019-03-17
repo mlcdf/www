@@ -2,14 +2,28 @@
 # Full project: https://gitlab.com/pages/pelican
 image: python:3.7
 
+variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  paths:
+    - .cache/pip
+    - venv/
+
+before_script:
+  - python -V               # Print out python version for debugging
+  - pip install virtualenv
+  - virtualenv venv
+  - source venv/bin/activate
+  - pip install -r requirements.txt
+
 stages:
   - build
   - deploy
-  
+
 build:
   stage: build
   script:
-    - pip install -r requirements.txt
     - make publish
 
 deploy:
