@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 import datetime
-import locale
 
 AUTHOR = "Maxime Le Conte des Floris"
 SITENAME = "@mlcdf"
@@ -14,7 +13,7 @@ PATH = "content"
 
 TIMEZONE = "Europe/Paris"
 
-LOCALE = "fr_FR"
+LOCALE = ["fr_FR"]
 DEFAULT_LANG = "fr"
 
 THEME = "theme"
