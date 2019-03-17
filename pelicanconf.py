@@ -1,16 +1,23 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
+import datetime
+import locale
 
-AUTHOR = 'Maxime Le Conte des Floris'
-SITENAME = 'Maxime Le Conte des Floris'
-SITEURL = ''
+AUTHOR = "Maxime Le Conte des Floris"
+SITENAME = "@mlcdf"
+SITEURL = ""
 
-PATH = 'content'
+DESCRIPTION = "Programmation, cinéma, photographie, et plus si affinités..."
 
-TIMEZONE = 'Europe/Paris'
+PATH = "content"
 
-DEFAULT_LANG = 'fr'
+TIMEZONE = "Europe/Paris"
+
+LOCALE = "fr_FR"
+DEFAULT_LANG = "fr"
+
+THEME = "theme"
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -20,16 +27,29 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+LINKS = (
+    ("Pelican", "http://getpelican.com/"),
+    ("Python.org", "http://python.org/"),
+    ("Jinja2", "http://jinja.pocoo.org/"),
+    ("You can modify those links in your config file", "#"),
+)
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (("Contact", "mailto:hello@mlcdf.com"),)
 
 DEFAULT_PAGINATION = 20
 
+DISPLAY_PAGES_ON_MENU = True
+
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+# RELATIVE_URLS = True
+
+STATIC_PATHS = ["extra"]
+
+EXTRA_PATH_METADATA = {
+    "extra/favicon.ico": {"path": "favicon.ico"},
+    "extra/humans.txt": {"path": "humans.txt"},
+    "extra/robots.txt": {"path": "robots.txt"}
+}
+
+BUILD_DATE = datetime.datetime.now().strftime("%d %B %Y")
