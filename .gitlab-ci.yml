@@ -25,6 +25,14 @@ build:
   stage: build
   script:
     - make publish
+  artifacts:
+    name: "$CI_COMMIT_REF_NAME"
+    paths:
+      - output/
+  only:
+    refs:
+      - master
+
 
 deploy:
   stage: deploy
