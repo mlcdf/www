@@ -44,6 +44,12 @@ DISPLAY_PAGES_ON_MENU = True
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
 
+ARTICLE_SAVE_AS = '{date:%Y}/{slug}/index.html'
+ARTICLE_URL = '{date:%Y}/{slug}'
+
+PAGE_SAVE_AS = '{slug}/index.html'
+PAGE_URL = '{slug}'
+
 STATIC_PATHS = ["extra"]
 
 EXTRA_PATH_METADATA = {
