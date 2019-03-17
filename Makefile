@@ -78,7 +78,7 @@ publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 
 ftp_upload: publish
-	lftp ftp://$(FTP_USER)@$(FTP_HOST) -e "mirror -R $(OUTPUTDIR) $(FTP_TARGET_DIR) ; quit"
+	lftp -c "set sftp:auto-confirm yes; open -u $(FTP_USER), sftp://$(FTP_HOST)$(FTP_TARGET_DIR) ; mirror -Rve --exclude .git --exclude .gitlab-ci.yml --exclude .gitmodules --exclude .gitignore ./htdocs"
 
 
 .PHONY: html help clean regenerate serve serve-global devserver stopserver publish ftp_upload
