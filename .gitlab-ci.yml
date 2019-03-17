@@ -46,18 +46,11 @@ deploy:
     refs:
       - master
   script:
-    - git config --global user.email "pipeline@example.com"
-    - git config --global user.name "pipeline"
-    - git checkout --orphan production
     - mv output htdocs
-    - git rm --cached -r .
-    - git add htdocs
-    - git commit -m "Publishing"
-    - git remote add gandi git+ssh://${GIT_URL}/${REPOSITORY}
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - 'which make || ( apt-get update -y && apt-get install make -y )'
     - mkdir -p ~/.ssh
     - eval $(ssh-agent -s)
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
     - ssh-add <(echo "$PRIVATE_SSH_KEY")
-    - git push gandi production -f
-    - ssh ${GIT_URL} "deploy ${REPOSITORY} production"
+    - make ftp_upload
