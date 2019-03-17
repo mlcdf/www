@@ -20,7 +20,7 @@ DEFAULT_LANG = "fr"
 THEME = "theme"
 
 # Feed generation is usually not desired when developing
-FEED_RSS = "feeds/all.rss.xml"
+FEED_RSS = None
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
@@ -28,8 +28,8 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 LINK = (
-    ("Me Contacter", "mailto:hello@mlcdf.com"),
-    ("S'abonner au flux RSS", "/feeds/all.rss.xml"),
+    ("Me contacter", "mailto:hello@mlcdf.com"),
+    ("S'abonner au flux RSS", "/feeds/rss.xml"),
     ("Voir les sources", "https://framagit.org/mlcdf/mlcdf"),
 )
 
