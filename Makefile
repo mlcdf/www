@@ -8,9 +8,10 @@ OUTPUTDIR=$(BASEDIR)/output
 CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
 
-FTP_HOST=localhost
-FTP_USER=anonymous
-FTP_TARGET_DIR=/
+# Set as environnement variables in CI/CD
+# FTP_HOST=localhost
+# FTP_USER=anonymous
+# FTP_TARGET_DIR=/
 
 
 DEBUG ?= 0
