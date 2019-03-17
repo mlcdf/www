@@ -1,13 +1,34 @@
-/* html {
-  font-family: "PT Serif", Georgia, "Times New Roman", serif;
-} */
+html {
+  font-family: -apple-system, BlinkMacSystemFont, /* MacOS and iOS */
+    'avenir next', avenir, /* MacOS and iOS */
+    'Segoe UI', /* Windows */
+    'Fira Sans', /* Firefox OS */
+    roboto, noto, /* Google stuff */
+    cantarell, oxygen, ubuntu, /* Linux stuff */
+    'franklin gothic medium', 'century gothic', /* Windows stuff */
+    'helvetica neue', helvetica, /* Older MacOS */
+    'Liberation Sans', /* Linux */
+    sans-serif; /* Everything else */
+}
+
+.sidebar {
+  color: rgba(255,255,255,.6);
+}
 
 .sidebar-about h1 {
   font-family: Charter, /* MacOS */
-            Athelas,
-            Georgia, 'Times New Roman', /* MacOS, Windows and some Linux*/
-            'Droid Serif', /* Old Google stuff */
-            'DejaVu Serif', 'Liberation Serif', /* Linux */
-            serif; /* Everything else */
+    Athelas, Georgia, 'Times New Roman', /* MacOS, Windows and some Linux*/
+    'Droid Serif', /* Old Google stuff */
+    'DejaVu Serif', 'Liberation Serif', /* Linux */
+    serif; /* Everything else */
   font-size: 3rem;
+}
+
+/* Purple */
+.theme-base-purple .sidebar {
+  background-color: #202340;
+}
+.theme-base-purple .content a,
+.theme-base-purple .related-posts li a:hover {
+  color: #ed00b5;
 }
