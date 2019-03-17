@@ -17,10 +17,10 @@
              <a class="sidebar-nav-item {% if p == page %} active{% endif %}" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
            {% endfor %}
       {% endif %}
-      {% for title, link in SOCIAL %}
+      <p></p>
+      {% for title, link in LINK %}
         <a class="sidebar-nav-item" href="{{ link }}">{{ title }}</a>
       {% endfor %}
-      <a class="sidebar-nav-item" href="#">RSS</a>
       <p></p>
       <div class="sidebar-nab-item">
         Propulsé par <a href="https://getpelican.com">Pelican</a>.

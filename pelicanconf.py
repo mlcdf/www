@@ -20,22 +20,18 @@ DEFAULT_LANG = "fr"
 THEME = "theme"
 
 # Feed generation is usually not desired when developing
+FEED_RSS = "feeds/all.rss.xml"
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# Blogroll
-LINKS = (
-    ("Pelican", "http://getpelican.com/"),
-    ("Python.org", "http://python.org/"),
-    ("Jinja2", "http://jinja.pocoo.org/"),
-    ("You can modify those links in your config file", "#"),
+LINK = (
+    ("Me Contacter", "mailto:hello@mlcdf.com"),
+    ("S'abonner au flux RSS", "/feeds/all.rss.xml"),
+    ("Voir les sources", "https://framagit.org/mlcdf/mlcdf"),
 )
-
-# Social widget
-SOCIAL = (("Contact", "mailto:hello@mlcdf.com"),)
 
 DEFAULT_PAGINATION = 20
 
@@ -44,18 +40,18 @@ DISPLAY_PAGES_ON_MENU = True
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
 
-ARTICLE_SAVE_AS = '{date:%Y}/{slug}/index.html'
-ARTICLE_URL = '{date:%Y}/{slug}'
+ARTICLE_SAVE_AS = "{date:%Y}/{slug}/index.html"
+ARTICLE_URL = "{date:%Y}/{slug}"
 
-PAGE_SAVE_AS = '{slug}/index.html'
-PAGE_URL = '{slug}'
+PAGE_SAVE_AS = "{slug}/index.html"
+PAGE_URL = "{slug}"
 
 STATIC_PATHS = ["extra"]
 
 EXTRA_PATH_METADATA = {
     "extra/favicon.ico": {"path": "favicon.ico"},
     "extra/humans.txt": {"path": "humans.txt"},
-    "extra/robots.txt": {"path": "robots.txt"}
+    "extra/robots.txt": {"path": "robots.txt"},
 }
 
 BUILD_DATE = datetime.datetime.now().strftime("%d %B %Y")

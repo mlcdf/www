@@ -32,3 +32,21 @@ html {
 .theme-base-purple .related-posts li a:hover {
   color: #ed00b5;
 }
+
+a[href*="//"]::after {
+    background-image: url(/theme/images/open-in-new-black.svg);
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    content: "";
+    display: inline-block;
+    height: 16px;
+    margin: -.3rem .15rem 0 .25rem;
+    vertical-align: middle;
+    width: 16px;
+    fill: currentColor;
+    color: red;
+ }
+
+ .sidebar a[href*="//"]::after {
+     background-image: url(/theme/images/open-in-new-white.svg);
+  }
