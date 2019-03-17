@@ -42,6 +42,8 @@ deploy:
     refs:
       - master
   script:
+    - git config --global user.email "pipeline@example.com"
+    - git config --global user.name "pipeline"
     - git checkout --orphan production
     - mv output htdocs
     - git add htdocs
