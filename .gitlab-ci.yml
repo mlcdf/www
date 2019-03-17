@@ -55,5 +55,5 @@ deploy:
     - eval $(ssh-agent -s)
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
     - ssh-add <(echo "$PRIVATE_SSH_KEY")
-    - git push gandi production
+    - git push gandi production -f
     - ssh ${GIT_URL} "deploy ${REPOSITORY} production"
