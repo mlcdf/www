@@ -24,6 +24,7 @@ stages:
 build:
   stage: build
   script:
+    - apt update && apt install locales -y
     # for fr_FR.UTF-8
     # - sed -i -e 's/# fr_FR.UTF-8 UTF-8/fr_FR.UTF-8 UTF-8/' /etc/locale.gen && locale-gen
     - sed -i -e 's/# fr_FR /fr_FR /' /etc/locale.gen && locale-gen
