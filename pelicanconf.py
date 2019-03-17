@@ -8,7 +8,7 @@ AUTHOR = "Maxime Le Conte des Floris"
 SITENAME = "@mlcdf"
 SITEURL = ""
 
-DESCRIPTION = "Programmation, cinéma, photographie, et plus si affinités..."
+DESCRIPTION = "Web, cinéma, photographie et tout le reste..."
 
 PATH = "content"
 
