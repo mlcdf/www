@@ -51,6 +51,7 @@ EXTRA_PATH_METADATA = {
     "extra/favicon.ico": {"path": "favicon.ico"},
     "extra/humans.txt": {"path": "humans.txt"},
     "extra/robots.txt": {"path": "robots.txt"},
+    "extra/.htaccess": {"path": ".htaccess"},
 }
 
 BUILD_DATE = datetime.datetime.now().strftime("%d %B %Y")
