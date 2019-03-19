@@ -3,8 +3,8 @@
 {% block title %}{{page.title}} - {{ SITENAME }}{% endblock %}
 
 {% block metadata %}
-  <meta name="description" content="{% if page .description %}{{ page  .description }}{% else %}{{ BIO }}{% endif %}">
-  <meta property="og:description" content="{% if page  .description %}{{ page  .description }}{% else %}{{ BIO }}{% endif %}">
+  <meta name="description" content="{% if page .description %}{{ page  .description }}{% else %}{{ DESCRIPTION }}{% endif %}">
+  <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ DESCRIPTION }}{% endif %}">
   <meta property="og:title" content="{{ page.title }}" />
   <meta property="og:type" content="page" />
   <meta property="og:url" content="{{ SITEURL }}/{{ page.url }}" />
