@@ -4,13 +4,12 @@
   <div class="posts">
   {% for article in articles_page.object_list %}
     <div class="post">
-    <h1 class="post-title" href="{{ SITEURL }}/{{ article.url }}#{{ article.slug }}">
+    <h1 class="post-title" id="#{{ article.slug }}">
       <a href="{{ SITEURL }}/{{ article.url }}#{{ article.slug }}">{{ article.title }}</a>
     </h1>
     <span class="post-date">{{ article.locale_date }}</span>
-    <p>
-      {{ article.summary }}
-    </p>
+    {{ article.summary }}
+
     <a class="read-more" href="{{ SITEURL }}/{{ article.url }}" alt="Lire l'article intitulé {{ article.title }}">Lire la suite »</a>
     </div>
   {% endfor %}

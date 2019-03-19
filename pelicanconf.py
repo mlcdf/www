@@ -3,11 +3,16 @@
 from __future__ import unicode_literals
 import datetime
 
+import pelican
+
+PELICAN_VERSION = pelican.__version__
+
 AUTHOR = "Maxime Le Conte des Floris"
 SITENAME = "@mlcdf"
 SITEURL = ""
 
-DESCRIPTION = "Web, cinéma, photographie et tout le reste..."
+SITESUBTITLE = "Web, cinéma, photographie et tout le reste..."
+DESCRIPTION = "Lorem Ipsum"
 
 PATH = "content"
 
@@ -17,7 +22,6 @@ LOCALE = ["fr_FR"]
 DEFAULT_LANG = "fr"
 
 THEME = "theme"
-RELATIVE_URLS = True
 
 # Feed generation is usually not desired when developing
 FEED_RSS = None
@@ -38,7 +42,7 @@ DEFAULT_PAGINATION = 20
 DISPLAY_PAGES_ON_MENU = True
 
 # Uncomment following line if you want document-relative URLs when developing
-# RELATIVE_URLS = True
+RELATIVE_URLS = True
 
 ARTICLE_SAVE_AS = "{date:%Y}/{slug}/index.html"
 ARTICLE_URL = "{date:%Y}/{slug}"
