@@ -17,6 +17,7 @@ LOCALE = ["fr_FR"]
 DEFAULT_LANG = "fr"
 
 THEME = "theme"
+RELATIVE_URLS = True
 
 # Feed generation is usually not desired when developing
 FEED_RSS = None
