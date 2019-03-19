@@ -11,7 +11,7 @@
 				<p>
 					{{ article.summary }}
 				</p>
-				<a class="read-more" href="{{ article.url }}">Continuer la lecture »</a>
+				<a class="read-more" href="{{ SITEURL }}/{{ article.url }}" alt="Lire l'article intitulé {{ article.title }}">Lire la suite »</a>
 			</div>
 		{% endfor %}
 	</div>
