@@ -33,7 +33,7 @@ html {
   color: #ed00b5;
 }
 
-a[href*="//"]::after {
+a:not([href*=".mlcdf."])::after {
     background-image: url(/theme/images/open-in-new-black.svg);
     background-repeat: no-repeat;
     background-size: 16px 16px;
@@ -47,6 +47,6 @@ a[href*="//"]::after {
     color: red;
  }
 
- .sidebar a[href*="//"]::after {
-     background-image: url(/theme/images/open-in-new-white.svg);
-  }
+.sidebar a:not([href*=".mlcdf."])::after {
+   background-image: url(/theme/images/open-in-new-white.svg);
+}

@@ -13,7 +13,6 @@ from pelicanconf import *
 
 # If your site is available via HTTPS, make sure SITEURL begins with https://
 SITEURL = "https://blog.mlcdf.com"
-RELATIVE_URLS = True
 
 FEED_ATOM = "feeds/atom.xml"
 FEED_RSS = "feeds/rss.xml"
