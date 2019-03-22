@@ -11,27 +11,24 @@
     </div>
 
     <nav class="sidebar-nav">
-      <a class="sidebar-nav-item {% if page is not defined and article is not defined %} active {% endif %}" href="{{ SITEURL }}/">Billets</a>
+      <a class="sidebar-nav-item {% if page is not defined and article is not defined %} active {% endif %}" href="{{ SITEURL }}/">Mes notes</a>
       {% if DISPLAY_PAGES_ON_MENU %}
-           {% for p in pages %}
-             <a class="sidebar-nav-item {% if p == page %} active{% endif %}" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
-           {% endfor %}
+        {% for p in pages %}
+          <a class="sidebar-nav-item {% if p == page %} active{% endif %}" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+        {% endfor %}
       {% endif %}
-      <p></p>
-      {% for title, link in LINK %}
-        <a class="sidebar-nav-item" href="{{ link }}">{{ title }}</a>
-      {% endfor %}
-      <p></p>
-      <div class="sidebar-nab-item">
-        Propulsé par <a href="https://getpelican.com">Pelican</a>.
-      </div>
 
-      <!-- {% if BUILD_DATE %}
-        <div class="sidebar-nav-item">
-        Généré le {{ BUILD_DATE }} via Pelican
-        </div>
+      <p></p>
+<!--       <a class="sidebar-nav-item" href="{{ SITEURL }}/preferences">[Préférences de lecture]</a>
+ -->
+      {% if LINK | length > 0 %}
+        {% for title, link in LINK %}
+          <a class="sidebar-nav-item" href="{{ link }}">{{ title }}</a>
+        {% endfor %}
+      {% endif %}
 
-      {% endif %} -->
+      <p></p>
+      <p>&copy; 2019. Tous droits réservés.</p>
     </nav>
   </div>
 </div>

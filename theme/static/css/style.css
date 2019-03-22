@@ -21,7 +21,7 @@ html {
     'Droid Serif', /* Old Google stuff */
     'DejaVu Serif', 'Liberation Serif', /* Linux */
     serif; /* Everything else */
-  font-size: 3rem;
+  /*font-size: 3rem;*/
 }
 
 /* Purple */
@@ -30,7 +30,7 @@ html {
 }
 .theme-base-purple .content a,
 .theme-base-purple .related-posts li a:hover {
-  color: #ed00b5;
+  color: #008ea4;
 }
 
 a:not([href*=".mlcdf."])::after {
@@ -49,4 +49,12 @@ a:not([href*=".mlcdf."])::after {
 
 .sidebar a:not([href*=".mlcdf."])::after {
   background-image: url(/theme/images/open-in-new-white.svg);
+}
+
+.lead {
+  font-weight: 400;
+}
+
+button:focus, a:focus {
+  outline: 2px solid #008ea4;
 }

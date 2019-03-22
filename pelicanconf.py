@@ -11,7 +11,7 @@ AUTHOR = "Maxime Le Conte des Floris"
 SITENAME = "@mlcdf"
 SITEURL = ""
 
-SITESUBTITLE = "Web, cinéma, photographie et tout le reste..."
+SITESUBTITLE = "Logiciel et sorcellerie"
 DESCRIPTION = "Lorem Ipsum"
 
 PATH = "content"
@@ -32,9 +32,8 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 LINK = (
-    ("Me contacter", "mailto:hello@mlcdf.com"),
-    ("S'abonner au flux RSS", "/feeds/rss.xml"),
-    ("Voir les sources", "https://framagit.org/mlcdf/mlcdf"),
+    ("[Flux RSS]", SITEURL + "/feeds/rss.xml"),
+    # ("[Préférences de lecture]", SITEURL + "/preferences"),
 )
 
 DEFAULT_PAGINATION = 20

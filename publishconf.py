@@ -18,4 +18,9 @@ RELATIVE_URLS = False
 FEED_ATOM = "feeds/atom.xml"
 FEED_RSS = "feeds/rss.xml"
 
+LINK = (
+    ("[Flux RSS]", SITEURL + "/" + FEED_RSS),
+    # ("[Préférences de lecture]", SITEURL + "/preferences"),
+)
+
 DELETE_OUTPUT_DIRECTORY = True
