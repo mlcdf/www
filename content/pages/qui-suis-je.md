@@ -11,4 +11,4 @@ Diplomé en électronique et en informatique, je suis développeur chez [Consert
 
 Ces jours-ci, je vie à Bordeaux.
 
-Mes contributions au logiciel libre sont hébergées sur [Github](https://github.com/mlcdf) et/ou [Framagit](https://framagit.com/mlcdf).
+Mes contributions au logiciel libre sont hébergées sur [Github](https://github.com/mlcdf) et/ou [Framagit](https://framagit.org/mlcdf).
