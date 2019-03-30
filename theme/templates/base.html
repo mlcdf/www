@@ -23,10 +23,10 @@
   <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css" />
 
   <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/feeds/rss.xml">
+  <link rel="alternate" type="application/rss+xml" title="RSS {{ SITEURL }}" href="/rss.xml">
 </head>
 
-<body class="theme-base-purple">
+<body class="theme-base-purple" role="document">
 
   <div class="content container">
     <header class="masthead">
@@ -34,7 +34,7 @@
         @mlcdf
         <small>Le blogue de Maxime</small>
       </h1>
-      <nav class="navigation">
+      <nav class="navigation" role="navigation">
         <a class="navigation-item {% if p == page %} active{% endif %}" href="{{ SITEURL }}">Billets</a>
         {% if DISPLAY_PAGES_ON_MENU %}
         {% for p in pages | reverse | selectattr("placement", "equalto", "header") %}
@@ -45,8 +45,10 @@
       </nav>
     </header>
 
-    {% block content %}
-    {% endblock %}
+    <main role="main">
+      {% block content %}
+      {% endblock %}
+    </main>
 
     <footer class="footer">
       <div>
