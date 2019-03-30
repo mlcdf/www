@@ -23,6 +23,14 @@ DEFAULT_LANG = "fr"
 
 THEME = "theme"
 
+AUTHOR_SAVE_AS = False
+AUTHORS_SAVE_AS = False
+TAG_SAVE_AS = False
+TAGS_SAVE_AS = False
+CATEGORY_SAVE_AS = False
+CATEGORIES_SAVE_AS = False
+ARCHIVES_SAVE_AS = False
+
 # Feed generation is usually not desired when developing
 FEED_RSS = None
 FEED_ALL_ATOM = None
