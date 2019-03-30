@@ -10,7 +10,8 @@
     <span class="post-date">{{ article.locale_date }}</span>
     {{ article.summary }}
 
-    <a class="read-more" href="{{ SITEURL }}/{{ article.url }}" title="Lire l'article intitulé {{ article.title }}">Lire
+    <a class="read-more" href="{{ SITEURL }}/{{ article.url }}"
+      aria-label="Lire la suite de l'article intitulé {{ article.title }}">Lire
       la suite »</a>
   </div>
   {% endfor %}
