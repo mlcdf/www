@@ -30,11 +30,11 @@
 
   <div class="content container">
     <header class="masthead">
-      <h1 class="masthead-title" id="top">
+      <h1 class="masthead-title">
         {{ SITENAME }}
         <small>{{ SITESUBTITLE }}</small>
       </h1>
-      <nav class="navigation" role="navigation">
+      <nav class="navigation" role="navigation" id="menu">
         <a class="navigation-item {% if p == page %} active{% endif %}" href="{{ SITEURL }}">Notes</a>
         {% if DISPLAY_PAGES_ON_MENU %}
         {% for p in pages | reverse | selectattr("placement", "equalto", "header") %}
@@ -52,7 +52,7 @@
 
     <footer class="footer">
       <div>
-        <a class="navigation-item" href="#top">Haut de page</a>
+        <a class="navigation-item" href="#menu">Haut de page</a>
         {% for p in pages | reverse | selectattr("placement", "equalto", "footer") %}
         <a class="navigation-item" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
         {% endfor %}

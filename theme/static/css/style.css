@@ -30,7 +30,7 @@ a:hover {
   color: #d70022;
 }
 
-a:not([href*=".mlcdf."])::after {
+a:not([href*=".mlcdf."]):not([href^="#"])::after {
   background-image: url(/theme/images/open-in-new-black.svg);
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -42,10 +42,6 @@ a:not([href*=".mlcdf."])::after {
   width: 16px;
   fill: currentColor;
  }
-
-.sidebar a:not([href*=".mlcdf."])::after {
-  background-image: url(/theme/images/open-in-new-white.svg);
-}
 
 .lead {
   font-weight: 400;
