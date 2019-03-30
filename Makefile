@@ -77,7 +77,7 @@ endif
 publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 
-ftp_upload: publish
+ftp_upload:
 	lftp -c "set sftp:auto-confirm yes; open -u $(FTP_USER), sftp://$(FTP_HOST)$(FTP_TARGET_DIR) ; mirror -Rve --exclude .git --exclude .gitlab-ci.yml --exclude .gitmodules --exclude .gitignore ./htdocs"
 
 
