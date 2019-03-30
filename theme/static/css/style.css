@@ -17,6 +17,10 @@ a {
   text-decoration: underline;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 /* Purple */
 .theme-base-purple .sidebar {
   background-color: #202340;
