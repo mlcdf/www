@@ -11,7 +11,7 @@ AUTHOR = "Maxime Le Conte des Floris"
 SITENAME = "@mlcdf"
 SITEURL = ""
 
-SITESUBTITLE = "Logiciel et sorcellerie"
+SITESUBTITLE = "Le blogue de Maxime"
 DESCRIPTION = "Lorem Ipsum"
 
 PATH = "content"

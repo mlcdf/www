@@ -17,5 +17,4 @@ RELATIVE_URLS = False
 
 FEED_RSS = "rss.xml"
 
-
 DELETE_OUTPUT_DIRECTORY = True
