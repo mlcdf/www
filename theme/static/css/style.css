@@ -67,6 +67,19 @@ header h1 {
   font-size: 1.25rem;
 }
 
+code, pre {
+  font-family:
+    monaco, menlo, /* MacOS and iOS */
+    'Consolas', /* Windows */
+    'Fira Mono', /* Firefox OS */
+    roboto mono, noto mono, /* Google stuff */
+    'Droid Sans', /* Old Google stuff */
+    'DejaVu Sans Mono', cousine, ubuntu mono, /* Linux stuff */
+    'Courrier', /* Windows stuff */
+    'Liberation Mono', /* Linux */
+    monospace; /* Everything else */
+}
+
 .navigation {
   margin-top: .4rem;
 }
