@@ -1,7 +1,7 @@
 Title: À propos du site
 Placement: header
 
-Cette nième version de mon site web, codé avec amour sous la pluie borderlaise.
+Cette nième version de mon site web a été codé, avec amour, sous la pluie borderlaise.
 
 Sauf mention contraire, les articles sont publiés sous license [Creative Commons : Paternité – Pas d’Utilisation Commerciale – Partage des Conditions Initiales à l’Identique, version 2.0](http://creativecommons.org/licenses/by-nc-sa/2.0/fr/legalcode).
 
