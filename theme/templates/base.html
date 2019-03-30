@@ -1,36 +1,64 @@
 <!DOCTYPE html>
 <html lang="{{ DEFAULT_LANG }}">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="{{ AUTHOR }}" />
-    <!-- Metadata -->
-    {% block metadata %}
-      <meta name="description" content="{{ DESCRIPTION }}" />
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="{{ AUTHOR }}" />
+  <!-- Metadata -->
+  {% block metadata %}
+  <meta name="description" content="{{ DESCRIPTION }}" />
+  {% endblock %}
+  <meta name="generator" content="Pelican {{ PELICAN_VERSION }}" />
+
+  <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/poole.css" />
+  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/syntax.css" />
+  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css" />
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+<body class="theme-base-purple">
+
+  <div class="content container">
+    <header class="masthead">
+      <h1 class="masthead-title">
+        @mlcdf
+        <small>Le blogue de Maxime</small>
+      </h1>
+      <nav class="navigation">
+        <a class="navigation-item {% if p == page %} active{% endif %}" href="{{ SITEURL }}">Billets</a>
+        {% if DISPLAY_PAGES_ON_MENU %}
+        {% for p in pages | reverse %}
+        <a class="navigation-item {% if p == page %} active{% endif %}"
+          href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+        {% endfor %}
+        {% endif %}
+
+        {% for title, link in LINK %}
+        <a class="navigation-item" href="{{ link }}">{{ title }}</a>
+        {% endfor %}
+      </nav>
+    </header>
+
+    {% block content %}
     {% endblock %}
-    <meta name="generator" content="Pelican {{ PELICAN_VERSION }}" />
 
-    <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+    <footer class="footer">
+      <small>
+        &copy; {{ CURRENT_YEAR }} Maxime Le Conte des Floris.
+      </small>
+    </footer>
+  </div>
+  </div>
+</body>
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/poole.css" />
-    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/hyde.css" />
-    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/syntax.css" />
-    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css" />
-
-    <!-- RSS -->
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-  </head>
-
-  <body class="theme-base-purple">
-    {% include 'sidebar.html' %}
-    <div class="content container">
-      {% block content %}
-      {% endblock %}
-    </div>
-  </body>
 </html>

@@ -32,8 +32,8 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 LINK = (
-    ("[Flux RSS]", SITEURL + "/feeds/rss.xml"),
-    # ("[Préférences de lecture]", SITEURL + "/preferences"),
+    ("Flux RSS", SITEURL + "/feeds/rss.xml"),
+    # ("Préférences de lecture", SITEURL + "/preferences"),
 )
 
 DEFAULT_PAGINATION = 20
@@ -58,4 +58,6 @@ EXTRA_PATH_METADATA = {
     "extra/.htaccess": {"path": ".htaccess"},
 }
 
-BUILD_DATE = datetime.datetime.now().strftime("%d %B %Y")
+now = datetime.datetime.now()
+BUILD_DATE = now.strftime("%d %B %Y")
+CURRENT_YEAR = now.year

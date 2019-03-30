@@ -9,19 +9,11 @@ html {
     'helvetica neue', helvetica, /* Older MacOS */
     'Liberation Sans', /* Linux */
     sans-serif; /* Everything else */
+    font-size: 20px;
 }
 
-.sidebar {
-  color: rgba(255,255,255,.7);
-}
-
-.sidebar-about h1 {
-  font-family: Charter, /* MacOS */
-    Athelas, Georgia, 'Times New Roman', /* MacOS, Windows and some Linux*/
-    'Droid Serif', /* Old Google stuff */
-    'DejaVu Serif', 'Liberation Serif', /* Linux */
-    serif; /* Everything else */
-  /*font-size: 3rem;*/
+a {
+  text-decoration: underline;
 }
 
 /* Purple */
@@ -30,7 +22,7 @@ html {
 }
 .theme-base-purple .content a,
 .theme-base-purple .related-posts li a:hover {
-  color: #008ea4;
+  color: #d70022;
 }
 
 a:not([href*=".mlcdf."])::after {
@@ -44,7 +36,6 @@ a:not([href*=".mlcdf."])::after {
   vertical-align: middle;
   width: 16px;
   fill: currentColor;
-  color: red;
  }
 
 .sidebar a:not([href*=".mlcdf."])::after {
@@ -56,5 +47,21 @@ a:not([href*=".mlcdf."])::after {
 }
 
 button:focus, a:focus {
-  outline: 2px solid #008ea4;
+  outline: 2px solid #d70022;
+}
+
+.masthead-title small {
+  color: #7a7a7a
+}
+
+header h1 {
+  font-size: 1.25rem;
+}
+
+.navigation {
+  margin-top: .4rem;
+}
+
+.navigation-item {
+  margin-right: .6rem;
 }
