@@ -35,7 +35,7 @@
         <small>Le blogue de Maxime</small>
       </h1>
       <nav class="navigation" role="navigation">
-        <a class="navigation-item {% if p == page %} active{% endif %}" href="{{ SITEURL }}">Billets</a>
+        <a class="navigation-item {% if p == page %} active{% endif %}" href="{{ SITEURL }}">Notes</a>
         {% if DISPLAY_PAGES_ON_MENU %}
         {% for p in pages | reverse | selectattr("placement", "equalto", "header") %}
         <a class="navigation-item {% if p == page %} active{% endif %}"
