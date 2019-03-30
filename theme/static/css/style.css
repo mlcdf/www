@@ -1,8 +1,9 @@
 html {
-  font-family: -apple-system, BlinkMacSystemFont, /* MacOS and iOS */
+  font-family:
+    'Fira Sans', /* Firefox OS */
+    -apple-system, BlinkMacSystemFont, /* MacOS and iOS */
     'avenir next', avenir, /* MacOS and iOS */
     'Segoe UI', /* Windows */
-    'Fira Sans', /* Firefox OS */
     roboto, noto, /* Google stuff */
     cantarell, oxygen, ubuntu, /* Linux stuff */
     'franklin gothic medium', 'century gothic', /* Windows stuff */
@@ -44,6 +45,10 @@ a:not([href*=".mlcdf."])::after {
 
 .lead {
   font-weight: 400;
+}
+
+.pagination {
+  font-family: inherit;
 }
 
 button:focus, a:focus {
