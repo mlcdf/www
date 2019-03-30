@@ -1,6 +1,5 @@
 Title: Qui suis-je ?
-Url: a-propos
-Save_as: a-propos/index.html
+Placement: header
 
 <p class="lead">
   Moi c'est Maxime. Enchanté !

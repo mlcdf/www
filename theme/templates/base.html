@@ -30,22 +30,18 @@
 
   <div class="content container">
     <header class="masthead">
-      <h1 class="masthead-title">
+      <h1 class="masthead-title" id="top">
         @mlcdf
         <small>Le blogue de Maxime</small>
       </h1>
       <nav class="navigation">
         <a class="navigation-item {% if p == page %} active{% endif %}" href="{{ SITEURL }}">Billets</a>
         {% if DISPLAY_PAGES_ON_MENU %}
-        {% for p in pages | reverse %}
+        {% for p in pages | reverse | selectattr("placement", "equalto", "header") %}
         <a class="navigation-item {% if p == page %} active{% endif %}"
           href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
         {% endfor %}
         {% endif %}
-
-        {% for title, link in LINK %}
-        <a class="navigation-item" href="{{ link }}">{{ title }}</a>
-        {% endfor %}
       </nav>
     </header>
 
@@ -53,12 +49,41 @@
     {% endblock %}
 
     <footer class="footer">
+      <div>
+        <a class="navigation-item" href="#top">Haut de page</a>
+        {% for p in pages | reverse | selectattr("placement", "equalto", "footer") %}
+        <a class="navigation-item" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+        {% endfor %}
+      </div>
       <small>
         &copy; {{ CURRENT_YEAR }} Maxime Le Conte des Floris.
       </small>
     </footer>
   </div>
   </div>
+  <script>
+    function copyToClipboard(selector) {
+
+      // Create a "hidden" input
+      var aux = document.createElement("input");
+
+      // Assign it the value of the specified element
+      aux.setAttribute("value", document.querySelector(selector).innerHTML);
+
+      // Append it to the body
+      document.body.appendChild(aux);
+
+      // Highlight its content
+      aux.select();
+
+      // Copy the highlighted text
+      document.execCommand("copy");
+
+      // Remove it from the body
+      document.body.removeChild(aux);
+
+    }
+  </script>
 </body>
 
 </html>

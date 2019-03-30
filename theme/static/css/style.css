@@ -70,3 +70,7 @@ header h1 {
 .navigation-item {
   margin-right: .6rem;
 }
+
+.navigation-item.active{
+  font-weight: bold;
+}

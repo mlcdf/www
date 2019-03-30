@@ -15,11 +15,7 @@ from pelicanconf import *
 SITEURL = "https://blog.mlcdf.com"
 RELATIVE_URLS = False
 
-FEED_ATOM = "feeds/atom.xml"
-FEED_RSS = "feeds/rss.xml"
+FEED_RSS = "rss.xml"
 
-LINK = (
-    ("Flux RSS", SITEURL + "/" + FEED_RSS),
-    # ("Préférences de lecture", SITEURL + "/preferences"),
-)
+
 DELETE_OUTPUT_DIRECTORY = True

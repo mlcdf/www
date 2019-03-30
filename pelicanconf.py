@@ -31,11 +31,6 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-LINK = (
-    ("Flux RSS", SITEURL + "/feeds/rss.xml"),
-    # ("Préférences de lecture", SITEURL + "/preferences"),
-)
-
 DEFAULT_PAGINATION = 20
 
 DISPLAY_PAGES_ON_MENU = True
