@@ -55,10 +55,25 @@ PAGE_URL = "{slug}"
 STATIC_PATHS = ["extra"]
 
 EXTRA_PATH_METADATA = {
-    "extra/favicon.ico": {"path": "favicon.ico"},
     "extra/humans.txt": {"path": "humans.txt"},
     "extra/robots.txt": {"path": "robots.txt"},
     "extra/.htaccess": {"path": ".htaccess"},
+    "extra/android-icon-192x192.png": {"path": "android-icon-192x192.png"},
+    "extra/apple-icon-57x57.png": {"path": "apple-icon-57x57.png"},
+    "extra/apple-icon-60x60.png": {"path": "apple-icon-60x60.png"},
+    "extra/apple-icon-72x72.png": {"path": "apple-icon-72x72.png"},
+    "extra/apple-icon-76x76.png": {"path": "apple-icon-76x76.png"},
+    "extra/apple-icon-114x114.png": {"path": "apple-icon-114x114.png"},
+    "extra/apple-icon-120x120.png": {"path": "apple-icon-120x120.png"},
+    "extra/apple-icon-144x144.png": {"path": "apple-icon-144x144.png"},
+    "extra/apple-icon-152x152.png": {"path": "apple-icon-152x152.png"},
+    "extra/apple-icon-180x180.png": {"path": "apple-icon-180x180.png"},
+    "extra/apple-icon": {"path": "apple-icon"},
+    "extra/favicon-16x16.png": {"path": "favicon-16x16.png"},
+    "extra/favicon-32x32.png": {"path": "favicon-32x32.png"},
+    "extra/favicon-96x96.png": {"path": "favicon-96x96.png"},
+    "extra/favicon.ico": {"path": "favicon.ico"},
+    "extra/manifest.webmanifest": {"path": "manifest.webmanifest"},
 }
 
 now = datetime.datetime.now()
