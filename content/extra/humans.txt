@@ -1,11 +1,19 @@
-# TEAM
+Title: Humans.txt
+Save_as: abonnement/index.html
+Status: hidden
 
-Name: Maxime Le Conte des Floris
-Twitter: @mlcdf
+The Humans Responsible & Colophon
+humanstxt.org
+
+
+# Team
+
+Name: Maxime Le Conte des Floris <hello@mlcdf.com>
 Location: Bordeaux, France
 
-# TECHNOLOGY
+# Site
 
-Standards: HTML5, CSS3, ECMAScript 5
-Library: Normalize-scss
-Tools: ExpressJS, Sass, Babel, Gulp, Autoprefixer, cssnano
+Standards: HTML5, CSS3, JavaScript
+Library: Poole.css
+Build tools: Python, Pip, Pelican
+Software: Atom, Firefox, Tilix
