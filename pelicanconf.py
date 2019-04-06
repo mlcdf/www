@@ -76,9 +76,7 @@ EXTRA_PATH_METADATA = {
     "extra/manifest.webmanifest": {"path": "manifest.webmanifest"},
 }
 
-now = datetime.datetime.now()
-BUILD_DATE = now.strftime("%d %B %Y")
-CURRENT_YEAR = now.year
+BUILD_DATE = datetime.datetime.now()
 
 MARKDOWN = {
     'extension_configs': {

@@ -72,7 +72,7 @@
         {% endfor %}
       </div>
       <small>
-        &copy; {{ CURRENT_YEAR }} {{ AUTHOR }}.
+        &copy; {{ BUILD_DATE | strftime("%Y") }} {{ AUTHOR }}.
       </small>
     </footer>
   </div>
