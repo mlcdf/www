@@ -11,9 +11,13 @@
 {% endblock %}
 
 {% block content %}
-<div class="post">
-  <h1 class="post-title">{{ article.title }}</h1>
-  <span class="post-date">{{ article.locale_date }}</span>
-  {{ article.content }}
-</div>
+<article class="post">
+  <header>
+    <h1 class="post-title">{{ article.title }}</h1>
+    <span class="post-date">{{ article.locale_date }}</span>
+  </header>
+  <section>
+    {{ article.content }}
+  </section>
+</article>
 {% endblock %}

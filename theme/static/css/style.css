@@ -10,12 +10,22 @@ html {
     'helvetica neue', helvetica, /* Older MacOS */
     'Liberation Sans', /* Linux */
     sans-serif; /* Everything else */
+
+    --text-color-normal: #505050;
+    --text-color-light: #737373;
+    --background-color: #ffffff;
 }
 
-@media (min-width: 38em) {
-  html {
-    font-size: 20px;
-  }
+
+
+html {
+  --text-color-normal: #f9f9fa;
+  --background-color: #000000;
+}
+
+html[data-theme="dark"] body {
+  color: #fff;
+  background-color: #0c0c0d;
 }
 
 a {
@@ -48,47 +58,13 @@ a:not([href*=".mlcdf."]):not([href^="#"])::after {
   fill: currentColor;
  }
 
-.lead {
-  font-weight: 400;
-}
+ html[data-theme="dark"] a:not([href*=".mlcdf."]):not([href^="#"])::after {
+  background-image: url(/theme/images/open-in-new-white.svg);
+ }
 
-.pagination {
-  font-family: inherit;
-}
 
-button:focus, a:focus {
-  outline: 2px solid #d70022;
-}
 
-.masthead-title small {
-  color: #7a7a7a
-}
 
-header h1 {
-  font-size: 1.25rem;
-}
 
-code, pre {
-  font-family:
-    monaco, menlo, /* MacOS and iOS */
-    'Consolas', /* Windows */
-    'Fira Mono', /* Firefox OS */
-    roboto mono, noto mono, /* Google stuff */
-    'Droid Sans', /* Old Google stuff */
-    'DejaVu Sans Mono', cousine, ubuntu mono, /* Linux stuff */
-    'Courrier', /* Windows stuff */
-    'Liberation Mono', /* Linux */
-    monospace; /* Everything else */
-}
 
-.navigation {
-  margin-top: .4rem;
-}
 
-.navigation-item {
-  margin-right: .6rem;
-}
-
-.navigation-item.active{
-  font-weight: bold;
-}

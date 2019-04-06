@@ -19,8 +19,6 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/poole.css" />
-  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/syntax.css" />
-  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css" />
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS {{ SITEURL }}" href="/rss.xml">
@@ -42,7 +40,7 @@
   <meta name="theme-color" content="#ffffff">
 </head>
 
-<body class="theme-base-purple" role="document">
+<body>
 
   <div class="content container">
     <header class="masthead">
@@ -50,10 +48,10 @@
         {{ SITENAME }}
         <small>{{ SITESUBTITLE }}</small>
       </h1>
-      <nav class="navigation" role="navigation" id="menu">
+      <nav class="navigation" role="navigation" id="menu" aria-label="Site navigation">
         <a class="navigation-item {% if p == page %} active{% endif %}" href="{{ SITEURL }}">Notes</a>
         {% if DISPLAY_PAGES_ON_MENU %}
-        {% for p in pages | reverse | selectattr("placement", "equalto", "header") %}
+        {% for p in pages | selectattr("placement", "equalto", "header") %}
         <a class="navigation-item {% if p == page %} active{% endif %}"
           href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
         {% endfor %}
@@ -69,7 +67,7 @@
     <footer class="footer">
       <div>
         <a class="navigation-item" href="#menu">Haut de page</a>
-        {% for p in pages | reverse | selectattr("placement", "equalto", "footer") %}
+        {% for p in pages | selectattr("placement", "equalto", "footer") %}
         <a class="navigation-item" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
         {% endfor %}
       </div>
@@ -80,26 +78,51 @@
   </div>
 
   <script>
-    function copyToClipboard(selector) {
+    (function () {
+      var currentTheme = localStorage.getItem('theme') || "light";
+      var useDarkTheme = document.querySelector('input[type="checkbox"]#dark-theme');
+      var root = document.documentElement;
 
+      root.setAttribute('data-theme', currentTheme);
+
+      if (!useDarkTheme) {
+        return
+      }
+
+      if (currentTheme == "light") {
+        useDarkTheme.removeAttribute('checked');
+      }
+      else {
+        useDarkTheme.checked = "true";
+      }
+
+      useDarkTheme.addEventListener('change', toggleTheme, false);
+
+      function toggleTheme(e) {
+        if (this.checked) {
+          root.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+        }
+        else {
+          root.setAttribute('data-theme', 'light');
+          localStorage.setItem('theme', 'light');
+        }
+      }
+    })();
+
+    function copyToClipboard(selector) {
       // Create a "hidden" input
       var aux = document.createElement("input");
-
       // Assign it the value of the specified element
       aux.setAttribute("value", document.querySelector(selector).innerHTML);
-
       // Append it to the body
       document.body.appendChild(aux);
-
       // Highlight its content
       aux.select();
-
       // Copy the highlighted text
       document.execCommand("copy");
-
       // Remove it from the body
       document.body.removeChild(aux);
-
     }
   </script>
 </body>

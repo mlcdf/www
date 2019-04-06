@@ -79,3 +79,15 @@ EXTRA_PATH_METADATA = {
 now = datetime.datetime.now()
 BUILD_DATE = now.strftime("%d %B %Y")
 CURRENT_YEAR = now.year
+
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'highlight'},
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+        'markdown.extensions.toc': {
+            "permalink": "#"
+        },
+    },
+    'output_format': 'html5',
+}
