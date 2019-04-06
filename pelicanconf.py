@@ -91,3 +91,7 @@ MARKDOWN = {
     },
     'output_format': 'html5',
 }
+
+
+PLUGIN_PATHS=["./plugins"]
+PLUGINS=["jinja2content"]
