@@ -1,7 +1,6 @@
-Title: S'abonner au blog
+Title: S'abonner
 Save_as: abonnement/index.html
 Url: abonnement
-Placement: footer
 
 Ce blog met à disposition un flux <abbr xmlns="http://www.w3.org/1999/xhtml" title="Really Simple Syndication" xml:lang="en" lang="en">RSS</abbr> à l'adresse suivante :
 

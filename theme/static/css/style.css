@@ -11,21 +11,13 @@ html {
     'Liberation Sans', /* Linux */
     sans-serif; /* Everything else */
 
-    --text-color-normal: #505050;
-    --text-color-light: #737373;
-    --background-color: #ffffff;
+
 }
 
-
-
-html {
-  --text-color-normal: #f9f9fa;
-  --background-color: #000000;
-}
-
-html[data-theme="dark"] body {
-  color: #fff;
-  background-color: #0c0c0d;
+@media (min-width: 38em) {
+  html {
+    font-size: 20px;
+  }
 }
 
 a {
@@ -36,16 +28,7 @@ a:hover {
   text-decoration: none;
 }
 
-/* Purple */
-.theme-base-purple .sidebar {
-  background-color: #202340;
-}
-.theme-base-purple .content a,
-.theme-base-purple .related-posts li a:hover {
-  color: #d70022;
-}
-
-a:not([href*=".mlcdf."]):not([href^="#"])::after {
+a:not([href*=".mlcdf."]):not([href^="#"]):not([href^="/"]):not([href^="."])::after {
   background-image: url(/theme/images/open-in-new-black.svg);
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -58,13 +41,52 @@ a:not([href*=".mlcdf."]):not([href^="#"])::after {
   fill: currentColor;
  }
 
- html[data-theme="dark"] a:not([href*=".mlcdf."]):not([href^="#"])::after {
-  background-image: url(/theme/images/open-in-new-white.svg);
- }
+.post-title a, .masthead-title a {
+  text-decoration: none;
+}
 
+.post-title a:hover, .masthead-title a:hover {
+  text-decoration: underline;
+}
 
+.navigation-item {
+  margin-right: .6rem;
+}
 
+.navigation-item.active{
+  font-weight: bold;
+}
 
+.headerlink {
+  margin-left: 5px;
+  visibility: hidden;
+}
 
+.headerlink:hover {
+  text-decoration: none;
+}
 
+.post h1:hover .headerlink,
+.post h2:hover .headerlink,
+.post h3:hover .headerlink,
+.post h4:hover .headerlink,
+.post h4:hover .headerlink,
+.post h6:hover .headerlink {
+  visibility: visible
+}
 
+.author {
+  display: flex;
+}
+
+.author h4 {
+  margin-top: 0;
+  margin-bottom: .2rem;
+}
+
+.avatar {
+  height: 80px;
+  width: 80px;
+  border-radius: 100%;
+  margin-right: 1rem;
+}

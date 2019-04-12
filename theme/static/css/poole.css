@@ -3,108 +3,44 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-
 html,
 body {
   margin: 0;
   padding: 0;
 }
-
 html {
-  /* CUSTOM  */
-  font-family:
-    'Fira Sans', /* Firefox OS */
-    -apple-system, BlinkMacSystemFont, /* MacOS and iOS */
-    'avenir next', avenir, /* MacOS and iOS */
-    'Segoe UI', /* Windows */
-    roboto, noto, /* Google stuff */
-    cantarell, oxygen, ubuntu, /* Linux stuff */
-    'franklin gothic medium', 'century gothic', /* Windows stuff */
-    'helvetica neue', helvetica, /* Older MacOS */
-    'Liberation Sans', /* Linux */
-    sans-serif; /* Everything else */
-
-  --text-color-lightest: #f9f9f9;
-  --text-color-lighter: #e5e5e5;
-  --text-color-light: #737373;
-  --text-color-normal: #0c0c0d;
-  --background-color: #ffffff;
-  --accent-color: #d70022;
-  /* END CUSTOM  */
-
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
 }
-
-html[data-theme="dark"] {
-  --text-color-lightest: #0c0c0d;
-  --text-color-lighter: #737373;
-  --text-color-light: #e5e5e5;
-  --text-color-normal: #f9f9fa;
-  --background-color: #26282d;
-  --accent-color: #ebcb8b;
-}
-
 @media (min-width: 38em) {
   html {
-    font-size: 20px; /* CUSTOM (18px) */
+    font-size: 18px;
   }
 }
-
 body {
-  color: var(--text-color-normal);
-  background-color: var(--background-color);
+  color: #515151;
+  background-color: #fff;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
-
-/* CUSTOM : text-decoration */
 a {
-  color: var(--accent-color);
-  text-decoration: underline;
+  color: #268bd2;
+  text-decoration: none;
 }
 a:hover,
 a:focus {
-  text-decoration: none;
+  text-decoration: underline;
 }
 a strong {
   color: inherit;
 }
-
-/* CUSTOM  */
-a:not([href*=".mlcdf."]):not([href^="#"]):not([href^="/"])::after {
-  background-image: url(/theme/images/open-in-new-black.svg);
-  background-repeat: no-repeat;
-  background-size: 16px 16px;
-  content: "";
-  display: inline-block;
-  height: 16px;
-  margin: -.3rem .15rem 0 .25rem;
-  vertical-align: middle;
-  width: 16px;
-  fill: currentColor;
- }
-
-html[data-theme="dark"] a:not([href*=".mlcdf."]):not([href^="#"]):not([href^="/"])::after {
-  background-image: url(/theme/images/open-in-new-white.svg);
- }
-
-button:focus, a:focus, input:focus {
-  outline: 2px solid var(--accent-color);
-}
-
-.content a, .related-posts li a:hover {
-  color: var(--accent-color);
-}
-/* END CUSTOM  */
-
 img {
   display: block;
   max-width: 100%;
   margin: 0 0 1rem;
   border-radius: 5px;
 }
-
 table {
   margin-bottom: 1rem;
   width: 100%;
@@ -112,7 +48,6 @@ table {
   border: 1px solid #e5e5e5;
   border-collapse: collapse;
 }
-
 td,
 th {
   padding: 0.25rem 0.5rem;
@@ -123,9 +58,8 @@ th {
 }
 tbody tr:nth-child(odd) td,
 tbody tr:nth-child(odd) th {
-  background-color: var(--text-color-lightest);
+  background-color: #f9f9f9;
 }
-
 h1,
 h2,
 h3,
@@ -135,13 +69,12 @@ h6 {
   margin-bottom: 0.5rem;
   font-weight: bold;
   line-height: 1.25;
-  color: var(--text-color-normal);
+  color: #313131;
   text-rendering: optimizeLegibility;
 }
 h1 {
   font-size: 2rem;
 }
-
 h2 {
   margin-top: 1rem;
   font-size: 1.5rem;
@@ -156,13 +89,12 @@ h6 {
   margin-top: 1rem;
   font-size: 1rem;
 }
-
 p {
   margin-top: 0;
   margin-bottom: 1rem;
 }
 strong {
-  color: var(--text-color-normal);
+  color: #303030;
 }
 ul,
 ol,
@@ -181,7 +113,7 @@ hr {
   margin: 1.5rem 0;
   border: 0;
   border-top: 1px solid #eee;
-  border-bottom: 1px solid var(--background-color);
+  border-bottom: 1px solid #fff;
 }
 abbr {
   font-size: 85%;
@@ -220,7 +152,7 @@ a[href^='#fnref:'] {
 }
 .lead {
   font-size: 1.25rem;
-  font-weight: 400; /* CUSTOM : 300 */
+  font-weight: 300;
 }
 .highlight .hll {
   background-color: #ffc;
@@ -414,22 +346,13 @@ a[href^='#fnref:'] {
 }
 code,
 pre {
-  font-family: /* CUSTOM  */
-    monaco, menlo, /* MacOS and iOS */
-    'Consolas', /* Windows */
-    'Fira Mono', /* Firefox OS */
-    roboto mono, noto mono, /* Google stuff */
-    'Droid Sans', /* Old Google stuff */
-    'DejaVu Sans Mono', cousine, ubuntu mono, /* Linux stuff */
-    'Courrier', /* Windows stuff */
-    'Liberation Mono', /* Linux */
-    monospace; /* Everything else */
+  font-family: Menlo, Monaco, 'Courier New', monospace;
 }
 code {
   padding: 0.25em 0.5em;
   font-size: 85%;
   color: #bf616a;
-  background-color: var(--text-color-lightest);
+  background-color: #f9f9f9;
   border-radius: 3px;
 }
 pre {
@@ -447,7 +370,7 @@ pre code {
   margin-bottom: 1rem;
   font-size: 0.8rem;
   line-height: 1.4;
-  background-color: var(--text-color-lightest);
+  background-color: #f9f9f9;
   border-radius: 0.25rem;
 }
 .highlight pre {
@@ -479,7 +402,6 @@ footer {
   margin-bottom: 3rem;
 }
 .masthead-title {
-  font-size: 1.25rem;
   margin-top: 0;
   margin-bottom: 0;
   color: #505050;
@@ -490,7 +412,7 @@ footer {
 .masthead-title small {
   font-size: 75%;
   font-weight: 400;
-  color: var(--text-color-light);
+  color: #c0c0c0;
   letter-spacing: 0;
 }
 .page,
@@ -498,15 +420,9 @@ footer {
   margin-bottom: 4em;
 }
 .page-title,
-.post-title {
-  color: #303030;
-}
-
-html[data-theme="dark"]
-.page-title, html[data-theme="dark"]
-.post-title, html[data-theme="dark"]
+.post-title,
 .post-title a {
-  color: var(--text-color-normal);
+  color: #303030;
 }
 .page-title,
 .post-title {
@@ -544,6 +460,7 @@ html[data-theme="dark"]
 .pagination {
   overflow: hidden;
   margin: 0 -1.5rem 1rem;
+  font-family: 'PT Sans', Helvetica, Arial, sans-serif;
   color: #ccc;
   text-align: center;
 }
@@ -583,36 +500,5 @@ a.pagination-item:hover {
   margin-bottom: 1rem;
   padding: 1rem;
   color: #717171;
-  background-color: var(--text-color-lightest);
-}
-
-/* CUSTOM  */
-.navigation {
-  margin-top: .4rem;
-}
-
-.navigation-item {
-  margin-right: .6rem;
-}
-
-.navigation-item.active{
-  font-weight: bold;
-}
-
-.headerlink {
-  margin-left: 5px;
-  visibility: hidden;
-}
-
-.headerlink:hover {
-  text-decoration: none;
-}
-
-.post h1:hover .headerlink,
-.post h2:hover .headerlink,
-.post h3:hover .headerlink,
-.post h4:hover .headerlink,
-.post h4:hover .headerlink,
-.post h6:hover .headerlink {
-  visibility: visible
+  background-color: #f9f9f9;
 }

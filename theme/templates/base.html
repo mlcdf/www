@@ -19,6 +19,7 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/poole.css" />
+  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css" />
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS {{ SITEURL }}" href="/rss.xml">
@@ -43,20 +44,10 @@
 <body>
 
   <div class="content container">
-    <header class="masthead">
-      <h1 class="masthead-title">
-        {{ SITENAME }}
-        <small>{{ SITESUBTITLE }}</small>
-      </h1>
-      <nav class="navigation" role="navigation" id="menu" aria-label="Site navigation">
-        <a class="navigation-item {% if p == page %} active{% endif %}" href="{{ SITEURL }}">Notes</a>
-        {% if DISPLAY_PAGES_ON_MENU %}
-        {% for p in pages | selectattr("placement", "equalto", "header") %}
-        <a class="navigation-item {% if p == page %} active{% endif %}"
-          href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
-        {% endfor %}
-        {% endif %}
-      </nav>
+    <header class="masthead"  id="menu">
+      <h3 class="masthead-title">
+        <a href="/">{{ SITENAME }}</a>
+      </h3>
     </header>
 
     <main role="main">
@@ -65,51 +56,32 @@
     </main>
 
     <footer class="footer">
-      <div>
-        <a class="navigation-item" href="#menu">Haut de page</a>
-        {% for p in pages | selectattr("placement", "equalto", "footer") %}
-        <a class="navigation-item" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
-        {% endfor %}
-      </div>
       <small>
-        &copy; {{ BUILD_DATE | strftime("%Y") }} {{ AUTHOR }}.
+        <div class="author related">
+          <img class="avatar" src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/avatar.jpg" alt="">
+          <div>
+            <h4>{{ AUTHOR }}</h4>
+            <div>Développeur web le jour, amateur de photographie et de cinéma la nuit.
+            </div>
+            <div>
+              {% for url, title in SOCIAL %}
+              <a class="navigation-item" href="{{ url }}">{{ title }}</a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div>
+          <a class="navigation-item" href="#menu">Haut de page</a>
+          {% for p in pages %}
+          <a class="navigation-item" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+          {% endfor %}
+        </div>
+        <div>&copy; {{ BUILD_DATE | strftime("%Y") }} {{ AUTHOR }}.</div>
       </small>
     </footer>
   </div>
 
   <script>
-    (function () {
-      var currentTheme = localStorage.getItem('theme') || "light";
-      var useDarkTheme = document.querySelector('input[type="checkbox"]#dark-theme');
-      var root = document.documentElement;
-
-      root.setAttribute('data-theme', currentTheme);
-
-      if (!useDarkTheme) {
-        return
-      }
-
-      if (currentTheme == "light") {
-        useDarkTheme.removeAttribute('checked');
-      }
-      else {
-        useDarkTheme.checked = "true";
-      }
-
-      useDarkTheme.addEventListener('change', toggleTheme, false);
-
-      function toggleTheme(e) {
-        if (this.checked) {
-          root.setAttribute('data-theme', 'dark');
-          localStorage.setItem('theme', 'dark');
-        }
-        else {
-          root.setAttribute('data-theme', 'light');
-          localStorage.setItem('theme', 'light');
-        }
-      }
-    })();
-
     function copyToClipboard(selector) {
       // Create a "hidden" input
       var aux = document.createElement("input");

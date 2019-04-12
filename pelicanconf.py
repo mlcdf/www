@@ -8,11 +8,11 @@ import pelican
 PELICAN_VERSION = pelican.__version__
 
 AUTHOR = "Maxime Le Conte des Floris"
-SITENAME = "@mlcdf"
+SITENAME = "Retour chariot"
 SITEURL = ""
 
-SITESUBTITLE = "Le blog de Maxime"
-DESCRIPTION = "Lorem Ipsum"
+SITESUBTITLE = "Blog personnel de Maxime Le Conte des Floris."
+DESCRIPTION = "Développeur web le jour, amateur de photographie et de cinéma la nuit."
 
 PATH = "content"
 
@@ -93,3 +93,10 @@ MARKDOWN = {
 
 PLUGIN_PATHS=["./plugins"]
 PLUGINS=["jinja2content"]
+
+SOCIAL = [
+    ("mailto:hello@mlcd.com", "Email"),
+    ("https://github.com/mlcdf", "GitHub"),
+    ("https://framagit.org/pinboard", "Framagit"),
+    ("https://pinboard.in/u:mlcdf", "Pinboard"),
+]

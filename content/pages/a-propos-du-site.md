@@ -1,5 +1,4 @@
 Title: À propos du site
-Placement: header
 
 Entièrement statique, il est hébergé chez [Gandi](https://www.gandi.net/fr) et fièrement propulsé par [Pelican](https://blog.getpelican.com/). Quant au code source, sous licence MIT, il est disponible sur [framagit.org](https://framagit.org/mlcdf/mlcdf).
 
