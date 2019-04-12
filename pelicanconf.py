@@ -8,7 +8,7 @@ import pelican
 PELICAN_VERSION = pelican.__version__
 
 AUTHOR = "Maxime Le Conte des Floris"
-SITENAME = "Retour chariot"
+SITENAME = "Retour chariot &crarr;"
 SITEURL = ""
 
 SITESUBTITLE = "Blog personnel de Maxime Le Conte des Floris."
