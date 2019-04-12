@@ -95,8 +95,8 @@ PLUGIN_PATHS=["./plugins"]
 PLUGINS=["jinja2content"]
 
 SOCIAL = [
-    ("mailto:hello@mlcd.com", "Email"),
+    ("mailto:hello@mlcdf.com", "Email"),
     ("https://github.com/mlcdf", "GitHub"),
-    ("https://framagit.org/pinboard", "Framagit"),
+    ("https://framagit.org/mlcdf", "Framagit"),
     ("https://pinboard.in/u:mlcdf", "Pinboard"),
 ]
