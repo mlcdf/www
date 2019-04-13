@@ -1,7 +1,3 @@
-Title: Humans.txt
-Save_as: abonnement/index.html
-Status: hidden
-
 The Humans Responsible & Colophon
 humanstxt.org
 
