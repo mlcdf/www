@@ -49,6 +49,10 @@ a:not([href*=".mlcdf."]):not([href^="#"]):not([href^="/"]):not([href^="."])::aft
   text-decoration: underline;
 }
 
+.masthead-title small {
+  vertical-align: middle;
+}
+
 .navigation-item {
   margin-right: .6rem;
 }
