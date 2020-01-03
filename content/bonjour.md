@@ -1,5 +1,6 @@
-Title: Bonjour le monde
-Date: 2010-12-03 10:20
+Title: Reprendre le controle de ses données
+Date: 2021-01-31 10:20
 Category: Articles
 
-Following is a review of my favorite mechanical keyboard.
+En 2021, ce n'est plus un secret pour grand monde : les <abbr title="Google, Amazon, Facebook, Apple et Microsoft">GAFAM</abbr>
+

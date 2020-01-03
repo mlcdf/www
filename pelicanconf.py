@@ -1,27 +1,32 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*- #
-from __future__ import unicode_literals
+#!/usr/bin/env python3
 import datetime
+import logging
 
 import pelican
+from markdown.extensions import Extension
+from markdown.inlinepatterns import SimpleTagPattern
+from pelican.plugins import jinja2content
+from pelican.utils import DateFormatter
 
 PELICAN_VERSION = pelican.__version__
 
 AUTHOR = "Maxime Le Conte des Floris"
-SITENAME = "Retour chariot &crarr;"
+SITENAME = "blog.mlcdf"
 SITEURL = ""
 
-SITESUBTITLE = "Blog personnel de Maxime Le Conte des Floris."
-DESCRIPTION = "Développeur web le jour, amateur de photographie et de cinéma la nuit."
+SITESUBTITLE = "Blog personnel de Maxime Le Conte des Floris"
+DESCRIPTION = "Le blog de Maxime Le Conte des Floris, développeur web le jour, amateur de photographie et de cinéma la nuit."
 
 PATH = "content"
+OUTPUT_PATH = "output/"
 
 TIMEZONE = "Europe/Paris"
 
-LOCALE = ["fr_FR"]
+LOCALE = ["fr_FR.UTF-8"]
 DEFAULT_LANG = "fr"
 
 THEME = "theme"
+THEME_STATIC_DIR = "theme"
 
 AUTHOR_SAVE_AS = False
 AUTHORS_SAVE_AS = False
@@ -39,11 +44,13 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
+LOG_FILTER = [
+    (logging.WARN, "CATEGORY_SAVE_AS is set to False"),
+    (logging.WARN, "AUTHOR_SAVE_AS is set to False"),
+]
+
 DEFAULT_PAGINATION = 20
 
-DISPLAY_PAGES_ON_MENU = True
-
-# Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
 ARTICLE_SAVE_AS = "{date:%Y}/{slug}/index.html"
@@ -68,7 +75,7 @@ EXTRA_PATH_METADATA = {
     "extra/apple-icon-144x144.png": {"path": "apple-icon-144x144.png"},
     "extra/apple-icon-152x152.png": {"path": "apple-icon-152x152.png"},
     "extra/apple-icon-180x180.png": {"path": "apple-icon-180x180.png"},
-    "extra/apple-icon": {"path": "apple-icon"},
+    "extra/apple-icon.png": {"path": "apple-icon"},
     "extra/favicon-16x16.png": {"path": "favicon-16x16.png"},
     "extra/favicon-32x32.png": {"path": "favicon-32x32.png"},
     "extra/favicon-96x96.png": {"path": "favicon-96x96.png"},
@@ -76,27 +83,32 @@ EXTRA_PATH_METADATA = {
     "extra/manifest.webmanifest": {"path": "manifest.webmanifest"},
 }
 
-BUILD_DATE = datetime.datetime.now()
+
+class StrikeExtension(Extension):
+    def extendMarkdown(self, md):
+        # Create the del pattern
+        del_tag = SimpleTagPattern(r"(~~)(.*?)~~", "del")
+        # Insert del pattern into markdown parser
+        md.inlinePatterns.add("del", del_tag, ">not_strong")
+
 
 MARKDOWN = {
-    'extension_configs': {
-        'markdown.extensions.codehilite': {'css_class': 'highlight'},
-        'markdown.extensions.extra': {},
-        'markdown.extensions.meta': {},
-        'markdown.extensions.toc': {
-            "permalink": "#"
-        },
+    "extension_configs": {
+        "markdown.extensions.codehilite": {"css_class": "highlight"},
+        "markdown.extensions.extra": {},
+        "markdown.extensions.meta": {},
+        "markdown.extensions.toc": {"permalink": "#"},
     },
-    'output_format': 'html5',
+    "extensions": [StrikeExtension()],
+    "output_format": "html5",
 }
 
+BUILD_DATE = datetime.datetime.now()
 
-PLUGIN_PATHS=["./plugins"]
-PLUGINS=["jinja2content"]
+JINJA_FILTERS = {"strftime": DateFormatter()}
 
-SOCIAL = [
-    ("mailto:hello@mlcdf.com", "Email"),
-    ("https://github.com/mlcdf", "GitHub"),
-    ("https://framagit.org/mlcdf", "Framagit"),
-    ("https://pinboard.in/u:mlcdf", "Pinboard"),
-]
+JINJA_GLOBALS = {"BUILD_DATE": BUILD_DATE}
+
+PLUGIN_PATHS = ["plugins"]
+PLUGINS = ["asset_reving", jinja2content]
+THEME_STATIC_PATHS = ["static"]

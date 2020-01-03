@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*- #
+#!/usr/bin/env python3
 from __future__ import unicode_literals
 
 # This file is only used if you use `make publish` or
@@ -18,3 +17,4 @@ RELATIVE_URLS = False
 FEED_RSS = "rss.xml"
 
 DELETE_OUTPUT_DIRECTORY = True
+ASSET_REV_ENABLE = True

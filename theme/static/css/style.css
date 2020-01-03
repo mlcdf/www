@@ -1,51 +1,127 @@
-html {
-  font-family:
-    'Fira Sans', /* Firefox OS */
-    -apple-system, BlinkMacSystemFont, /* MacOS and iOS */
-    'avenir next', avenir, /* MacOS and iOS */
-    'Segoe UI', /* Windows */
-    roboto, noto, /* Google stuff */
-    cantarell, oxygen, ubuntu, /* Linux stuff */
-    'franklin gothic medium', 'century gothic', /* Windows stuff */
-    'helvetica neue', helvetica, /* Older MacOS */
-    'Liberation Sans', /* Linux */
-    sans-serif; /* Everything else */
-
-
+:root {
+  --bg-color: #FFF;
+  --text-color: #404e88;
+  --title-color: #303030;
+  --post-date-color: #666;
+  --accent-color: #ff41b4;
+  --accent-focus-color: #FFDEF2;
 }
+
+/*@media (prefers-color-scheme: dark) {*/
+/*  :root {*/
+/*    --bg-color: rgb(17, 17, 17);*/
+/*    --header-color: rgb(24, 24, 24);*/
+/*    --text-color: #8794c7;*/
+/*    --title-color: #e0e3f0;*/
+/*    --post-date-color: #92979b;*/
+/*  }*/
+/*}*/
+
+html, body {
+  font-family: 'Fira Sans', /* Firefox OS */
+                -apple-system, BlinkMacSystemFont, /* MacOS and iOS */
+                'avenir next', avenir, /* MacOS and iOS */
+                'Segoe UI', /* Windows */
+                roboto, noto, /* Google stuff */
+                cantarell, oxygen, ubuntu, /* Linux stuff */
+                'franklin gothic medium', 'century gothic', /* Windows stuff */
+                'helvetica neue', helvetica, /* Older MacOS */
+                'Liberation Sans', /* Linux */
+                sans-serif; /* Everything else */
+
+  color: var(--text-color) !important;
+  background-color: var(--bg-color);
+  border-top: solid 3px #8794c7;
+}
+
 
 @media (min-width: 38em) {
   html {
-    font-size: 20px;
+    font-size: 18px;
+
   }
+}
+
+@media (max-width: 700px) {
+  .container {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+
+.container {
+  max-width: 40rem;
 }
 
 a {
   text-decoration: underline;
+  color: var(--text-color);
 }
 
-a:hover {
-  text-decoration: none;
+strong, abbr, i, small {
+  color: var(--text-color);
 }
+
+.page-title, .post-title, .post-title a, h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color);
+}
+
+.post-date {
+  color: var(--post-date-color);
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+a:focus,
+a:hover,
+.post-title a:focus,
+.masthead-title a:focus,
+a:focus {
+  text-decoration: none !important;
+}
+
+a:focus {
+  outline-offset: 0;
+  outline: 3px solid transparent;
+  background-color: var(--accent-focus-color);
+  box-shadow: 0 -4px var(--accent-focus-color), 0 2px var(--accent-focus-color);
+}
+
 
 a:not([href*=".mlcdf."]):not([href^="#"]):not([href^="/"]):not([href^="."])::after {
   background-image: url(/theme/images/open-in-new-black.svg);
   background-repeat: no-repeat;
-  background-size: 16px 16px;
+  background-size: 13px 13px;
   content: "";
   display: inline-block;
-  height: 16px;
-  margin: -.3rem .15rem 0 .25rem;
+  height: 13px;
+  margin: -0.2rem 0.15rem 0 0.15rem;
   vertical-align: middle;
-  width: 16px;
+  width: 13px;
   fill: currentColor;
- }
+}
 
-.post-title a, .masthead-title a {
+header h1 a {
+  color: var(--accent-color) !important;
+}
+
+header h1 a:focus {
+  color: var(--text-color) !important;
+  background-color: var(--accent-focus-color);
+}
+
+.masthead-title h1 {
+  font-size: 1.5rem;
+}
+
+.post-title a,
+.masthead-title a {
   text-decoration: none;
 }
 
-.post-title a:hover, .masthead-title a:hover {
+.post-title a:hover,
+.masthead-title a:hover,
+.post-title a:focus,
+.masthead-title a:focus {
   text-decoration: underline;
 }
 
@@ -53,12 +129,13 @@ a:not([href*=".mlcdf."]):not([href^="#"]):not([href^="/"]):not([href^="."])::aft
   vertical-align: middle;
 }
 
-.navigation-item {
-  margin-right: .6rem;
+.masthead nav {
+  margin-left: -8px;
 }
 
-.navigation-item.active{
-  font-weight: bold;
+.masthead nav a {
+  padding: 6px;
+  margin-right: 4px;
 }
 
 .headerlink {
@@ -75,22 +152,12 @@ a:not([href*=".mlcdf."]):not([href^="#"]):not([href^="/"]):not([href^="."])::aft
 .post h3:hover .headerlink,
 .post h4:hover .headerlink,
 .post h4:hover .headerlink,
-.post h6:hover .headerlink {
-  visibility: visible
-}
-
-.author {
-  display: flex;
-}
-
-.author h4 {
-  margin-top: 0;
-  margin-bottom: .2rem;
-}
-
-.avatar {
-  height: 80px;
-  width: 80px;
-  border-radius: 100%;
-  margin-right: 1rem;
+.post h6:hover .headerlink,
+.post h1:focus .headerlink,
+.post h2:focus .headerlink,
+.post h3:focus .headerlink,
+.post h4:focus .headerlink,
+.post h4:focus .headerlink,
+.post h6:focus .headerlink {
+  visibility: visible;
 }

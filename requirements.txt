@@ -1,2 +1,5 @@
-pelican
-Markdown
+pelican==4.5.4
+pelican-jinja2content==1.0.1
+Markdown==3.3.3
+invoke==1.5.0
+black
