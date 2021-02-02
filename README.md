@@ -7,7 +7,7 @@ My personal website
 ```bash
 python -V # should print 3.6+
 python -m venv venv
-source venv/bin/activate
+source venv/bin/activate # on Windows : venv\Scripts\activate.bat
 python -m pip install -r requirements.txt
 ```
 
