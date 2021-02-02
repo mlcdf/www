@@ -45,9 +45,15 @@ def asset_rev(name: str, settings) -> str:
 
 def initialize(pelican):
     """Add Webassets to Jinja2 extensions in Pelican settings."""
-    DEFAULT_CONFIG["ASSET_REV_ENABLE"] = False
+    DEFAULT_CONFIG.setdefault("ASSET_REV_ENABLE", False)
 
-    if "ASSET_REV_ENABLE" in pelican.settings and pelican.settings["ASSET_REV_ENABLE"]:
+    if pelican:
+        # Set default values for unset settings
+        for name, value in DEFAULT_CONFIG.items():
+            if name.startswith("ASSET_REV"):
+                pelican.settings.setdefault(name, value)
+
+    if pelican.settings["ASSET_REV_ENABLE"]:
         pelican.settings["JINJA_GLOBALS"]["asset_rev"] = lambda name: asset_rev(
             name, pelican.settings
         )
@@ -76,10 +82,6 @@ class AssetRevGenerator(Generator):
             logger.info("Copying %s " % dest_path)
 
 
-def get_generators(pelican):
-    return AssetRevGenerator
-
-
 def update_ignore_files(pelican, writer):
     if pelican.settings["ASSET_REV_ENABLE"]:
         files_to_ignore = [
@@ -89,6 +91,10 @@ def update_ignore_files(pelican, writer):
         pelican.settings["IGNORE_FILES"] = (
             pelican.settings["IGNORE_FILES"] + files_to_ignore
         )
+
+
+def get_generators(pelican):
+    return AssetRevGenerator
 
 
 def register():
