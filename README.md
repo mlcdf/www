@@ -1,4 +1,4 @@
-# blog.mlcdf.fr
+# blog.mlcdf.fr [![Netlify Status](https://api.netlify.com/api/v1/badges/a1b831c3-bef6-4136-ab23-b328ef34e956/deploy-status)](https://app.netlify.com/sites/lucid-chandrasekhar-6bec95/deploys)
 
 My personal website
 
