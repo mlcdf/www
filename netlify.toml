@@ -16,3 +16,9 @@
   for = "*.css" # js files should be set this way
   [headers.values]
     Cache-Control = "public, max-age=31536000"
+
+[context.production.environment]
+  SITEURL = "https://blog.mlcdf.fr"
+
+[context.dev.environment]
+  SITEURL = "/"
