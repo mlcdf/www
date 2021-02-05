@@ -1,0 +1,13 @@
+[build]
+  command = "./script/publish"
+  publish = "output"
+
+[build.environment]
+  PYTHON_VERSION = "3.8"
+
+[[headers]]
+  for = "/*"
+    [headers.values]
+      X-Frame-Options = "DENY"
+      X-Content-Type-Options = "nosniff"
+      Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
