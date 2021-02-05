@@ -1,5 +1,5 @@
 [build]
-  command = "./script/publish"
+  command = "./scripts/publish.sh"
   publish = "output"
 
 [build.environment]
