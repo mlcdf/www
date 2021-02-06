@@ -20,12 +20,12 @@
       Cache-Control = "must-revalidate, max-age=600"
 
 [[headers]]
-  for = "*.css" # js files should be set this way
+  for = "*.css, *.woff, *woff2"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "manifest.webmanifest" # js files should be set this way
+  for = "manifest.webmanifest"
   [headers.values]
     Content-Type = "application/manifest+json; charset=utf-8"
 
