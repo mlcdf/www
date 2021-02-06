@@ -26,6 +26,15 @@
   font-display: optional;
 }
 
+@font-face {
+  font-family: "Fira Sans";
+  src: url("/theme/fonts/FiraSans-Bold.woff2") format('woff2'),
+        url("/theme/fonts/FiraSans-Bold.woff") format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: optional;
+}
+
 html, body {
   font-family: 'Fira Sans', /* Firefox OS */
                 -apple-system, BlinkMacSystemFont, /* MacOS and iOS */
