@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import datetime
+import locale
 import logging
 
 import pelican
@@ -22,6 +23,7 @@ OUTPUT_PATH = "output/"
 
 TIMEZONE = "Europe/Paris"
 
+locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')
 LOCALE = ["fr_FR.UTF-8"]
 DEFAULT_LANG = "fr"
 
