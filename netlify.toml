@@ -9,15 +9,14 @@
   for = "/*"
     [headers.values]
     	Cache-Control = "no-cache"
-      X-Frame-Options = "DENY"
       X-Content-Type-Options = "nosniff"
       Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-      Content-Security-Policy = "default-src 'self'"
       Referrer-Policy = "strict-origin-when-cross-origin"
 
 [[headers]]
   for = "*.html"
     [headers.values]
+      Content-Security-Policy = "default-src 'self'"
       Cache-Control = "must-revalidate, max-age=600"
 
 [[headers]]
