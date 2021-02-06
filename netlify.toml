@@ -8,14 +8,30 @@
 [[headers]]
   for = "/*"
     [headers.values]
+    	Cache-Control = "no-cache"
       X-Frame-Options = "DENY"
       X-Content-Type-Options = "nosniff"
       Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+      Content-Security-Policy = "default-src 'self'"
+      Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "*.html"
+    [headers.values]
+      Cache-Control = "must-revalidate, max-age=600"
 
 [[headers]]
   for = "*.css" # js files should be set this way
   [headers.values]
-    Cache-Control = "public, max-age=31536000"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "manifest.webmanifest" # js files should be set this way
+  [headers.values]
+    Content-Type = "application/manifest+json; charset=utf-8"
+
+
+application/manifest+json
 
 [context.production.environment]
   SITEURL = "https://blog.mlcdf.fr"
