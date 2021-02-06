@@ -15,9 +15,6 @@
       {% block title %}{{ SITENAME }} - {{ SITESUBTITLE}} {% endblock title %}
     </title>
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-
     <!-- CSS -->
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/poole.css" />
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/{{ asset_rev('css/style.css') }}" />
@@ -73,7 +70,6 @@
       </div>
     </header>
     <div class="content container">
-
       <main role="main">
         {% block content %} {% endblock %}
       </main>
@@ -84,22 +80,5 @@
         </small>
       </footer>
     </div>
-
-    <script>
-      function copyToClipboard(selector) {
-        // Create a "hidden" input
-        var aux = document.createElement("input");
-        // Assign it the value of the specified element
-        aux.setAttribute("value", document.querySelector(selector).innerHTML);
-        // Append it to the body
-        document.body.appendChild(aux);
-        // Highlight its content
-        aux.select();
-        // Copy the highlighted text
-        document.execCommand("copy");
-        // Remove it from the body
-        document.body.removeChild(aux);
-      }
-    </script>
   </body>
 </html>
