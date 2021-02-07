@@ -7,10 +7,12 @@ from pelicanconf import *
 
 # Allows to build for both staging and prod
 SITEURL = os.environ["SITEURL"]
+FEED_DOMAIN = SITEURL
 
 RELATIVE_URLS = False
 
 FEED_RSS = "rss.xml"
+RSS_FEED_SUMMARY_ONLY = False
 
 DELETE_OUTPUT_DIRECTORY = True
 ASSET_REV_ENABLE = True

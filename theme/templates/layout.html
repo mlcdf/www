@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="{{ DEFAULT_LANG }}">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="{{ AUTHOR }}" />
-    <!-- Metadata -->
-    {% block metadata %}
-    <meta name="description" content="{{ DESCRIPTION }}" />
-    {% endblock %}
-    <meta name="generator" content="Pelican {{ PELICAN_VERSION }}" />
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="{{ AUTHOR }}"/>
+  <!-- Metadata -->
+  {% block metadata %}
+    <meta name="description" content="{{ DESCRIPTION }}"/>
+  {% endblock %}
+  <meta name="generator" content="Pelican {{ PELICAN_VERSION }}"/>
 
-    <title>
-      {% block title %}{{ SITENAME }} - {{ SITESUBTITLE}} {% endblock title %}
-    </title>
+  <title>
+    {% block title %}{{ SITENAME }} - {{ SITESUBTITLE }} {% endblock title %}
+  </title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/poole.css" />
-    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/{{ asset_rev('css/style.css') }}" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/poole.css"/>
+  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/{{ asset_rev('css/style.css') }}"/>
 
-    <!-- RSS -->
-    <link rel="alternate" type="application/rss+xml" title="RSS {{ SITEURL }}" href="/rss.xml" />
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS {{ SITEURL }}" href="/rss.xml"/>
 
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
@@ -40,45 +40,42 @@
     <meta name="theme-color" content="#ffffff" />
   </head>
 
-  <body>
-    <header>
-      <div class="content container">
-        <div class="masthead">
-          <div class="masthead-title">
-            <h1>
-              <a href="/">
-                blog.mlcdf
-              </a>
-            </h1>
-          </div>
-          <nav>
-            <a class="{% if page_name == 'index' %}active {% endif %}" href="/"
-              >Notes</a
-            >
+<body>
+<header>
+  <div class="container">
+    <div class="masthead">
+      <h1 class="masthead-title">
+        <a href="/">
+          blog.mlcdf
+        </a>
 
-            {% for p in pages %}
-              {% if p.inheader == "True" %}
-              <a
-                class="{% if output_file == p.save_as %}active {% endif %}"
-                href="{{ SITEURL }}/{{ p.url }}/"
-                >{{ p.title }}</a
-              >
-              {% endif %}
-            {% endfor %}
-          </nav>
-        </div>
-      </div>
-    </header>
-    <div class="content container">
-      <main role="main">
-        {% block content %} {% endblock %}
-      </main>
-
-       <footer class="footer">
-        <small>
-          © Maxime Le Conte des Floris
-        </small>
-      </footer>
+      </h1>
+      <nav>
+        <a href="/a-propos-du-site/"><span class="icon baseline">{{ "code-website.svg" | icon }}</span> À propos du site</a>
+        <a href="/{{ FEED_RSS }}"><span class="icon baseline">{{ "rss.svg" | icon }}</span> <span class="abbr">RSS</span></a>
+      </nav>
     </div>
-  </body>
+  </div>
+</header>
+<div class="content container">
+  <main role="main">
+    {% block content %} {% endblock %}
+  </main>
+
+  <footer class="footer">
+    <h3><span class="icon baseline" style="padding-bottom: 2px;">{{ "leaves.svg" | icon }}</span> Bienvenue dans mon petit coin du web !</h3>
+    <p>Je suis Maxime, développeur, amateur de photographie et mordu de cinéma. J'habite à Bordeaux depuis quelques années et je suis consultant chez Conserto.</p>
+
+    <div class="social">
+      {% for url, name in SOCIAL %}
+        <a href="{{ url }}">{{ name }}</a>
+      {% endfor %}
+    </div>
+
+    <div>
+      © {{ BUILD_DATE | strftime("%Y") }} Maxime Le Conte des Floris.
+    </div>
+  </footer>
+</div>
+</body>
 </html>
