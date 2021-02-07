@@ -1,18 +1,15 @@
 Title: À propos du site
-InHeader: True
-
-Ce site est statique. Il est hébergé chez [Gandi](https://www.gandi.net/fr). Quant au code source, sous licence MIT, il est disponible sur [framagit.org](https://framagit.org/mlcdf/mlcdf).
-
-Sauf mention contraire, les articles sont publiés sous license [Creative Commons : Paternité – Pas d’Utilisation Commerciale – Partage des Conditions Initiales à l’Identique, version 2.0](http://creativecommons.org/licenses/by-nc-sa/2.0/fr/legalcode).
 
 La dernière mise à jour date du {{ BUILD_DATE | strftime("%d %B %Y") }}.
 
-## Politique de confidentialité
+## Licence
 
-Ce site :
+Sauf mention contraire, les articles sont publiés sous license [Creative Commons : Paternité – Pas d’Utilisation Commerciale – Partage des Conditions Initiales à l’Identique, version 2.0](http://creativecommons.org/licenses/by-nc-sa/2.0/fr/legalcode).
 
-- ne vous traque pas
-- ne contient pas de publicité
-- fonctionne sans JavaScript
+Le code source quant à lui est disponible sous licence MIT sur [GitHub](https://github.com/mlcdf/www).
 
-Si vous avez des remarques, des questions ou des suggestions, n'hésitez pas à me contacter par email à l'adresse suivante : hello[arobase]mlcdf.com.
+## Sous le capot
+
+Ce site statique est compilé par [Pelican](https://docs.getpelican.com/en/latest/index.html) et hébergé sur [Netlify](https://www.netlify.com/).
+
+Une attention toute particulière a été apportée à la performance, à l'accessibilité ainsi qu'au respect de la vie privée de mes lecteurices.
