@@ -2,6 +2,7 @@
 import datetime
 import locale
 import logging
+import os
 
 import pelican
 from markdown.extensions import Extension
@@ -99,7 +100,7 @@ MARKDOWN = {
         "markdown.extensions.codehilite": {"css_class": "highlight"},
         "markdown.extensions.extra": {},
         "markdown.extensions.meta": {},
-        "markdown.extensions.toc": {"permalink": "#"},
+        "markdown.extensions.toc": {"permalink": "#", "permalink_title": "Lien permanent", "baselevel": 2},
     },
     "extensions": [StrikeExtension()],
     "output_format": "html5",
@@ -107,10 +108,27 @@ MARKDOWN = {
 
 BUILD_DATE = datetime.datetime.now()
 
-JINJA_FILTERS = {"strftime": DateFormatter()}
+
+def icon(name: str):
+    with open(os.path.join(os.getcwd(), "theme", "static", "images", name), "r") as fd:
+        return fd.read()
+
+
+JINJA_FILTERS = {
+    "strftime": DateFormatter(),
+    "icon": icon
+}
 
 JINJA_GLOBALS = {"BUILD_DATE": BUILD_DATE}
 
 PLUGIN_PATHS = ["plugins"]
 PLUGINS = ["asset_reving", jinja2content]
 THEME_STATIC_PATHS = ["static"]
+
+SOCIAL = [
+    ("mailto:contact@mlcdf.fr", "contact@mlcdf.fr"),
+    ("https://github.com/mlcdf", "GitHub"),
+    ("https://pinboard.in/u:mlcdf", "Pinboard"),
+    ("https://toot.cafe/@mlcdf", "Fédiverse"),
+    ("https://twitter.com/mlcdf", "Twitter"),
+]

@@ -1,10 +1,10 @@
 :root {
   --bg-color: #FFF;
-  --text-color: #404e88;
+  --text-color: #515151;
   --title-color: #303030;
-  --post-date-color: #666;
-  --accent-color: #ff41b4;
-  --accent-focus-color: #FFDEF2;
+  --lighter-text-color: #767676;
+  --accent-color: #1d70b8;
+  --accent-focus-color: #fff7cc;
 }
 
 /*@media (prefers-color-scheme: dark) {*/
@@ -13,7 +13,7 @@
 /*    --header-color: rgb(24, 24, 24);*/
 /*    --text-color: #8794c7;*/
 /*    --title-color: #e0e3f0;*/
-/*    --post-date-color: #92979b;*/
+/*    --lighter-text-color: #92979b;*/
 /*  }*/
 /*}*/
 
@@ -47,16 +47,32 @@ html, body {
                 'Liberation Sans', /* Linux */
                 sans-serif; /* Everything else */
 
-  color: var(--text-color) !important;
+  color: var(--text-color);
   background-color: var(--bg-color);
-  border-top: solid 3px #8794c7;
+  min-height: 100%;
 }
 
+body > header {
+  background-color: #E6E6FA; /* Lavender */
+  border-bottom: solid 2px #bfbff2;
+  margin-bottom: 3rem;
+}
+
+.masthead {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+header h1, nav {
+  display: inline-block;
+}
 
 @media (min-width: 38em) {
   html {
     font-size: 18px;
-
   }
 }
 
@@ -68,25 +84,24 @@ html, body {
 }
 
 .container {
-  max-width: 40rem;
+  max-width: 38rem;
 }
 
-a {
+a:not(nav a) {
   text-decoration: underline;
-  color: var(--text-color);
+  color: var(--accent-color);
 }
 
-strong, abbr, i, small {
-  color: var(--text-color);
+abbr, i, small, nav a {
+  color: var(--text-color)
 }
 
-.page-title, .post-title, .post-title a, h1, h2, h3, h4, h5, h6 {
-  color: var(--text-color);
+.page-title, .post-title, .post-title a, h1, h2, h3, h4, h5, h6, strong,  {
+  color: var(--title-color);
 }
 
-.post-date {
-  color: var(--post-date-color);
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+.post-date, blockquote {
+  color: var(--lighter-text-color);
 }
 
 a:focus,
@@ -104,8 +119,7 @@ a:focus {
   box-shadow: 0 -4px var(--accent-focus-color), 0 2px var(--accent-focus-color);
 }
 
-
-a:not([href*=".mlcdf."]):not([href^="#"]):not([href^="/"]):not([href^="."])::after {
+main a:not([href*=".mlcdf."]):not([href^="#"]):not([href^="/"]):not([href^="."])::after {
   background-image: url(/theme/images/open-in-new-black.svg);
   background-repeat: no-repeat;
   background-size: 13px 13px;
@@ -118,20 +132,10 @@ a:not([href*=".mlcdf."]):not([href^="#"]):not([href^="/"]):not([href^="."])::aft
   fill: currentColor;
 }
 
-header h1 a {
-  color: var(--accent-color) !important;
+h1.masthead-title {
+  font-size: 1.25rem;
 }
 
-header h1 a:focus {
-  color: var(--text-color) !important;
-  background-color: var(--accent-focus-color);
-}
-
-.masthead-title h1 {
-  font-size: 1.5rem;
-}
-
-.post-title a,
 .masthead-title a {
   text-decoration: none;
 }
@@ -141,10 +145,6 @@ header h1 a:focus {
 .post-title a:focus,
 .masthead-title a:focus {
   text-decoration: underline;
-}
-
-.masthead-title small {
-  vertical-align: middle;
 }
 
 .masthead nav {
@@ -159,6 +159,7 @@ header h1 a:focus {
 .headerlink {
   margin-left: 5px;
   visibility: hidden;
+  font-weight: normal;
 }
 
 .headerlink:hover {
@@ -178,4 +179,45 @@ header h1 a:focus {
 .post h4:focus .headerlink,
 .post h6:focus .headerlink {
   visibility: visible;
+}
+
+footer {
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+.social {
+  margin-bottom: 2rem;
+}
+
+.social a {
+  padding: 2px;
+  margin-right: 16px;
+}
+
+.icon {
+    display: inline-flex;
+    align-self: center;
+    margin-right: 2px;
+}
+
+.icon svg, .icon img {
+    height: 24px;
+    width: 24px;
+    fill: currentColor;
+}
+
+.icon.baseline svg, .icon img {
+    top: 6px;
+    position: relative;
+}
+
+.abbr {
+  font-size: 85%;
+  color: #555;
+  text-transform: uppercase;
+}
+
+abbr, .abbr {
+  letter-spacing: .5px;
 }
