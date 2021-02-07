@@ -61,9 +61,19 @@ body > header {
 .masthead {
   margin-bottom: 0;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: baseline;
+}
+
+@media (min-width: 400px) {
+  .masthead {
+    display: flex;
+    flex-direction: row;
+  }
+  .masthead nav {
+    padding-top: 0;
+  }
 }
 
 header h1, nav {
@@ -149,6 +159,7 @@ h1.masthead-title {
 
 .masthead nav {
   margin-left: -8px;
+  padding-top: 12px;
 }
 
 .masthead nav a {
@@ -191,8 +202,8 @@ footer {
 }
 
 .social a {
-  padding: 2px;
-  margin-right: 16px;
+  padding: 4px;
+  margin-right: 12px;
 }
 
 .icon {
