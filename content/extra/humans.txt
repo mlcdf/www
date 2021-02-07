@@ -1,15 +1,13 @@
 The Humans Responsible & Colophon
 humanstxt.org
 
-
-# Team
-
-Name: Maxime Le Conte des Floris <hello@mlcdf.com>
+/* TEAM */
+Name: Maxime Le Conte des Floris <contact@mlcdf.fr>
+Site: https//blog.mlcdf.fr
 Location: Bordeaux, France
 
-# Site
-
+/* SITE */
 Standards: HTML5, CSS3, JavaScript
-Library: Poole.css
-Build tools: Python, Pip, Pelican
-Software: Atom, Firefox, Tilix
+Components: Poole.css
+Build tools: Pelican, Python
+Software: Pycharm, Firefox
