@@ -58,24 +58,6 @@ body > header {
   margin-bottom: 3rem;
 }
 
-.masthead {
-  margin-bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: baseline;
-}
-
-@media (min-width: 400px) {
-  .masthead {
-    display: flex;
-    flex-direction: row;
-  }
-  .masthead nav {
-    padding-top: 0;
-  }
-}
-
 header h1, nav {
   display: inline-block;
 }
@@ -157,6 +139,14 @@ h1.masthead-title {
   text-decoration: underline;
 }
 
+.masthead {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
 .masthead nav {
   margin-left: -8px;
   padding-top: 12px;
@@ -165,6 +155,16 @@ h1.masthead-title {
 .masthead nav a {
   padding: 6px;
   margin-right: 4px;
+}
+
+@media (min-width: 400px) {
+  .masthead {
+    display: flex;
+    flex-direction: row;
+  }
+  .masthead nav {
+    padding-top: 0;
+  }
 }
 
 .headerlink {
