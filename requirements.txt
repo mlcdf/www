@@ -1,4 +1,4 @@
 pelican==4.5.4
 pelican-jinja2content==1.0.1
 Markdown==3.3.3
-cryptography==3.3.1
+cryptography==3.4.5
