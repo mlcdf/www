@@ -2,7 +2,6 @@
 import datetime
 import locale
 import logging
-import os
 
 import pelican
 from markdown.extensions import Extension
@@ -48,6 +47,7 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 LOG_FILTER = [
+    (logging.WARN, "TAG_SAVE_AS is set to False"),
     (logging.WARN, "CATEGORY_SAVE_AS is set to False"),
     (logging.WARN, "AUTHOR_SAVE_AS is set to False"),
 ]
@@ -97,21 +97,14 @@ MARKDOWN = {
 
 BUILD_DATE = datetime.datetime.now()
 
-
-def icon(name: str):
-    with open(os.path.join(os.getcwd(), "theme", "static", "images", name), "r") as fd:
-        return fd.read()
-
-
 JINJA_FILTERS = {
     "strftime": DateFormatter(),
-    "icon": icon
 }
 
 JINJA_GLOBALS = {"BUILD_DATE": BUILD_DATE}
 
 PLUGIN_PATHS = ["plugins"]
-PLUGINS = ["asset_reving", jinja2content]
+PLUGINS = ["asset_reving", "include", jinja2content]
 THEME_STATIC_PATHS = ["static"]
 
 SOCIAL = [
