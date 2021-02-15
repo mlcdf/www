@@ -4,8 +4,6 @@ import locale
 import logging
 
 import pelican
-from markdown.extensions import Extension
-from markdown.inlinepatterns import SimpleTagPattern
 from pelican.plugins import jinja2content
 from pelican.utils import DateFormatter
 
@@ -75,14 +73,11 @@ EXTRA_PATH_METADATA = {
     "extra/manifest.webmanifest": {"path": "manifest.webmanifest"},
 }
 
-
-class StrikeExtension(Extension):
-    def extendMarkdown(self, md):
-        # Create the del pattern
-        del_tag = SimpleTagPattern(r"(~~)(.*?)~~", "del")
-        # Insert del pattern into markdown parser
-        md.inlinePatterns.add("del", del_tag, ">not_strong")
-
+IGNORE_FILES = [
+    "theme/static/images/leaves.svg",
+    "theme/static/images/code-websites.svg",
+    "theme/static/images/rss.svg",
+]
 
 MARKDOWN = {
     "extension_configs": {
