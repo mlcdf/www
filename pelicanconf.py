@@ -86,7 +86,7 @@ MARKDOWN = {
         "markdown.extensions.meta": {},
         "markdown.extensions.toc": {"permalink": "#", "permalink_title": "Lien permanent", "baselevel": 2},
     },
-    "extensions": [StrikeExtension()],
+    "extensions": [],
     "output_format": "html5",
 }
 
@@ -99,7 +99,7 @@ JINJA_FILTERS = {
 JINJA_GLOBALS = {"BUILD_DATE": BUILD_DATE}
 
 PLUGIN_PATHS = ["plugins"]
-PLUGINS = ["asset_reving", "include", jinja2content]
+PLUGINS = ["asset_reving", "include", "strike", jinja2content]
 THEME_STATIC_PATHS = ["static"]
 
 SOCIAL = [
@@ -108,4 +108,8 @@ SOCIAL = [
     ("https://pinboard.in/u:mlcdf", "Pinboard"),
     ("https://toot.cafe/@mlcdf", "Fédiverse"),
     ("https://twitter.com/mlcdf", "Twitter"),
+    ("https://flickr.com/photos/mlcdf", "Flickr"),
 ]
+
+CACHE_CONTENT = True
+LOAD_CONTENT_CACHE = True
