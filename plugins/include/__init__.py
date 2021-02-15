@@ -1,8 +1,5 @@
-"""Static asset revisioning by appending content hash to filenames style.css → style-d41d8cd98f.css
-
-1. Set ASSET_REV_ENABLE = True in your publishconf.py to enable this plugin.
-2. Use the 'asset_rev' jinja2 globals like this:
-    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/{{ asset_rev('css/style.css') }}" />
+"""Include file content inside the html page. Mostly used to include svg icons.
+Support encrypted assets.
 """
 import logging
 import os
