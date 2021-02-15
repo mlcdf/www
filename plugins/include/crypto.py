@@ -34,14 +34,15 @@ def _write_file(path: str, encrypted: str):
     print(f"File {path} written")
 
 
-def load_key(filename: str = DEFAULT_KEY_FILE) -> str:
+def load_key(filename: str = DEFAULT_KEY_FILE) -> bytes:
     try:
         with open(os.path.join(os.getcwd(), filename)) as fd:
-            return fd.read()
+            return fd.read().encode()
     except OSError:
         try:
-            return os.environ["KEY"]
+            return os.environ["KEY"].encode()
         except KeyError:
+            logger.error("Set env var KEY")
             raise
 
 
