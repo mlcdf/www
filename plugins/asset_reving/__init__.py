@@ -43,6 +43,11 @@ def asset_rev(name: str, settings) -> str:
     return name.replace(extension, "-" + hash_rev + extension)
 
 
+# Can't replace this with a local lambda because of pickling when CACHE_CONTENT = True
+def nothing(name):
+    return name
+
+
 def initialize(pelican):
     """Add Webassets to Jinja2 extensions in Pelican settings."""
     DEFAULT_CONFIG.setdefault("ASSET_REV_ENABLE", False)
@@ -54,13 +59,13 @@ def initialize(pelican):
                 pelican.settings.setdefault(name, value)
 
     if pelican.settings["ASSET_REV_ENABLE"]:
-        pelican.settings["JINJA_GLOBALS"]["asset_rev"] = lambda name: asset_rev(
-            name, pelican.settings
+        pelican.settings["JINJA_GLOBALS"]["asset_rev"] = lambda _name: asset_rev(
+            _name, pelican.settings
         )
         pelican.settings["ASSET_REV_TO_WATCH"] = {}
     else:
         # Do nothing
-        pelican.settings["JINJA_GLOBALS"]["asset_rev"] = lambda name: name
+        pelican.settings["JINJA_GLOBALS"]["asset_rev"] = nothing
 
 
 class AssetRevGenerator(Generator):
@@ -93,7 +98,7 @@ def update_ignore_files(pelican, writer):
         )
 
 
-def get_generators(pelican):
+def get_generators(_):
     return AssetRevGenerator
 
 
