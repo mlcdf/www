@@ -1,4 +1,9 @@
-# www.mlcdf.fr  
-My personal website.
+# www.mlcdf.fr
 
-The `blog` branch is a w.i.p.
+The code behind my personal website.
+
+About the branches:
+- `main`: represents what's current deployed
+- `blog`: is my latest W.I.P.
+
+The remaining one are old versions (some of which never reached production).
