@@ -1,2 +1,2 @@
 #!/bin/sh
-pelican --delete-output-directory --settings publishconf.py
+pipenv run pelican --delete-output-directory --settings publishconf.py

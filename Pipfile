@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pelican = "==4.5.4"
+pelican-jinja2content = "==1.0.1"
+cryptography = "==3.4.5"
+Markdown = "==3.3.3"
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"

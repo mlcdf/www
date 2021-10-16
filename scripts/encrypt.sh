@@ -1,2 +1,2 @@
 #!/bin/sh
-python -m plugins.include.crypto encrypt $@
+pipenv run python -m plugins.include.crypto encrypt $@
