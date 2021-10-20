@@ -9,13 +9,14 @@ from cryptography.fernet import Fernet
 
 PREFIX: str = "Fernet;"
 DEFAULT_KEY_FILE = "key.key"
+
 logger = logging.getLogger(__name__)
 
 
 # Available in 3.9 https://docs.python.org/3.9/library/stdtypes.html#str.removeprefix
 def removeprefix(text: str, prefix: str) -> str:
     if text.startswith(prefix):
-        return text[len(prefix):]
+        return text[len(prefix) :]
     return text
 
 
@@ -42,7 +43,7 @@ def load_key(filename: str = DEFAULT_KEY_FILE) -> bytes:
         try:
             return os.environ["KEY"].encode()
         except KeyError:
-            logger.error("Set env var KEY")
+            logger.error("missing env var KEY")
             raise
 
 
@@ -97,14 +98,14 @@ examples:
         python -m crypto decrypt theme/static/images/leaves.svg --key key.key
         KEY=YOLO python -m crypto decrypt theme/static/images/leaves.svg
 """,
-        formatter_class=argparse.RawDescriptionHelpFormatter
+        formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     subparsers = parser.add_subparsers()
 
     encrypt_parser = subparsers.add_parser("encrypt", help="encrypt a file")
     encrypt_parser.set_defaults(func=encrypt_files)
     encrypt_parser.add_argument(
-        "files", type=argparse.FileType("r"), help="file to encrypt", nargs='+'
+        "files", type=argparse.FileType("r"), help="file to encrypt", nargs="+"
     )
     encrypt_parser.add_argument(
         "--key",
@@ -118,7 +119,7 @@ examples:
     decrypt_parser = subparsers.add_parser("decrypt", help="decrypt a file")
     decrypt_parser.set_defaults(func=decrypt_files)
     decrypt_parser.add_argument(
-        "files", type=argparse.FileType("r"), help="file to decrypt", nargs='+'
+        "files", type=argparse.FileType("r"), help="file to decrypt", nargs="+"
     )
     decrypt_parser.add_argument(
         "--key",
