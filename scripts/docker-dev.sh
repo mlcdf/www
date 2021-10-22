@@ -9,5 +9,6 @@ docker run \
     -v $(pwd)/plugins:/website/plugins \
     -v $(pwd)/pelicanconf.py:/website/pelicanconf.py \
     -v $(pwd)/publishconf.py:/website/publishconf.py \
+    -v $(pwd)/key.key:/website/key.key \
     --rm \
     -it pelican ./scripts/$@
