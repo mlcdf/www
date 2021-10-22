@@ -1,4 +1,6 @@
 #!/bin/sh
+set -eu
+
 docker build -t pelican .
 docker run \
     -p 8000:8000 \
