@@ -9,6 +9,9 @@ from pelican.utils import DateFormatter
 
 PELICAN_VERSION = pelican.__version__
 
+PORT = 8000
+BIND = "0.0.0.0"
+
 AUTHOR = "Maxime Le Conte des Floris"
 SITENAME = "blog.mlcdf"
 SITEURL = ""
