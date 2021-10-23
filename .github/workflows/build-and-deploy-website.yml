@@ -18,6 +18,9 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build website
+        env:
+          SITEURL: ${{ secrets.SITEURL }}
+          KEY: ${{ secrets.KEY }}
         run: |
           ./scripts/publish.sh
 
@@ -40,11 +43,11 @@ jobs:
         run: ls -R
 
       - name: Deploy
+        env:
+          RCLONE_CONFIG_CELLAR_ACCESS_KEY_ID: ${{ secrets.CELLAR_ADDON_KEY_ID }}
+          RCLONE_CONFIG_CELLAR_SECRET_ACCESS_KEY: ${{ secrets.CELLAR_ADDON_KEY_SECRET }}
+          RCLONE_CONFIG_CELLAR_ENDPOINT: ${{ secrets.CELLAR_ADDON_HOST }}
+          RCLONE_CONFIG_CELLAR_TYPE: "s3"
+          MY_DOMAIN: "${{ secrets.MY_DOMAIN }}"
         run: |
-          export RCLONE_CONFIG_MYS3_ACCESS_KEY_ID=$CELLAR_ADDON_KEY_ID
-          export RCLONE_CONFIG_MYS3_SECRET_ACCESS_KEY=$CELLAR_ADDON_KEY_SECRET
-          export RCLONE_CONFIG_MYS3_ENDPOINT=$CELLAR_ADDON_HOST
-          export RCLONE_CONFIG_MYS3_TYPE="s3"
-
-          # Sync the site to Cellar
-          rclone sync . mys3:$MY_DOMAIN --progress --s3-acl=public-read
+          rclone sync . cellar:$MY_DOMAIN --progress --s3-acl=public-read
