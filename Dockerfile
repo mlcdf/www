@@ -1,5 +1,7 @@
 FROM python:3.9.7-slim-bullseye
 
+LABEL org.opencontainers.image.description="Build image for https://github.com/mlcdf/www"
+
 WORKDIR /website
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y locales --no-install-recommends
