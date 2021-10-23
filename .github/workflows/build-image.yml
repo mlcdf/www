@@ -1,9 +1,19 @@
-name: ci
+name: Build Image
 
 on:
   push:
     branches:
       - 'blog'
+    paths:
+      - 'Pipfile'
+      - 'Pipfile.lock'
+      - Dockerfile
+  
+  schedule:
+    # every sunday at 12 AM
+    - cron: "0 0 * * 0"
+
+  workflow_dispatch:
 
 jobs:
   docker:
@@ -35,9 +45,3 @@ jobs:
 
           cache-from: type=registry,ref=ghcr.io/mlcdf/blog:buildcache
           cache-to: type=registry,ref=ghcr.io/mlcdf/blog:buildcache,mode=max
-
-      - name:
-        run : |
-          docker run -t ghcr.io/mlcdf/blog:latest /website/scripts/build.sh
-          ls -l
-          ls -l output
