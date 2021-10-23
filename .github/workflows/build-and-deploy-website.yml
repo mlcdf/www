@@ -25,6 +25,7 @@ jobs:
           path: /website # or path/to/artifact
 
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     container:
       image: rclone/rclone
