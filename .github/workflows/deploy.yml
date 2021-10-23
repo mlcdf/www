@@ -7,7 +7,9 @@ on:
 
 jobs:
   docker:
-    runs-on: rclone/clone
+    runs-on: ubuntu-latest
+    container:
+      image: rclone/rclone
     steps:
       - uses: actions/download-artifact@v2
         with:
@@ -15,3 +17,13 @@ jobs:
           
       - name: Display structure of downloaded files
         run: ls -R
+
+      - name: Deploy
+        run: |
+          export RCLONE_CONFIG_MYS3_ACCESS_KEY_ID=$CELLAR_ADDON_KEY_ID
+          export RCLONE_CONFIG_MYS3_SECRET_ACCESS_KEY=$CELLAR_ADDON_KEY_SECRET
+          export RCLONE_CONFIG_MYS3_ENDPOINT=$CELLAR_ADDON_HOST
+          export RCLONE_CONFIG_MYS3_TYPE="s3"
+
+          # Sync the site to Cellar
+          rclone sync . mys3:$MY_DOMAIN --progress --s3-acl=public-read

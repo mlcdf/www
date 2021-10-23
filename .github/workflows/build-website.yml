@@ -6,8 +6,14 @@ on:
       - 'blog'
 
 jobs:
-  docker:
-    runs-on: ghcr.io/mlcdf/blog:latest
+  deploy:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/mlcdf/blog:latest
+      credentials:
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
       - name: Build website
         run: |
