@@ -1,4 +1,4 @@
-name: Deploy
+name: Build website
 
 on:
   push:
@@ -6,7 +6,25 @@ on:
       - 'blog'
 
 jobs:
-  docker:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/mlcdf/blog:latest
+      credentials:
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Build website
+        run: |
+          ./scripts/publish.sh
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: /website # or path/to/artifact
+
+  deploy:
     runs-on: ubuntu-latest
     container:
       image: rclone/rclone
