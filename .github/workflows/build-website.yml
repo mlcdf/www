@@ -7,24 +7,13 @@ on:
 
 jobs:
   docker:
-    runs-on:  ubuntu-latest
+    runs-on: ghcr.io/mlcdf/blog:latest
     steps:
-
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v1 
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Build website
         run: |
-          docker pull ghcr.io/mlcdf/blog:latest
-          docker run \
-            -t ghcr.io/mlcdf/blog:latest \
-            -v "$(pwd)"/target:/website
+          ./scripts/publish.sh
 
-      - name: Deploy the website
-        run |
-          docker pull rclone/rclone
-
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: /website # or path/to/artifact

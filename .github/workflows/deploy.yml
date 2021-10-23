@@ -1,0 +1,17 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - 'blog'
+
+jobs:
+  docker:
+    runs-on: rclone/clone
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: build
+          
+      - name: Display structure of downloaded files
+        run: ls -R
