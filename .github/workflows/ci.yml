@@ -1,4 +1,4 @@
-name: Build website
+name: CI
 
 on:
   push:
@@ -6,7 +6,34 @@ on:
       - 'blog'
 
 jobs:
-  build:
+  build-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: |
+            ghcr.io/mlcdf/blog:latest
+
+          cache-from: type=registry,ref=ghcr.io/mlcdf/blog:buildcache
+          cache-to: type=registry,ref=ghcr.io/mlcdf/blog:buildcache,mode=max
+
+  build-website:
+    needs: build-image
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/mlcdf/blog:latest
@@ -27,10 +54,10 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: build
-          path: /website # or path/to/artifact
+          path: /website
 
   deploy:
-    needs: build
+    needs: build-website
     runs-on: ubuntu-latest
     container:
       image: rclone/rclone
@@ -38,7 +65,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: build
-          
+
       - name: Display structure of downloaded files
         run: ls -R
 
