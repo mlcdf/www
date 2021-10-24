@@ -8,7 +8,7 @@ fi
 
 SCRIPT=${1:-dev.sh}
 
-docker build -t pelican .
+docker build -t github.com/mlcdf/www .
 docker run \
     -p 8000:8000 \
     -v $(pwd)/content:/website/content \
@@ -20,4 +20,4 @@ docker run \
     -v $(pwd)/publishconf.py:/website/publishconf.py \
     -v $(pwd)/key.key:/website/key.key \
     --rm \
-    -it pelican ./scripts/${SCRIPT}
+    -it github.com/mlcdf/www ./scripts/${SCRIPT}
