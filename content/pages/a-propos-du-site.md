@@ -10,6 +10,6 @@ Le code source quant à lui est disponible sous licence MIT sur [GitHub](https:/
 
 ## Sous le capot
 
-Ce site statique est compilé par [Pelican](https://docs.getpelican.com/en/latest/index.html) et hébergé sur [Netlify](https://www.netlify.com/).
+Propulsé par [Pelican](https://docs.getpelican.com/en/latest/index.html) et hébergé chez [Netlify](https://www.netlify.com/).
 
-Une attention toute particulière a été apportée à la performance, à l'accessibilité ainsi qu'au respect de la vie privée de mes lecteurices.
+Ce site ne collecte aucune donnée personnelle.
