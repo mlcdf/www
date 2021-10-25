@@ -1,5 +1,8 @@
-{% extends "layout.html" %} {% block title %}{{article.title}} - {{ SITENAME }}{% endblock %} {% block
-metadata %}
+{% extends "layout.html" %}
+
+{% block title %}{{article.title}} — {{ SITENAME }}{% endblock %}
+
+{% block metadata %}
 <meta
   name="description"
   content="{% if article.description %}{{ article.description }}{% else %}{{ DESCRIPTION }}{% endif %}"
@@ -15,7 +18,7 @@ metadata %}
 <article class="post">
   <header>
     {% for tag in article.tags %}
-      <span style="font-size: 16px; font-family: Inconsolata, Menlo, Monaco, Consolas, 'Courier New', monospace">#{{ tag }}</span>
+      <span class="tag"><span class="lavender">#</span>{{ tag }}</span>
     {% endfor %}<br>
     <h1 class="post-title">{{ article.title }}</h1>
     <span class="post-date" title="{{ article.date | strftime('%d %B %Y')}}"

@@ -13,10 +13,9 @@ PORT = 8000
 BIND = "0.0.0.0"
 
 AUTHOR = "Maxime Le Conte des Floris"
-SITENAME = "blog.mlcdf"
-SITEURL = ""
+SITENAME = "Maxime Le Conte des Floris"
+SITEURL = "http://www.mlcdf.local:8000"
 
-SITESUBTITLE = "Blog personnel de Maxime Le Conte des Floris"
 DESCRIPTION = "Le blog de Maxime Le Conte des Floris, développeur web le jour, amateur de photographie et de cinéma la nuit."
 
 PATH = "content"
@@ -57,11 +56,13 @@ DEFAULT_PAGINATION = 20
 
 RELATIVE_URLS = True
 
-ARTICLE_SAVE_AS = "{date:%Y}/{slug}/index.html"
-ARTICLE_URL = "{date:%Y}/{slug}"
+ARTICLE_SAVE_AS = "blog/{date:%Y}/{slug}/index.html"
+ARTICLE_URL = "blog/{date:%Y}/{slug}"
 
 PAGE_SAVE_AS = "{slug}/index.html"
 PAGE_URL = "{slug}"
+
+INDEX_SAVE_AS = "blog/index.html"
 
 STATIC_PATHS = ["extra"]
 
@@ -106,11 +107,8 @@ PLUGINS = ["asset_reving", "include", "strike", jinja2content]
 THEME_STATIC_PATHS = ["static"]
 
 SOCIAL = [
-    ("mailto:contact@mlcdf.fr", "contact@mlcdf.fr"),
     ("https://github.com/mlcdf", "GitHub"),
     ("https://pinboard.in/u:mlcdf", "Pinboard"),
-    ("https://toot.cafe/@mlcdf", "Fédiverse"),
-    ("https://twitter.com/mlcdf", "Twitter"),
     ("https://flickr.com/photos/mlcdf", "Flickr"),
 ]
 

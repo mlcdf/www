@@ -1,6 +1,12 @@
 {% extends "layout.html" %}
 
-{% block title %}{{page.title}} - {{ SITENAME }}{% endblock %}
+{% block title %}
+  {% if page.title != "Accueil" %}
+    {{page.title}} — {{ SITENAME }}
+  {% else %}
+    {{ SITENAME }}
+  {% endif %}
+{% endblock %}
 
 {% block metadata %}
   <meta name="description" content="{% if page .description %}{{ page  .description }}{% else %}{{ DESCRIPTION }}{% endif %}">
@@ -12,7 +18,9 @@
 
 {% block content %}
 <div class="page">
+  {% if page.title != "Accueil" %}
   <h1 class="page-title">{{ page.title }}</h1>
+  {% endif %}
   {{ page.content }}
 </div>
 {% endblock %}

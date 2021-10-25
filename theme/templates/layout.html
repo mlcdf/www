@@ -12,7 +12,7 @@
   <meta name="generator" content="Pelican {{ PELICAN_VERSION }}"/>
 
   <title>
-    {% block title %}{{ SITENAME }} - {{ SITESUBTITLE }} {% endblock title %}
+    {% block title %} {{ SITENAME }} {% endblock title %}
   </title>
 
   <!-- Preload fonts -->
@@ -44,13 +44,13 @@
     <div class="masthead">
       <h1 class="masthead-title">
         <a href="/">
-          blog.mlcdf
+          Maxime Le Conte des Floris
         </a>
 
       </h1>
       <nav>
-        <a href="/a-propos-du-site/"><span class="icon baseline">{{ "code-website.svg" | icon }}</span> À propos du site</a>
-        <a href="/{{ FEED_RSS }}"><span class="icon baseline">{{ "rss.svg" | icon }}</span> <span class="abbr">RSS</span></a>
+        <a href="/blog/">Blog</a>
+        <a href="/projets/">Projets</a>
       </nav>
     </div>
   </div>
@@ -61,17 +61,9 @@
   </main>
 
   <footer class="footer">
-    <h3><span class="icon baseline" style="padding-bottom: 2px;">{{ "leaves.svg" | icon }}</span> Bienvenue dans mon petit coin du web !</h3>
-    <p>Je suis Maxime, développeur, amateur de photographie et mordu de cinéma. J'habite à Bordeaux depuis quelques années et je suis consultant chez Conserto.</p>
-
-    <div class="social">
-      {% for url, name in SOCIAL %}
-        <a rel="me" href="{{ url }}">{{ name }}</a>
-      {% endfor %}
-    </div>
-
-    <div>
-      © {{ BUILD_DATE | strftime("%Y") }} Maxime Le Conte des Floris.
+    <div class="links">
+      <a href="/a-propos-du-site/">À propos du site</a>
+      <a href="mailto:contact@mlcdf.fr">contact@mlcdf.fr</a>
     </div>
   </footer>
 </div>

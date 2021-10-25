@@ -1,6 +1,6 @@
 :root {
   --bg-color: #FFF;
-  --text-color: #515151;
+  --text-color: HSLA(0, 0%, 32%, 1);
   --title-color: #303030;
   --lighter-text-color: #767676;
   --accent-color: #1d70b8;
@@ -23,7 +23,7 @@
         url("/theme/fonts/FiraSans-Regular.woff") format('woff');
   font-weight: 400;
   font-style: normal;
-  font-display: optional;
+  font-display: fallback;
 }
 
 @font-face {
@@ -32,7 +32,7 @@
         url("/theme/fonts/FiraSans-Bold.woff") format('woff');
   font-weight: 700;
   font-style: normal;
-  font-display: optional;
+  font-display: fallback;
 }
 
 html, body {
@@ -64,7 +64,7 @@ header h1, nav {
 
 @media (min-width: 38em) {
   html {
-    font-size: 18px;
+    font-size: 20px;
   }
 }
 
@@ -76,10 +76,15 @@ header h1, nav {
 }
 
 .container {
-  max-width: 38rem;
+  max-width: 40rem;
 }
 
-a:not(nav a) {
+header a:focus,
+header a:hover {
+  color: var(--title-color);
+}
+
+.content a:not(.post-title a) {
   text-decoration: underline;
   color: var(--accent-color);
 }
@@ -88,7 +93,7 @@ abbr, i, small, nav a {
   color: var(--text-color)
 }
 
-.page-title, .post-title, .post-title a, h1, h2, h3, h4, h5, h6, strong,  {
+.page-title, .post-title, .post-title a, h1, h2, h3, h4, h5, h6, strong {
   color: var(--title-color);
 }
 
@@ -96,46 +101,24 @@ abbr, i, small, nav a {
   color: var(--lighter-text-color);
 }
 
-a:focus,
-a:hover,
-.post-title a:focus,
-.masthead-title a:focus,
-a:focus {
+a:focus:not(.post-title a),
+a:hover:not(.post-title a) {
   text-decoration: none !important;
 }
 
-a:focus {
+a:focus-visible {
   outline-offset: 0;
   outline: 3px solid transparent;
   background-color: var(--accent-focus-color);
   box-shadow: 0 -4px var(--accent-focus-color), 0 2px var(--accent-focus-color);
 }
 
-main a:not([href*=".mlcdf."]):not([href^="#"]):not([href^="/"]):not([href^="."])::after {
-  background-image: url(/theme/images/open-in-new-black.svg);
-  background-repeat: no-repeat;
-  background-size: 13px 13px;
-  content: "";
-  display: inline-block;
-  height: 13px;
-  margin: -0.2rem 0.15rem 0 0.15rem;
-  vertical-align: middle;
-  width: 13px;
-  fill: currentColor;
-}
-
 h1.masthead-title {
-  font-size: 1.25rem;
-}
-
-.masthead-title a {
-  text-decoration: none;
+  font-size: 1.2rem;
 }
 
 .post-title a:hover,
-.masthead-title a:hover,
-.post-title a:focus,
-.masthead-title a:focus {
+.post-title a:focus {
   text-decoration: underline;
 }
 
@@ -150,6 +133,7 @@ h1.masthead-title {
 .masthead nav {
   margin-left: -8px;
   padding-top: 12px;
+  font-weight: bold;
 }
 
 .masthead nav a {
@@ -177,6 +161,14 @@ h1.masthead-title {
   text-decoration: none;
 }
 
+.posts .post {
+  margin-bottom: .5em;
+}
+
+.post h1 {
+  font-size: 1.6rem;
+}
+
 .post h1:hover .headerlink,
 .post h2:hover .headerlink,
 .post h3:hover .headerlink,
@@ -193,17 +185,18 @@ h1.masthead-title {
 }
 
 footer {
-  border-top: 1px solid #eee;
-  padding-top: 1rem;
+  border-top: 1px dashed #A7A7D4;
+  padding-top: .6rem;
+  margin-top: 2rem;
 }
 
-.social {
-  margin-bottom: 2rem;
+footer .links {
+  padding-bottom: .5rem;
 }
 
-.social a {
-  padding: 4px;
-  margin-right: 12px;
+footer .links a {
+  margin-right: 1rem;
+  display: inline-block;
 }
 
 .icon {
@@ -219,31 +212,44 @@ footer {
 }
 
 .icon.baseline svg, .icon img {
-    top: 6px;
+    top: 5px;
     position: relative;
-}
-
-.abbr {
-  font-size: 85%;
-  color: #555;
-  text-transform: uppercase;
-}
-
-abbr, .abbr {
-  letter-spacing: .5px;
-}
-
-@media (min-width: 750px) {
-  .highlight {
-    margin-left: -60px;
-    margin-right: -60px;
-  }
-}
-
-.highlight {
-  font-size: 16px;
 }
 
 .highlight, pre, code {
   font-family: Menlo, Monaco, Consolas, "Fira Mono", "Source Code Pro", "Ubuntu Mono", "Courier New", monospace;
+}
+
+.note {
+  margin-bottom: 2rem;
+  border-bottom: dashed 1px #A7A7D4;
+  padding-bottom: 0.6rem;
+}
+
+.posts .post-date {
+  display: inline-block;
+}
+
+.lavender {
+  color: #A7A7D4;
+}
+
+code {
+  background-color: initial;
+  color: inherit;
+  padding: 0;
+}
+
+code:not(pre code) {
+  font-weight: 600;
+}
+
+code::before, code::after {
+  content: "`";
+  color: #A7A7D4;
+}
+
+pre code::before, pre code::after {
+  content: "```";
+  color: #A7A7D4;
 }

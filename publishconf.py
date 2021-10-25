@@ -6,12 +6,12 @@ sys.path.append(os.curdir)
 from pelicanconf import *
 
 # Allows to build for both staging and prod
-SITEURL = os.environ["SITEURL"]
+SITEURL = os.environ.get("SITEURL", SITEURL)
 FEED_DOMAIN = SITEURL
 
 RELATIVE_URLS = False
 
-FEED_RSS = "rss.xml"
+FEED_RSS = "blog/rss"
 RSS_FEED_SUMMARY_ONLY = False
 
 DELETE_OUTPUT_DIRECTORY = True

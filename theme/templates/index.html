@@ -1,4 +1,11 @@
-{% extends "layout.html" %} {% block content %}
+{% extends "layout.html" %}
+
+{% block title %} Blog — {{SITENAME}} {% endblock %}
+
+{% block content %}
+<div class="note">
+  <span class="icon baseline">{{ "rss.svg" | icon }}</span> Ce blog dispose d'un <a href="{{ SITEURL}}/{{ FEED_RSS }}">flux RSS auquel vous pouvez vous abonner</a>.
+</div>
 
 <div class="posts">
   {% for article in articles_page.object_list %}
@@ -9,14 +16,9 @@
     <span class="post-date" title="{{ article.date | strftime('%d %B %Y')}}"
       >{{ article.date | strftime('%d %B %Y') }}</span
     >
-    {{ article.summary }}
-
-    <a
-      class="read-more"
-      href="{{ SITEURL }}/{{ article.url }}"
-      aria-label="Lire la suite de l'article intitulé {{ article.title }}"
-      >Lire la suite »</a
-    >
+    {% for tag in article.tags %}
+      <span class="tag"><span class="lavender">#</span>{{ tag }}</span>
+    {% endfor %}
   </div>
   {% endfor %}
 </div>
