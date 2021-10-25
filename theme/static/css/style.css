@@ -62,12 +62,6 @@ header h1, nav {
   display: inline-block;
 }
 
-@media (min-width: 38em) {
-  html {
-    font-size: 20px;
-  }
-}
-
 @media (max-width: 700px) {
   .container {
     padding-right: 1rem;
