@@ -51,7 +51,7 @@ jobs:
         run: |
           ./scripts/publish.sh
 
-      - name: Zip atifact
+      - name: Zip artifact
         run: |
           mv netlify.toml output/
           zip -r website.zip output
@@ -62,4 +62,3 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.NETLIFY_TOKEN }}" \
             --data-binary "@website.zip" \
             https://api.netlify.com/api/v1/sites/inspiring-goldstine-78ec0b.netlify.app/deploys
-
