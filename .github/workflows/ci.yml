@@ -51,8 +51,9 @@ jobs:
         run: |
           ./scripts/publish.sh
 
-      - name: Zip build
+      - name: Zip atifact
         run: |
+          mv netlify.toml output/
           zip -r website.zip output
 
       - name: Deploy to Netlify
