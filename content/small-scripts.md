@@ -28,4 +28,4 @@ scripts/
 └── publish.sh
 ```
 
-Si certains scripts sont simplissimes et ne font une seule ligne, d'autres en font une 20aines et vont gérer des arguments optionels, etc.
+Si certains scripts sont simplissimes et ne font une seule ligne, d'autres en font une 20aine et vont gérer des arguments optionels, etc.
