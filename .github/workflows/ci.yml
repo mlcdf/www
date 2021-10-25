@@ -33,7 +33,7 @@ jobs:
           cache-from: type=registry,ref=ghcr.io/mlcdf/blog:buildcache
           cache-to: type=registry,ref=ghcr.io/mlcdf/blog:buildcache,mode=max
 
-  build-website:
+  build-and-deploy-website:
     needs: build-image
     runs-on: ubuntu-latest
     container:
@@ -52,30 +52,14 @@ jobs:
         run: |
           ./scripts/publish.sh
 
-      - uses: actions/upload-artifact@v2
-        with:
-          name: build
-          path: /website
-
-  deploy:
-    needs: build-website
-    runs-on: ubuntu-latest
-    container:
-      image: rclone/rclone
-    steps:
-      - uses: actions/download-artifact@v2
-        with:
-          name: build
-
-      - name: Display structure of downloaded files
-        run: ls -R
-
-      - name: Deploy
-        env:
-          RCLONE_CONFIG_CELLAR_ACCESS_KEY_ID: ${{ secrets.CELLAR_ADDON_KEY_ID }}
-          RCLONE_CONFIG_CELLAR_SECRET_ACCESS_KEY: ${{ secrets.CELLAR_ADDON_KEY_SECRET }}
-          RCLONE_CONFIG_CELLAR_ENDPOINT: ${{ secrets.CELLAR_ADDON_HOST }}
-          RCLONE_CONFIG_CELLAR_TYPE: "s3"
-          MY_DOMAIN: "${{ secrets.MY_DOMAIN }}"
+      - name: Zip build
         run: |
-          rclone sync . cellar:$MY_DOMAIN --progress --s3-acl=public-read
+          zip -r website.zip output
+
+      - name: Deploy to Netlify
+        run: |
+          curl -H "Content-Type: application/zip" \
+            -H "Authorization: Bearer "${{ secrets.NETLIFY_TOKEN }}" \
+            --data-binary "@website.zip" \
+            https://api.netlify.com/api/v1/sites/inspiring-goldstine-78ec0b.netlify.app/deploys
+
