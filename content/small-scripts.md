@@ -11,7 +11,7 @@ Sur chaque projet, c'est toujours les mêmes questions :
 - comment je publie le site web ?
 - etc
 
-Dans l'écosystème Node.js, on a les [`npm-run-script`](npm-run-script). Ça permet de définir des `scripts` dans le `packages.json` et les lancer via la commande `npm nom-de-mon-script`. À défaut d'être parfait (on regrette par exemple l'impossibilité de faire du multiline vu que c'est du json), c'est hyper pratique et ça a été adopté par la communauté. Si bien que sur la quasi-totalité des projets Node.js, démarrer l'application se résume à lancer `npm start`. Plus de questions à se poser.
+Dans l'écosystème Node.js, on a les [`npm-run-script`](https://docs.npmjs.com/cli/v7/commands/npm-run-script). Ça permet de définir des `scripts` dans le `packages.json` et les lancer via la commande `npm nom-de-mon-script`. À défaut d'être parfait (on regrette par exemple l'impossibilité de faire du multiline vu que c'est du json), c'est hyper pratique et ça a été adopté par la communauté. Si bien que sur la quasi-totalité des projets Node.js, démarrer l'application se résume à lancer `npm start`. Plus de questions à se poser.
 
 Quelle déception quand j'ai découvert qu'il n'y avait pas d'équivalent en Python, Go et dans beaucoup d'autres langages ! Dans la plupart des cas, à la place, on a soit la bonne vieille makefile des familles soit... rien.
 
