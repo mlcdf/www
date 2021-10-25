@@ -11,8 +11,8 @@
 {% block metadata %}
   <meta name="description" content="{% if page .description %}{{ page  .description }}{% else %}{{ DESCRIPTION }}{% endif %}">
   <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ DESCRIPTION }}{% endif %}">
-  <meta property="og:title" content="{{ page.title }}" />
-  <meta property="og:type" content="page" />
+  <meta property="og:title" content="{{ page.title }} —  {{ SITENAME }}" />
+  <meta property="og:type" content="website" />
   <meta property="og:url" content="{{ SITEURL }}/{{ page.url }}" />
 {% endblock %}
 

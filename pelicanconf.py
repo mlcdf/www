@@ -16,7 +16,7 @@ AUTHOR = "Maxime Le Conte des Floris"
 SITENAME = "Maxime Le Conte des Floris"
 SITEURL = "http://www.mlcdf.local:8000"
 
-DESCRIPTION = "Le blog de Maxime Le Conte des Floris, développeur web le jour, amateur de photographie et de cinéma la nuit."
+DESCRIPTION = "Ingénieur DevOps, photographe en herbe et mordu de cinéma. Voici mon espace personnel."
 
 PATH = "content"
 OUTPUT_PATH = "output/"
