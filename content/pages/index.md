@@ -3,7 +3,7 @@ Save_as: index.html
 
 # Bienvenue à toi, internaute ! :)
 
-Je suis Maxime Le Conte des Floris et ce site, c'est mon petit espace *perso* sur le web.
+Je suis Maxime et ce site, c'est mon petit espace sur le web.
 
 Le jour, je suis Ingénieur DevOps chez Conserto : j'accompagne plusieurs équipes sur les problématiques "DevOps" :  l'intégration continue, observabilité, le déploiement, etc.
 
