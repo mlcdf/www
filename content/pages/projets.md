@@ -19,4 +19,5 @@ Une petite sélection de projets perso — le reste se trouve sur [GitHub](https
 [ikarauraga](https://github.com/mlcdf/ikarauraga)
 : Un space shooter en 2D réalisé à l'occasion de la Ludum Dare 35 avec [Clément Stéphano](http://clementstephano.eu/).
 
-
+[Fint It](https://github.com/FindItAR/FindIt)
+: Un "cache-cache" en réalité virtuelle jouable avec [Hololens](https://fr.wikipedia.org/wiki/Microsoft_HoloLens).
