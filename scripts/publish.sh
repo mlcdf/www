@@ -1,8 +1,8 @@
 #!/bin/sh
 
-set -eu
+GIT_BRANCH=${GIT_BRANCH:-${GITHUB_REF##*/}}
 
-GIT_BRANCH=${GIT_BRANCH:=$(git rev-parse --abbrev-ref HEAD)}
+set -eu
 
 if [ $GIT_BRANCH = "blog" ]; then
   SITEURL="https://www.mlcdf.fr"
