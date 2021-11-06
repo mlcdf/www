@@ -47,3 +47,4 @@ output
 .idea
 key.key
 cache
+.env

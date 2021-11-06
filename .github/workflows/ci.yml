@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - 'blog'
+      - 'dev'
 
 jobs:
   build-image:
@@ -44,21 +45,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build website
+      - name: Build and deploy website
         env:
           SITEURL: ${{ secrets.SITEURL }}
           KEY: ${{ secrets.KEY }}
+          RCLONE_CONFIG_CELLAR_ENDPOINT: ${{ secrets.RCLONE_CONFIG_CELLAR_ENDPOINT }}
+          RCLONE_CONFIG_CELLAR_ACCESS_KEY_ID: ${{ secrets.RCLONE_CONFIG_CELLAR_ACCESS_KEY_ID }}
+          RCLONE_CONFIG_CELLAR_SECRET_ACCESS_KEY: ${{ secrets.RCLONE_CONFIG_CELLAR_SECRET_ACCESS_KEY }}
         run: |
-          ./scripts/publish.sh
-
-      - name: Zip artifact
-        run: |
-          mv netlify.toml output/
-          zip -r website.zip output
-
-      - name: Deploy to Netlify
-        run: |
-          curl -H "Content-Type: application/zip" \
-            -H "Authorization: Bearer ${{ secrets.NETLIFY_TOKEN }}" \
-            --data-binary "@website.zip" \
-            https://api.netlify.com/api/v1/sites/inspiring-goldstine-78ec0b.netlify.app/deploys
+          ./scripts/publish.sh $SITEURL

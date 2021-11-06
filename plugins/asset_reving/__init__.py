@@ -83,7 +83,6 @@ class AssetRevGenerator(Generator):
         for source_path, dest_path in self.settings["ASSET_REV_TO_WATCH"].items():
             os.makedirs(os.path.dirname(dest_path), exist_ok=True)
             shutil.copy(source_path, dest_path)
-            print("dest_path %s" % dest_path)
             logger.info("Copying %s " % dest_path)
 
 
