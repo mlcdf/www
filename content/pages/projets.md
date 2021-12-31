@@ -12,7 +12,7 @@ Une petite sélection de projets perso — le reste se trouve sur [GitHub](https
 : Me permet d'utiliser un domaine personnalisé pour mes programmes Golang. Plus concrêtement, ça me permet d'écrire `import go.mlcdf.fr/package` au lieu de `import github.com/mlcdf/package`.
 
 [dyndns](https://github.com/mlcdf/dyndns)
-: Un petit programme à faire tourner en `cron` chez soi et qui met à jour une entrée DNS chez Gandi en fonction de l'IP actuelle. En cas d'erreur, ça notifie un canal Discord.
+: Un petit programme à faire tourner en `cron` chez soi et qui met à jour une entrée DNS chez Gandi en fonction de l'IP actuelle. En cas d'erreur, un canal Discord est notifié.
 
 ## Archivés
 
