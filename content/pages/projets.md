@@ -6,7 +6,7 @@ Une petite sélection de projets perso — le reste se trouve sur [GitHub](https
 ## Maintenus
 
 [films.mlcdf.fr](https://films.mlcdf.fr)
-: Un site web qui liste : tous les films que j'ai vu, ceux que j'ai vu au cinéma et mes coups de cœur.  Les données sont extraites de SensCritique à l'aide [mlcdf/sc-backup](https://github.com/mlcdf/sc-backup).
+: Un site web qui liste : tous les films que j'ai vu, ceux que j'ai vu au cinéma et mes coups de cœur.  Les données sont extraites de SensCritique à l'aide de [mlcdf/sc-backup](https://github.com/mlcdf/sc-backup).
 
 [go.mlcdf.fr](https://go.mlcdf.fr)
 : Me permet d'utiliser un domaine personnalisé pour mes programmes Golang. Plus concrêtement, ça me permet d'écrire `import go.mlcdf.fr/package` au lieu de `import github.com/mlcdf/package`.
