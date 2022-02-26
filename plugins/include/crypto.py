@@ -36,6 +36,9 @@ def _write_file(path: str, encrypted: str):
 
 
 def load_key(filename: str = DEFAULT_KEY_FILE) -> bytes:
+    if filename is None:
+        filename = DEFAULT_KEY_FILE
+
     try:
         with open(os.path.join(os.getcwd(), filename)) as fd:
             return fd.read().encode()
