@@ -36,3 +36,8 @@
   for = "/blog/rss"
   [headers.values]
     Content-Type = "application/xml; charset=utf-8"
+
+[[headers]]
+  for = "/theme/pretty-feed-v3.xsl"
+  [headers.values]
+    Content-Type = "application/xslt+xml"

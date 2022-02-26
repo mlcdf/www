@@ -103,7 +103,7 @@ JINJA_FILTERS = {
 JINJA_GLOBALS = {"BUILD_DATE": BUILD_DATE}
 
 PLUGIN_PATHS = ["plugins"]
-PLUGINS = ["asset_reving", "include", "strike", jinja2content]
+PLUGINS = ["asset_reving", "include", "strike", "styled_rss", jinja2content]
 THEME_STATIC_PATHS = ["static"]
 
 SOCIAL = [
@@ -114,3 +114,5 @@ SOCIAL = [
 
 CACHE_CONTENT = True
 LOAD_CONTENT_CACHE = True
+
+STYLED_RSS_STYLE_LOCATION = "/theme/pretty-feed-v3.xsl"
