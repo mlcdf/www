@@ -3,7 +3,7 @@ humanstxt.org
 
 /* TEAM */
 Name: Maxime Le Conte des Floris <contact@mlcdf.fr>
-Site: https//blog.mlcdf.fr
+Site: https//www.mlcdf.fr
 Location: Bordeaux, France
 
 /* SITE */
