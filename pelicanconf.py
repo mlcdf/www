@@ -13,17 +13,19 @@ PORT = 8000
 BIND = "0.0.0.0"
 
 AUTHOR = "Maxime Le Conte des Floris"
-SITENAME = "Maxime Le Conte des Floris"
+SITENAME = "www.mlcdf.fr"
 SITEURL = "http://www.mlcdf.local:8000"
 
-DESCRIPTION = "Ingénieur DevOps, photographe en herbe et mordu de cinéma. Voici mon espace personnel."
+DESCRIPTION = (
+    "Ingénieur DevOps, photographe en herbe et mordu de cinéma. Voici mon espace personnel."
+)
 
 PATH = "content"
 OUTPUT_PATH = "output/"
 
 TIMEZONE = "Europe/Paris"
 
-locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')
+locale.setlocale(locale.LC_ALL, "fr_FR.UTF-8")
 LOCALE = ["fr_FR.UTF-8"]
 DEFAULT_LANG = "fr"
 
@@ -88,7 +90,6 @@ MARKDOWN = {
         "markdown.extensions.codehilite": {"css_class": "highlight"},
         "markdown.extensions.extra": {},
         "markdown.extensions.meta": {},
-        "markdown.extensions.toc": {"permalink": "#", "permalink_title": "Lien permanent", "baselevel": 2},
     },
     "extensions": [],
     "output_format": "html5",
@@ -105,12 +106,6 @@ JINJA_GLOBALS = {"BUILD_DATE": BUILD_DATE}
 PLUGIN_PATHS = ["plugins"]
 PLUGINS = ["asset_reving", "include", "strike", "styled_rss", jinja2content]
 THEME_STATIC_PATHS = ["static"]
-
-SOCIAL = [
-    ("https://github.com/mlcdf", "GitHub"),
-    ("https://pinboard.in/u:mlcdf", "Pinboard"),
-    ("https://flickr.com/photos/mlcdf", "Flickr"),
-]
 
 CACHE_CONTENT = True
 LOAD_CONTENT_CACHE = True

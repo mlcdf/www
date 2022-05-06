@@ -17,12 +17,12 @@
 {% endblock %} {% block content %}
 <article class="post">
   <header>
-    {% for tag in article.tags %}
-      <span class="tag"><span class="lavender">#</span>{{ tag }}</span>
-    {% endfor %}<br>
-    <h1 class="post-title">{{ article.title }}</h1>
+    <!-- {% for tag in article.tags %}
+      <span class="tag"><span class="lavender"></span>{{ tag }}</span>
+    {% endfor %}<br> -->
+    <h1 class="post-title serif">{{ article.title }}</h1>
     <span class="post-date" title="{{ article.date | strftime('%d %B %Y')}}"
-      >{{ article.date | strftime('%d %B %Y') }}</span
+      >Publié le {{ article.date | strftime('%d %B %Y') }} · écrit par Maxime</span
     >
   </header>
   <section>
