@@ -1,42 +1,13 @@
 :root {
-  --bg-color: #FFF;
-  --text-color: HSLA(0, 0%, 32%, 1);
-  --title-color: #303030;
-  --lighter-text-color: #767676;
+  --bg-color: #171717;
+  --bg-color-light: #292929;
+  --text-color: #dcdcdc;
+  --lighter-text-color: #fafafa;
   --accent-color: #1d70b8;
   --accent-focus-color: #fff7cc;
-}
 
-/*@media (prefers-color-scheme: dark) {*/
-/*  :root {*/
-/*    --bg-color: rgb(17, 17, 17);*/
-/*    --header-color: rgb(24, 24, 24);*/
-/*    --text-color: #8794c7;*/
-/*    --title-color: #e0e3f0;*/
-/*    --lighter-text-color: #92979b;*/
-/*  }*/
-/*}*/
-
-@font-face {
-  font-family: "Fira Sans";
-  src: url("/theme/fonts/FiraSans-Regular.woff2") format('woff2'),
-        url("/theme/fonts/FiraSans-Regular.woff") format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: fallback;
-}
-
-@font-face {
-  font-family: "Fira Sans";
-  src: url("/theme/fonts/FiraSans-Bold.woff2") format('woff2'),
-        url("/theme/fonts/FiraSans-Bold.woff") format('woff');
-  font-weight: 700;
-  font-style: normal;
-  font-display: fallback;
-}
-
-html, body {
-  font-family: 'Fira Sans', /* Firefox OS */
+  --serif: 'Alegreya', sans-serif;
+  --sans-serif: 'Source Sans Pro',
                 -apple-system, BlinkMacSystemFont, /* MacOS and iOS */
                 'avenir next', avenir, /* MacOS and iOS */
                 'Segoe UI', /* Windows */
@@ -46,52 +17,110 @@ html, body {
                 'helvetica neue', helvetica, /* Older MacOS */
                 'Liberation Sans', /* Linux */
                 sans-serif; /* Everything else */
+}
 
+/*@media (prefers-color-scheme: dark) {*/
+/*  :root {*/
+/*    --bg-color: rgb(17, 17, 17);*/
+/*    --header-color: rgb(24, 24, 24);*/
+/*    --text-color: #8794c7;*/
+/*    --lighter-text-color: #e0e3f0;*/
+/*    --lighter-text-color: #92979b;*/
+/*  }*/
+/*}*/
+
+@font-face {
+  font-family: "Fira Sans";
+  src: url("/theme/fonts/FiraSans-Regular.woff2") format('woff2'),
+    url("/theme/fonts/FiraSans-Regular.woff") format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  src: url("/theme/fonts/FiraSans-Bold.woff2") format('woff2'),
+    url("/theme/fonts/FiraSans-Bold.woff") format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: fallback;
+}
+
+html, body {
+  font-family: var(--sans-serif);
   color: var(--text-color);
   background-color: var(--bg-color);
   min-height: 100%;
+  font-size: 20px;
+  line-height: 1.5rem;
 }
 
 body > header {
-  background-color: #E6E6FA; /* Lavender */
-  border-bottom: solid 2px #bfbff2;
-  margin-bottom: 3rem;
+  border-bottom: solid 2px white;
+  margin-bottom: 2.4rem;
 }
 
-header h1, nav {
+header h1,
+nav {
   display: inline-block;
 }
 
 @media (max-width: 700px) {
+  html, body {
+    font-size: 16px;
+  }
   .container {
     padding-right: 1rem;
     padding-left: 1rem;
   }
 }
 
+.container-l {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .container {
-  max-width: 40rem;
+  max-width: 36rem;
 }
 
 header a:focus,
 header a:hover {
-  color: var(--title-color);
+  color: var(--lighter-text-color);
 }
 
 .content a:not(.post-title a) {
-  text-decoration: underline;
-  color: var(--accent-color);
+  text-decoration: underline solid var(--lighter-text-color);
+  color: var(--text-color);
 }
 
-abbr, i, small, nav a {
-  color: var(--text-color)
+abbr,
+i,
+small,
+nav a {
+  color: var(--text-color);
 }
 
-.page-title, .post-title, .post-title a, h1, h2, h3, h4, h5, h6, strong {
-  color: var(--title-color);
+p + ul {
+  margin-top: -8px;
 }
 
-.post-date, blockquote {
+.page-title,
+.post-title,
+.post-title a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  color: var(--lighter-text-color);
+}
+
+blockquote {
   color: var(--lighter-text-color);
 }
 
@@ -118,6 +147,7 @@ h1.masthead-title {
 
 .masthead {
   margin-bottom: 0;
+  margin-right: -6px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -127,12 +157,14 @@ h1.masthead-title {
 .masthead nav {
   margin-left: -8px;
   padding-top: 12px;
-  font-weight: bold;
+  font-weight: 600;
+  font-family: var(--serif);
 }
 
 .masthead nav a {
   padding: 6px;
-  margin-right: 4px;
+  margin-left: 4px;
+  text-decoration: underline white 2px;
 }
 
 @media (min-width: 400px) {
@@ -140,92 +172,91 @@ h1.masthead-title {
     display: flex;
     flex-direction: row;
   }
+
   .masthead nav {
     padding-top: 0;
   }
 }
 
-.headerlink {
-  margin-left: 5px;
-  visibility: hidden;
-  font-weight: normal;
-}
-
-.headerlink:hover {
-  text-decoration: none;
-}
-
 .posts .post {
-  margin-bottom: .5em;
+  margin-bottom: 0rem;
 }
 
-.post h1 {
+.posts .post h1 {
   font-size: 1.6rem;
-}
-
-.post h1:hover .headerlink,
-.post h2:hover .headerlink,
-.post h3:hover .headerlink,
-.post h4:hover .headerlink,
-.post h4:hover .headerlink,
-.post h6:hover .headerlink,
-.post h1:focus .headerlink,
-.post h2:focus .headerlink,
-.post h3:focus .headerlink,
-.post h4:focus .headerlink,
-.post h4:focus .headerlink,
-.post h6:focus .headerlink {
-  visibility: visible;
-}
-
-footer {
-  border-top: 1px dashed #A7A7D4;
-  padding-top: .6rem;
-  margin-top: 2rem;
-}
-
-footer .links {
-  padding-bottom: .5rem;
-}
-
-footer .links a {
-  margin-right: 1rem;
-  display: inline-block;
-}
-
-.icon {
-    display: inline-flex;
-    align-self: center;
-    margin-right: 2px;
-}
-
-.icon svg, .icon img {
-    height: 24px;
-    width: 24px;
-    fill: currentColor;
-}
-
-.icon.baseline svg, .icon img {
-    top: 5px;
-    position: relative;
-}
-
-.highlight, pre, code {
-  font-family: Menlo, Monaco, Consolas, "Fira Mono", "Source Code Pro", "Ubuntu Mono", "Courier New", monospace;
-}
-
-.note {
-  margin-bottom: 2rem;
-  border-bottom: dashed 1px #A7A7D4;
-  padding-bottom: 0.6rem;
+  margin-bottom: 0;
 }
 
 .posts .post-date {
   display: inline-block;
 }
 
-.lavender {
-  color: #A7A7D4;
+article > header {
+  margin-bottom: 1.5rem;
+}
+
+article .post-date {
+  font-size: .9rem;
+  color: var(--text-color);
+}
+
+article .post-title {
+  font-size: 2.4rem;
+  line-height: 1.2;
+}
+
+.footer .links {
+  padding-bottom: .2rem;
+}
+
+.footer .links a {
+  margin-right: 0.6rem;
+  display: inline-block;
+}
+
+.footer h1 {
+  font-size: 1.4rem;
+  margin-top: 0;
+}
+
+.footer h2 {
+  font-family: var(--sans-serif);
+  font-size: 1rem;
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.icon {
+  display: inline-flex;
+  align-self: center;
+  margin-right: 2px;
+}
+
+.icon svg,
+.icon img {
+  height: 24px;
+  width: 24px;
+  fill: currentColor;
+}
+
+.icon.baseline svg,
+.icon img {
+  top: 5px;
+  position: relative;
+}
+
+.highlight,
+pre,
+code {
+  font-family: Menlo, Monaco, Consolas, "Fira Mono", "Source Code Pro", "Ubuntu Mono", "Courier New", monospace;
+}
+
+.note {
+  margin-bottom: 1rem;
+  border-bottom: dashed 2px #A7A7D4;
+  padding-bottom: 0.8rem;
 }
 
 code {
@@ -238,12 +269,56 @@ code:not(pre code) {
   font-weight: 600;
 }
 
-code::before, code::after {
-  content: "`";
+code::before,
+code::after {
+  /* content: "`"; */
   color: #A7A7D4;
 }
 
-pre code::before, pre code::after {
-  content: "```";
+pre code::before,
+pre code::after {
+  /* content: "```"; */
   color: #A7A7D4;
+}
+
+.serif, h1, h2, h3 {
+  font-family: 'Alegreya', sans-serif;
+  /* font-weight: 700; */
+}
+
+.tag {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+p, ul, ol, blockquote {
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+h2 {
+  margin-top: 2rem;
+}
+
+h3 {
+  margin-top: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.divider {
+  text-align: center;
+  font-size: 1.8rem;
+  padding-bottom: 1.8rem;
+  padding-top: 1.8rem;
+}
+
+#about-site-link {
+  margin-left: auto;
+  text-align: end;
+  padding-top: 1.4rem;
 }

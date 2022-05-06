@@ -15,6 +15,10 @@
     {% block title %} {{ SITENAME }} {% endblock title %}
   </title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+
   <!-- Preload fonts -->
   <link rel="preload" href="/{{ THEME_STATIC_DIR }}/fonts/FiraSans-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="/{{ THEME_STATIC_DIR }}/fonts/FiraSans-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -39,34 +43,39 @@
 </head>
 
 <body>
-<header>
-  <div class="container">
-    <div class="masthead">
-      <h1 class="masthead-title">
-        <a href="/">
-          Maxime Le Conte des Floris
-        </a>
+<header class="container">
+  <div class="masthead">
+    <h1 class="masthead-title">
+      <a href="/">
+        {{ SITENAME }}
+      </a>
 
-      </h1>
-      <nav>
-        <a href="/blog/">Blog</a>
-        <a href="/projets/">Projets</a>
-        <a href="/liens/">Liens</a>
-      </nav>
-    </div>
+    </h1>
+    <nav>
+      <a href="/blog/">Blog</a>
+      <a href="/projets/">Projets</a>
+      <a href="/liens/">Liens</a>
+    </nav>
   </div>
 </header>
-<div class="content container">
-  <main role="main">
-    {% block content %} {% endblock %}
-  </main>
+<main class="content container">
+  {% block content %} {% endblock %}
+</main>
+<footer class="footer container">
+  <div class="divider" aria-hidden="true">***</div>
+  <aside>
+    <h1>À propos de moi</h1>
+    <p>Enchanté&#8239;! Je suis Maxime. Le jour, je suis artisan logiciel polyglotte et ingénieur DevOps. La nuit, je suis photographe en herbe et mordu de cinéma.</p>
 
-  <footer class="footer">
-    <div class="links">
+    <p>
+      Je partage du code sur <a href="https://github.com/mlcdf">GitHub</a>, et des photos sur <a href="https://flickr.com/photos/mlcdf">Flickr</a>. Je tiens également un <a href="https://films.mlcdf.com">journal</a> de tous les films que j'ai vu.
+    </p>
+    <p>Je suis joignable par email&nbsp;: <a href="mailto:contact@mlcdf.fr">contact@mlcdf.fr</a>.</p>
+
+    <div id="about-site-link">
       <a href="/a-propos-du-site/">À propos du site</a>
-      <a href="mailto:contact@mlcdf.fr">contact@mlcdf.fr</a>
     </div>
-  </footer>
-</div>
+  </aside>
+</footer>
 </body>
 </html>
