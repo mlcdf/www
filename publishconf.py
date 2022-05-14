@@ -11,7 +11,7 @@ FEED_DOMAIN = SITEURL
 
 RELATIVE_URLS = False
 
-FEED_RSS = "blog/rss"
+FEED_RSS = "blog/feed.xml"
 RSS_FEED_SUMMARY_ONLY = False
 
 DELETE_OUTPUT_DIRECTORY = True

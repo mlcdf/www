@@ -15,24 +15,23 @@
     {% block title %} {{ SITENAME }} {% endblock title %}
   </title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
-
   <!-- Preload fonts -->
-  <link rel="preload" href="/{{ THEME_STATIC_DIR }}/fonts/FiraSans-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-  <link rel="preload" href="/{{ THEME_STATIC_DIR }}/fonts/FiraSans-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/{{ THEME_STATIC_DIR }}/fonts/Alegreya-Regular.ttf" as="font" type="truetype" crossorigin="anonymous">
+  <link rel="preload" href="/{{ THEME_STATIC_DIR }}/fonts/Alegreya-SemiBold.ttf" as="font" type="truetype" crossorigin="anonymous">
+  <link rel="preload" href="/{{ THEME_STATIC_DIR }}/fonts/Alegreya-Bold.ttf" as="font" type="truetype" crossorigin="anonymous">
+  <link rel="preload" href="/{{ THEME_STATIC_DIR }}/fonts/SourceSansPro-Regular.ttf" as="font" type="truetype" crossorigin="anonymous">
+  <link rel="preload" href="/{{ THEME_STATIC_DIR }}/fonts/SourceSansPro-Bold.ttf" as="font" type="truetype" crossorigin="anonymous">
 
   <!-- Critical CSS -->
   <link rel="stylesheet" href="/{{ THEME_STATIC_DIR }}/css/poole.css"/>
   <link rel="stylesheet" href="/{{ THEME_STATIC_DIR }}/{{ asset_rev('css/style.css') }}"/>
 
   <!-- Non-critical CSS -->
-  <link rel="preload" href="/{{ THEME_STATIC_DIR }}/css/dracula.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="/{{ THEME_STATIC_DIR }}/css/dracula.css"></noscript>
+  <link rel="preload" href="/{{ THEME_STATIC_DIR }}/{{ asset_rev('css/bw.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/{{ THEME_STATIC_DIR }}/css/bw.css"></noscript>
 
   <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}"/>
+  <link rel="alternate" type="application/rss+xml" href="/{{ FEED_RSS }}"/>
 
   <link rel="canonical" href="{{ SITEURL }}">
 
@@ -45,14 +44,14 @@
 <body>
 <header class="container">
   <div class="masthead">
-    <h1 class="masthead-title">
+    <!-- <h1 class="masthead-title">
       <a href="/">
         {{ SITENAME }}
       </a>
 
-    </h1>
+    </h1> -->
     <nav>
-      <a href="/blog/">Blog</a>
+      <a href="/">Blog</a>
       <a href="/projets/">Projets</a>
       <a href="/liens/">Liens</a>
     </nav>
@@ -68,12 +67,12 @@
     <p>Enchanté&#8239;! Je suis Maxime. Le jour, je suis artisan logiciel polyglotte et ingénieur DevOps. La nuit, je suis photographe en herbe et mordu de cinéma.</p>
 
     <p>
-      Je partage du code sur <a href="https://github.com/mlcdf">GitHub</a>, et des photos sur <a href="https://flickr.com/photos/mlcdf">Flickr</a>. Je tiens également un <a href="https://films.mlcdf.com">journal</a> de tous les films que j'ai vu.
+      Je partage du code sur <a href="https://github.com/mlcdf">GitHub</a>, et des photos sur <a href="https://flickr.com/photos/mlcdf">Flickr</a>. Je tiens également un <a href="https://films.mlcdf.fr">journal</a> de tous les films que j'ai vu.
     </p>
     <p>Je suis joignable par email&nbsp;: <a href="mailto:contact@mlcdf.fr">contact@mlcdf.fr</a>.</p>
 
     <div id="about-site-link">
-      <a href="/a-propos-du-site/">À propos du site</a>
+      <a href="/a-propos-du-site/">À propos du site</a>.
     </div>
   </aside>
 </footer>

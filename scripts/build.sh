@@ -1,2 +1,0 @@
-#!/bin/sh
-pipenv run pelican --delete-output-directory --settings pelicanconf.py $@

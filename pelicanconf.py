@@ -64,19 +64,12 @@ ARTICLE_URL = "blog/{date:%Y}/{slug}"
 PAGE_SAVE_AS = "{slug}/index.html"
 PAGE_URL = "{slug}"
 
-INDEX_SAVE_AS = "blog/index.html"
+INDEX_SAVE_AS = "index.html"
 
 STATIC_PATHS = ["extra"]
 
 EXTRA_PATH_METADATA = {
-    "extra/humans.txt": {"path": "humans.txt"},
-    "extra/robots.txt": {"path": "robots.txt"},
-    "extra/favicon.svg": {"path": "favicon.svg"},
-    "extra/apple-touch-icon.png": {"path": "apple-touch-icon.png"},
-    "extra/favicon-192x192.png": {"path": "favicon-192x192.png"},
-    "extra/favicon-512x512.png": {"path": "favicon-512x512.png"},
-    "extra/favicon.ico": {"path": "favicon.ico"},
-    "extra/manifest.webmanifest": {"path": "manifest.webmanifest"},
+    "extra/": {"path": "."},
 }
 
 IGNORE_FILES = [
@@ -104,7 +97,7 @@ JINJA_FILTERS = {
 JINJA_GLOBALS = {"BUILD_DATE": BUILD_DATE}
 
 PLUGIN_PATHS = ["plugins"]
-PLUGINS = ["asset_reving", "include", "strike", "styled_rss", jinja2content]
+PLUGINS = ["asset_reving", "strike", "styled_rss", jinja2content]
 THEME_STATIC_PATHS = ["static"]
 
 CACHE_CONTENT = True
