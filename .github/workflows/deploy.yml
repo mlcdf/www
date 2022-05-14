@@ -54,4 +54,4 @@ jobs:
           OVH_HOSTING_PASSWORD: ${{ secrets.OVH_HOSTING_PASSWORD }}
         run: |
           SITEURL="https://${SUBDOMAIN}.mlcdf.fr" pipenv run publish
-          sshpass -p "$OVH_HOSTING_PASSWORD" rsync -av -e "ssh -o StrictHostKeyChecking=no" ./output $OVH_HOSTING_USER@$OVH_HOSTING_DOMAIN:/$SUBDOMAIN
+          sshpass -p "$OVH_HOSTING_PASSWORD" rsync -av -e "ssh -o StrictHostKeyChecking=no" output/ $OVH_HOSTING_USER@$OVH_HOSTING_DOMAIN:/$SUBDOMAIN
