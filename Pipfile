@@ -8,5 +8,13 @@ pelican = "==4.*"
 pelican-jinja2content = "==1.0.*"
 cryptography = "==3.*"
 Markdown = "==3.*"
+pelican-webring = {git = "https://github.com/mlcdf/webring.git"}
 
 [dev-packages]
+
+
+[scripts]
+dev = "pelican --settings pelicanconf.py --delete-output-directory --listen --autoreload"
+publish = "pelican --settings publishconf.py --delete-output-directory"
+preview = "env PREVIEW=True pelican --settings publishconf.py --delete-output-directory --listen --autoreload"
+clean = "rm -rf ./cache ./output"

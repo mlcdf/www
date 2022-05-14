@@ -5,7 +5,6 @@ import logging
 from pelican import signals
 
 logger = logging.getLogger(__name__)
-# logger.setLevel(logging.DEBUG)
 
 
 def style_rss(infile: str, outfile: str, style_location: str):
@@ -13,11 +12,7 @@ def style_rss(infile: str, outfile: str, style_location: str):
 
     with open(outfile, "wb") as fd:
         fd.write(b'<?xml version="1.0" encoding="utf-8"?>')
-        fd.write(
-            bytes(
-                f'<?xml-stylesheet href="{style_location}" type="text/xsl"?>', "utf-8"
-            )
-        )
+        fd.write(bytes(f'<?xml-stylesheet href="{style_location}" type="text/xsl"?>', "utf-8"))
         tree.write(fd)
 
 
@@ -27,9 +22,7 @@ def main(pelican):
         return
 
     if not pelican.settings.get("STYLED_RSS_STYLE_LOCATION"):
-        logger.debug(
-            "No STYLED_RSS_STYLE_LOCATION found is pelican.settings: nothing to do"
-        )
+        logger.debug("No STYLED_RSS_STYLE_LOCATION found is pelican.settings: nothing to do")
         return
 
     feed_rss = os.path.join(pelican.output_path, pelican.settings["FEED_RSS"])

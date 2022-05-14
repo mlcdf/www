@@ -1,4 +1,4 @@
-name: CI
+name: Deploy
 
 on:
   workflow_dispatch:
@@ -25,19 +25,20 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
+          file: build.Dockerfile
           push: true
           tags: |
-            ghcr.io/mlcdf/blog:latest
+            ghcr.io/mlcdf/www:latest
           labels: |
             org.opencontainers.image.revision=${{ github.sha }}
-          cache-from: type=registry,ref=ghcr.io/mlcdf/blog:buildcache
-          cache-to: type=registry,ref=ghcr.io/mlcdf/blog:buildcache,mode=max
+          cache-from: type=registry,ref=ghcr.io/mlcdf/www:buildcache
+          cache-to: type=registry,ref=ghcr.io/mlcdf/www:buildcache,mode=max
 
   build-and-deploy-website:
     needs: build-image
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/mlcdf/blog:latest
+      image: ghcr.io/mlcdf/www:latest
       credentials:
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN }}
@@ -47,10 +48,10 @@ jobs:
 
       - name: Build and deploy website
         env:
-          SITEURL: ${{ secrets.SITEURL }}
-          KEY: ${{ secrets.KEY }}
-          RCLONE_CONFIG_CELLAR_ENDPOINT: ${{ secrets.RCLONE_CONFIG_CELLAR_ENDPOINT }}
-          RCLONE_CONFIG_CELLAR_ACCESS_KEY_ID: ${{ secrets.RCLONE_CONFIG_CELLAR_ACCESS_KEY_ID }}
-          RCLONE_CONFIG_CELLAR_SECRET_ACCESS_KEY: ${{ secrets.RCLONE_CONFIG_CELLAR_SECRET_ACCESS_KEY }}
+          SUBDOMAIN: ${{ secrets.SUBDOMAIN }}
+          OVH_HOSTING_DOMAIN: ${{ secrets.OVH_HOSTING_DOMAIN }}
+          OVH_HOSTING_USER: ${{ secrets.OVH_HOSTING_USER }}
+          OVH_HOSTING_PASSWORD: ${{ secrets.OVH_HOSTING_PASSWORD }}
         run: |
-          ./scripts/publish.sh $SITEURL
+          SITEURL="https://${SUBDOMAIN}.mlcdf.fr" pipenv run publish
+          sshpass -p "$OVH_HOSTING_PASSWORD" rsync -av -e "ssh -o StrictHostKeyChecking=no" ./output $OVH_HOSTING_USER@$OVH_HOSTING_DOMAIN:/$SUBDOMAIN

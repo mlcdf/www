@@ -42,9 +42,10 @@ venv.bak/
 .dmypy.json
 dmypy.json
 
+# Pelican
 output
-
-.idea
-key.key
 cache
-.env
+
+# IDE
+.idea
+.vscode
