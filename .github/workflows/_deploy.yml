@@ -1,0 +1,44 @@
+name: "Deploy to OVHcloud"
+
+on:
+  workflow_call:
+    inputs:
+      subdomain:
+        required: true
+        type: string
+      environment:
+        description: “Name of GitHub environment"
+        required: true
+        type: string
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/mlcdf/www:latest
+      credentials:
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    environment:
+      name: ${{inputs.environment}}
+      url: https://${{inputs.subdomain}}.mlcdf.fr
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build
+        env:
+          SITEURL: https://${{inputs.subdomain}}.mlcdf.fr
+        run: |
+          echo "Building ${SITEURL}"
+          pipenv run publish
+
+      - name: Deploy
+        env:
+          SUBDOMAIN: ${{inputs.siteurl}}
+          OVH_HOSTING_DOMAIN: ${{ secrets.OVH_HOSTING_DOMAIN }}
+          OVH_HOSTING_USER: ${{ secrets.OVH_HOSTING_USER }}
+          OVH_HOSTING_PASSWORD: ${{ secrets.OVH_HOSTING_PASSWORD }}
+        run: |
+          echo "Deploying"
+          sshpass -p "$OVH_HOSTING_PASSWORD" rsync -av -e "ssh -o StrictHostKeyChecking=no" output/ $OVH_HOSTING_USER@$OVH_HOSTING_DOMAIN:/home/$OVH_HOSTING_USER/$SUBDOMAIN
