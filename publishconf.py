@@ -7,6 +7,9 @@ from pelicanconf import *
 
 # Allows to build for both staging and prod
 SITEURL = os.environ.get("SITEURL", SITEURL)
+if "http" not in SITEURL:
+    raise Exception("Missing protocol in SITEURL (http:// or https://)")
+
 FEED_DOMAIN = SITEURL
 
 RELATIVE_URLS = False
