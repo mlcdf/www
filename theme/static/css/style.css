@@ -107,7 +107,9 @@ header a:hover {
 }
 
 a:not(.post-title a) {
-  text-decoration: underline solid var(--lighter-text-color) 2px;
+  text-decoration: underline;
+  text-decoration-color: var(--lighter-text-color);
+  text-decoration-thickness: 2px;
   color: var(--text-color);
 }
 
@@ -176,24 +178,16 @@ a:focus-visible {
 
 .masthead {
   margin-bottom: 2.4rem;
-  margin-right: -6px;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: baseline;
-  /* border-bottom: solid 2px white; */
-
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  border-image:
-    linear-gradient(
-      to border-bottom  ,
-      red,
-      blue
-    ) 1 100%;
+  border-bottom: solid 2px white;
 }
 
 .masthead nav {
+  margin-right: -6px;
   margin-left: auto;
   font-weight: 600;
   font-family: var(--serif);
@@ -203,7 +197,9 @@ a:focus-visible {
 .masthead nav a {
   padding: 6px;
   margin-left: 4px;
-  text-decoration: underline white 2px;
+  text-decoration: underline;
+  text-decoration-color: var(--lighter-text-color);
+  text-decoration-thickness: 2px;
 }
 
 @media (min-width: 400px) {
