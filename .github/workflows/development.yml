@@ -1,0 +1,21 @@
+name: Development
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - 'dev'
+
+jobs:
+  prepare-image:
+    uses: ./.github/workflows/_docker.yml
+    secrets: inherit
+
+  build-and-deploy:
+    needs: prepare-image
+    uses: ./.github/workflows/_deploy.yml
+    with:
+      environment : 'Development'
+      subdomain: dev-www
+    secrets: inherit

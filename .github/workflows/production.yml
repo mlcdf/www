@@ -1,0 +1,21 @@
+name: Production
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - 'blog'
+
+jobs:
+  prepare-image:
+    uses: ./.github/workflows/_docker.yml
+    secrets: inherit
+
+  build-and-deploy:
+    needs: prepare-image
+    uses: ./.github/workflows/_deploy.yml
+    with:
+      environment: 'Production'
+      subdomain: www
+    secrets: inherit
