@@ -1,6 +1,7 @@
 Title: Petits scripts
 Date: 2021-10-16
 Category: Articles
+Statu:s draft
 Tags: logiciel
 
 Sur chaque projet, c'est toujours les mêmes questions :
@@ -28,4 +29,4 @@ scripts/
 └── publish.sh
 ```
 
-Si certains scripts sont simplissimes et ne font une seule ligne, d'autres en font une 20aine et vont gérer des arguments optionels, etc.
+Si certains scripts sont simplissimes et tiennent en une seule ligne, d'autres vont exécutés tous un tas de commandes et des arguments optionels. Et quand ça dépasse la vingtaine de lignes, je dégaine Python !
