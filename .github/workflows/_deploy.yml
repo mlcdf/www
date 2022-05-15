@@ -35,7 +35,7 @@ jobs:
 
       - name: Deploy
         env:
-          SUBDOMAIN: ${{inputs.siteurl}}
+          SUBDOMAIN: ${{inputs.subdomain}}
           OVH_HOSTING_DOMAIN: ${{ secrets.OVH_HOSTING_DOMAIN }}
           OVH_HOSTING_USER: ${{ secrets.OVH_HOSTING_USER }}
           OVH_HOSTING_PASSWORD: ${{ secrets.OVH_HOSTING_PASSWORD }}
