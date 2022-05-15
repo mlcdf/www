@@ -166,7 +166,7 @@ blockquote {
 
 a:focus:not(.post-title a),
 a:hover:not(.post-title a) {
-  text-decoration: none !important;
+  text-decoration-thickness: 4px;
 }
 
 a:focus-visible {
@@ -321,4 +321,14 @@ code {
   margin-left: auto;
   text-align: end;
   padding-top: 1.4rem;
+}
+
+
+.simple-footnotes {
+  border-top: solid 1px var(--bg-color-30);
+  padding-top: 1rem;
+}
+
+.simple-footnotes li {
+  padding-bottom: .4rem;
 }
