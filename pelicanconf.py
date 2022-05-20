@@ -95,7 +95,7 @@ JINJA_FILTERS = {
 JINJA_GLOBALS = {"BUILD_DATE": BUILD_DATE}
 
 PLUGIN_PATHS = ["plugins"]
-PLUGINS = ["asset_reving", "strike", "styled_rss", jinja2content]
+PLUGINS = ["asset_reving", "strike", "styled_rss", "typography", jinja2content]
 THEME_STATIC_PATHS = ["static"]
 
 CACHE_CONTENT = True
