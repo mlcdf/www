@@ -1,7 +1,6 @@
 Title: Petits scripts
 Date: 2021-10-16
 Category: Articles
-Statu:s draft
 Tags: logiciel
 
 Sur chaque projet, c'est toujours les mêmes questions :
