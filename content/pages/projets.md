@@ -1,5 +1,4 @@
 Title: Projets
-Save_as: projets/index.html
 
 Une petite sélection de projets perso — le reste se trouve sur [GitHub](https://github.com/mlcdf).
 
