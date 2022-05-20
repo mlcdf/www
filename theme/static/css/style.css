@@ -324,11 +324,10 @@ code {
 }
 
 
-.simple-footnotes {
-  border-top: solid 1px var(--bg-color-30);
+.footnote {
   padding-top: 1rem;
 }
 
-.simple-footnotes li {
+.footnote li {
   padding-bottom: .4rem;
 }
