@@ -1,5 +1,5 @@
 Title: Gérer ses dotfiles avec Python
-Date: 2022-05-15
+Date: 2022-05-21
 Category: Articles
 
 Je gère désormais mes [dotfiles](https://wiki.archlinux.org/title/Dotfiles) via de [simple scripts Python](https://github.com/mlcdf/dotfiles). Pourquoi avoir fait ce choix au lieu d'autres outils plus communément utilisés comme `stow`, `chezmoi` ou `ansible` ? C'est ce que nous allons voir !
