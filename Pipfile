@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 pelican = "==4.*"
 pelican-jinja2content = "==1.0.*"
-cryptography = "==3.*"
 Markdown = "==3.3.*"
 typographeur = { git = "https://github.com/mlcdf/typographeur.git" }
 livereload = "==2.6.3"
