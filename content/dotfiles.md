@@ -49,7 +49,7 @@ Sur la plupart des distributions Linux, vous avez même pas besoin de l'installe
 
 ## Conclusion
 
-À choisir entre Python, du bash ou des cadriciels comme Ansible (ou [chezmoi](https://www.chezmoi.io/)[^1]) pour gérer ses dotfiles, il y a pas photo : Python, haut la main ! Voire même Ruby ou Node.js[^2] si c'est plus votre truc.
+À choisir entre Python, du bash ou des cadriciels comme Ansible (ou [chezmoi](https://www.chezmoi.io/)[^1]) pour gérer ses dotfiles, il y a pas photo : Python, haut la main ! Voire même Ruby ou Node.js si c'est plus votre truc.
 
 Pour les curieuses et curieux, le code est disponible ici : [github.com/mlcdf/dotfiles](https://github.com/mlcdf/dotfiles).
 
