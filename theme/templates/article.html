@@ -22,7 +22,7 @@
     {% endfor %}<br> -->
     <h1 class="post-title serif">{{ article.title }}</h1>
     <span class="post-date" title="{{ article.date | strftime('%d %B %Y')}}"
-      >Publié le {{ article.date | strftime('%d %B %Y') }} · écrit par Maxime</span
+      >Publié le {{ article.date | strftime('%d %B %Y') }} · écrit par {{ AUTHOR }}</span
     >
   </header>
   <section>

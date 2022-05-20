@@ -10,15 +10,13 @@ from pelican.utils import DateFormatter
 PELICAN_VERSION = pelican.__version__
 
 PORT = 8000
-BIND = "0.0.0.0"
+BIND = "127.0.0.1"
 
-AUTHOR = "Maxime Le Conte des Floris"
+AUTHOR = "Maxime"
 SITENAME = "www.mlcdf.fr"
-SITEURL = "http://www.mlcdf.local:8000"
+SITEURL = f"http://{BIND}:{PORT}"
 
-DESCRIPTION = (
-    "Ingénieur DevOps, photographe en herbe et mordu de cinéma. Voici mon espace personnel."
-)
+DESCRIPTION = "Artisan logiciel polyglotte et ingénieur DevOps le jour. Photographe en herbe et mordu de cinéma la nuit."
 
 PATH = "content"
 OUTPUT_PATH = "output/"
@@ -104,3 +102,5 @@ CACHE_CONTENT = True
 LOAD_CONTENT_CACHE = True
 
 STYLED_RSS_STYLE_LOCATION = "/theme/pretty-feed-v3.xsl"
+
+WEBRING_FEED_URLS = ["https://adactio.com/articles/rss"]
