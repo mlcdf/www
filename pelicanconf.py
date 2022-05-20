@@ -56,8 +56,8 @@ DEFAULT_PAGINATION = 20
 
 RELATIVE_URLS = True
 
-ARTICLE_SAVE_AS = "blog/{date:%Y}/{slug}/index.html"
-ARTICLE_URL = "blog/{date:%Y}/{slug}"
+ARTICLE_SAVE_AS = "{slug}/index.html"
+ARTICLE_URL = "{slug}"
 
 PAGE_SAVE_AS = "{slug}/index.html"
 PAGE_URL = "{slug}"

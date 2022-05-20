@@ -2,6 +2,7 @@ Title: What We Know We Don't Know — Hillel Wayne
 Date: 2021-08-6
 Category: Articles
 Tags: logiciel
+Slug: what-we-know-we-dont-know
 
 > [What We Know We Don't Know &mdash; Hillel Wayne](https://hillelwayne.com/talks/what-we-know-we-dont-know)
 
