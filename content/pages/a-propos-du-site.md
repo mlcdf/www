@@ -8,8 +8,22 @@ Sauf mention contraire, les articles sont publiés sous license [Creative Common
 
 Le code source quant à lui est disponible sous licence MIT sur [GitHub](https://github.com/mlcdf/www).
 
+## Hébergement et vie privée
+
+Ce site est hébergé en France, chez [OVHcloud](https://www.ovhcloud.com/fr/).
+
+Il ne vous traque pas.
+
 ## Sous le capot
 
-Propulsé par [Pelican](https://docs.getpelican.com/en/latest/index.html) et hébergé chez [Netlify](https://www.netlify.com/).
+Ce site a été conçu à l'aide de :
 
-Ce site ne collecte aucune donnée personnelle.
+- [Pelican](https://docs.getpelican.com/en/latest/index.html)
+- [Typographeur](https://github.com/brunobord/typographeur/)
+- [Poole](https://getpoole.com/)
+- [Python](https://python.org/)
+- [Firefox](https://www.mozilla.org/fr/firefox/)
+- [VS Code](https://code.visualstudio.com/)
+- [GitHub](https://github.com/).
+
+Un certain soin a été appliqué à rendre (ou plutôt maintenir) le site accessible. Si vous rencontrez un problème, contactez-moi.
