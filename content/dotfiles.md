@@ -40,7 +40,7 @@ Arrive Python. Bon déjà, je prends un plaisir fou à écrire du code dans ce l
 
 Python, c'est aussi *le* "langage de glu" et de scripts par excellence.
 
-L'un de ses principales forces, c'est sa bibliothèque standard ~~et son [module antigravité](https://xkcd.com/353/)~~. Le module `shutil` par exemple donne un équivalent à des programmes shell de base : `rm` (rmtree), `cp` (copy et copytree), `which` ou encore `chown`.
+L'une de ses principales forces, c'est sa bibliothèque standard ~~et son [module antigravité](https://xkcd.com/353/)~~. Le module `shutil` par exemple donne un équivalent à des programmes shell de base : `rm` (rmtree), `cp` (copy et copytree), `which` ou encore `chown`.
 Il y a même un module pour interagir avec le registre Windows &mdash; dont je me sers pour définir mes variables d'environnement !
 
 Oui, vu que Python est multi-plateforme, je l'utilise aussi pour configurer ma tour sous Windows en plus de mon portable sous Linux. Résultat, un seul langage pour les deux OS, et un langage me permet d'écrire des scripts beaucoup plus robustes qu'en shell (via annotations, tests, meilleure gestion des erreurs, etc).
