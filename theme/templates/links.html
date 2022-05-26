@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %} Blog — {{SITENAME}} {% endblock %}
+
+{% block content %}
+<h1>Liens</h1>
+<div class="note">
+Ce blog dispose d'un <a href="/{{ FEED_RSS }}">flux RSS</a> auquel vous pouvez vous abonner.
+</div>
+
+<div class="links">
+  {% for article in articles | selectattr("category", "==", "Links")  | selectattr("tags", "ne", ["personal-website"]) %}
+  <div class="link">
+    <h2 class="serif" id="#{{ article.slug }}">
+      <a href="{{ article.link }}">{{ article.title }}</a>{% if article.author != "Maxime" %} &mdash; {{ article.author }} {% endif %}
+    </h2>
+    <span class="link-date"
+      >{{ article.date | strftime('%d %B %Y') }}{% if article.content %} · <a href="">permalien de cette note</a> {%endif %}</span
+    >
+    <!-- {% for tag in article.tags %}
+      <span class="tag"><span class="lavender">#</span>{{ tag }}</span>
+    {% endfor %} -->
+    {{ article.content }}
+  </div>
+  {% endfor %}
+</div>
+
+<h1>Site personnel</h1>
+<div class="note">
+  Une collection de site personnel.
+  </div>
+<div class="posts">
+  {% for article in articles | selectattr("category", "==", "Links") | selectattr("tags", "eq", ["personal-website"]) %}
+  <div class="post post--link">
+    <h2 class="post-title serif" id="#{{ article.slug }}">
+      <a href="{{ article.link }}">{{ article.title }}</a>{% if article.author != "Maxime" %} &mdash; {{ article.author }} {% endif %}
+    </h2>
+    <span class="post-date"
+      >{{ article.date | strftime('%d %B %Y') }}{% if article.content %} · <a href="">permalien</a> {%endif %}</span
+    >
+    <!-- {% for tag in article.tags %}
+      <span class="tag"><span class="lavender">#</span>{{ tag }}</span>
+    {% endfor %} -->
+    {{ article.content }}
+  </div>
+  {% endfor %}
+</div>
+
+{% if articles | length > DEFAULT_PAGINATION %}
+<div class="pagination">
+  {% if articles_page.has_previous() %} {% set num = articles_page.previous_page_number() %}
+  <span class="pagination-item older"
+    ><a href="/{{ page_name }}{{ num if num > 1 else '' }}.html">Plus récent</a></span
+  >
+  {% else %}
+  <span class="pagination-item older">Plus récent</span>
+  {% endif %} {% if articles_page.has_next() %}
+  <span class="pagination-item newer"
+    ><a href="/{{ page_name }}{{ articles_page.next_page_number() }}.html"
+      >Plus ancien</a
+    ></span
+  >
+  {% else %}
+  <span class="pagination-item newer">Plus ancien</span>
+  {% endif %}
+</div>
+{% endif %} {% endblock %}

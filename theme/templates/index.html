@@ -9,7 +9,7 @@ Ce blog dispose d'un <a href="/{{ FEED_RSS }}">flux RSS</a> auquel vous pouvez v
 </div>
 
 <div class="posts">
-  {% for article in articles_page.object_list %}
+  {% for article in articles_page.object_list | selectattr("category", "==", "Articles") %}
   <div class="post">
     <h2 class="post-title serif" id="#{{ article.slug }}">
       <a href="/{{ article.url }}">{{ article.title }}</a>
