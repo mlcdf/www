@@ -16,7 +16,7 @@ AUTHOR = "Maxime"
 SITENAME = "www.mlcdf.fr"
 SITEURL = f"http://{BIND}:{PORT}"
 
-DESCRIPTION = "Artisan logiciel polyglotte et ingénieur DevOps le jour. Photographe en herbe et mordu de cinéma la nuit."
+DESCRIPTION = "Bienvenue sur la page personnelle de Maxime Le Conte des Floris. Le jour, il est artisan logiciel et ingénieur DevOps. La nuit, c'est un photographe en herbe et mordu de cinéma."
 
 PATH = "content"
 OUTPUT_PATH = "output/"
