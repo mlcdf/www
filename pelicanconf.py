@@ -13,7 +13,7 @@ PORT = 8000
 BIND = "127.0.0.1"
 
 AUTHOR = "Maxime"
-SITENAME = "www.mlcdf.fr"
+SITENAME = "Maxime Le Conte des Floris"
 SITEURL = f"http://{BIND}:{PORT}"
 
 DESCRIPTION = "Bienvenue sur la page personnelle de Maxime Le Conte des Floris. Le jour, il est artisan logiciel et ingénieur DevOps. La nuit, c'est un photographe en herbe et mordu de cinéma."
