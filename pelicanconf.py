@@ -2,6 +2,7 @@
 import datetime
 import locale
 import logging
+import os
 
 import pelican
 from pelican.plugins import jinja2content
@@ -19,6 +20,9 @@ SITEURL = f"http://{BIND}:{PORT}"
 DESCRIPTION = "Bienvenue sur la page personnelle de Maxime Le Conte des Floris. Le jour, il est artisan logiciel et ingénieur DevOps. La nuit, c'est un photographe en herbe et mordu de cinéma."
 
 PATH = "content"
+ARTICLE_PATHS = ["", "links"]
+ARTICLE_EXCLUDES = [os.path.join(os.getcwd(), "content/pages")]
+
 OUTPUT_PATH = "output/"
 
 TIMEZONE = "Europe/Paris"
@@ -56,6 +60,8 @@ DEFAULT_PAGINATION = 20
 
 RELATIVE_URLS = True
 
+SLUGIFY_SOURCE = "basename"
+
 ARTICLE_SAVE_AS = "{slug}/index.html"
 ARTICLE_URL = "{slug}"
 
@@ -63,6 +69,13 @@ PAGE_SAVE_AS = "{slug}/index.html"
 PAGE_URL = "{slug}"
 
 INDEX_SAVE_AS = "index.html"
+
+LINKS_SAVE_AS = "links/index.html"
+
+DIRECT_TEMPLATES = ["index", "links"]
+# TEMPLATE_PAGES = {
+#     os.path.join(os.getcwd(), "theme/templates/links.html"): "links/index.html",
+# }
 
 STATIC_PATHS = ["extra"]
 
@@ -92,7 +105,11 @@ JINJA_FILTERS = {
     "strftime": DateFormatter(),
 }
 
-JINJA_GLOBALS = {"BUILD_DATE": BUILD_DATE}
+JINJA_GLOBALS = {
+    "BUILD_DATE": BUILD_DATE,
+}
+
+JINJA_ENVIRONMENT = {"extensions": ["jinja2.ext.loopcontrols"]}
 
 PLUGIN_PATHS = ["plugins"]
 PLUGINS = ["asset_reving", "strike", "styled_rss", "typography", jinja2content]
