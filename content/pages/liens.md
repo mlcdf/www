@@ -1,12 +1,6 @@
 Title: Liens
 Save_as: liens/index.html
 
-## Pinboard
-
-J'ai un [ profil Pinboard](https://pinboard.in/u:mlcdf) sur lequel je collecte tous un tas de liens, principalement autour du développement logiciel.
-
-J'ai notamment un tag [personal-website](https://pinboard.in/u:mlcdf/t:personal-website) qui regroupe pleins de sites web perso trop cool sur lesquels je suis tombé. Envoyez-moi le vôtre que je l'ajoute à cette liste !
-
 ## Blogs
 
 Ces blogs que je lis :
@@ -34,8 +28,4 @@ Ces blogs que je lis :
 - [Nicolas Lœuillet](https://nicolas.loeuillet.org/)
 - [Nikita](https://tonsky.me/)
 - [Nolan Lawson](https://nolanlawson.com/)
-- [Parimal Satyal](https://neustadt.fr/)
 - [Rachel by the Bay](https://rachelbythebay.com/w/)
-- [Sébastien Bénard](https://deepnight.net/blog/)
-- [Sylvain Metayer](https://sylvain.dev/)
-- [Tom MacWright](https://macwright.com/)
