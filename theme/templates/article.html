@@ -3,14 +3,16 @@
 {% block title %}{{article.title}} — {{ SITENAME }}{% endblock %}
 
 {% block metadata %}
+{% if article.description %}
 <meta
   name="description"
-  content="{% if article.description %}{{ article.description }}{% else %}{{ DESCRIPTION }}{% endif %}"
+  content="{{ article.description }}"
 />
 <meta
   property="og:description"
-  content="{% if article.description %}{{ article.description }}{% else %}{{ DESCRIPTION }}{% endif %}"
+  content="{{ article.description }}"
 />
+{% endif %}
 <meta property="og:title" content="{{ article.title }}" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="{{ SITEURL }}/{{ article.url }}" />
