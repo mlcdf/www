@@ -13,7 +13,7 @@ Les confs que j'ai préféré:
 
 - ["Web accessibility : du design au code comment tendre vers d’avantage d’inclusion ? "](https://whorunthetech.com/project/web-accessibility-du-design-au-code-comment-tendre-vers-davantage-dinclusion/). Une bonne piqûre de rappel par Marjorie Aubert. Son intruction était terriblement efficace.
 
-- "Vous aussi, amenez l’égalité de genre dans votre entreprise !". Laury Maurice nous partage tout ce que les femmes chez Shodo ont réussi à obtenir comme avancées sociales et ça donne des étoiles dans les yeux. A voir absolument et à appliquer dans son entreprise !
+- "Vous aussi, amenez l’égalité de genre dans votre entreprise !". Laury Maurice nous partage tout ce que les femmes chez Shodo ont réussi à obtenir comme avancées sociales et ça donne des étoiles dans les yeux. À voir absolument et à appliquer dans son entreprise !
 
 - ["Crafter de meilleures UI, en pensant le DOM comme une API"](https://whorunthetech.com/project/crafter-de-meilleures-ui-en-pensant-le-dom-comme-une-api/). L'approche que propose ici Manon peut en réaliter s'appliquer aussi bien à de l'intréga
 
