@@ -13,7 +13,7 @@ livereload = "==2.6.3"
 [dev-packages]
 
 [scripts]
-dev = "./scripts/dev.py "
+dev = "python ./scripts/dev.py"
 publish = "pelican --settings publishconf.py --delete-output-directory"
 preview = "env PREVIEW=True pelican --settings publishconf.py --delete-output-directory --listen --autoreload"
 clean = "rm -rf ./cache ./output"
