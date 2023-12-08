@@ -5,7 +5,7 @@ Slug: who-run-the-tech-2023
 
 Jeudi dernier, j'étais à [Who Run The Tech](https://whorunthetech.com) : une conférence organisée à 100% par des femmes et dont 100% des conférentières étaient des femmes. Et quel succès !
 
-L'audience était bien plus diverse que dans tous les autres conférences tech que j'ai pu faire. Les femmes devaient représenter un bon 70%, il y avait également des personnes porteuses de handicap, des étudiant·e·s et de nombreux profils juniors ou en reconversion. C'était très chouette !
+C'était très chouette d'assister à un évènement avec autant de diversité. Dans l'audience, les femmes devaient représenter un bon 70%. Il y avait également des personnes porteuses de handicap, des étudiant·e·s et de nombreux profils juniors ou en reconversion.
 
 Les confs que j'ai préféré:
 
