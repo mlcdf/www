@@ -16,7 +16,8 @@ AUTHOR = "Maxime"
 SITENAME = "Maxime Le Conte des Floris"
 SITEURL = f"http://{BIND}:{PORT}"
 
-DESCRIPTION = "Bienvenue sur la page personnelle de Maxime Le Conte des Floris. Le jour, il est artisan logiciel et ingénieur DevOps. La nuit, c'est un photographe en herbe et mordu de cinéma."
+DESCRIPTION = "Bienvenue sur la page personnelle de Maxime Le Conte des Floris. Le jour, il est ingénieur logiciel chez OVHcloud. La nuit, c'est un photographe en herbe et un mordu de cinéma et d'escalade en bloc."
+
 
 PATH = "content"
 OUTPUT_PATH = "output/"
